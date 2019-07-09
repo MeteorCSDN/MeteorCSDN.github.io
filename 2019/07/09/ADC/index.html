@@ -6,30 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>CAN基础知识介绍 | 老羊头的小破站</title>
+  <title>ADC数模转换的学习 | 老羊头的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。">
+  <meta name="description" content="ADC数模转换一、什么是ADCAnalog-to-Digital Converter的缩写。 指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAN基础知识介绍">
-<meta property="og:url" content="http://yoursite.com/2019/05/03/CAN学习笔记/index.html">
+<meta property="og:title" content="ADC数模转换的学习">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/ADC/index.html">
 <meta property="og:site_name" content="老羊头的小破站">
-<meta property="og:description" content="CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。">
+<meta property="og:description" content="ADC数模转换一、什么是ADCAnalog-to-Digital Converter的缩写。 指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片1.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片2.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片3.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片4.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片5.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片6.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片7.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片8.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片9.png">
-<meta property="og:updated_time" content="2019-07-04T11:57:04.494Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/09/ADC/guize.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/09/ADC/zhuru.png">
+<meta property="og:updated_time" content="2019-07-09T08:46:15.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAN基础知识介绍">
-<meta name="twitter:description" content="CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/03/CAN学习笔记/图片1.png">
+<meta name="twitter:title" content="ADC数模转换的学习">
+<meta name="twitter:description" content="ADC数模转换一、什么是ADCAnalog-to-Digital Converter的缩写。 指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/09/ADC/guize.png">
   
     <link rel="alternative" href="/atom.xml" title="老羊头的小破站" type="application/atom+xml">
   
@@ -167,59 +160,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CAN学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ADC" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CAN基础知识介绍
+      ADC数模转换的学习
     </h1>
   
 
         
-        <a href="/2019/05/03/CAN学习笔记/" class="archive-article-date">
-  	<time datetime="2019-05-03T14:56:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
+        <a href="/2019/07/09/ADC/" class="archive-article-date">
+  	<time datetime="2019-07-09T06:33:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h1><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<p>笔者由于团队需要，对CAN通信进行学习，并记此笔记，怕忘。。。</p>
+        <h2 id="ADC数模转换"><a href="#ADC数模转换" class="headerlink" title="ADC数模转换"></a>ADC数模转换</h2><h3 id="一、什么是ADC"><a href="#一、什么是ADC" class="headerlink" title="一、什么是ADC"></a>一、什么是ADC</h3><p>Analog-to-Digital Converter的缩写。</p>
+<p>指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。</p>
 <a id="more"></a>
-<h3 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h3><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h3 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h3><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片1.png" alt="逻辑电平"></p>
-<h3 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h3><p><img src="/2019/05/03/CAN学习笔记/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h3 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h3><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h3 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h3><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/CAN学习笔记/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+<p>典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。</p>
+<h3 id="二、STM32F10x的ADC特点"><a href="#二、STM32F10x的ADC特点" class="headerlink" title="二、STM32F10x的ADC特点"></a>二、STM32F10x的ADC特点</h3><p>1.12位逐次逼近型的模拟数字转换器；</p>
+<p>2.最多带3个ADC控制器；</p>
+<p>3.最多支持18个通道，可最多测量16个外部和2个内部信号源；</p>
+<p>4.支持单次和连续转换模式； </p>
+<p>5.转换结束，注入转换结束，和发生模拟看门狗事件时产生中断；</p>
+<p>6.通道0到通道n的自动扫描模式；</p>
+<p>7.自动校准；</p>
+<p>8.采样间隔可以按通道编程；</p>
+<p>9.规则通道和注入通道均有外部触发选项； </p>
+<p>10.转换结果支持左对齐或右对齐方式存储在16位数据寄存器 ADC转换时间：最大转换速率 1us。（最大转换速度为1MHz，在ADCCLK=14M，采样周期为1.5个ADC时钟下得到。）； </p>
+<p>11.ADC供电要求：2.4V-3.6V；</p>
+<p>12.ADC输入范围：VREF- ≤  VIN  ≤  VREF+</p>
+<h3 id="三、STM32通道组"><a href="#三、STM32通道组" class="headerlink" title="三、STM32通道组"></a>三、STM32通道组</h3><h5 id="规则通道组：相当正常运行的程序。最多16个通道。"><a href="#规则通道组：相当正常运行的程序。最多16个通道。" class="headerlink" title="规则通道组：相当正常运行的程序。最多16个通道。"></a>规则通道组：相当正常运行的程序。最多16个通道。</h5><p>规则通道和它的转换顺序在ADC_SQRx寄存器中选择，规则组转换的总数应写入ADC_SQR1寄存器的L[3:0]中</p>
+<h5 id="注入通道组：相当于中断。最多4个通道。"><a href="#注入通道组：相当于中断。最多4个通道。" class="headerlink" title="注入通道组：相当于中断。最多4个通道。"></a>注入通道组：相当于中断。最多4个通道。</h5><p>注入组和它的转换顺序在ADC_JSQR寄存器中选择。注入组     里转化的总数应写入ADC_JSQR寄存器的L[1:0]中</p>
+<p><img src="/2019/07/09/ADC/guize.png" alt="avatar"></p>
+<p><img src="/2019/07/09/ADC/zhuru.png" alt="avatar"></p>
+<h3 id="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"><a href="#四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。" class="headerlink" title="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"></a>四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。</h3><h4 id="ADC单通道："><a href="#ADC单通道：" class="headerlink" title="ADC单通道："></a>ADC单通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，就停止转换。</p>
+<p>要求进行连续ADC转换：配置为连续模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，接着进行下一次转换，不断连续。</p>
+<h4 id="ADC多通道："><a href="#ADC多通道：" class="headerlink" title="ADC多通道："></a>ADC多通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式使能。这样ADC的多个通道，按照配置的顺序依次转换一次后，就停止转换。</p>
+<p>要求进行连续ADC转换：配置为连续模式使能，扫描模式使能。这样ADC的多个通道，按照配置的顺序依次转换一次后，接着进行下一次转换，不断连续。</p>
+<p>（扫描模式只在多通道的条件下有效，来使得各个通道按照配置循序依次转换。而单次模式无论在单通道还是多通道下只对这些或者这个通道进行一次转换，连续模式无论是在单通道还是多通道下都对这些或者这个通道不断进行连续的转换。 ）</p>
+<h3 id="五、ADC中断"><a href="#五、ADC中断" class="headerlink" title="五、ADC中断"></a>五、ADC中断</h3><p>规则和注入组转换结束时能产生中断。它们都有独立的中断使能位。</p>
+<h3 id="六、配置函数选讲"><a href="#六、配置函数选讲" class="headerlink" title="六、配置函数选讲"></a>六、配置函数选讲</h3><h5 id="（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入"><a href="#（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入" class="headerlink" title="（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入"></a>（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入</h5><h5 id="GPIO-Init"><a href="#GPIO-Init" class="headerlink" title="GPIO_Init();"></a>GPIO_Init();</h5><h5 id="APB2PeriphClockCmd"><a href="#APB2PeriphClockCmd" class="headerlink" title="APB2PeriphClockCmd();"></a>APB2PeriphClockCmd();</h5><p>其中设置分频因子时需注意：</p>
+<p>RCC_ADCCLKConfig(RCC_PCLK2_Div6); </p>
+<p>//设置 ADC 分频因子 6<br>//APB2的时钟为72M,而72M/6=12,ADC 最大时间不能超过 14M</p>
+<h5 id="（2）ADC-规则通道配置函数"><a href="#（2）ADC-规则通道配置函数" class="headerlink" title="（2）ADC 规则通道配置函数"></a>（2）ADC 规则通道配置函数</h5><h5 id="ADC-RegularChannelConfig-ADC1-ADC-Channel-1-1-ADC-SampleTime-239Cycles5"><a href="#ADC-RegularChannelConfig-ADC1-ADC-Channel-1-1-ADC-SampleTime-239Cycles5" class="headerlink" title="ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1,                   ADC_SampleTime_239Cycles5 );"></a>ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1,                   ADC_SampleTime_239Cycles5 );</h5><p>ADC1的通道1，第三个1是指ADC1的通道1在规则序列中序号为1，即第一个转换，最后一个参数表示采样周期为239.5</p>
 
       
 
@@ -260,7 +250,7 @@
             </li>
             <li>
               <strong>本文链接：</strong>
-              <a href="http://yoursite.com/2019/05/03/CAN学习笔记/" title="老羊头的小破站">http://yoursite.com/2019/05/03/CAN学习笔记/</a>
+              <a href="http://yoursite.com/2019/07/09/ADC/" title="老羊头的小破站">http://yoursite.com/2019/07/09/ADC/</a>
             </li>
             <li>
               <strong>版权声明： </strong>
@@ -346,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//bshare.optimix.asia/barCode?site=weixin&url=http://yoursite.com/2019/05/03/CAN学习笔记/" alt="微信分享二维码">
+      <img src="//bshare.optimix.asia/barCode?site=weixin&url=http://yoursite.com/2019/07/09/ADC/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -360,24 +350,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/09/ADC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ADC数模转换的学习
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/03/C语言的生命周期和作用域/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C语言的生命周期和作用域</div>
+    <a href="/2019/05/03/CAN学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CAN基础知识介绍</div>
       <i class="icon-circle-right"></i>
     </a>
   
   
    
-  <span style="float:right;color:#0094d5" id="/2019/05/03/CAN学习笔记/" class="leancloud_visitors" data-flag-title="CAN基础知识介绍">
+  <span style="float:right;color:#0094d5" id="/2019/07/09/ADC/" class="leancloud_visitors" data-flag-title="ADC数模转换的学习">
       <span class="post-meta-item-text">本文阅读量 </span>
       <span class="leancloud-visitors-count">8848</span>
     </span>
@@ -385,7 +366,7 @@
 </nav>
 <script>
   var mdhost = '';
-  var mdurl = '2019/05/03/CAN学习笔记/'.replace('.html', '.md');
+  var mdurl = '2019/07/09/ADC/'.replace('.html', '.md');
   function mdpage() {
     window.open(mdhost + "/" + mdurl);
   }
@@ -412,7 +393,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CAN通信"><span class="toc-number">1.</span> <span class="toc-text">CAN通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、CAN协议的特点"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、CAN协议的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、物理层特征"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、物理层特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、数据帧（7个段）"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、数据帧（7个段）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、总线仲裁"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、总线仲裁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、位时序"><span class="toc-number">1.0.5.</span> <span class="toc-text">五、位时序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结语"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">结语</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADC数模转换"><span class="toc-number">1.</span> <span class="toc-text">ADC数模转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、什么是ADC"><span class="toc-number">1.1.</span> <span class="toc-text">一、什么是ADC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、STM32F10x的ADC特点"><span class="toc-number">1.2.</span> <span class="toc-text">二、STM32F10x的ADC特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、STM32通道组"><span class="toc-number">1.3.</span> <span class="toc-text">三、STM32通道组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#规则通道组：相当正常运行的程序。最多16个通道。"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">规则通道组：相当正常运行的程序。最多16个通道。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注入通道组：相当于中断。最多4个通道。"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">注入通道组：相当于中断。最多4个通道。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"><span class="toc-number">1.4.</span> <span class="toc-text">四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ADC单通道："><span class="toc-number">1.4.1.</span> <span class="toc-text">ADC单通道：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ADC多通道："><span class="toc-number">1.4.2.</span> <span class="toc-text">ADC多通道：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、ADC中断"><span class="toc-number">1.5.</span> <span class="toc-text">五、ADC中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、配置函数选讲"><span class="toc-number">1.6.</span> <span class="toc-text">六、配置函数选讲</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GPIO-Init"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">GPIO_Init();</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#APB2PeriphClockCmd"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">APB2PeriphClockCmd();</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）ADC-规则通道配置函数"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">（2）ADC 规则通道配置函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ADC-RegularChannelConfig-ADC1-ADC-Channel-1-1-ADC-SampleTime-239Cycles5"><span class="toc-number">1.6.0.5.</span> <span class="toc-text">ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1,                   ADC_SampleTime_239Cycles5 );</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -457,7 +438,7 @@
             avatar: '',
             avatar_cdn: '',
             pageSize: 12,
-            path: '/2019/05/03/CAN学习笔记/',
+            path: '/2019/07/09/ADC/',
             visitor: visitor
         });
     });
