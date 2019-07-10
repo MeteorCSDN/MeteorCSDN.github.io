@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 老羊头的小破站</title>
+  <title>数码雨 | 老羊头的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="佛系，无知">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老羊头的小破站">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果">
+<meta name="keywords" content="教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数码雨">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/数码雨/index.html">
 <meta property="og:site_name" content="老羊头的小破站">
+<meta property="og:description" content="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/数码雨/图片一.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/数码雨/图片二.png">
+<meta property="og:updated_time" content="2019-07-10T02:51:58.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="老羊头的小破站">
+<meta name="twitter:title" content="数码雨">
+<meta name="twitter:description" content="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/10/数码雨/图片一.png">
   
     <link rel="alternative" href="/atom.xml" title="老羊头的小破站" type="application/atom+xml">
   
@@ -153,36 +160,105 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数码雨" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/10/数码雨/" class="archive-article-date">
-  	<time datetime="2019-07-10T02:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/10/数码雨/">数码雨</a>
+    <h1 class="article-title" itemprop="name">
+      数码雨
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/10/数码雨/" class="archive-article-date">
+  	<time datetime="2019-07-10T02:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h1><a id="more"></a>
+<h2 id="闲言少叙，命令如下"><a href="#闲言少叙，命令如下" class="headerlink" title="闲言少叙，命令如下"></a>闲言少叙，命令如下</h2><p>1.yum -y install wget</p>
+<p>2.wget <a href="https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz</a></p>
+<p>3.tar xvf cmatrix-1.2a.tar.gz</p>
+<p>4.跳转到cmatrix-1.2a目录下</p>
+<p>命令为 cd cmatrix-1.2a</p>
+<p>5.yum install ncurses-devel</p>
+<p>（过程中会出现    “Is this ok [y/d/N]: ”</p>
+<p>（ 输入”y”,敲回车即可</p>
+<p>6.yum -y install gcc</p>
+<p>7.yum -y install gcc-c++</p>
+<p>8.yum install make</p>
+<p>9.输入命令 “./configure &amp;&amp; make &amp;&amp; make install”</p>
+<p>（尤其注意，该命令以“.”开头，不要输入错误）</p>
+<p>10.输入cmatrix，即可看到数码雨的情景</p>
+<p><img src="/2019/07/10/数码雨/图片一.png" alt="avatar"></p>
+<h2 id="cmatrix常用命令如下"><a href="#cmatrix常用命令如下" class="headerlink" title="cmatrix常用命令如下:"></a>cmatrix常用命令如下:</h2><p>cmatrix-a :异步滚动（默认）</p>
+<p>cmatrix-b :随机粗体</p>
+<p>cmatrix-B :全部粗体</p>
+<p>cmatrix-o :使用旧风格滚动</p>
+<p>cmatrix-x :X window 模式</p>
+<p>cmatrix-V :显示版本信息</p>
+<p>cmatrix-u :刷新频率，0-9，也就是滚动的快慢</p>
+<p>cmatrix-C :显示的颜色，支持green(默认),red,blue,white,yellow,cyan</p>
+<p><img src="/2019/07/10/数码雨/图片二.png" alt="avatar"></p>
+<h5 id="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><a href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。" class="headerlink" title="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"></a>骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</h5>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>请作者吃烤全羊<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://zzuyy519-1259159112.cos.ap-chengdu.myqcloud.com/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+            
+      
+        <div> 
+          <ul class="post-copyright">
+            <li>
+              <strong>本文作者：</strong>
+              zzulyt
+            </li>
+            <li>
+              <strong>本文链接：</strong>
+              <a href="http://yoursite.com/2019/07/10/数码雨/" title="老羊头的小破站">http://yoursite.com/2019/07/10/数码雨/</a>
+            </li>
+            <li>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+      
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,7 +270,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -207,213 +283,164 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//bshare.optimix.asia/barCode?site=weixin&url=http://yoursite.com/2019/07/10/数码雨/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/09/ADC/" class="archive-article-date">
-  	<time datetime="2019-07-09T06:33:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/09/ADC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ADC数模转换的学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+  
+   
+  <span style="float:right;color:#0094d5" id="/2019/07/10/数码雨/" class="leancloud_visitors" data-flag-title="数码雨">
+      <span class="post-meta-item-text">本文阅读量 </span>
+      <span class="leancloud-visitors-count">8848</span>
+    </span>
+ 
+</nav>
+<script>
+  var mdhost = '';
+  var mdurl = '2019/07/10/数码雨/'.replace('.html', '.md');
+  function mdpage() {
+    window.open(mdhost + "/" + mdurl);
+  }
+</script>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/09/ADC/">ADC数模转换的学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/32单片机/" class="article-tag-list-link color1">32单片机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><span class="toc-number">1.</span> <span class="toc-text">有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#闲言少叙，命令如下"><span class="toc-number">1.1.</span> <span class="toc-text">闲言少叙，命令如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cmatrix常用命令如下"><span class="toc-number">1.2.</span> <span class="toc-text">cmatrix常用命令如下:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/03/CAN学习笔记/" class="archive-article-date">
-  	<time datetime="2019-05-03T14:56:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/03/CAN学习笔记/">CAN基础知识介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/32单片机/" class="article-tag-list-link color1">32单片机</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/03/C语言的生命周期和作用域/" class="archive-article-date">
-  	<time datetime="2019-05-03T14:56:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/03/C语言的生命周期和作用域/">C语言的生命周期和作用域</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-C/" class="article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/03/test/" class="archive-article-date">
-  	<time datetime="2019-05-03T12:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/03/test/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script async="async">
+    var notify = true == true ? true : false;
+    var verify = false == true ? true : false;
+    var visitor = true == true ? true : false;
+    loadScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js',function(){
+    loadScript('https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js',function(){
+        new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: '3oAoPTPAyl556QHqkR7rbHPr-gzGzoHsz',
+            app_key: '7hOJIg9fiBiCCKQQjfUzgWgB',
+            placeholder: '友情提醒，留下正确的邮箱地址可以第一时间获取评论反馈',
+            avatar: '',
+            avatar_cdn: '',
+            pageSize: 12,
+            path: '/2019/07/10/数码雨/',
+            visitor: visitor
+        });
+    });
+    });
+</script>
+    </section>
+  
 
 
           </div>
@@ -437,8 +464,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-09T08:46:15.731Z</updated>
+  <updated>2019-07-10T02:51:58.836Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数码雨</title>
+    <link href="http://yoursite.com/2019/07/10/%E6%95%B0%E7%A0%81%E9%9B%A8/"/>
+    <id>http://yoursite.com/2019/07/10/数码雨/</id>
+    <published>2019-07-10T02:40:03.000Z</published>
+    <updated>2019-07-10T02:51:58.836Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h1><a id="more"></a><h2 id="闲言少叙，命令如下"><a href="#闲言少叙，命令如下" class="headerlink" title="闲言少叙，命令如下"></a>闲言少叙，命令如下</h2><p>1.yum -y install wget</p><p>2.wget <a href="https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz</a></p><p>3.tar xvf cmatrix-1.2a.tar.gz</p><p>4.跳转到cmatrix-1.2a目录下</p><p>命令为 cd cmatrix-1.2a</p><p>5.yum install ncurses-devel</p><p>（过程中会出现    “Is this ok [y/d/N]: ”</p><p>（ 输入”y”,敲回车即可</p><p>6.yum -y install gcc</p><p>7.yum -y install gcc-c++</p><p>8.yum install make</p><p>9.输入命令 “./configure &amp;&amp; make &amp;&amp; make install”</p><p>（尤其注意，该命令以“.”开头，不要输入错误）</p><p>10.输入cmatrix，即可看到数码雨的情景</p><p><img src="/2019/07/10/数码雨/图片一.png" alt="avatar"></p><h2 id="cmatrix常用命令如下"><a href="#cmatrix常用命令如下" class="headerlink" title="cmatrix常用命令如下:"></a>cmatrix常用命令如下:</h2><p>cmatrix-a :异步滚动（默认）</p><p>cmatrix-b :随机粗体</p><p>cmatrix-B :全部粗体</p><p>cmatrix-o :使用旧风格滚动</p><p>cmatrix-x :X window 模式</p><p>cmatrix-V :显示版本信息</p><p>cmatrix-u :刷新频率，0-9，也就是滚动的快慢</p><p>cmatrix-C :显示的颜色，支持green(默认),red,blue,white,yellow,cyan</p><p><img src="/2019/07/10/数码雨/图片二.png" alt="avatar"></p><h5 id="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><a href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。" class="headerlink" title="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"></a>骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</h5>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="教程" scheme="http://yoursite.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>ADC数模转换的学习</title>
