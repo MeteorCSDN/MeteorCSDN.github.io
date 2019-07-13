@@ -62,28 +62,6 @@
   </entry>
   
   <entry>
-    <title>C语言的生命周期和作用域</title>
-    <link href="http://yoursite.com/2019/05/03/C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>http://yoursite.com/2019/05/03/C语言的生命周期和作用域/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-04T11:59:50.301Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="C语言生命周期和作用域的定义"><a href="#C语言生命周期和作用域的定义" class="headerlink" title="C语言生命周期和作用域的定义"></a>C语言生命周期和作用域的定义</h2><a id="more"></a><p>生命周期：是一个变量存在的周期。</p><p>作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。</p><h3 id="（1）全局变量："><a href="#（1）全局变量：" class="headerlink" title="（1）全局变量："></a>（1）全局变量：</h3><p>作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；</p><p>生命周期：程序运行期一直存在；</p><p>引用方法：其他文件如果要使用，必须用extern 关键字声明要引用的全局变量；</p><p>内存分布：全局（静态存储区）。</p><p>注意：如果再两个文件中都定义了相同名字的全局变量，则连接错误：变量重定义。</p><h3 id="（2）全局静态变量："><a href="#（2）全局静态变量：" class="headerlink" title="（2）全局静态变量："></a>（2）全局静态变量：</h3><p>生命周期：程序运行期一直存在；</p><p>作用域：文件作用域（只在被定义的文件中可见：static的一个作用就是隐藏）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：static关键字，const关键字（注意C/C++意义不同）</p><p>注意：只要文件不相互包含，两个不同的文件中是可以定义完全相同的两个全局静态变量的。</p><h3 id="（3）静态局部变量："><a href="#（3）静态局部变量：" class="headerlink" title="（3）静态局部变量："></a>（3）静态局部变量：</h3><p>生命周期：程序运行期一直存在；（超过其作用域便无法被引用）</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：局部作用域中用static定义。</p><p>注意：只被初始化一次，多线程中需要加锁保护。</p><h3 id="（4）局部变量："><a href="#（4）局部变量：" class="headerlink" title="（4）局部变量："></a>（4）局部变量：</h3><p>生命周期：程序运行处局部作用域 即被销毁。</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：栈区</p><p>定义方法：在局部作用域中用auto指示符定义，可省略auto</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =  <span class="number">1</span>;<span class="comment">//全局初始化去（静态全局变量）</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; <span class="comment">//全局初始化区(全局变量)</span></span><br><span class="line"><span class="keyword">char</span>  *p1; <span class="comment">//全局未初始化区（全局变量）</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b;<span class="comment">//存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"abc"</span>;<span class="comment">//s存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p2 ;<span class="comment">//栈（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p3 = <span class="string">"123456"</span>;<span class="comment">//p3存放于栈区(局部变量);“123456”存放区文字常量区</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c = <span class="number">0</span>;<span class="comment">// c存放于全局初始化区（静态局部变量）</span></span><br><span class="line">    p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);<span class="comment">//分配得来的10和20字节的区域在堆区；</span></span><br><span class="line">                            <span class="comment">//变量p1、p2指向堆区分配的内存</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">strcpy</span>(p1, <span class="string">"123456"</span>);<span class="comment">//“123456”存放区文字常量区</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;a href=&quot;#C语言生命周期和作用域的定义&quot; class=&quot;headerlink&quot; title=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;/a&gt;C语言生命周期和作用域的定义&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CAN基础知识介绍</title>
     <link href="http://yoursite.com/2019/05/03/CAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/05/03/CAN学习笔记/</id>
@@ -99,6 +77,28 @@
     </summary>
     
       <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言的生命周期和作用域</title>
+    <link href="http://yoursite.com/2019/05/03/C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>http://yoursite.com/2019/05/03/C语言的生命周期和作用域/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2019-07-04T11:59:50.301Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="C语言生命周期和作用域的定义"><a href="#C语言生命周期和作用域的定义" class="headerlink" title="C语言生命周期和作用域的定义"></a>C语言生命周期和作用域的定义</h2><a id="more"></a><p>生命周期：是一个变量存在的周期。</p><p>作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。</p><h3 id="（1）全局变量："><a href="#（1）全局变量：" class="headerlink" title="（1）全局变量："></a>（1）全局变量：</h3><p>作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；</p><p>生命周期：程序运行期一直存在；</p><p>引用方法：其他文件如果要使用，必须用extern 关键字声明要引用的全局变量；</p><p>内存分布：全局（静态存储区）。</p><p>注意：如果再两个文件中都定义了相同名字的全局变量，则连接错误：变量重定义。</p><h3 id="（2）全局静态变量："><a href="#（2）全局静态变量：" class="headerlink" title="（2）全局静态变量："></a>（2）全局静态变量：</h3><p>生命周期：程序运行期一直存在；</p><p>作用域：文件作用域（只在被定义的文件中可见：static的一个作用就是隐藏）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：static关键字，const关键字（注意C/C++意义不同）</p><p>注意：只要文件不相互包含，两个不同的文件中是可以定义完全相同的两个全局静态变量的。</p><h3 id="（3）静态局部变量："><a href="#（3）静态局部变量：" class="headerlink" title="（3）静态局部变量："></a>（3）静态局部变量：</h3><p>生命周期：程序运行期一直存在；（超过其作用域便无法被引用）</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：局部作用域中用static定义。</p><p>注意：只被初始化一次，多线程中需要加锁保护。</p><h3 id="（4）局部变量："><a href="#（4）局部变量：" class="headerlink" title="（4）局部变量："></a>（4）局部变量：</h3><p>生命周期：程序运行处局部作用域 即被销毁。</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：栈区</p><p>定义方法：在局部作用域中用auto指示符定义，可省略auto</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =  <span class="number">1</span>;<span class="comment">//全局初始化去（静态全局变量）</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; <span class="comment">//全局初始化区(全局变量)</span></span><br><span class="line"><span class="keyword">char</span>  *p1; <span class="comment">//全局未初始化区（全局变量）</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b;<span class="comment">//存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"abc"</span>;<span class="comment">//s存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p2 ;<span class="comment">//栈（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p3 = <span class="string">"123456"</span>;<span class="comment">//p3存放于栈区(局部变量);“123456”存放区文字常量区</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c = <span class="number">0</span>;<span class="comment">// c存放于全局初始化区（静态局部变量）</span></span><br><span class="line">    p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);<span class="comment">//分配得来的10和20字节的区域在堆区；</span></span><br><span class="line">                            <span class="comment">//变量p1、p2指向堆区分配的内存</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">strcpy</span>(p1, <span class="string">"123456"</span>);<span class="comment">//“123456”存放区文字常量区</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;a href=&quot;#C语言生命周期和作用域的定义&quot; class=&quot;headerlink&quot; title=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;/a&gt;C语言生命周期和作用域的定义&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
     
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
