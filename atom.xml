@@ -84,6 +84,28 @@
   </entry>
   
   <entry>
+    <title>CAN基础知识介绍</title>
+    <link href="http://yoursite.com/2019/05/03/CAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/05/03/CAN学习笔记/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2019-07-14T13:42:58.623Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p><p>笔者由于团队需要，对CAN通信进行学习，并记此笔记，怕忘。。。</p><a id="more"></a><h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p><p>2.系统柔软性</p><p>3.速度快，距离远</p><p>4.具有错误检测，错误通知和错误恢复功能</p><p>5.故障封闭功能</p><p>6.连接节点多</p><h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p><p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p><p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p><p><img src="/2019/05/03/CAN学习笔记/图片1.png" alt="逻辑电平"></p><h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/CAN学习笔记/图片2.png" alt="数据帧"></p><p>1.帧起始：表示数据帧开始的段</p><p>2.仲裁段：表示该帧优先级的段</p><p><img src="/2019/05/03/CAN学习笔记/图片3.png" alt="仲裁段"></p><p>3.控制段：表示数据的字节数及保留位的段</p><p><img src="/2019/05/03/CAN学习笔记/图片4.png" alt="控制段"></p><p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p><p><img src="/2019/05/03/CAN学习笔记/图片5.png" alt="数据段"></p><p>5.CRC段：检查帧的传输错误的段</p><p><img src="/2019/05/03/CAN学习笔记/图片6.png" alt="CRC段"></p><p>6.ACK段：表示确认正常接收的段</p><p><img src="/2019/05/03/CAN学习笔记/图片7.png" alt="ACK段"></p><p>7.帧结束：表示数据帧结束的段</p><p><img src="/2019/05/03/CAN学习笔记/图片8.png" alt="帧结束"></p><p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p><h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p><p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p><h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p><p><img src="/2019/05/03/CAN学习笔记/图片9.png" alt="位时序"></p><h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>]]></content>
+    
+    <summary type="html">
+    
+      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
+    
+    </summary>
+    
+      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>C语言的生命周期和作用域</title>
     <link href="http://yoursite.com/2019/05/03/C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     <id>http://yoursite.com/2019/05/03/C语言的生命周期和作用域/</id>
@@ -99,28 +121,6 @@
     </summary>
     
       <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CAN基础知识介绍</title>
-    <link href="http://yoursite.com/2019/05/03/CAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/05/03/CAN学习笔记/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-04T11:57:04.494Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h1><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p><p>笔者由于团队需要，对CAN通信进行学习，并记此笔记，怕忘。。。</p><a id="more"></a><h3 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h3><p>1.多主控制</p><p>2.系统柔软性</p><p>3.速度快，距离远</p><p>4.具有错误检测，错误通知和错误恢复功能</p><p>5.故障封闭功能</p><p>6.连接节点多</p><h3 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h3><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p><p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p><p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p><p><img src="/2019/05/03/CAN学习笔记/图片1.png" alt="逻辑电平"></p><h3 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h3><p><img src="/2019/05/03/CAN学习笔记/图片2.png" alt="数据帧"></p><p>1.帧起始：表示数据帧开始的段</p><p>2.仲裁段：表示该帧优先级的段</p><p><img src="/2019/05/03/CAN学习笔记/图片3.png" alt="仲裁段"></p><p>3.控制段：表示数据的字节数及保留位的段</p><p><img src="/2019/05/03/CAN学习笔记/图片4.png" alt="控制段"></p><p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p><p><img src="/2019/05/03/CAN学习笔记/图片5.png" alt="数据段"></p><p>5.CRC段：检查帧的传输错误的段</p><p><img src="/2019/05/03/CAN学习笔记/图片6.png" alt="CRC段"></p><p>6.ACK段：表示确认正常接收的段</p><p><img src="/2019/05/03/CAN学习笔记/图片7.png" alt="ACK段"></p><p>7.帧结束：表示数据帧结束的段</p><p><img src="/2019/05/03/CAN学习笔记/图片8.png" alt="帧结束"></p><p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p><h3 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h3><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p><p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p><h3 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h3><p>可根据位时序设置波特率</p><p><img src="/2019/05/03/CAN学习笔记/图片9.png" alt="位时序"></p><h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>]]></content>
-    
-    <summary type="html">
-    
-      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
-    
-    </summary>
-    
-      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
