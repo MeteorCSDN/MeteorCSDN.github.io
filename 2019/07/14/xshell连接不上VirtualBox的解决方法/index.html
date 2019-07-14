@@ -6,22 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | 老羊头的小破站</title>
+  <title>xshell连接不上VirtualBox的解决方法 | 老羊头的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello world！">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法">
+<meta name="keywords" content="教程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/05/03/test/index.html">
+<meta property="og:title" content="xshell连接不上VirtualBox的解决方法">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/index.html">
 <meta property="og:site_name" content="老羊头的小破站">
-<meta property="og:description" content="Hello world！">
+<meta property="og:description" content="###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/05/03/test/timg1.jpg">
-<meta property="og:updated_time" content="2019-07-04T12:22:21.845Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片二.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片三.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片五.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片四.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片六.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片七.png">
+<meta property="og:updated_time" content="2019-07-14T13:19:29.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="Hello world！">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/03/test/timg1.jpg">
+<meta name="twitter:title" content="xshell连接不上VirtualBox的解决方法">
+<meta name="twitter:description" content="###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png">
   
     <link rel="alternative" href="/atom.xml" title="老羊头的小破站" type="application/atom+xml">
   
@@ -157,31 +163,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-xshell连接不上VirtualBox的解决方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      xshell连接不上VirtualBox的解决方法
     </h1>
   
 
         
-        <a href="/2019/05/03/test/" class="archive-article-date">
-  	<time datetime="2019-05-03T12:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
+        <a href="/2019/07/14/xshell连接不上VirtualBox的解决方法/" class="archive-article-date">
+  	<time datetime="2019-07-14T12:46:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Hello-world！"><a href="#Hello-world！" class="headerlink" title="Hello world！"></a>Hello world！</h3><a id="more"></a>
-<p>第一篇博客佛系的向世界问好</p>
-<p>老羊头以后会好好经营自己的小破站</p>
-<p>Hello world！</p>
-<p><img src="/2019/05/03/test/timg1.jpg" alt="你想输入的替代文字"></p>
+        <p>###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法</p>
+<a id="more"></a>
+<p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p>
+<p>​    在网上搜索说是物理机连接虚拟机的网卡配置不对 ：VMware Virtual Ethernet Adapter for VMnet8 ；要将该网卡IP设置为和虚拟机服务器IP在同一个网段，但尝试后仍无效果，后请教大佬得以解决。</p>
+<p>​    解决方法如下：</p>
+<p>1.进入设置界面</p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png" alt="avatar"></p>
+<p>2.进入网络设置，并点击高级选项</p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片二.png" alt="avatar"></p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片三.png" alt="avatar"></p>
+<p>3.按照如下配置，进行转换</p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片五.png" alt="avatar"></p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片四.png" alt="avatar"></p>
+<p>4.登录xshell，配置主机IP</p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片六.png" alt="avatar"></p>
+<p>然后即可连接到虚拟机上</p>
+<p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片七.png" alt="avatar"></p>
 
       
 
@@ -222,7 +240,7 @@
             </li>
             <li>
               <strong>本文链接：</strong>
-              <a href="http://yoursite.com/2019/05/03/test/" title="老羊头的小破站">http://yoursite.com/2019/05/03/test/</a>
+              <a href="http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/" title="老羊头的小破站">http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/</a>
             </li>
             <li>
               <strong>版权声明： </strong>
@@ -241,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
         		</li>
       		
 		</ul>
@@ -253,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -308,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//bshare.optimix.asia/barCode?site=weixin&url=http://yoursite.com/2019/05/03/test/" alt="微信分享二维码">
+      <img src="//bshare.optimix.asia/barCode?site=weixin&url=http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,19 +340,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/03/CAN学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CAN基础知识介绍
-        
-      </div>
+  
+    <a href="/2019/07/10/数码雨/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数码雨</div>
+      <i class="icon-circle-right"></i>
     </a>
   
   
-  
    
-  <span style="float:right;color:#0094d5" id="/2019/05/03/test/" class="leancloud_visitors" data-flag-title="我的第一篇博客">
+  <span style="float:right;color:#0094d5" id="/2019/07/14/xshell连接不上VirtualBox的解决方法/" class="leancloud_visitors" data-flag-title="xshell连接不上VirtualBox的解决方法">
       <span class="post-meta-item-text">本文阅读量 </span>
       <span class="leancloud-visitors-count">8848</span>
     </span>
@@ -342,7 +356,7 @@
 </nav>
 <script>
   var mdhost = '';
-  var mdurl = '2019/05/03/test/'.replace('.html', '.md');
+  var mdurl = '2019/07/14/xshell连接不上VirtualBox的解决方法/'.replace('.html', '.md');
   function mdpage() {
     window.open(mdhost + "/" + mdurl);
   }
@@ -369,7 +383,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-world！"><span class="toc-number">1.</span> <span class="toc-text">Hello world！</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -414,7 +428,7 @@
             avatar: '',
             avatar_cdn: '',
             pageSize: 12,
-            path: '/2019/05/03/test/',
+            path: '/2019/07/14/xshell连接不上VirtualBox的解决方法/',
             visitor: visitor
         });
     });
