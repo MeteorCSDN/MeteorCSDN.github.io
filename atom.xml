@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-14T13:19:29.945Z</updated>
+  <updated>2019-07-14T13:34:47.811Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://yoursite.com/2019/07/14/xshell%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8AVirtualBox%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/</id>
     <published>2019-07-14T12:46:53.000Z</published>
-    <updated>2019-07-14T13:19:29.945Z</updated>
+    <updated>2019-07-14T13:34:47.811Z</updated>
     
-    <content type="html"><![CDATA[<p>###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法</p><a id="more"></a><p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p><p>​    在网上搜索说是物理机连接虚拟机的网卡配置不对 ：VMware Virtual Ethernet Adapter for VMnet8 ；要将该网卡IP设置为和虚拟机服务器IP在同一个网段，但尝试后仍无效果，后请教大佬得以解决。</p><p>​    解决方法如下：</p><p>1.进入设置界面</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png" alt="avatar"></p><p>2.进入网络设置，并点击高级选项</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片二.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片三.png" alt="avatar"></p><p>3.按照如下配置，进行转换</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片五.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片四.png" alt="avatar"></p><p>4.登录xshell，配置主机IP</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片六.png" alt="avatar"></p><p>然后即可连接到虚拟机上</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片七.png" alt="avatar"></p>]]></content>
+    <content type="html"><![CDATA[<p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p><a id="more"></a><p>​    在网上搜索说是物理机连接虚拟机的网卡配置不对 ：VMware Virtual Ethernet Adapter for VMnet8 ；要将该网卡IP设置为和虚拟机服务器IP在同一个网段，但尝试后仍无效果，后请教大佬得以解决。</p><p>​    解决方法如下：</p><p>1.进入设置界面</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png" alt="avatar"></p><p>2.进入网络设置，并点击高级选项</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片二.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片三.png" alt="avatar"></p><p>3.按照如下配置，进行转换</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片五.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片四.png" alt="avatar"></p><p>4.登录xshell，配置主机IP</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片六.png" alt="avatar"></p><p>然后即可连接到虚拟机上</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片七.png" alt="avatar"></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;###xshell在IP可查，外网可ping通的情况下连接不上VirtualBox的解决方法&lt;/p&gt;
+      &lt;p&gt;​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。&lt;/p&gt;
     
     </summary>
     
@@ -43,13 +43,13 @@
     <link href="http://yoursite.com/2019/07/10/%E6%95%B0%E7%A0%81%E9%9B%A8/"/>
     <id>http://yoursite.com/2019/07/10/数码雨/</id>
     <published>2019-07-10T02:40:03.000Z</published>
-    <updated>2019-07-14T12:51:41.054Z</updated>
+    <updated>2019-07-14T13:29:17.531Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h3><p>闲言少叙，命令如下</p><a id="more"></a><p>1.yum -y install wget</p><p>2.wget <a href="https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz</a></p><p>3.tar xvf cmatrix-1.2a.tar.gz</p><p>4.跳转到cmatrix-1.2a目录下</p><p>命令为 cd cmatrix-1.2a</p><p>5.yum install ncurses-devel</p><p>（过程中会出现    “Is this ok [y/d/N]: ”</p><p>（ 输入”y”,敲回车即可</p><p>6.yum -y install gcc</p><p>7.yum -y install gcc-c++</p><p>8.yum install make</p><p>9.输入命令 “./configure &amp;&amp; make &amp;&amp; make install”</p><p>（尤其注意，该命令以“.”开头，不要输入错误）</p><p>10.输入cmatrix，即可看到数码雨的情景</p><p><img src="/2019/07/10/数码雨/图片一.png" alt="avatar"></p><h4 id="cmatrix常用命令如下"><a href="#cmatrix常用命令如下" class="headerlink" title="cmatrix常用命令如下:"></a>cmatrix常用命令如下:</h4><p>cmatrix-a :异步滚动（默认）</p><p>cmatrix-b :随机粗体</p><p>cmatrix-B :全部粗体</p><p>cmatrix-o :使用旧风格滚动</p><p>cmatrix-x :X window 模式</p><p>cmatrix-V :显示版本信息</p><p>cmatrix-u :刷新频率，0-9，也就是滚动的快慢</p><p>cmatrix-C :显示的颜色，支持green(默认),red,blue,white,yellow,cyan</p><p><img src="/2019/07/10/数码雨/图片二.png" alt="avatar"></p><h5 id="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><a href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。" class="headerlink" title="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"></a>骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</h5>]]></content>
+    <content type="html"><![CDATA[<h2 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h2><p>闲言少叙，命令如下</p><a id="more"></a><p>1.yum -y install wget</p><p>2.wget <a href="https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz</a></p><p>3.tar xvf cmatrix-1.2a.tar.gz</p><p>4.跳转到cmatrix-1.2a目录下</p><p>命令为 cd cmatrix-1.2a</p><p>5.yum install ncurses-devel</p><p>（过程中会出现    “Is this ok [y/d/N]: ”</p><p>（ 输入”y”,敲回车即可</p><p>6.yum -y install gcc</p><p>7.yum -y install gcc-c++</p><p>8.yum install make</p><p>9.输入命令 “./configure &amp;&amp; make &amp;&amp; make install”</p><p>（尤其注意，该命令以“.”开头，不要输入错误）</p><p>10.输入cmatrix，即可看到数码雨的情景</p><p><img src="/2019/07/10/数码雨/图片一.png" alt="avatar"></p><h4 id="cmatrix常用命令如下"><a href="#cmatrix常用命令如下" class="headerlink" title="cmatrix常用命令如下:"></a>cmatrix常用命令如下:</h4><p>cmatrix-a :异步滚动（默认）</p><p>cmatrix-b :随机粗体</p><p>cmatrix-B :全部粗体</p><p>cmatrix-o :使用旧风格滚动</p><p>cmatrix-x :X window 模式</p><p>cmatrix-V :显示版本信息</p><p>cmatrix-u :刷新频率，0-9，也就是滚动的快慢</p><p>cmatrix-C :显示的颜色，支持green(默认),red,blue,white,yellow,cyan</p><p><img src="/2019/07/10/数码雨/图片二.png" alt="avatar"></p><h5 id="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><a href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。" class="headerlink" title="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"></a>骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</h5>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h3&gt;&lt;p&gt;闲言少叙，命令如下&lt;/p&gt;
+      &lt;h2 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h2&gt;&lt;p&gt;闲言少叙，命令如下&lt;/p&gt;
     
     </summary>
     
