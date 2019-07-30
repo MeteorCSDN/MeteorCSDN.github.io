@@ -443,26 +443,26 @@
 <h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
 <p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
 <p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片2.png" alt="数据帧"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
 <p>1.帧起始：表示数据帧开始的段</p>
 <p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片3.png" alt="仲裁段"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
 <p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片4.png" alt="控制段"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
 <p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片5.png" alt="数据段"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
 <p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片6.png" alt="CRC段"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
 <p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片7.png" alt="ACK段"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
 <p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片8.png" alt="帧结束"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
 <p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
 <h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
 <p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
 <h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/CAN学习笔记/图片9.png" alt="位时序"></p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
 <h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
 
             </div>
@@ -923,35 +923,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/">
+                <a href="/2019/07/09/adc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="C语言的生命周期和作用域">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="ADC数模转换的学习">
                         
-                        <span class="card-title">C语言的生命周期和作用域</span>
+                        <span class="card-title">ADC数模转换的学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            C语言生命周期和作用域的定义
-生命周期：是一个变量存在的周期。
-作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。
-（1）全局变量：作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；
-生命
+                            ADC数模转换一、什么是ADCAnalog-to-Digital Converter的缩写。
+指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。
+
+典型的模拟数字转换器将模拟信号转换为表示一定比例电压值
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-03
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-09
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C-C/" class="post-category" target="_blank">
-                                    C/C++
+                            <a href="/categories/32单片机/" class="post-category" target="_blank">
+                                    32单片机
                                 </a>
                             
                             
@@ -976,24 +975,23 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/03/test/">
+                <a href="/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="我的第一篇博客">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="C语言的生命周期和作用域">
                         
-                        <span class="card-title">我的第一篇博客</span>
+                        <span class="card-title">C语言的生命周期和作用域</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hello world！
-第一篇博客佛系的向世界问好
-老羊头以后会好好经营自己的小破站
-Hello world！
-
-
+                            C语言生命周期和作用域的定义
+生命周期：是一个变量存在的周期。
+作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。
+（1）全局变量：作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；
+生命
                         
                     </div>
                     <div class="publish-info">
@@ -1004,8 +1002,8 @@ Hello world！
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/C-C/" class="post-category" target="_blank">
+                                    C/C++
                                 </a>
                             
                             
@@ -1015,8 +1013,8 @@ Hello world！
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
                 </div>

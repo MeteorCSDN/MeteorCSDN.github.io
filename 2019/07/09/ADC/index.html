@@ -449,8 +449,8 @@
 <p>12.ADC输入范围：VREF- ≤  VIN  ≤  VREF+</p>
 <h3 id="三、STM32通道组"><a href="#三、STM32通道组" class="headerlink" title="三、STM32通道组"></a>三、STM32通道组</h3><h5 id="规则通道组：相当正常运行的程序。最多16个通道。"><a href="#规则通道组：相当正常运行的程序。最多16个通道。" class="headerlink" title="规则通道组：相当正常运行的程序。最多16个通道。"></a>规则通道组：相当正常运行的程序。最多16个通道。</h5><p>规则通道和它的转换顺序在ADC_SQRx寄存器中选择，规则组转换的总数应写入ADC_SQR1寄存器的L[3:0]中</p>
 <h5 id="注入通道组：相当于中断。最多4个通道。"><a href="#注入通道组：相当于中断。最多4个通道。" class="headerlink" title="注入通道组：相当于中断。最多4个通道。"></a>注入通道组：相当于中断。最多4个通道。</h5><p>注入组和它的转换顺序在ADC_JSQR寄存器中选择。注入组     里转化的总数应写入ADC_JSQR寄存器的L[1:0]中</p>
-<p><img src="/2019/07/09/adc/ADC/guize.png" alt="avatar"></p>
-<p><img src="/2019/07/09/adc/ADC/zhuru.png" alt="avatar"></p>
+<p><img src="/2019/07/09/adc/guize.png" alt></p>
+<p><img src="/2019/07/09/adc/zhuru.png" alt></p>
 <h3 id="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"><a href="#四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。" class="headerlink" title="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"></a>四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。</h3><h4 id="ADC单通道："><a href="#ADC单通道：" class="headerlink" title="ADC单通道："></a>ADC单通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，就停止转换。</p>
 <p>要求进行连续ADC转换：配置为连续模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，接着进行下一次转换，不断连续。</p>
 <h4 id="ADC多通道："><a href="#ADC多通道：" class="headerlink" title="ADC多通道："></a>ADC多通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式使能。这样ADC的多个通道，按照配置的顺序依次转换一次后，就停止转换。</p>
@@ -972,23 +972,22 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/">
+                <a href="/2019/05/03/can-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="C语言的生命周期和作用域">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CAN基础知识介绍">
                         
-                        <span class="card-title">C语言的生命周期和作用域</span>
+                        <span class="card-title">CAN基础知识介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            C语言生命周期和作用域的定义
-生命周期：是一个变量存在的周期。
-作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。
-（1）全局变量：作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；
-生命
+                            CAN通信CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
+笔者由于团队需要，对CAN通信进行学习，并记此笔记，怕忘。。。
+
+一、CAN协议
                         
                     </div>
                     <div class="publish-info">
@@ -999,8 +998,8 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C-C/" class="post-category" target="_blank">
-                                    C/C++
+                            <a href="/categories/32单片机/" class="post-category" target="_blank">
+                                    32单片机
                                 </a>
                             
                             
