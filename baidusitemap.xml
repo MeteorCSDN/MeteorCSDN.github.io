@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2019/05/03/test/</loc>
+    <lastmod>2019-07-30</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2019/07/10/shu-ma-yu/</loc>
     <lastmod>2019-07-30</lastmod>
   </url>  <url>
@@ -12,9 +15,6 @@
   </url>  <url>
     <loc>http://yoursite.com/2019/07/09/adc/</loc>
     <lastmod>2019-07-30</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2019/05/03/test/</loc>
-    <lastmod>2019-07-04</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</loc>
     <lastmod>2019-07-04</lastmod>
