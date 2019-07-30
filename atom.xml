@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>老羊头的小破站</title>
+  <title>zzylyt</title>
   
-  <subtitle>佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</subtitle>
+  <subtitle>老羊头的小破站</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -18,12 +18,10 @@
   
   <entry>
     <title>xshell连接不上VirtualBox的解决方法</title>
-    <link href="http://yoursite.com/2019/07/14/xshell%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8AVirtualBox%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2019/07/14/xshell连接不上VirtualBox的解决方法/</id>
+    <link href="http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/"/>
+    <id>http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/</id>
     <published>2019-07-14T12:46:53.000Z</published>
     <updated>2019-07-14T13:39:43.573Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法"><a href="#xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法" class="headerlink" title="xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法"></a>xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法</h3><a id="more"></a><p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p><p>​    在网上搜索说是物理机连接虚拟机的网卡配置不对 ：VMware Virtual Ethernet Adapter for VMnet8 ；要将该网卡IP设置为和虚拟机服务器IP在同一个网段，但尝试后仍无效果，后请教大佬得以解决。</p><p>​    解决方法如下：</p><p>1.进入设置界面</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片一.png" alt="avatar"></p><p>2.进入网络设置，并点击高级选项</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片二.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片三.png" alt="avatar"></p><p>3.按照如下配置，进行转换</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片五.png" alt="avatar"></p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片四.png" alt="avatar"></p><p>4.登录xshell，配置主机IP</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片六.png" alt="avatar"></p><p>然后即可连接到虚拟机上</p><p><img src="/2019/07/14/xshell连接不上VirtualBox的解决方法/图片七.png" alt="avatar"></p>]]></content>
     
     <summary type="html">
     
@@ -40,12 +38,10 @@
   
   <entry>
     <title>数码雨</title>
-    <link href="http://yoursite.com/2019/07/10/%E6%95%B0%E7%A0%81%E9%9B%A8/"/>
-    <id>http://yoursite.com/2019/07/10/数码雨/</id>
+    <link href="http://yoursite.com/2019/07/10/shu-ma-yu/"/>
+    <id>http://yoursite.com/2019/07/10/shu-ma-yu/</id>
     <published>2019-07-10T02:40:03.000Z</published>
     <updated>2019-07-14T13:29:17.531Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h2><p>闲言少叙，命令如下</p><a id="more"></a><p>1.yum -y install wget</p><p>2.wget <a href="https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/cmatrix/cmatrix/1.2a/cmatrix-1.2a.tar.gz</a></p><p>3.tar xvf cmatrix-1.2a.tar.gz</p><p>4.跳转到cmatrix-1.2a目录下</p><p>命令为 cd cmatrix-1.2a</p><p>5.yum install ncurses-devel</p><p>（过程中会出现    “Is this ok [y/d/N]: ”</p><p>（ 输入”y”,敲回车即可</p><p>6.yum -y install gcc</p><p>7.yum -y install gcc-c++</p><p>8.yum install make</p><p>9.输入命令 “./configure &amp;&amp; make &amp;&amp; make install”</p><p>（尤其注意，该命令以“.”开头，不要输入错误）</p><p>10.输入cmatrix，即可看到数码雨的情景</p><p><img src="/2019/07/10/数码雨/图片一.png" alt="avatar"></p><h4 id="cmatrix常用命令如下"><a href="#cmatrix常用命令如下" class="headerlink" title="cmatrix常用命令如下:"></a>cmatrix常用命令如下:</h4><p>cmatrix-a :异步滚动（默认）</p><p>cmatrix-b :随机粗体</p><p>cmatrix-B :全部粗体</p><p>cmatrix-o :使用旧风格滚动</p><p>cmatrix-x :X window 模式</p><p>cmatrix-V :显示版本信息</p><p>cmatrix-u :刷新频率，0-9，也就是滚动的快慢</p><p>cmatrix-C :显示的颜色，支持green(默认),red,blue,white,yellow,cyan</p><p><img src="/2019/07/10/数码雨/图片二.png" alt="avatar"></p><h5 id="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"><a href="#骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。" class="headerlink" title="骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。"></a>骇客帝国既视感有木有，但也还蛮现实的，毕竟，这个命令除了装B没啥用。。。</h5>]]></content>
     
     <summary type="html">
     
@@ -62,12 +58,10 @@
   
   <entry>
     <title>ADC数模转换的学习</title>
-    <link href="http://yoursite.com/2019/07/09/ADC/"/>
-    <id>http://yoursite.com/2019/07/09/ADC/</id>
+    <link href="http://yoursite.com/2019/07/09/adc/"/>
+    <id>http://yoursite.com/2019/07/09/adc/</id>
     <published>2019-07-09T06:33:37.000Z</published>
     <updated>2019-07-09T08:46:15.731Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="ADC数模转换"><a href="#ADC数模转换" class="headerlink" title="ADC数模转换"></a>ADC数模转换</h2><h3 id="一、什么是ADC"><a href="#一、什么是ADC" class="headerlink" title="一、什么是ADC"></a>一、什么是ADC</h3><p>Analog-to-Digital Converter的缩写。</p><p>指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。</p><a id="more"></a><p>典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。</p><h3 id="二、STM32F10x的ADC特点"><a href="#二、STM32F10x的ADC特点" class="headerlink" title="二、STM32F10x的ADC特点"></a>二、STM32F10x的ADC特点</h3><p>1.12位逐次逼近型的模拟数字转换器；</p><p>2.最多带3个ADC控制器；</p><p>3.最多支持18个通道，可最多测量16个外部和2个内部信号源；</p><p>4.支持单次和连续转换模式； </p><p>5.转换结束，注入转换结束，和发生模拟看门狗事件时产生中断；</p><p>6.通道0到通道n的自动扫描模式；</p><p>7.自动校准；</p><p>8.采样间隔可以按通道编程；</p><p>9.规则通道和注入通道均有外部触发选项； </p><p>10.转换结果支持左对齐或右对齐方式存储在16位数据寄存器 ADC转换时间：最大转换速率 1us。（最大转换速度为1MHz，在ADCCLK=14M，采样周期为1.5个ADC时钟下得到。）； </p><p>11.ADC供电要求：2.4V-3.6V；</p><p>12.ADC输入范围：VREF- ≤  VIN  ≤  VREF+</p><h3 id="三、STM32通道组"><a href="#三、STM32通道组" class="headerlink" title="三、STM32通道组"></a>三、STM32通道组</h3><h5 id="规则通道组：相当正常运行的程序。最多16个通道。"><a href="#规则通道组：相当正常运行的程序。最多16个通道。" class="headerlink" title="规则通道组：相当正常运行的程序。最多16个通道。"></a>规则通道组：相当正常运行的程序。最多16个通道。</h5><p>规则通道和它的转换顺序在ADC_SQRx寄存器中选择，规则组转换的总数应写入ADC_SQR1寄存器的L[3:0]中</p><h5 id="注入通道组：相当于中断。最多4个通道。"><a href="#注入通道组：相当于中断。最多4个通道。" class="headerlink" title="注入通道组：相当于中断。最多4个通道。"></a>注入通道组：相当于中断。最多4个通道。</h5><p>注入组和它的转换顺序在ADC_JSQR寄存器中选择。注入组     里转化的总数应写入ADC_JSQR寄存器的L[1:0]中</p><p><img src="/2019/07/09/ADC/guize.png" alt="avatar"></p><p><img src="/2019/07/09/ADC/zhuru.png" alt="avatar"></p><h3 id="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"><a href="#四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。" class="headerlink" title="四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。"></a>四、STM32F1的ADC的各通道可以单次，连续，扫描或者间断模式执行。</h3><h4 id="ADC单通道："><a href="#ADC单通道：" class="headerlink" title="ADC单通道："></a>ADC单通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，就停止转换。</p><p>要求进行连续ADC转换：配置为连续模式使能，扫描模式失能。这样ADC的这个通道，转换一次后，接着进行下一次转换，不断连续。</p><h4 id="ADC多通道："><a href="#ADC多通道：" class="headerlink" title="ADC多通道："></a>ADC多通道：</h4><p>要求进行一次ADC转换：配置为单次模式使能，扫描模式使能。这样ADC的多个通道，按照配置的顺序依次转换一次后，就停止转换。</p><p>要求进行连续ADC转换：配置为连续模式使能，扫描模式使能。这样ADC的多个通道，按照配置的顺序依次转换一次后，接着进行下一次转换，不断连续。</p><p>（扫描模式只在多通道的条件下有效，来使得各个通道按照配置循序依次转换。而单次模式无论在单通道还是多通道下只对这些或者这个通道进行一次转换，连续模式无论是在单通道还是多通道下都对这些或者这个通道不断进行连续的转换。 ）</p><h3 id="五、ADC中断"><a href="#五、ADC中断" class="headerlink" title="五、ADC中断"></a>五、ADC中断</h3><p>规则和注入组转换结束时能产生中断。它们都有独立的中断使能位。</p><h3 id="六、配置函数选讲"><a href="#六、配置函数选讲" class="headerlink" title="六、配置函数选讲"></a>六、配置函数选讲</h3><h5 id="（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入"><a href="#（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入" class="headerlink" title="（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入"></a>（1）开启PA口时钟和ADC1时钟，设置PA1为模拟输入</h5><h5 id="GPIO-Init"><a href="#GPIO-Init" class="headerlink" title="GPIO_Init();"></a>GPIO_Init();</h5><h5 id="APB2PeriphClockCmd"><a href="#APB2PeriphClockCmd" class="headerlink" title="APB2PeriphClockCmd();"></a>APB2PeriphClockCmd();</h5><p>其中设置分频因子时需注意：</p><p>RCC_ADCCLKConfig(RCC_PCLK2_Div6); </p><p>//设置 ADC 分频因子 6<br>//APB2的时钟为72M,而72M/6=12,ADC 最大时间不能超过 14M</p><h5 id="（2）ADC-规则通道配置函数"><a href="#（2）ADC-规则通道配置函数" class="headerlink" title="（2）ADC 规则通道配置函数"></a>（2）ADC 规则通道配置函数</h5><h5 id="ADC-RegularChannelConfig-ADC1-ADC-Channel-1-1-ADC-SampleTime-239Cycles5"><a href="#ADC-RegularChannelConfig-ADC1-ADC-Channel-1-1-ADC-SampleTime-239Cycles5" class="headerlink" title="ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1,                   ADC_SampleTime_239Cycles5 );"></a>ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1,                   ADC_SampleTime_239Cycles5 );</h5><p>ADC1的通道1，第三个1是指ADC1的通道1在规则序列中序号为1，即第一个转换，最后一个参数表示采样周期为239.5</p>]]></content>
     
     <summary type="html">
     
@@ -84,35 +78,11 @@
   </entry>
   
   <entry>
-    <title>CAN基础知识介绍</title>
-    <link href="http://yoursite.com/2019/05/03/CAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/05/03/CAN学习笔记/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-14T13:42:58.623Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p><p>笔者由于团队需要，对CAN通信进行学习，并记此笔记，怕忘。。。</p><a id="more"></a><h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p><p>2.系统柔软性</p><p>3.速度快，距离远</p><p>4.具有错误检测，错误通知和错误恢复功能</p><p>5.故障封闭功能</p><p>6.连接节点多</p><h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p><p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p><p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p><p><img src="/2019/05/03/CAN学习笔记/图片1.png" alt="逻辑电平"></p><h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/CAN学习笔记/图片2.png" alt="数据帧"></p><p>1.帧起始：表示数据帧开始的段</p><p>2.仲裁段：表示该帧优先级的段</p><p><img src="/2019/05/03/CAN学习笔记/图片3.png" alt="仲裁段"></p><p>3.控制段：表示数据的字节数及保留位的段</p><p><img src="/2019/05/03/CAN学习笔记/图片4.png" alt="控制段"></p><p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p><p><img src="/2019/05/03/CAN学习笔记/图片5.png" alt="数据段"></p><p>5.CRC段：检查帧的传输错误的段</p><p><img src="/2019/05/03/CAN学习笔记/图片6.png" alt="CRC段"></p><p>6.ACK段：表示确认正常接收的段</p><p><img src="/2019/05/03/CAN学习笔记/图片7.png" alt="ACK段"></p><p>7.帧结束：表示数据帧结束的段</p><p><img src="/2019/05/03/CAN学习笔记/图片8.png" alt="帧结束"></p><p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p><h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p><p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p><h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p><p><img src="/2019/05/03/CAN学习笔记/图片9.png" alt="位时序"></p><h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>]]></content>
-    
-    <summary type="html">
-    
-      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
-    
-    </summary>
-    
-      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>C语言的生命周期和作用域</title>
-    <link href="http://yoursite.com/2019/05/03/C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>http://yoursite.com/2019/05/03/C语言的生命周期和作用域/</id>
+    <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
+    <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
     <published>2019-05-03T14:56:33.000Z</published>
     <updated>2019-07-04T11:59:50.301Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="C语言生命周期和作用域的定义"><a href="#C语言生命周期和作用域的定义" class="headerlink" title="C语言生命周期和作用域的定义"></a>C语言生命周期和作用域的定义</h2><a id="more"></a><p>生命周期：是一个变量存在的周期。</p><p>作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。</p><h3 id="（1）全局变量："><a href="#（1）全局变量：" class="headerlink" title="（1）全局变量："></a>（1）全局变量：</h3><p>作用域：全局作用域（只需要在一个源文件中定义，就可以作用于所有的源文件）；</p><p>生命周期：程序运行期一直存在；</p><p>引用方法：其他文件如果要使用，必须用extern 关键字声明要引用的全局变量；</p><p>内存分布：全局（静态存储区）。</p><p>注意：如果再两个文件中都定义了相同名字的全局变量，则连接错误：变量重定义。</p><h3 id="（2）全局静态变量："><a href="#（2）全局静态变量：" class="headerlink" title="（2）全局静态变量："></a>（2）全局静态变量：</h3><p>生命周期：程序运行期一直存在；</p><p>作用域：文件作用域（只在被定义的文件中可见：static的一个作用就是隐藏）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：static关键字，const关键字（注意C/C++意义不同）</p><p>注意：只要文件不相互包含，两个不同的文件中是可以定义完全相同的两个全局静态变量的。</p><h3 id="（3）静态局部变量："><a href="#（3）静态局部变量：" class="headerlink" title="（3）静态局部变量："></a>（3）静态局部变量：</h3><p>生命周期：程序运行期一直存在；（超过其作用域便无法被引用）</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：全局（静态存储区）。</p><p>定义方法：局部作用域中用static定义。</p><p>注意：只被初始化一次，多线程中需要加锁保护。</p><h3 id="（4）局部变量："><a href="#（4）局部变量：" class="headerlink" title="（4）局部变量："></a>（4）局部变量：</h3><p>生命周期：程序运行处局部作用域 即被销毁。</p><p>作用域：局部作用域（只在局部作用于可见）</p><p>内存分布：栈区</p><p>定义方法：在局部作用域中用auto指示符定义，可省略auto</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =  <span class="number">1</span>;<span class="comment">//全局初始化去（静态全局变量）</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; <span class="comment">//全局初始化区(全局变量)</span></span><br><span class="line"><span class="keyword">char</span>  *p1; <span class="comment">//全局未初始化区（全局变量）</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b;<span class="comment">//存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"abc"</span>;<span class="comment">//s存放于栈区（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p2 ;<span class="comment">//栈（局部变量）</span></span><br><span class="line">    <span class="keyword">char</span> *p3 = <span class="string">"123456"</span>;<span class="comment">//p3存放于栈区(局部变量);“123456”存放区文字常量区</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c = <span class="number">0</span>;<span class="comment">// c存放于全局初始化区（静态局部变量）</span></span><br><span class="line">    p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);<span class="comment">//分配得来的10和20字节的区域在堆区；</span></span><br><span class="line">                            <span class="comment">//变量p1、p2指向堆区分配的内存</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">strcpy</span>(p1, <span class="string">"123456"</span>);<span class="comment">//“123456”存放区文字常量区</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -128,13 +98,31 @@
   </entry>
   
   <entry>
+    <title>CAN基础知识介绍</title>
+    <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
+    <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2019-07-14T13:42:58.623Z</updated>
+    
+    <summary type="html">
+    
+      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
+    
+    </summary>
+    
+      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的第一篇博客</title>
     <link href="http://yoursite.com/2019/05/03/test/"/>
     <id>http://yoursite.com/2019/05/03/test/</id>
     <published>2019-05-03T12:18:45.000Z</published>
     <updated>2019-07-04T12:22:21.845Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Hello-world！"><a href="#Hello-world！" class="headerlink" title="Hello world！"></a>Hello world！</h3><a id="more"></a><p>第一篇博客佛系的向世界问好</p><p>老羊头以后会好好经营自己的小破站</p><p>Hello world！</p><p><img src="/2019/05/03/test/timg1.jpg" alt="你想输入的替代文字"></p>]]></content>
     
     <summary type="html">
     
