@@ -57,27 +57,6 @@
   </entry>
   
   <entry>
-    <title>ADC数模转换的学习</title>
-    <link href="http://yoursite.com/2019/07/09/adc/"/>
-    <id>http://yoursite.com/2019/07/09/adc/</id>
-    <published>2019-07-09T06:33:37.000Z</published>
-    <updated>2019-07-30T10:43:31.830Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;ADC数模转换&quot;&gt;&lt;a href=&quot;#ADC数模转换&quot; class=&quot;headerlink&quot; title=&quot;ADC数模转换&quot;&gt;&lt;/a&gt;ADC数模转换&lt;/h2&gt;&lt;h3 id=&quot;一、什么是ADC&quot;&gt;&lt;a href=&quot;#一、什么是ADC&quot; class=&quot;headerlink&quot; title=&quot;一、什么是ADC&quot;&gt;&lt;/a&gt;一、什么是ADC&lt;/h3&gt;&lt;p&gt;Analog-to-Digital Converter的缩写。&lt;/p&gt;
-&lt;p&gt;指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CAN基础知识介绍</title>
     <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
     <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
