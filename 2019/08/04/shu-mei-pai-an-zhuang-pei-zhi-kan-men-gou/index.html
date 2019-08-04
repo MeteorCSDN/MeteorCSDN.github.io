@@ -434,20 +434,20 @@
 </code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片一.png" alt></p>
 <pre><code>sudo nano /etc/modules
 </code></pre><p>2.在配置文件中添加一行”bcm2708_wdog”，添加完成后，按快捷键Ctrl+O进行保存，按快捷键Ctrl+X退出编辑</p>
-<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片二.png" alt></p>
+<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片二.png" alt></p>
 <p>3.输入命令安装看门狗软件</p>
 <pre><code>sudo apt-get install chkconfig watchdog
-</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片三.png" alt></p>
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片三.png" alt></p>
 <p>4.输入命令打开看门狗配置文件</p>
 <pre><code>sudo nano /etc/watchdog.conf
 </code></pre><p>找到”#watchdog-device = /dev/watchdog“一行内容，将“#”去掉</p>
 <p>之后便可以自行设定树莓派重启的条件</p>
-<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片四.png" alt></p>
+<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片四.png" alt></p>
 <pre><code>//用于设定CPU温度重启条件
 temperature-device=/sys/class/thermal/thermal_zone0/temp
 //最大温度为80度，超过80度就会引起重启
 max-temperature = 80000
-</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片五.png" alt></p>
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片五.png" alt></p>
 <pre><code>//1分钟最多进程为24个，超过即重启
 max-load-1=24
 //5分钟最多进程为18个，超过即重启
@@ -459,7 +459,7 @@ max-load-15=12
 <pre><code>chkconfig watchdog on
 </code></pre><p>6.启动看门狗</p>
 <pre><code>sudo /etc/init.d/watchdog start
-</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片六.png" alt></p>
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片六.png" alt></p>
 
             </div>
             <hr>
