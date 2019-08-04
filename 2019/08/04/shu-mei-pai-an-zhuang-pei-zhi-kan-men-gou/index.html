@@ -431,7 +431,7 @@
                 <h2 id="看门狗——让树莓派永不死机"><a href="#看门狗——让树莓派永不死机" class="headerlink" title="看门狗——让树莓派永不死机"></a>看门狗——让树莓派永不死机</h2><p>当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。</p>
 <p>1.树莓派本身自带了看门狗模块，因此，我们需在命令行中输入下列命令打开配置文件</p>
 <pre><code>sudo modprobe bcm2708_wdog
-</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片一.png" alt></p>
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片一.png" alt></p>
 <pre><code>sudo nano /etc/modules
 </code></pre><p>2.在配置文件中添加一行”bcm2708_wdog”，添加完成后，按快捷键Ctrl+O进行保存，按快捷键Ctrl+X退出编辑</p>
 <p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片二.png" alt></p>
