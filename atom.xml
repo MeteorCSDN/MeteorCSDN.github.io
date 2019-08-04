@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-30T08:47:56.149Z</updated>
+  <updated>2019-08-04T16:19:33.829Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派安装配置看门狗</title>
+    <link href="http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/"/>
+    <id>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</id>
+    <published>2019-08-04T15:22:06.000Z</published>
+    <updated>2019-08-04T16:19:33.829Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="树莓派" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+    
+      <category term="树莓派" scheme="http://yoursite.com/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>xshell连接不上VirtualBox的解决方法</title>
@@ -41,7 +67,7 @@
     <link href="http://yoursite.com/2019/07/10/shu-ma-yu/"/>
     <id>http://yoursite.com/2019/07/10/shu-ma-yu/</id>
     <published>2019-07-10T02:40:03.000Z</published>
-    <updated>2019-07-30T08:49:02.896Z</updated>
+    <updated>2019-08-04T15:53:16.396Z</updated>
     
     <summary type="html">
     
@@ -83,26 +109,6 @@
   </entry>
   
   <entry>
-    <title>C语言的生命周期和作用域</title>
-    <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
-    <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-30T10:54:17.137Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;a href=&quot;#C语言生命周期和作用域的定义&quot; class=&quot;headerlink&quot; title=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;/a&gt;C语言生命周期和作用域的定义&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CAN基础知识介绍</title>
     <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
     <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
@@ -116,6 +122,26 @@
     </summary>
     
       <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言的生命周期和作用域</title>
+    <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
+    <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2019-07-30T10:54:17.137Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;a href=&quot;#C语言生命周期和作用域的定义&quot; class=&quot;headerlink&quot; title=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;/a&gt;C语言生命周期和作用域的定义&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
     
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>

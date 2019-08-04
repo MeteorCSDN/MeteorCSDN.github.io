@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="xshell连接不上VirtualBox的解决方法, 佛系，无知">
-    <meta name="description" content="xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法
-​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机">
+    <meta name="keywords" content="树莓派安装配置看门狗, 佛系，无知">
+    <meta name="description" content="看门狗——让树莓派永不死机当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>xshell连接不上VirtualBox的解决方法 | zzylyt</title>
+    <title>树莓派安装配置看门狗 | zzylyt</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +257,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://zzuyy519-1259159112.cos.ap-chengdu.myqcloud.com/%E6%A0%91%E8%8E%93%E6%B4%BE.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        xshell连接不上VirtualBox的解决方法
+                        树莓派安装配置看门狗
                     </div>
                 </div>
             </div>
@@ -375,8 +374,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/教程/" target="_blank">
-                                <span class="chip bg-color">教程</span>
+                            <a href="/tags/树莓派/" target="_blank">
+                                <span class="chip bg-color">树莓派</span>
                             </a>
                         
                     </div>
@@ -387,8 +386,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                Linux
+                            <a href="/categories/树莓派/" class="post-category" target="_blank">
+                                树莓派
                             </a>
                         
                     </div>
@@ -399,14 +398,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-14
+                    2019-08-04
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        212
+                        397
                     </div>
                     
 
@@ -429,22 +428,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法"><a href="#xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法" class="headerlink" title="xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法"></a>xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法</h3><a id="more"></a>
-<p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p>
-<p>​    在网上搜索说是物理机连接虚拟机的网卡配置不对 ：VMware Virtual Ethernet Adapter for VMnet8 ；要将该网卡IP设置为和虚拟机服务器IP在同一个网段，但尝试后仍无效果，后请教大佬得以解决。</p>
-<p>​    解决方法如下：</p>
-<p>1.进入设置界面</p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片一.png" alt></p>
-<p>2.进入网络设置，并点击高级选项</p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片二.png" alt></p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片三.png" alt></p>
-<p>3.按照如下配置，进行转换</p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片五.png" alt></p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片四.png" alt></p>
-<p>4.登录xshell，配置主机IP</p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片六.png" alt></p>
-<p>然后即可连接到虚拟机上</p>
-<p><img src="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/图片七.png" alt></p>
+                <h2 id="看门狗——让树莓派永不死机"><a href="#看门狗——让树莓派永不死机" class="headerlink" title="看门狗——让树莓派永不死机"></a>看门狗——让树莓派永不死机</h2><p>当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。</p>
+<p>1.树莓派本身自带了看门狗模块，因此，我们需在命令行中输入下列命令打开配置文件</p>
+<pre><code>sudo modprobe bcm2708_wdog
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片一.png" alt></p>
+<pre><code>sudo nano /etc/modules
+</code></pre><p>2.在配置文件中添加一行”bcm2708_wdog”，添加完成后，按快捷键Ctrl+O进行保存，按快捷键Ctrl+X退出编辑</p>
+<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片二.png" alt></p>
+<p>3.输入命令安装看门狗软件</p>
+<pre><code>sudo apt-get install chkconfig watchdog
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片三.png" alt></p>
+<p>4.输入命令打开看门狗配置文件</p>
+<pre><code>sudo nano /etc/watchdog.conf
+</code></pre><p>找到”#watchdog-device = /dev/watchdog“一行内容，将“#”去掉</p>
+<p>之后便可以自行设定树莓派重启的条件</p>
+<p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片四.png" alt></p>
+<pre><code>//用于设定CPU温度重启条件
+temperature-device=/sys/class/thermal/thermal_zone0/temp
+//最大温度为80度，超过80度就会引起重启
+max-temperature = 80000
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片五.png" alt></p>
+<pre><code>//1分钟最多进程为24个，超过即重启
+max-load-1=24
+//5分钟最多进程为18个，超过即重启
+max-load-5=18
+//15分钟最多进程为12个，超过即重启
+max-load-15=12
+</code></pre><p>完成配置后，按快捷键Ctrl+O进行保存，按快捷键Ctrl+X退出编辑</p>
+<p>5.配置看门狗程序，开机自动运行</p>
+<pre><code>chkconfig watchdog on
+</code></pre><p>6.启动看门狗</p>
+<pre><code>sudo /etc/init.d/watchdog start
+</code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/树莓派安装配置看门狗/图片六.png" alt></p>
 
             </div>
             <hr>
@@ -600,9 +615,9 @@
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《xshell连接不上VirtualBox的解决方法》
+                    《树莓派安装配置看门狗》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/" property="cc:attributionName" rel="cc:attributionURL">
                 zzulyt
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -902,7 +917,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/">
                     <div class="card-image">
@@ -919,9 +935,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -934,6 +950,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -952,26 +969,25 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/10/shu-ma-yu/">
+                <a href="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/">
                     <div class="card-image">
                         
-                        <img src="https://zzuyy519-1259159112.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E7%A0%81%E9%9B%A8.png" class="responsive-img" alt="数码雨">
                         
-                        <span class="card-title">数码雨</span>
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="xshell连接不上VirtualBox的解决方法">
+                        
+                        <span class="card-title">xshell连接不上VirtualBox的解决方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果闲言少叙，命令如下
-
-1.yum -y install wget
-2.wget https://jaist.dl.sourceforge.net/project/cmat
+                            xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法
+​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-14
                             </span>
                         <span class="publish-author">
                             
