@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-04T16:39:13.793Z</updated>
+  <updated>2020-01-14T13:01:28.373Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,21 +17,155 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Nginx应用监控</title>
+    <link href="http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/"/>
+    <id>http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/</id>
+    <published>2019-08-27T08:08:36.000Z</published>
+    <updated>2020-01-14T13:01:28.373Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Nginx应用监控&quot;&gt;&lt;a href=&quot;#Nginx应用监控&quot; class=&quot;headerlink&quot; title=&quot;Nginx应用监控&quot;&gt;&lt;/a&gt;Nginx应用监控&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="高级架构学习" scheme="http://yoursite.com/categories/%E9%AB%98%E7%BA%A7%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="网络运维" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚拟机使用VMware tools与主机共享文件</title>
+    <link href="http://yoursite.com/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/"/>
+    <id>http://yoursite.com/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/</id>
+    <published>2019-08-26T02:52:39.000Z</published>
+    <updated>2020-01-14T13:03:42.245Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;虚拟机使用VMware-tools与主机共享文件&quot;&gt;&lt;a href=&quot;#虚拟机使用VMware-tools与主机共享文件&quot; class=&quot;headerlink&quot; title=&quot;虚拟机使用VMware tools与主机共享文件&quot;&gt;&lt;/a&gt;虚拟机使用VMware tools与主机共享文件&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="虚拟机" scheme="http://yoursite.com/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+      <category term="虚拟机" scheme="http://yoursite.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多维监控体系</title>
+    <link href="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/"/>
+    <id>http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/</id>
+    <published>2019-08-22T08:07:00.000Z</published>
+    <updated>2020-01-14T13:02:23.927Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;多维监控体系&quot;&gt;&lt;a href=&quot;#多维监控体系&quot; class=&quot;headerlink&quot; title=&quot;多维监控体系&quot;&gt;&lt;/a&gt;多维监控体系&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="高级架构学习" scheme="http://yoursite.com/categories/%E9%AB%98%E7%BA%A7%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="网络运维" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VMware在NAT模式下配置静态IP</title>
+    <link href="http://yoursite.com/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/"/>
+    <id>http://yoursite.com/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/</id>
+    <published>2019-08-16T05:22:08.000Z</published>
+    <updated>2020-01-14T13:01:38.334Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;VMware中CentOS7系统在NAT模式下配置静态IP&quot;&gt;&lt;a href=&quot;#VMware中CentOS7系统在NAT模式下配置静态IP&quot; class=&quot;headerlink&quot; title=&quot;VMware中CentOS7系统在NAT模式下配置静态IP&quot;&gt;&lt;/a&gt;VMware中CentOS7系统在NAT模式下配置静态IP&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="虚拟机" scheme="http://yoursite.com/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+      <category term="虚拟机" scheme="http://yoursite.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cobbler部署并自动化安装系统</title>
+    <link href="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/"/>
+    <id>http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/</id>
+    <published>2019-08-12T15:03:17.000Z</published>
+    <updated>2020-01-14T13:01:09.398Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;cobbler部署与自定义&quot;&gt;&lt;a href=&quot;#cobbler部署与自定义&quot; class=&quot;headerlink&quot; title=&quot;cobbler部署与自定义&quot;&gt;&lt;/a&gt;cobbler部署与自定义&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="高级架构学习" scheme="http://yoursite.com/categories/%E9%AB%98%E7%BA%A7%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="网络运维" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统</title>
+    <link href="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/"/>
+    <id>http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/</id>
+    <published>2019-08-11T10:05:28.000Z</published>
+    <updated>2020-01-14T13:02:40.310Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统&quot;&gt;&lt;a href=&quot;#CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统&quot; class=&quot;headerlink&quot; title=&quot;CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统&quot;&gt;&lt;/a&gt;CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="高级架构学习" scheme="http://yoursite.com/categories/%E9%AB%98%E7%BA%A7%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="网络运维" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机三级嵌入式学习笔记</title>
+    <link href="http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/"/>
+    <id>http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/</id>
+    <published>2019-08-10T07:20:05.000Z</published>
+    <updated>2020-01-14T13:02:11.695Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;嵌入式学习笔记&quot;&gt;&lt;a href=&quot;#嵌入式学习笔记&quot; class=&quot;headerlink&quot; title=&quot;嵌入式学习笔记&quot;&gt;&lt;/a&gt;嵌入式学习笔记&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="嵌入式学习" scheme="http://yoursite.com/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="嵌入式" scheme="http://yoursite.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>树莓派安装配置看门狗</title>
     <link href="http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/"/>
     <id>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</id>
     <published>2019-08-04T15:22:06.000Z</published>
-    <updated>2019-08-04T16:39:13.793Z</updated>
+    <updated>2020-01-14T12:56:18.035Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot; title=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;/a&gt;看门狗——让树莓派永不死机&lt;/h2&gt;&lt;p&gt;当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。&lt;/p&gt;
     
     </summary>
     
@@ -87,17 +221,13 @@
     <link href="http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/"/>
     <id>http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/</id>
     <published>2019-07-09T06:33:37.000Z</published>
-    <updated>2019-07-30T11:26:58.778Z</updated>
+    <updated>2020-01-14T12:56:07.630Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;ADC数模转换&quot;&gt;&lt;a href=&quot;#ADC数模转换&quot; class=&quot;headerlink&quot; title=&quot;ADC数模转换&quot;&gt;&lt;/a&gt;ADC数模转换&lt;/h2&gt;&lt;h3 id=&quot;一、什么是ADC&quot;&gt;&lt;a href=&quot;#一、什么是ADC&quot;
-        
-      
+      &lt;h2 id=&quot;ADC数模转换&quot;&gt;&lt;a href=&quot;#ADC数模转换&quot; class=&quot;headerlink&quot; title=&quot;ADC数模转换&quot;&gt;&lt;/a&gt;ADC数模转换&lt;/h2&gt;&lt;h3 id=&quot;一、什么是ADC&quot;&gt;&lt;a href=&quot;#一、什么是ADC&quot; class=&quot;headerlink&quot; title=&quot;一、什么是ADC&quot;&gt;&lt;/a&gt;一、什么是ADC&lt;/h3&gt;&lt;p&gt;Analog-to-Digital Converter的缩写。&lt;/p&gt;
+&lt;p&gt;指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。&lt;/p&gt;
+&lt;p&gt;典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。&lt;/p&gt;
     
     </summary>
     
@@ -113,7 +243,7 @@
     <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
     <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
     <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-30T10:54:14.572Z</updated>
+    <updated>2020-01-14T13:01:19.934Z</updated>
     
     <summary type="html">
     

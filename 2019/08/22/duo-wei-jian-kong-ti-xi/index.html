@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="多维监控体系">
+<meta name="keywords" content="网络运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多维监控体系">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/index.html">
+<meta property="og:site_name" content="zzylyt">
+<meta property="og:description" content="多维监控体系">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片一.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片二.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片三.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片四.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片五.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片六.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片七.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片八.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片九.png">
+<meta property="og:updated_time" content="2020-01-14T13:02:23.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多维监控体系">
+<meta name="twitter:description" content="多维监控体系">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/图片一.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>多维监控体系 | zzylyt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zzylyt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">老羊头的小破站</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzulyt">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzylyt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多维监控体系
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-22 16:07:00" itemprop="dateCreated datePublished" datetime="2019-08-22T16:07:00+08:00">2019-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 21:02:23" itemprop="dateModified" datetime="2020-01-14T21:02:23+08:00">2020-01-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
+                    <span itemprop="name">高级架构学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="多维监控体系"><a href="#多维监控体系" class="headerlink" title="多维监控体系"></a>多维监控体系</h3><a id="more"></a>
+<h4 id="一、监控概述"><a href="#一、监控概述" class="headerlink" title="一、监控概述"></a>一、监控概述</h4><h6 id="一、监控对象："><a href="#一、监控对象：" class="headerlink" title="一、监控对象："></a>一、监控对象：</h6><p>1.监控对象的理解：CPU是怎么工作的，以及工作原理；<br>2.监控对象的指标：CPU的使用率、CPU的负载、CPU个数;<br>3.确定性能基准线：怎么样才算故障？CPU负载多少算高？</p>
+<h6 id="二、监控范围："><a href="#二、监控范围：" class="headerlink" title="二、监控范围："></a>二、监控范围：</h6><p>1.硬件监控：服务器的硬件故障；<br>2.操作系统监控：CPU、内存、IO、进程；<br>3.应用服务监控；<br>4.业务监控。</p>
+<h4 id="二、硬件监控"><a href="#二、硬件监控" class="headerlink" title="二、硬件监控"></a>二、硬件监控</h4><h6 id="一、服务器监控：IPMI"><a href="#一、服务器监控：IPMI" class="headerlink" title="一、服务器监控：IPMI"></a>一、服务器监控：IPMI</h6><p>IPMI是一种智能化远程接口标准，Linux就可以使用IPMI实现对服务器的远程监控，IPMI依赖于BMC控制器（一种嵌入式微控制器），</p>
+<p>使用ipmitool实现在Linux下对硬件的监控和控制。</p>
+<p>使用ipmitool的条件：硬件和操作系统要支持。（虚拟机无法执行IPMI，可在物理机尝试，不执行关机命令即可）</p>
+<pre><code>#安装工具
+[root@localhost ~]# yum install -y OpenIPMI ipmitool
+#启动
+[root@localhost ~]# systemctl start ipmi
+</code></pre><p>使用IPMI有两种方式：1.本地调用；2.远程调用（通过IP地址，用户名和密码）</p>
+<h6 id="二、路由器和交换机监控：SNMP"><a href="#二、路由器和交换机监控：SNMP" class="headerlink" title="二、路由器和交换机监控：SNMP"></a>二、路由器和交换机监控：SNMP</h6><pre><code>[root@localhost ~]# yum install -y net-snmp net-snmp-utils
+[root@localhost ~]# cd /etc/snmp
+[root@localhost snmp]# ls
+snmpd.conf  snmptrapd.conf
+[root@localhost snmp]# mv snmpd.conf snmpd.conf.bak
+[root@localhost snmp]# vim snmpd.conf
+#添加如下内容
+rocommunity zzulyt（名称，自己起的团体名） 172.16.137.128（指要收集的机器的IP）
+[root@localhost snmp]# ll
+总用量 28
+-rw-r--r-- 1 root root    34 8月  19 20:08 snmpd.conf
+-rw------- 1 root root 18861 7月  30 01:29 snmpd.conf.bak
+-rw------- 1 root root   220 7月  30 01:29 snmptrapd.conf
+#启动服务
+[root@localhost snmp]# systemctl start snmpd
+#查看snmp监听的161端口
+[root@localhost snmp]# netstat -nulp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+udp        0      0 0.0.0.0:69              0.0.0.0:*                           917/xinetd          
+udp        0      0 0.0.0.0:161             0.0.0.0:*                           2711/snmpd       
+</code></pre><h4 id="三、SNMP系统的管理信息库（MIB）与OID"><a href="#三、SNMP系统的管理信息库（MIB）与OID" class="headerlink" title="三、SNMP系统的管理信息库（MIB）与OID"></a>三、SNMP系统的管理信息库（MIB）与OID</h4><p> 1.任何一个被管理的资源都表示成一个对象，称为被管理的对象。MIB是被管理对象的集合。它定义了被管理对象的一系列属性：对象的名称、对象的访问权限和对象的数据类型等。每个SNMP设备（Agent）都有自己的MIB。MIB也可以看作是NMS（网管系统）和Agent之间的沟通桥梁。它们之间的关系如图所示：</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片一.png" alt></p>
+<p> 2.MIB文件中的变量使用的名字取自ISO和ITU管理的对象标识符（object identifier）名字空间。它是一种分级树的结构。</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片二.png" alt></p>
+<p> 3.OID(对象标识符)：是SNMP代理提供的具有唯一标识的键值。【MIB（管理信息基）提供数字化OID到可读文本的映射】。</p>
+<p>OID可用数字格式表达：<br>长这样“.1.3.6.1.2.1.1.2.0”  子树 1 -&gt; 3 -&gt; 6 -&gt; 1 -&gt; 2 -&gt; 1 -&gt; 1 -&gt; 2</p>
+<pre><code>#OID:1.3.6.1.2.1.1.3.0--&gt;监控时间
+[root@localhost snmp]# snmpget -v2c -c zzulyt 172.16.137.128 1.3.6.1.2.1.1.3.0
+DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (28036) 0:04:40.36
+#OID:1.3.6.1.4.1.2021.10.1.3.1--&gt;Load 5
+[root@localhost snmp]# snmpget -v2c -c zzulyt 172.16.137.128 1.3.6.1.4.1.2021.10.1.3.1
+UCD-SNMP-MIB::laLoad.1 = STRING: 0.01
+</code></pre><h4 id="四、CPU监控"><a href="#四、CPU监控" class="headerlink" title="四、CPU监控"></a>四、CPU监控</h4><h5 id="1-CPU三个重要的概念"><a href="#1-CPU三个重要的概念" class="headerlink" title="1.CPU三个重要的概念"></a>1.CPU三个重要的概念</h5><p>上下文切换：CPU调度器实施的进程的切换过程；</p>
+<p>运行队列（负载）：负载可以理解为运行队列里单位时间内的排队线程的平均数，（负载只是一个参考值，负载高未必系统繁忙）；</p>
+<p>使用率：指运行的程序占用的CPU资源，表示你的机器在某个时间点的运行程序的情况。</p>
+<h5 id="2-确定服务类型"><a href="#2-确定服务类型" class="headerlink" title="2.确定服务类型"></a>2.确定服务类型</h5><p>IO密集型——数据库<br>CPU密集型——web、mail</p>
+<h5 id="3-确定性能基准线"><a href="#3-确定性能基准线" class="headerlink" title="3.确定性能基准线"></a>3.确定性能基准线</h5><p>运行队列：1-3线程；1CPU；4核；负载不超过12（经验值）</p>
+<p>CPU使用：65%-70%的用户态利用率<br>                   30%-35%的内核利用率<br>                   0%-5%的空闲利用率</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片三.png" alt></p>
+<h5 id="4-监控工具"><a href="#4-监控工具" class="headerlink" title="4.监控工具"></a>4.监控工具</h5><p>（1）top</p>
+<pre><code>[root@localhost ~]# top
+top - 13:09:07 up 17:02,  3 users,  load average: 0.04, 0.03, 0.05
+Tasks: 105 total,   1 running, 104 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.3 sy,  0.0 ni, 99.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :   999696 total,   145684 free,   161652 used,   692360 buff/cache
+KiB Swap:  2097148 total,  2095184 free,     1964 used.   659484 avail Mem 
+
+   PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                    
+     1 root      20   0  125364   3404   2092 S  0.0  0.3   0:09.59 systemd                                    
+     2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd                                   
+     3 root      20   0       0      0      0 S  0.0  0.0   0:01.58 ksoftirqd/0                                
+     5 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 kworker/0:0H                               
+     7 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0                                
+     8 root      20   0       0      0      0 S  0.0  0.0   0:00.00 rcu_bh                                     
+     9 root      20   0       0      0      0 S  0.0  0.0   0:04.28 rcu_sched                                  
+    10 root      rt   0       0      0      0 S  0.0  0.0   0:00.82 watchdog/0      
+</code></pre><p>top命令中       P–&gt;按CPU使用率排序<br>                         M–&gt;按内存使用率排序</p>
+<p>（2）安装sysstat，使用vmstat或mpstat工具</p>
+<pre><code>[root@localhost ~]# yum install -y sysstat
+#每一秒显示一次监控信息，显示10次
+[root@localhost ~]# vmstat 1 10
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 2  0   1964 141160      0 696360    0    0    16    15   51   49  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   76   83  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   85   92  1  0 99  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   92   90  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   96   96  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   89   90  0  1 99  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   88   84  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   82   81  0  0 100  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0  106  110  0  1 99  0  0
+ 0  0   1964 141160      0 696376    0    0     0     0   83   79  0  0 100  0  0
+#每一秒显示一次监控信息，显示5次 
+[root@localhost ~]# mpstat 1 5
+Linux 3.10.0-693.el7.x86_64 (localhost.localdomain)     2019年08月22日     _x86_64_    (1 CPU)
+
+13时56分36秒  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+13时56分37秒  all    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+13时56分38秒  all    0.00    0.00    1.00    0.00    0.00    0.00    0.00    0.00    0.00   99.00
+13时56分39秒  all    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+13时56分40秒  all    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+13时56分41秒  all    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+平均时间:  all    0.00    0.00    0.20    0.00    0.00    0.00    0.00    0.00    0.00   99.80
+</code></pre><h4 id="五、内存监控"><a href="#五、内存监控" class="headerlink" title="五、内存监控"></a>五、内存监控</h4><h5 id="vmstat显示的参数说明"><a href="#vmstat显示的参数说明" class="headerlink" title="vmstat显示的参数说明"></a>vmstat显示的参数说明</h5><p>swpd:已使用的交换分区的大小<br>free：可用的物理内存的大小<br>si：从磁盘交换到内存的交换页数量，单位：KB/秒<br>so：从内存交换到磁盘的交换页数量，单位：KB/秒<br>bi：每秒从块设备接收到的块数，单位：块/秒 也就是读块设备<br>bo：每秒发送到块设备的块数，单位：块/秒  也就是写块设备<br>in：每秒的中断数，包括时钟中断。与cs一般同步增长。in和cs两值越大，会看到由内核消耗的CPU时间（sy）也会越大<br>cs：每秒的环境（上下文）切换次数<br>us：用户CPU时间(非内核进程占用时间)（单位为百分比）。 us的值比较高时，说明用户进程消耗的CPU时间多<br>sy：系统使用的CPU时间（单位为百分比）。sy的值高时，说明系统内核消耗的CPU资源多，这并不是良性表现，我们应该检查原因。<br>id：空闲的CPU的时间(百分比)，在Linux 2.5.41之前，这部分包含IO等待时间。<br>wa：等待IO的CPU时间，在Linux 2.5.41之前，这个值为0 .这个指标意味着CPU在等待硬盘读写操作的时间，用百分比表示。wait越大则机器io性能就越差。说明IO等待比较严重，这可能由于磁盘大量作随机访问造成，也有可能磁盘出现瓶颈（块操作）<br>st：针对虚拟技术，如果st不为0，说明本来分配给本机的CPU时间被其他虚拟机偷走了</p>
+<h4 id="六、系统监控"><a href="#六、系统监控" class="headerlink" title="六、系统监控"></a>六、系统监控</h4><h5 id="一、硬盘监控"><a href="#一、硬盘监控" class="headerlink" title="一、硬盘监控"></a>一、硬盘监控</h5><p>通过iotop工具监控硬盘</p>
+<pre><code>[root@localhost ~]# yum install iotop
+[root@localhost ~]# iotop
+Total DISK READ :    0.00 B/s | Total DISK WRITE :       0.00 B/s
+Actual DISK READ:    0.00 B/s | Actual DISK WRITE:       0.00 B/s
+......
+</code></pre><h5 id="二、网络监控"><a href="#二、网络监控" class="headerlink" title="二、网络监控"></a>二、网络监控</h5><p>通过iftop监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等。</p>
+<pre><code>[root@localhost ~]# yum install iftop
+[root@localhost ~]# iftop -n
+</code></pre><p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片四.png" alt></p>
+<h5 id="三、利用nmon监控并分析数据"><a href="#三、利用nmon监控并分析数据" class="headerlink" title="三、利用nmon监控并分析数据"></a>三、利用nmon监控并分析数据</h5><p>1.去官网下载nmon的二进制文件</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片五.png" alt></p>
+<p>2.将文件共享给虚拟机的系统</p>
+<pre><code>[root@localhost ~]# cd /mnt/hgfs/虚拟机共享
+[root@localhost 虚拟机共享]# chmod +x nmon16e_x86_rhel71
+[root@localhost 虚拟机共享]# ./nmon16e_x86_rhel71
+</code></pre><p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片六.png" alt></p>
+<p>3.主机下载nomn_analyzer</p>
+<p>下载后的文件夹里包含：</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片七.png" alt></p>
+<p>4.将检测结果生成Excel文件</p>
+<p>在虚拟机系统中输入监控并将结果生成文件的命令</p>
+<pre><code>[root@localhost 虚拟机共享]# ./nmon16e_x86_rhel71 -c 10 -s 10 -f
+#检查发现多了一个nmon文件，190826表示年月日，1542表示时分
+[root@localhost 虚拟机共享]# ls
+localhost_190826_1542.nmon  nmon16e_x86_rhel71  
+</code></pre><p>在主机打开nomn_analyzer文件夹中的nmon analyser v61文件，点击Analyze nmon data</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片八.png" alt></p>
+<p>选择共享文件夹中的nmon文件，即可生成图表</p>
+<p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片九.png" alt></p>
+<p>（底部的表格栏即为监控的参数名称）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/网络运维/" rel="tag"># 网络运维</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/" rel="prev" title="VMware在NAT模式下配置静态IP">
+      <i class="fa fa-chevron-left"></i> VMware在NAT模式下配置静态IP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/" rel="next" title="虚拟机使用VMware tools与主机共享文件">
+      虚拟机使用VMware tools与主机共享文件 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多维监控体系"><span class="nav-number">1.</span> <span class="nav-text">多维监控体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、监控概述"><span class="nav-number">1.1.</span> <span class="nav-text">一、监控概述</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一、监控对象："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">一、监控对象：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、监控范围："><span class="nav-number">1.1.0.2.</span> <span class="nav-text">二、监控范围：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、硬件监控"><span class="nav-number">1.2.</span> <span class="nav-text">二、硬件监控</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一、服务器监控：IPMI"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">一、服务器监控：IPMI</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、路由器和交换机监控：SNMP"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">二、路由器和交换机监控：SNMP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、SNMP系统的管理信息库（MIB）与OID"><span class="nav-number">1.3.</span> <span class="nav-text">三、SNMP系统的管理信息库（MIB）与OID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、CPU监控"><span class="nav-number">1.4.</span> <span class="nav-text">四、CPU监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-CPU三个重要的概念"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.CPU三个重要的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-确定服务类型"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.确定服务类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-确定性能基准线"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.确定性能基准线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-监控工具"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.监控工具</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、内存监控"><span class="nav-number">1.5.</span> <span class="nav-text">五、内存监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vmstat显示的参数说明"><span class="nav-number">1.5.1.</span> <span class="nav-text">vmstat显示的参数说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、系统监控"><span class="nav-number">1.6.</span> <span class="nav-text">六、系统监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、硬盘监控"><span class="nav-number">1.6.1.</span> <span class="nav-text">一、硬盘监控</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、网络监控"><span class="nav-number">1.6.2.</span> <span class="nav-text">二、网络监控</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、利用nmon监控并分析数据"><span class="nav-number">1.6.3.</span> <span class="nav-text">三、利用nmon监控并分析数据</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zzulyt</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzulyt</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

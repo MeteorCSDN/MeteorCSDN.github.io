@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="cobbler部署与自定义">
+<meta name="keywords" content="网络运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cobbler部署并自动化安装系统">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/index.html">
+<meta property="og:site_name" content="zzylyt">
+<meta property="og:description" content="cobbler部署与自定义">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/图片一.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/图片二.png">
+<meta property="og:updated_time" content="2020-01-14T13:01:09.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cobbler部署并自动化安装系统">
+<meta name="twitter:description" content="cobbler部署与自定义">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/图片一.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>cobbler部署并自动化安装系统 | zzylyt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zzylyt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">老羊头的小破站</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzulyt">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzylyt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cobbler部署并自动化安装系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-12 23:03:17" itemprop="dateCreated datePublished" datetime="2019-08-12T23:03:17+08:00">2019-08-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 21:01:09" itemprop="dateModified" datetime="2020-01-14T21:01:09+08:00">2020-01-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
+                    <span itemprop="name">高级架构学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="cobbler部署与自定义"><a href="#cobbler部署与自定义" class="headerlink" title="cobbler部署与自定义"></a>cobbler部署与自定义</h3><a id="more"></a>
+<h4 id="一、安装部署"><a href="#一、安装部署" class="headerlink" title="一、安装部署"></a>一、安装部署</h4><p>1.可以去阿里巴巴开源镜像站寻找所需镜像源（epel–&gt;epel-release-latest-7.noarch.rpm），复制其链接</p>
+<pre><code>[root@localhost ~]# rpm -ivh https://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm
+</code></pre><p>2.安装所需软件包</p>
+<pre><code>[root@localhost ~]# yum install -y httpd dhcp tftp cobbler cobbler-web pykickstart
+[root@localhost kickstarts]# yum install xinetd -y
+</code></pre><p>3.查看安装情况</p>
+<pre><code>[root@localhost ~]# cd /etc/httpd/conf.d/
+#可看到cobbler的相关文件
+[root@localhost conf.d]# ll
+总用量 36
+-rw-r--r--. 1 root root 2926 7月  30 01:18 autoindex.conf
+-rw-r--r--. 1 root root 1087 11月 27 2018 cobbler.conf
+-rw-r--r--. 1 root root 1165 11月 27 2018 cobbler_web.conf
+-rw-r--r--. 1 root root  366 7月  30 01:19 README
+-rw-r--r--. 1 root root 9443 7月  29 23:15 ssl.conf
+-rw-r--r--. 1 root root 1252 7月  29 23:15 userdir.conf
+-rw-r--r--. 1 root root  824 7月  29 23:15 welcome.conf
+</code></pre><h4 id="二、启动进程"><a href="#二、启动进程" class="headerlink" title="二、启动进程"></a>二、启动进程</h4><pre><code>[root@localhost ~]# systemctl start httpd
+[root@localhost ~]# systemctl start cobblerd
+[root@localhost kickstarts]# systemctl start xinetd
+[root@localhost ~]# cobbler check
+</code></pre><p>新装的系统在运行cobbler check命令后会报错，如图所示</p>
+<p><img src="/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/图片一.png" alt></p>
+<p>解决方法如下：</p>
+<pre><code>[root@localhost ~]# getenforce
+Enforcing
+[root@localhost ~]# setenforce 0
+[root@localhost ~]# getenforce
+Permissive
+[root@localhost ~]# service httpd restart
+Redirecting to /bin/systemctl restart httpd.service
+</code></pre><p>再次查看，所列条数便是接下来的需要做的配置步骤</p>
+<pre><code>[root@localhost ~]# cobbler check
+The following are potential configuration items that you may want to fix:
+
+1 : The &#39;server&#39; field in /etc/cobbler/settings must be set to something other than localhost, or kickstarting features will not work.  This should be a resolvable hostname or IP for the boot server as reachable by all machines that will use it.
+2 : For PXE to be functional, the &#39;next_server&#39; field in /etc/cobbler/settings must be set to something other than 127.0.0.1, and should match the IP of the boot server on the PXE network.
+3 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
+    https://github.com/cobbler/cobbler/wiki/Selinux
+4 : change &#39;disable&#39; to &#39;no&#39; in /etc/xinetd.d/tftp
+5 : Some network boot-loaders are missing from /var/lib/cobbler/loaders, you may run &#39;cobbler get-loaders&#39; to download them, or, if you only want to handle x86/x86_64 netbooting, you may ensure that you have installed a *recent* version of the syslinux package installed and can ignore this message entirely.  Files in this directory, should you want to support all architectures, should include pxelinux.0, menu.c32, elilo.efi, and yaboot. The &#39;cobbler get-loaders&#39; command is the easiest way to resolve these requirements.
+6 : enable and start rsyncd.service with systemctl
+7 : debmirror package is not installed, it will be required to manage debian deployments and repositories
+8 : The default password used by the sample templates for newly installed machines (default_password_crypted in /etc/cobbler/settings) is still set to &#39;cobbler&#39; and should be changed, try: &quot;openssl passwd -1 -salt &#39;random-phrase-here&#39; &#39;your-password-here&#39;&quot; to generate new one
+9 : fencing tools were not found, and are required to use the (optional) power management features. install cman or fence-agents to use them
+
+Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.
+</code></pre><h4 id="三、配置文件"><a href="#三、配置文件" class="headerlink" title="三、配置文件"></a>三、配置文件</h4><p>1.更改vim etc/cobbler/settings文件中的server，将其改成自己的IP</p>
+<pre><code>[root@localhost ~]# vim /etc/cobbler/settings
+#需要更改的部分在文件的第272行和384行
+</code></pre><p>2.将文件中的disable原来的yes改为no</p>
+<pre><code>[root@localhost ~]# vim /etc/xinetd.d/tftp
+
+# default: off
+# description: The tftp server serves files using the trivial file transfer \
+#       protocol.  The tftp protocol is often used to boot diskless \
+#       workstations, download configuration files to network-aware printers, \
+#       and to start the installation process for some operating systems.
+service tftp
+{
+        socket_type             = dgram
+        protocol                = udp
+        wait                    = yes
+        user                    = root
+        server                  = /usr/sbin/in.tftpd
+        server_args             = -s /var/lib/tftpboot
+        disable                 = no
+        per_source              = 11
+        cps                     = 100 2
+        flags                   = IPv4
+}
+</code></pre><p>3.开启进程，使文件生效</p>
+<pre><code>[root@localhost ~]# systemctl start rsyncd
+[root@localhost ~]# cobbler get-loaders
+</code></pre><p>4.设置密码</p>
+<pre><code>#命令格式：
+[root@localhost ~]# openssl passwd -1 -salt &#39;random-phrase-here&#39; &#39;your-password-here&#39;
+#将密码部分填入，命令即可为：
+[root@localhost ~]# openssl passwd -1 -salt &#39;cobler&#39; &#39;cobler&#39;
+#将生成的密码全部复制下来
+$1$cobler$XJnisBweZJlhL651HxAM00
+[root@localhost ~]# vim /etc/cobbler/settings
+#将密码粘贴到文件的第101行
+101 default_password_crypted: &quot;$1$cobler$XJnisBweZJlhL651HxAM00&quot;
+#242行的0改为1
+242 manage_dhcp: 1
+[root@localhost ~]# systemctl restart cobblerd
+[root@localhost ~]# cobbler check
+</code></pre><p>5.配置dhcp文件</p>
+<pre><code>[root@localhost ~]# vim /etc/cobbler/dhcp.template
+#将自己服务器的子网，网关，DNS改入
+subnet 10.0.2.0 netmask 255.255.255.0 {
+     option routers             10.0.2.15;
+     option domain-name-servers 10.0.2.15;
+     option subnet-mask         255.255.255.0;
+     range dynamic-bootp        10.0.2.100 10.0.2.254;
+     default-lease-time         21600;
+     max-lease-time             43200;
+     next-server                $next_server;
+     class &quot;pxeclients&quot; {
+          match if substring (option vendor-class-identifier, 0, 9) = &quot;PXEClient&quot;;
+#保存后重启服务，使之生效
+[root@localhost ~]# systemctl restart cobblerd
+[root@localhost ~]# cobbler sync
+#可查看更改是否生效
+[root@localhost ~]# cat /etc/dhcp/dhcpd.conf
+subnet 10.0.2.0 netmask 255.255.255.0 {
+     option routers             10.0.2.15;
+     option domain-name-servers 10.0.2.15;
+     option subnet-mask         255.255.255.0;
+     range dynamic-bootp        10.0.2.100 10.0.2.254;
+     default-lease-time         21600;
+     max-lease-time             43200;
+     next-server                10.0.2.15;
+</code></pre><h4 id="四、配置kickstart相关服务"><a href="#四、配置kickstart相关服务" class="headerlink" title="四、配置kickstart相关服务"></a>四、配置kickstart相关服务</h4><p>1.磁盘挂载</p>
+<pre><code>[root@localhost ~]# mount /dev/cdrom /mnt
+mount: /dev/sr0 写保护，将以只读方式挂载
+（挂载光盘）
+#此步骤要等待一段时间
+[root@localhost ~]# cobbler import --path=/mnt/ --name=CentOS-7-x86_64 --arch=x86_64
+task started: 2019-08-12_212801_import
+task started (id=Media import, time=Mon Aug 12 21:28:01 2019)
+Found a candidate signature: breed=redhat, version=rhel6
+Found a candidate signature: breed=redhat, version=rhel7
+Found a matching signature: breed=redhat, version=rhel7
+Adding distros from path /var/www/cobbler/ks_mirror/CentOS-7-x86_64:
+creating new distro: CentOS-7-x86_64
+trying symlink: /var/www/cobbler/ks_mirror/CentOS-7-x86_64 -&gt; /var/www/cobbler/links/CentOS-7-x86_64
+creating new profile: CentOS-7-x86_64
+associating repos
+checking for rsync repo(s)
+checking for rhn repo(s)
+checking for yum repo(s)
+starting descent into /var/www/cobbler/ks_mirror/CentOS-7-x86_64 for CentOS-7-x86_64
+processing repo at : /var/www/cobbler/ks_mirror/CentOS-7-x86_64
+need to process repo/comps: /var/www/cobbler/ks_mirror/CentOS-7-x86_64
+looking for /var/www/cobbler/ks_mirror/CentOS-7-x86_64/repodata/*comps*.xml
+Keeping repodata as-is :/var/www/cobbler/ks_mirror/CentOS-7-x86_64/repodata
+*** TASK COMPLETE ***
+</code></pre><p>2.可查看完成情况，可发现清单已出现 CentOS-7-x86_64</p>
+<pre><code>[root@localhost ~]# cobbler profile list
+   CentOS-7-x86_64
+</code></pre><p>3.使用自己的kickstarts文件</p>
+<pre><code>[root@localhost ~]# cd /var/lib/cobbler/kickstarts
+[root@localhost kickstarts]# vim CentOS-7-x86_64.cfg
+#将如下内容添至文件中
+install
+url --url=$tree  
+text
+lang en_US.UTF-8
+keyboard us
+zerombr
+bootloader --location=mbr 
+# Network information
+$SNIPPET(&#39;network_config&#39;)
+timezone --utc Asia/Shanghai
+authconfig --enableshadow --passalgo=sha512
+rootpw  --iscrypted $default_password_crypted
+clearpart --all --initlabel
+part /boot --fstype xfs --size 500  
+part swap --size 2000
+part / --fstype xfs --size 20000 
+part /data --fstype xfs --size 30000 
+firstboot --disable
+selinux --disabled
+firewall --disabled
+logging --level=info
+reboot
+%pre
+$SNIPPET(&#39;log_ks_pre&#39;)
+$SNIPPET(&#39;kickstart_start&#39;)
+$SNIPPET(&#39;pre_install_network_config&#39;)
+# Enable installation monitoring
+$SNIPPET(&#39;pre_anamon&#39;)
+%end
+%packages
+@base
+@compat-libraries
+@debugging
+@development
+tree
+nmap
+sysstat
+lrzsz
+dos2unix
+telnet
+iptraf
+ncurses-devel
+openssl-devel
+zlib-devel
+OpenIPMI-tools
+screen
+%end
+%post
+systemctl disable postfix.service
+%end
+#保存后配置路径，如下指令
+[root@localhost kickstarts]# cobbler profile edit --name=CentOS-7-x86_64 --kickstart=/var/lib/cobbler/kickstarts/CentOS-7-x86_64.cfg
+</code></pre><p>4.CentOS7系统安装时使网卡为eth0需要加内核参数，可通过profile加内核参数</p>
+<pre><code>[root@localhost kickstarts]# cobbler profile edit --name=CentOS-7-x86_64 --kopts=&#39;net.ifnames=0 biosdevname=0&#39;
+[root@localhost kickstarts]# cobbler profile report
+[root@localhost kickstarts]# cobbler sync
+#以上命令使输出时清空重新生成一遍，使文件生效
+[root@localhost kickstarts]# start xinetd
+#开启tftp服务，如果自动安装时进程卡在tftp，可以尝试关闭防火墙
+</code></pre><h4 id="五、测试"><a href="#五、测试" class="headerlink" title="五、测试"></a>五、测试</h4><p>1.VMvare上直接新建一个虚拟机，进入后选择相应系统即可自动安装</p>
+<p><img src="/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/图片二.png" alt></p>
+<p>2.Virtualbox上则先需在管理&gt;&gt;主机网络管理器中，禁止启用DHCP服务，避免发生重复，之后即可新建，启动后自动安装系统。</p>
+<h4 id="六、自动化重装"><a href="#六、自动化重装" class="headerlink" title="六、自动化重装"></a>六、自动化重装</h4><pre><code>#使用该工具实现自动化重装
+[root@localhost ~]# yum install -y koan
+#查看该服务器下可以重装的系统
+[root@localhost ~]# koan --server=10.0.2.15 --list=profiles
+- looking for Cobbler at http://10.0.2.15:80/cobbler_api
+CentOS-7-x86_64
+#--profile后指定想重装成的系统
+[root@localhost ~]# koan --replace-self --server=10.0.2.15 --profile=CentOS-7-x86_64
+</code></pre><p>重启即可将现系统重装为设定系统</p>
+<h4 id="七、自定义yum源"><a href="#七、自定义yum源" class="headerlink" title="七、自定义yum源"></a>七、自定义yum源</h4><pre><code>#启动相关服务
+[root@localhost ~]# systemctl start httpd.service 
+[root@localhost ~]# systemctl start cobblerd.service
+#添加源
+[root@localhost ~]# cobbler repo add --name=openstack-mitaka --mirror=https://mirrors.aliyun.com/centos/7.6.1810/cloud/x86_64/openstack-stein/ --arch=x86_64 --breed=yum
+#进行同步
+[root@localhost ~]# cobbler reposync
+</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/网络运维/" rel="tag"># 网络运维</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/11/zi-dong-hua-yun-wei/" rel="prev" title="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+      <i class="fa fa-chevron-left"></i> CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/" rel="next" title="VMware在NAT模式下配置静态IP">
+      VMware在NAT模式下配置静态IP <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cobbler部署与自定义"><span class="nav-number">1.</span> <span class="nav-text">cobbler部署与自定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、安装部署"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、启动进程"><span class="nav-number">1.2.</span> <span class="nav-text">二、启动进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">三、配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、配置kickstart相关服务"><span class="nav-number">1.4.</span> <span class="nav-text">四、配置kickstart相关服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、测试"><span class="nav-number">1.5.</span> <span class="nav-text">五、测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、自动化重装"><span class="nav-number">1.6.</span> <span class="nav-text">六、自动化重装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、自定义yum源"><span class="nav-number">1.7.</span> <span class="nav-text">七、自定义yum源</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zzulyt</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzulyt</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

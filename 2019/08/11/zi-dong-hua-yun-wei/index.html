@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+<meta name="keywords" content="网络运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/index.html">
+<meta property="og:site_name" content="zzylyt">
+<meta property="og:description" content="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/图片一.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/图片二.png">
+<meta property="og:updated_time" content="2020-01-14T13:02:40.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+<meta name="twitter:description" content="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/图片一.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统 | zzylyt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zzylyt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">老羊头的小破站</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzulyt">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzylyt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-11 18:05:28" itemprop="dateCreated datePublished" datetime="2019-08-11T18:05:28+08:00">2019-08-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 21:02:40" itemprop="dateModified" datetime="2020-01-14T21:02:40+08:00">2020-01-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
+                    <span itemprop="name">高级架构学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统"><a href="#CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统" class="headerlink" title="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统"></a>CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统</h3><a id="more"></a>
+<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><h5 id="（一）什么是PXE"><a href="#（一）什么是PXE" class="headerlink" title="（一）什么是PXE"></a>（一）什么是PXE</h5><p>​        PXE(Pre boot Execution Environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络启动操作系统，在启动过程中，终端要求服务器分配IP地址，再用TFTP ( trivial file transfer protocol )或MTFTP(multicast trivial file transfer protocol)协议下载一个启动软件包到本机，内存中执行，由这个启动软件包完成终端基本软件设置，从而引导预先安装在服务器中的终端操作系统。<br>​        严格来说，PXE并不是一种安装方式 ，而是种引导方式。 进行PXE安装的必要条件是在要安装的计算机中必须包含个PXE支持的网卡(NIC)， 即网卡中必须要有PXE Client。PXE 协议可以使计算机通过网络启动。此协议分为Client端和Server端，而PXE Client则在网卡的ROM中。当计算机引导时，BIOS把PXE Client调入内存中执行，然后由PXE Client将放置在远端的文件通过网络下载到本地运行。运行PXE协议需要设置DHCP服务器和TFTP服务器。DHCP 服务器会给PXE<br>Client (将要安装系统的主机)分配个IP地址，由于是给PXE Client分配IP地址，所以在配置DHCP服务器时需要增加相应的PXE设置。此外，在PXE Client的ROM中，已经存在了TFTP Client，那么它就可以通过TFTP协议到TFTP Server上下载所需的文件了。</p>
+<h5 id="（二）PXE工作过程"><a href="#（二）PXE工作过程" class="headerlink" title="（二）PXE工作过程"></a>（二）PXE工作过程</h5><p>​        1.PXE方便通过网络大批量地操作系统的部署。PXE client当按下电源键选择从PXE网络启动，通过广播找到DHCP服务器索取IP；</p>
+<p>​        2.DHCP服务器返回分配给客户机的IP以及PXE文件的放置位置(该文件一般是放在一台TFTP服务器上) ;</p>
+<p>​        3.PXE Client向本网络中的TFTP服务器索取pxelinux.0文件;</p>
+<p>​        4.PXE Client取得pxelinux.0文件后之执行该文件;</p>
+<p>​        5.根据nxelinux 0的执行结里诵过TFTP服务器加载内核和文件系统；</p>
+<p>​        6.进入安装画面，此时可以通过选择HTTP、FTP、NFS方式之一进行安装。</p>
+<h5 id="（三）环境准备说明"><a href="#（三）环境准备说明" class="headerlink" title="（三）环境准备说明"></a>（三）环境准备说明</h5><p>​        PXE服务器：CentOS7基于virtualbox的虚拟机</p>
+<p>​        IP：10.0.2.15</p>
+<pre class=" language-linux"><code class="language-linux">#可通过如下命令查询DNS
+[root@localhost ~]# cat /etc/resolv.conf
+</code></pre>
+<p>​        DNS：114.114.114.114</p>
+<p>​        在tftp服务器上要首先由PXE的安装信息，配置服务及安装软件包如下;DHCP；tftp；http；sysliinux（通过yum安装）</p>
+<pre><code>[root@localhost ~]# yum install  dhcp tftp tftp-server syslinux httpd -y
+#生成ks.cfg文件需要system-config-kickstart工具
+[root@localhost ~]# yum install system-config-kickstart -y
+#此工具依赖于X Windows，所以需安装X Windows和Desktop
+[root@localhost ~]# yum groupinstall &quot;X Windows System&quot;
+[root@localhost ~]# yum groupinstall Desktop
+#重启系统
+[root@localhost ~]# reboot
+</code></pre><h4 id="二、基于httpd搭建本地安装源"><a href="#二、基于httpd搭建本地安装源" class="headerlink" title="二、基于httpd搭建本地安装源"></a>二、基于httpd搭建本地安装源</h4><h5 id="（一）挂载光盘"><a href="#（一）挂载光盘" class="headerlink" title="（一）挂载光盘"></a>（一）挂载光盘</h5><pre><code>#挂载CentOS7光盘
+[root@localhost ~]# mkdir /media/cdrom
+[root@localhost ~]# mount /dev/cdrom /media/cdrom
+[root@localhost ~]# mkdir -pv /var/www/html/centos/7/x86_64
+#绑定挂载到http默认目录下
+[root@localhost ~]#mount --bind /media/cdrom /var/www/html/centos/7/x86_64
+</code></pre><h5 id="（二）kickstart-ks-cfg配置文件"><a href="#（二）kickstart-ks-cfg配置文件" class="headerlink" title="（二）kickstart ks.cfg配置文件"></a>（二）kickstart ks.cfg配置文件</h5><pre><code>[root@localhost ~]# cd /var/www/html;mkdir ks
+[root@localhost ~]# vim anaconda-ks.cfg
+#version=DEVEL
+# System authorization information
+auth --enableshadow --passalgo=sha512
+# Use CDROM installation media
+#cdrom
+# Install OS instead of upgrade
+install
+# Use network installation
+url --url=http://（自己的IP地址，如：10.0.2.15）/centos/7/x86_64
+# Use graphical install
+graphical
+# Run the Setup Agent on first boot
+firstboot --enable
+#ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=cn --xlayouts=&#39;cn&#39;
+# System language
+lang zh_CN.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=enp0s3 --onboot=off --ipv6=auto
+network  --hostname=localhost.pkey.cn
+
+# Root password
+rootpw --iscrypted $1$lSeSXuy.$7HmGY9vVxEGEGB98qTUuv1
+# System timezone
+timezone Asia/Shanghai --isUtc
+# System bootloader configuration
+bootloader --append=&quot; crashkernel=auto&quot; --location=mbr --boot-drive=sda
+autopart --type=lvm
+# Partition clearing information
+clearpart --none --initlabel
+
+%packages
+@^minimal
+@core
+kexec-tools
+vim
+wget
+httpd
+%end
+%addon com_redhat_kdump --enable --reserve-mb=&#39;auto&#39;
+%end
+selinux --disabled     #禁用selinux
+reboot        #安装完重启系统
+</code></pre><h5 id="（三）配置启动"><a href="#（三）配置启动" class="headerlink" title="（三）配置启动"></a>（三）配置启动</h5><pre><code>[root@localhost ~]# systemctl start httpd
+[root@localhost ~]# systemctl enable httpd
+</code></pre><h5 id="（四）查看当前服务状态"><a href="#（四）查看当前服务状态" class="headerlink" title="（四）查看当前服务状态"></a>（四）查看当前服务状态</h5><pre><code>[root@localhost ~]# systemctl status httpd.service
+</code></pre><p> <img src="/2019/08/11/zi-dong-hua-yun-wei/图片一.png" alt></p>
+<h4 id="三、配置DHCP服务"><a href="#三、配置DHCP服务" class="headerlink" title="三、配置DHCP服务"></a>三、配置DHCP服务</h4><h5 id="（一）配置dhcp服务"><a href="#（一）配置dhcp服务" class="headerlink" title="（一）配置dhcp服务"></a>（一）配置dhcp服务</h5><p>dhcp配置文件在/etc/dhcp/目录下,默认的配置文件没有,但我们可以在帮助文件中找到模板示例文件加以修改，帮助文件的位置为 /usr/share/doc/dhcp*/dhcpd.conf.sample，也可以自己新建一个dhcpd.conf文件，写入</p>
+<pre><code>[root@localhost ~]# vim /etc/dhcp/dhcpd.conf
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp*/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+option domain-name &quot;pkey.cn&quot;;
+option domain-name-servers 114.114.114.114;    #写入网关
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+subnet 10.0.2.0 netmask 255.255.255.0 {
+    range dynamic-bootp 10.0.2.110 10.0.2.120;
+    option routers 10.0.2.1;
+    next-server 10.0.2.254;    #tftp server也是本机,可以分开
+  filename &quot;pxelinux.0&quot;;               #引导文件
+}
+</code></pre><h5 id="（二）启动与查看"><a href="#（二）启动与查看" class="headerlink" title="（二）启动与查看"></a>（二）启动与查看</h5><pre><code>[root@localhost ~]# systemctl start dhcpd
+[root@localhost ~]# systemctl enable dhcpd
+#查看监听情况
+[root@localhost ~]# ss -tunl
+Netid  State      Recv-Q Send-Q    Local Address:Port                   Peer Address:Port              
+udp    UNCONN     0      0                     *:67                                *:*                 
+udp    UNCONN     0      0                     *:68                                *:*                 
+udp    UNCONN     0      0             127.0.0.1:323                               *:*                 
+udp    UNCONN     0      0                    :::69                               :::*                
+</code></pre><h5 id="（三）查看当前服务状态"><a href="#（三）查看当前服务状态" class="headerlink" title="（三）查看当前服务状态"></a>（三）查看当前服务状态</h5><pre><code>[root@localhost ~]# systemctl status httpd.service
+</code></pre><p><img src="/2019/08/11/zi-dong-hua-yun-wei/图片二.png" alt=" "></p>
+<h4 id="四、配置tftp服务"><a href="#四、配置tftp服务" class="headerlink" title="四、配置tftp服务"></a>四、配置tftp服务</h4><p>安装好tftp-server软件包后 默认的数据根目录是/var/lib/tftpboot/ 无须修改,只需要复制一些软件引导文件进来即可</p>
+<p><strong>1、相关文件准备</strong></p>
+<pre><code>##引导文件
+[root@localhost ~]# cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/  
+#内核文件
+[root@localhost ~]# cp /media/cdrom/images/pxeboot/{vmlinuz,initrd.img} /var/lib/tftpboot
+#引导菜单
+[root@localhost ~]# cp /usr/share/syslinux/{chain.c32,mboot.c32,menu.c32,memdisk} /var/lib/tftpboot
+#制件引导默认文件
+[root@localhost ~]# mkdir -pv /var/lib/tftpboot/pxelinux.cfg
+#在/var/lib/tftpboot/pxelinux.cfg目录下
+[root@localhost pxelinux.cfg]# cat default 
+default menu.c32
+   prompt 5
+   timeout 30
+   MENU TITLE CentOS 7 PXE Menu
+
+   LABEL linux
+   MENU LABEL Install CentOS 7 x86_64
+   KERNEL vmlinuz
+   APPEND initrd=initrd.img inst.repo=http://（自己的IP）/centos/7/x86_64 ks=http://（自己的IP）/ks/ks.cfg
+</code></pre><p><strong>2、启动配置开机自启</strong></p>
+<pre><code>[root@localhost]# systemctl enable tftp
+[root@localhost]# systemctl start tftp
+</code></pre><p><strong>3、tftp测试</strong></p>
+<pre><code>#查看/var/lib/tftpboot/的目录文件结构
+[root@localhost tftpboot]# tree -L 2
+.
+├── chain.c32
+├── initrd.img
+├── mboot.c32
+├── memdisk
+├── menu.c32
+├── pxelinux.0
+├── pxelinux.cfg
+│   └── default
+└── vmlinuz
+
+1 directory, 8 files
+
+</code></pre><pre><code>[root@localhost ~]# cd /var/lib/tpm
+[root@localhost tpm]# pwd;ls
+/var/lib/tpm
+[root@localhost tpm]# tftp 10.0.2.15
+tftp&gt; get vmlinuz
+tftp&gt; quit
+[root@localhost tpm]# pwd;ls
+/var/lib/tpm
+vmlinuz
+</code></pre><h5 id="五、PEX无人值守安装测试"><a href="#五、PEX无人值守安装测试" class="headerlink" title="五、PEX无人值守安装测试"></a>五、PEX无人值守安装测试</h5><p><strong>（一）修改virtualbox网络</strong><br>管理–&gt;全局设定–&gt;网络–&gt;”仅主机(Host-Only)网络” –&gt;双击vboxnet0 –&gt;把virtualbox自带的仅主机网络的DHCP服务关掉</p>
+<p><strong>（二）新建虚拟机</strong><br>和用cdrom安装虚拟的唯一区别是不用挂载镜像,只需要修改新的虚拟机的网络类型为”仅主机(Host-Only)网络”</p>
+<p>开机–&gt;按F12选择LAN启动</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/网络运维/" rel="tag"># 网络运维</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/" rel="prev" title="计算机三级嵌入式学习笔记">
+      <i class="fa fa-chevron-left"></i> 计算机三级嵌入式学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/" rel="next" title="cobbler部署并自动化安装系统">
+      cobbler部署并自动化安装系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统"><span class="nav-number">1.</span> <span class="nav-text">CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、概述"><span class="nav-number">1.1.</span> <span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）什么是PXE"><span class="nav-number">1.1.1.</span> <span class="nav-text">（一）什么是PXE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）PXE工作过程"><span class="nav-number">1.1.2.</span> <span class="nav-text">（二）PXE工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）环境准备说明"><span class="nav-number">1.1.3.</span> <span class="nav-text">（三）环境准备说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、基于httpd搭建本地安装源"><span class="nav-number">1.2.</span> <span class="nav-text">二、基于httpd搭建本地安装源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）挂载光盘"><span class="nav-number">1.2.1.</span> <span class="nav-text">（一）挂载光盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）kickstart-ks-cfg配置文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">（二）kickstart ks.cfg配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）配置启动"><span class="nav-number">1.2.3.</span> <span class="nav-text">（三）配置启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）查看当前服务状态"><span class="nav-number">1.2.4.</span> <span class="nav-text">（四）查看当前服务状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、配置DHCP服务"><span class="nav-number">1.3.</span> <span class="nav-text">三、配置DHCP服务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）配置dhcp服务"><span class="nav-number">1.3.1.</span> <span class="nav-text">（一）配置dhcp服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）启动与查看"><span class="nav-number">1.3.2.</span> <span class="nav-text">（二）启动与查看</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）查看当前服务状态"><span class="nav-number">1.3.3.</span> <span class="nav-text">（三）查看当前服务状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、配置tftp服务"><span class="nav-number">1.4.</span> <span class="nav-text">四、配置tftp服务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五、PEX无人值守安装测试"><span class="nav-number">1.4.1.</span> <span class="nav-text">五、PEX无人值守安装测试</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zzulyt</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzulyt</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

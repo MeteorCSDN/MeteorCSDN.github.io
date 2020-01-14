@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="嵌入式学习笔记">
+<meta name="keywords" content="嵌入式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机三级嵌入式学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/index.html">
+<meta property="og:site_name" content="zzylyt">
+<meta property="og:description" content="嵌入式学习笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-14T13:02:11.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机三级嵌入式学习笔记">
+<meta name="twitter:description" content="嵌入式学习笔记">
+
+<link rel="canonical" href="http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>计算机三级嵌入式学习笔记 | zzylyt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zzylyt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">老羊头的小破站</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzulyt">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzylyt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机三级嵌入式学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-10 15:20:05" itemprop="dateCreated datePublished" datetime="2019-08-10T15:20:05+08:00">2019-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 21:02:11" itemprop="dateModified" datetime="2020-01-14T21:02:11+08:00">2020-01-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/嵌入式学习/" itemprop="url" rel="index">
+                    <span itemprop="name">嵌入式学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="嵌入式学习笔记"><a href="#嵌入式学习笔记" class="headerlink" title="嵌入式学习笔记"></a>嵌入式学习笔记</h3><a id="more"></a>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        笔者在大一下学期一时冲动，直接跳过计算机二级报名考计算机三级嵌入式。没错，我觉得我冲动了，当时想着接触一下嵌入式，学点皮毛也好，考个证下来就更好了，结果，看书做题，发现，我高估自己了喔。</p>
+<p>​        八十块钱报名费极大可能打水漂，但看完书还是认认真真的把题库刷一遍吧，前面八十分基本全是概念啊，全是啊，我滴天，孩子最不擅长的就是背这些balabala的，哭了，孩子快哭了啊！！！太难啦！！！</p>
+<p>​        做过题记一下笔记吧，加深些印象也好，呜呜呜~</p>
+<h4 id="大致提纲"><a href="#大致提纲" class="headerlink" title="大致提纲"></a>大致提纲</h4><h5 id="一、嵌入式系统概论"><a href="#一、嵌入式系统概论" class="headerlink" title="一、嵌入式系统概论"></a>一、嵌入式系统概论</h5><h6 id="1-嵌入式系统及其应用"><a href="#1-嵌入式系统及其应用" class="headerlink" title="1.嵌入式系统及其应用"></a>1.嵌入式系统及其应用</h6><p>​        （1）嵌入式系统介绍及其特性：</p>
+<p>​                专用性；隐蔽性；资源受限；高可靠性；实时性；软件固化。</p>
+<p>​        （2）嵌入式系统的应用</p>
+<p>​        （3）嵌入式系统的逻辑组成：</p>
+<p>​                软硬件两部分：硬件主体是中央处理器和存储器，它们通过输入/输出（I/O）接口和输入/输出设备与外部世界联系，并借助总线相互连接，这些硬件连同嵌入式软件一同构成完整的嵌入式系统。</p>
+<p>​        （4）嵌入式处理芯片：</p>
+<p>​                嵌入式系统的CPU一般具有四个特点：支持实时处理；低功耗；结构可扩展；集成了测试电路。</p>
+<p>​        （5）目前嵌入式处理芯片类型：</p>
+<p>​                微处理器（MCU）；数字信号处理器（DSP）；微控制器（单片机）；片上系统（SoC）。</p>
+<p>​        （6）嵌入式系统的多种分类方法</p>
+<p>​                可以按用途分类；按实时性分类；按产品形态分类；按系统的复杂程度分类。</p>
+<p>​        （7）SoC芯片的介绍</p>
+<p>​        （8）IP核及其复用</p>
+<p>​                软核；固核；硬核。</p>
+<h6 id="2-嵌入式系统与数字媒体"><a href="#2-嵌入式系统与数字媒体" class="headerlink" title="2.嵌入式系统与数字媒体"></a>2.嵌入式系统与数字媒体</h6><p>​        （1）数字（电子）文本</p>
+<p>​        （2）数字图像</p>
+<p>​        （3）数字音频与数字视频</p>
+<h6 id="3-数字通信与计算机网络"><a href="#3-数字通信与计算机网络" class="headerlink" title="3.数字通信与计算机网络"></a>3.数字通信与计算机网络</h6><p>​        （1）数字通信：</p>
+<p>​                模拟通信与数字通信；有线与无线通信。</p>
+<p>​                调制与解调技术；多路复用技术；交换技术。</p>
+<p>​        （2）计算机网络</p>
+<p>​        （3）互联网</p>
+<h5 id="二、嵌入式处理器"><a href="#二、嵌入式处理器" class="headerlink" title="二、嵌入式处理器"></a>二、嵌入式处理器</h5><h6 id="1-嵌入式处理器概述："><a href="#1-嵌入式处理器概述：" class="headerlink" title="1.嵌入式处理器概述："></a>1.嵌入式处理器概述：</h6><p>​        （1）嵌入式处理器的结构类型</p>
+<p>​                嵌入式处理器的体系结构按<u>指令集</u>可分为两大类：复杂指令集结构（CISC）及精简指令集结构（RISC）。进一步细分，按<u>存储机制</u>分为冯.诺依曼结构和哈佛结构；按<u>字长</u>分为8位、16位、32位和64位结构；按<u>不同内核系列</u>又可分为51、AVR、PIC、MSP430、MIPS、PowerPC、MC68K、ColdFire、ARM等。</p>
+<p>​        （2）ARM处理器概述</p>
+<p>​                主要特点：单周期操作；只使用加载、存储（Load/Store）指令访问内存；指令长度固定为32位长；三地址指令格式；指令流水线技术；低功耗设计。</p>
+<h6 id="2-典型ARM处理器介绍"><a href="#2-典型ARM处理器介绍" class="headerlink" title="2.典型ARM处理器介绍"></a>2.典型ARM处理器介绍</h6><p>​        （1）ARM处理器的分类：</p>
+<p>​                经典ARM处理器（T表示支持Thumb指令集，D表示支持片上调试，M表示具有快速的64位乘法，I表示提供片内在线仿真，-S表示该处理器以IP软核的形式提供授权）、ARM Cortex嵌入式处理器（Cortex -M）、ARM Cortex实时嵌入式处理器（Cortex -R）、ARM Cortex应用处理器（Cortex -A）以及ARM Cortex专家处理器。</p>
+<h6 id="3-ARM处理器体系结构"><a href="#3-ARM处理器体系结构" class="headerlink" title="3.ARM处理器体系结构"></a>3.ARM处理器体系结构</h6><p>​        （1）ARM处理器工作状态：</p>
+<p>​                    ARM状态；Thumb状态及Thumb-2状态；调试状态。</p>
+<p>​        （2）ARM处理器的工作模式：</p>
+<p>​                用户模式（User）；快速中断模式（FIQ）；外部中断模式（IRQ）；管理模式（SVC）；中止模式（ABT）；未定义指令模式（UND）；系统模式（SYS）。</p>
+<p>​        （3）ARM异常种类及优先级</p>
+<p>​                复位RESET（1）；未定义的指令UND（6）；软件中断SWI（6）；指令预取中止PABT（5）；数据访问中止DABT（2）；外部中断请求IRQ（4）；快速中断请求FIQ（3）。</p>
+<p>​        （4）ARM处理器中的MMU（内存管理单元）；MPU（存储器保护单元）。</p>
+<h6 id="4-ARM处理器指令集"><a href="#4-ARM处理器指令集" class="headerlink" title="4.ARM处理器指令集"></a>4.ARM处理器指令集</h6><p>​    （太多了，不好记，这部分我还是回去看资料吧。。。ε=(´ο｀*)))唉）</p>
+<h6 id="5-ARM汇编语言程序设计"><a href="#5-ARM汇编语言程序设计" class="headerlink" title="5.ARM汇编语言程序设计"></a>5.ARM汇编语言程序设计</h6><h5 id="三、嵌入式系统硬件组成"><a href="#三、嵌入式系统硬件组成" class="headerlink" title="三、嵌入式系统硬件组成"></a>三、嵌入式系统硬件组成</h5><h6 id="1-嵌入式最小硬件系统"><a href="#1-嵌入式最小硬件系统" class="headerlink" title="1.嵌入式最小硬件系统"></a>1.嵌入式最小硬件系统</h6><p>​                电源电路；时钟电路；复位电路；JTAG测试接口。</p>
+<h6 id="2-嵌入式处理芯片"><a href="#2-嵌入式处理芯片" class="headerlink" title="2.嵌入式处理芯片"></a>2.嵌入式处理芯片</h6><p>​        （1）ARM的AMBA总线体系结构及标准</p>
+<p>​        （2）基于ARM内核的嵌入式芯片的硬件组成</p>
+<p>​                存储器及控制器；中断控制器；DMA控制器；电源管理与时钟控制器；GPIO端口；定时计数组件；模拟通道组件；互联通信组件。</p>
+<h6 id="3-嵌入式系统的存储器"><a href="#3-嵌入式系统的存储器" class="headerlink" title="3.嵌入式系统的存储器"></a>3.嵌入式系统的存储器</h6><p>​                随机存取存储器；只读存储器；铁电存储器；磁性存储器。</p>
+<h6 id="4-I-O接口及常用的I-O设备"><a href="#4-I-O接口及常用的I-O设备" class="headerlink" title="4.I/O接口及常用的I/O设备"></a>4.I/O接口及常用的I/O设备</h6><p>​                通用I/O接口GPIO；集成电路互连总线接口I²C；串行外设接口SPI；串行异步通信接口UART；通用串行总线USB；高清多媒体接口HDMI；常用简单输入设备；常用简单输出设备。</p>
+<h6 id="5-ARM内核典型嵌入式处理芯片"><a href="#5-ARM内核典型嵌入式处理芯片" class="headerlink" title="5.ARM内核典型嵌入式处理芯片"></a>5.ARM内核典型嵌入式处理芯片</h6><h6 id="6-嵌入式系统外部通信接口"><a href="#6-嵌入式系统外部通信接口" class="headerlink" title="6.嵌入式系统外部通信接口"></a>6.嵌入式系统外部通信接口</h6><p>​                基于UART的RS-232/RS-485接口；CAN总线接口；以太网通信接口；常用无线通信接口。</p>
+<h5 id="四、嵌入式系统软件"><a href="#四、嵌入式系统软件" class="headerlink" title="四、嵌入式系统软件"></a>四、嵌入式系统软件</h5><h6 id="1-嵌入式系统的软件组成"><a href="#1-嵌入式系统的软件组成" class="headerlink" title="1.嵌入式系统的软件组成"></a>1.嵌入式系统的软件组成</h6><p>​    （1）嵌入式软件的特点：</p>
+<p>​                软件与硬件一体化；软件代码时空效率要求高；软件可裁剪，尽可能去除冗余；软件应用环境复杂，安全性和可靠性要求高；软件开发难度大；软件面向用户、面向商品、面向应用，受限于功能和具体应用环境；软件产业高度分散；软件具有较长的生命周期。</p>
+<p>​    （2）嵌入式软件的软件结构:</p>
+<p>​                简单的轮询结构；带中断的轮询结构；监控式操作系统+应用软件的结构；通用嵌入式操作系统+应用软件的结构。</p>
+<p>​    （3）硬件抽象层与板级支持包</p>
+<p>​    （4）引导加载程序</p>
+<p>​                引导加载程序的概念和功能；嵌入式操作系统的加载方式；引导加载程序的执行过程；U-Boot简介。</p>
+<p>​    （5）嵌入式系统的设备驱动设备</p>
+<h6 id="2-嵌入式操作系统"><a href="#2-嵌入式操作系统" class="headerlink" title="2.嵌入式操作系统"></a>2.嵌入式操作系统</h6><p>​        （1）实时系统与实时操作系统</p>
+<p>​                实时系统：硬实时任务；软实时任务；准实时任务。</p>
+<p>​                实时操作系统：事件驱动；多级中断嵌套处理；细粒度的任务优先级控制；实时抢占式调度。</p>
+<p>​                实时操作系统的实时性指标：中断延迟时间；任务切换时间；任务抢占时间。</p>
+<p>​        （2）嵌入式操作系统概述</p>
+<p>​                嵌入式操作系统的特点和分类</p>
+<p>​                嵌入式操作系统的内核结构：单内核和微内核。</p>
+<p>​                常用嵌入式操作系统简介。</p>
+<h6 id="3-uC-OS嵌入式操作系统"><a href="#3-uC-OS嵌入式操作系统" class="headerlink" title="3.uC/OS嵌入式操作系统"></a>3.uC/OS嵌入式操作系统</h6><p>​        （1）uC/OS操作系统概述</p>
+<p>​                uC/OS-Ⅱ内核大致可以划分为任务调度、任务管理、时间管理、任务间同步与通信以及内存管理、系统管理等模块。系统管理又包括系统初始化、系统启动、中断管理、时钟中断及事件处理等部分。</p>
+<p>​        （2）uC/OS-Ⅱ的任务及其管理</p>
+<p>​                任务的程序代码；任务堆栈；任务控制块。</p>
+<p>​        （3）uC/OS-Ⅱ的系统服务</p>
+<p>​                uC/OS-Ⅱ的任务管理服务；uC/OS-Ⅱ的时钟节拍与时间管理服务；uC/OS-Ⅱ的任务间通信与同步服务。</p>
+<p>​        （4）uC/OS-Ⅲ操作系统的改进与提高</p>
+<p>​                时间片轮转调度；内核对象的数量无限制；任务消息和任务信号；优先级的时钟节拍处理；可针对的时钟节拍处理；可针对处理器体系结构进行优化；时间戳；增强的内置性能测试功能。</p>
+<h5 id="五、嵌入式系统的开发"><a href="#五、嵌入式系统的开发" class="headerlink" title="五、嵌入式系统的开发"></a>五、嵌入式系统的开发</h5><h6 id="1-开发嵌入式系统的基础知识"><a href="#1-开发嵌入式系统的基础知识" class="headerlink" title="1.开发嵌入式系统的基础知识"></a>1.开发嵌入式系统的基础知识</h6><p>​        （1）嵌入式系统的开发过程</p>
+<p>​                需求分析与规格说明；系统设计；构件设计；系统集成与测试。</p>
+<p>​        （2）嵌入式系统的开发特点</p>
+<p>​                使用宿主机-目标机的开发架构；与底层硬件控制程序的关系密切；软硬件资源受限制；需要固化程序。</p>
+<p>​        （3）嵌入式系统的调试</p>
+<p>​                在线仿真器；片上调试技术-JTAG；驻留监控软件调试；指令集模拟器。</p>
+<h6 id="2-系统开发工具软件"><a href="#2-系统开发工具软件" class="headerlink" title="2.系统开发工具软件"></a>2.系统开发工具软件</h6><p>​        （1）ADS1.2工具软件</p>
+<p>​        （2）RVDS</p>
+<p>​        （3）GNU</p>
+<p>​                是一种常用于开发基于Linux操作系统的嵌入式软件的工具套件简称。</p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>​        本篇文章为看完资料书做的大致提纲，梳理知识点与思路，为之后刷题做个铺垫，然鹅好像仍然没有记住多少。。。这知识它不进脑子呀。。。</p>
+<p>​        </p>
+<p>​        </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/" rel="prev" title="树莓派安装配置看门狗">
+      <i class="fa fa-chevron-left"></i> 树莓派安装配置看门狗
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/11/zi-dong-hua-yun-wei/" rel="next" title="CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统">
+      CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式学习笔记"><span class="nav-number">1.</span> <span class="nav-text">嵌入式学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大致提纲"><span class="nav-number">1.2.</span> <span class="nav-text">大致提纲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、嵌入式系统概论"><span class="nav-number">1.2.1.</span> <span class="nav-text">一、嵌入式系统概论</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-嵌入式系统及其应用"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.嵌入式系统及其应用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-嵌入式系统与数字媒体"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.嵌入式系统与数字媒体</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-数字通信与计算机网络"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">3.数字通信与计算机网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、嵌入式处理器"><span class="nav-number">1.2.2.</span> <span class="nav-text">二、嵌入式处理器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-嵌入式处理器概述："><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.嵌入式处理器概述：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-典型ARM处理器介绍"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.典型ARM处理器介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-ARM处理器体系结构"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">3.ARM处理器体系结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-ARM处理器指令集"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">4.ARM处理器指令集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-ARM汇编语言程序设计"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">5.ARM汇编语言程序设计</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、嵌入式系统硬件组成"><span class="nav-number">1.2.3.</span> <span class="nav-text">三、嵌入式系统硬件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-嵌入式最小硬件系统"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">1.嵌入式最小硬件系统</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-嵌入式处理芯片"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.嵌入式处理芯片</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-嵌入式系统的存储器"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">3.嵌入式系统的存储器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-I-O接口及常用的I-O设备"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">4.I/O接口及常用的I/O设备</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-ARM内核典型嵌入式处理芯片"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">5.ARM内核典型嵌入式处理芯片</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-嵌入式系统外部通信接口"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">6.嵌入式系统外部通信接口</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、嵌入式系统软件"><span class="nav-number">1.2.4.</span> <span class="nav-text">四、嵌入式系统软件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-嵌入式系统的软件组成"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">1.嵌入式系统的软件组成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-嵌入式操作系统"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">2.嵌入式操作系统</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-uC-OS嵌入式操作系统"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">3.uC/OS嵌入式操作系统</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#五、嵌入式系统的开发"><span class="nav-number">1.2.5.</span> <span class="nav-text">五、嵌入式系统的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-开发嵌入式系统的基础知识"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">1.开发嵌入式系统的基础知识</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-系统开发工具软件"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">2.系统开发工具软件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">1.3.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zzulyt</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzulyt</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
