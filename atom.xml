@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-14T13:01:28.373Z</updated>
+  <updated>2020-02-17T15:09:29.773Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/"/>
     <id>http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/</id>
     <published>2019-08-27T08:08:36.000Z</published>
-    <updated>2020-01-14T13:01:28.373Z</updated>
+    <updated>2020-02-17T15:09:29.773Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Nginx应用监控&quot;&gt;&lt;a href=&quot;#Nginx应用监控&quot; class=&quot;headerlink&quot; title=&quot;Nginx应用监控&quot;&gt;&lt;/a&gt;Nginx应用监控&lt;/h3&gt;
+      &lt;p&gt;Nginx是一个高性能的HTTP和反向代理服务器，同时也提供了IMAP/POP3/SMTP服务，是一款轻量级的Web服务器/反向代理服务器及电子邮件（IMAP/POP3)代理服务器，在BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上其并发能力确实在同类型的网页服务器中表现较好。&lt;/p&gt;
     
     </summary>
     
@@ -41,11 +41,11 @@
     <link href="http://yoursite.com/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/"/>
     <id>http://yoursite.com/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/</id>
     <published>2019-08-26T02:52:39.000Z</published>
-    <updated>2020-01-14T13:03:42.245Z</updated>
+    <updated>2020-02-17T15:08:12.576Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;虚拟机使用VMware-tools与主机共享文件&quot;&gt;&lt;a href=&quot;#虚拟机使用VMware-tools与主机共享文件&quot; class=&quot;headerlink&quot; title=&quot;虚拟机使用VMware tools与主机共享文件&quot;&gt;&lt;/a&gt;虚拟机使用VMware tools与主机共享文件&lt;/h3&gt;
+      &lt;h4 id=&quot;一、VMware-Tools介绍&quot;&gt;&lt;a href=&quot;#一、VMware-Tools介绍&quot; class=&quot;headerlink&quot; title=&quot;一、VMware Tools介绍&quot;&gt;&lt;/a&gt;一、VMware Tools介绍&lt;/h4&gt;&lt;p&gt;VMware Tools是VMware虚拟机中自带的一种增强工具，相当于VirtualBox中的增强功能（Sun VirtualBox Guest Additions），是VMware提供的增强虚拟显卡和硬盘性能、以及同步虚拟机与主机时钟的驱动程序。&lt;/p&gt;
     
     </summary>
     
@@ -61,11 +61,11 @@
     <link href="http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/"/>
     <id>http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/</id>
     <published>2019-08-22T08:07:00.000Z</published>
-    <updated>2020-01-14T13:02:23.927Z</updated>
+    <updated>2020-02-17T14:50:14.389Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;多维监控体系&quot;&gt;&lt;a href=&quot;#多维监控体系&quot; class=&quot;headerlink&quot; title=&quot;多维监控体系&quot;&gt;&lt;/a&gt;多维监控体系&lt;/h3&gt;
+      &lt;h4 id=&quot;一、监控概述&quot;&gt;&lt;a href=&quot;#一、监控概述&quot; class=&quot;headerlink&quot; title=&quot;一、监控概述&quot;&gt;&lt;/a&gt;一、监控概述&lt;/h4&gt;&lt;h6 id=&quot;一、监控对象：&quot;&gt;&lt;a href=&quot;#一、监控对象：&quot; class=&quot;headerlink&quot; title=&quot;一、监控对象：&quot;&gt;&lt;/a&gt;一、监控对象：&lt;/h6&gt;&lt;p&gt;1.监控对象的理解：CPU是怎么工作的，以及工作原理；&lt;br&gt;2.监控对象的指标：CPU的使用率、CPU的负载、CPU个数;&lt;br&gt;3.确定性能基准线：怎么样才算故障？CPU负载多少算高？&lt;/p&gt;
     
     </summary>
     
@@ -77,15 +77,15 @@
   </entry>
   
   <entry>
-    <title>VMware在NAT模式下配置静态IP</title>
+    <title>VMware中centos在NAT模式下配置静态IP</title>
     <link href="http://yoursite.com/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/"/>
     <id>http://yoursite.com/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/</id>
     <published>2019-08-16T05:22:08.000Z</published>
-    <updated>2020-01-14T13:01:38.334Z</updated>
+    <updated>2020-02-17T14:56:15.130Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;VMware中CentOS7系统在NAT模式下配置静态IP&quot;&gt;&lt;a href=&quot;#VMware中CentOS7系统在NAT模式下配置静态IP&quot; class=&quot;headerlink&quot; title=&quot;VMware中CentOS7系统在NAT模式下配置静态IP&quot;&gt;&lt;/a&gt;VMware中CentOS7系统在NAT模式下配置静态IP&lt;/h3&gt;
+      &lt;h4 id=&quot;一、VMware的配置&quot;&gt;&lt;a href=&quot;#一、VMware的配置&quot; class=&quot;headerlink&quot; title=&quot;一、VMware的配置&quot;&gt;&lt;/a&gt;一、VMware的配置&lt;/h4&gt;&lt;p&gt;1.虚拟机设置中网络适配器设置为NAT模式&lt;/p&gt;
     
     </summary>
     
@@ -101,11 +101,11 @@
     <link href="http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/"/>
     <id>http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/</id>
     <published>2019-08-12T15:03:17.000Z</published>
-    <updated>2020-01-14T13:01:09.398Z</updated>
+    <updated>2020-02-17T14:55:03.789Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;cobbler部署与自定义&quot;&gt;&lt;a href=&quot;#cobbler部署与自定义&quot; class=&quot;headerlink&quot; title=&quot;cobbler部署与自定义&quot;&gt;&lt;/a&gt;cobbler部署与自定义&lt;/h3&gt;
+      &lt;h4 id=&quot;一、安装部署&quot;&gt;&lt;a href=&quot;#一、安装部署&quot; class=&quot;headerlink&quot; title=&quot;一、安装部署&quot;&gt;&lt;/a&gt;一、安装部署&lt;/h4&gt;&lt;p&gt;1.可以去阿里巴巴开源镜像站寻找所需镜像源（epel–&amp;gt;epel-release-latest-7.noarch.rpm），复制其链接&lt;/p&gt;
     
     </summary>
     
@@ -121,11 +121,11 @@
     <link href="http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/"/>
     <id>http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/</id>
     <published>2019-08-11T10:05:28.000Z</published>
-    <updated>2020-01-14T13:02:40.310Z</updated>
+    <updated>2020-02-17T14:54:07.124Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统&quot;&gt;&lt;a href=&quot;#CentOS7下PXE-Kickstart-DHCP-TFTP-HTTP无人值守安装系统&quot; class=&quot;headerlink&quot; title=&quot;CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统&quot;&gt;&lt;/a&gt;CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统&lt;/h3&gt;
+      &lt;h4 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h4&gt;&lt;h5 id=&quot;（一）什么是PXE&quot;&gt;&lt;a href=&quot;#（一）什么是PXE&quot; class=&quot;headerlink&quot; title=&quot;（一）什么是PXE&quot;&gt;&lt;/a&gt;（一）什么是PXE&lt;/h5&gt;&lt;p&gt;​        PXE(Pre boot Execution Environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络启动操作系统，在启动过程中，终端要求服务器分配IP地址，再用TFTP ( trivial file transfer protocol )或MTFTP(multicast trivial file transfer protocol)协议下载一个启动软件包到本机，内存中执行，由这个启动软件包完成终端基本软件设置，从而引导预先安装在服务器中的终端操作系统。&lt;/p&gt;
     
     </summary>
     
@@ -141,11 +141,11 @@
     <link href="http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/"/>
     <id>http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/</id>
     <published>2019-08-10T07:20:05.000Z</published>
-    <updated>2020-01-14T13:02:11.695Z</updated>
+    <updated>2020-02-17T14:53:05.847Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;嵌入式学习笔记&quot;&gt;&lt;a href=&quot;#嵌入式学习笔记&quot; class=&quot;headerlink&quot; title=&quot;嵌入式学习笔记&quot;&gt;&lt;/a&gt;嵌入式学习笔记&lt;/h3&gt;
+      &lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;​        笔者在大一下学期一时冲动，直接跳过计算机二级报名考计算机三级嵌入式。没错，我觉得我冲动了，当时想着接触一下嵌入式，学点皮毛也好，考个证下来就更好了，结果，看书做题，发现，我高估自己了喔。&lt;/p&gt;
     
     </summary>
     
@@ -161,11 +161,11 @@
     <link href="http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/"/>
     <id>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</id>
     <published>2019-08-04T15:22:06.000Z</published>
-    <updated>2020-01-14T12:56:18.035Z</updated>
+    <updated>2020-02-17T14:53:36.613Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot; title=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;/a&gt;看门狗——让树莓派永不死机&lt;/h2&gt;&lt;p&gt;当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。&lt;/p&gt;
+      &lt;h3 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot; title=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;/a&gt;看门狗——让树莓派永不死机&lt;/h3&gt;&lt;p&gt;当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。&lt;/p&gt;
     
     </summary>
     
@@ -177,15 +177,15 @@
   </entry>
   
   <entry>
-    <title>xshell连接不上VirtualBox的解决方法</title>
+    <title>xshell在IP可查且可ping通外网的情况连接不上VirtualBox的解决方法</title>
     <link href="http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/"/>
     <id>http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/</id>
     <published>2019-07-14T12:46:53.000Z</published>
-    <updated>2019-07-30T08:47:56.149Z</updated>
+    <updated>2020-02-17T14:56:48.086Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法&quot;&gt;&lt;a href=&quot;#xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法&quot; class=&quot;headerlink&quot; title=&quot;xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法&quot;&gt;&lt;/a&gt;xshell在IP可查且可ping通外网的情况下连接不上VirtualBox的解决方法&lt;/h3&gt;
+      &lt;p&gt;​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。&lt;/p&gt;
     
     </summary>
     
@@ -201,11 +201,11 @@
     <link href="http://yoursite.com/2019/07/10/shu-ma-yu/"/>
     <id>http://yoursite.com/2019/07/10/shu-ma-yu/</id>
     <published>2019-07-10T02:40:03.000Z</published>
-    <updated>2019-08-04T15:53:16.396Z</updated>
+    <updated>2020-02-17T14:51:43.976Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h2&gt;&lt;p&gt;闲言少叙，命令如下&lt;/p&gt;
+      &lt;h3 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h3&gt;&lt;p&gt;闲言少叙，命令如下&lt;/p&gt;
     
     </summary>
     
@@ -221,11 +221,11 @@
     <link href="http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/"/>
     <id>http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/</id>
     <published>2019-07-09T06:33:37.000Z</published>
-    <updated>2020-01-14T12:56:07.630Z</updated>
+    <updated>2020-02-17T14:54:23.099Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;ADC数模转换&quot;&gt;&lt;a href=&quot;#ADC数模转换&quot; class=&quot;headerlink&quot; title=&quot;ADC数模转换&quot;&gt;&lt;/a&gt;ADC数模转换&lt;/h2&gt;&lt;h3 id=&quot;一、什么是ADC&quot;&gt;&lt;a href=&quot;#一、什么是ADC&quot; class=&quot;headerlink&quot; title=&quot;一、什么是ADC&quot;&gt;&lt;/a&gt;一、什么是ADC&lt;/h3&gt;&lt;p&gt;Analog-to-Digital Converter的缩写。&lt;/p&gt;
+      &lt;h3 id=&quot;一、什么是ADC&quot;&gt;&lt;a href=&quot;#一、什么是ADC&quot; class=&quot;headerlink&quot; title=&quot;一、什么是ADC&quot;&gt;&lt;/a&gt;一、什么是ADC&lt;/h3&gt;&lt;p&gt;Analog-to-Digital Converter的缩写。&lt;/p&gt;
 &lt;p&gt;指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。&lt;/p&gt;
 &lt;p&gt;典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。&lt;/p&gt;
     
@@ -263,11 +263,12 @@
     <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
     <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
     <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2019-07-30T10:54:17.137Z</updated>
+    <updated>2020-02-17T14:54:38.221Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;a href=&quot;#C语言生命周期和作用域的定义&quot; class=&quot;headerlink&quot; title=&quot;C语言生命周期和作用域的定义&quot;&gt;&lt;/a&gt;C语言生命周期和作用域的定义&lt;/h2&gt;
+      &lt;p&gt;生命周期：是一个变量存在的周期。&lt;/p&gt;
+&lt;p&gt;作用域：是一个变量可以被引用的范围。最常见的如：{}、static修饰符等等。&lt;/p&gt;
     
     </summary>
     
@@ -283,11 +284,11 @@
     <link href="http://yoursite.com/2019/05/03/test/"/>
     <id>http://yoursite.com/2019/05/03/test/</id>
     <published>2019-05-03T12:18:45.000Z</published>
-    <updated>2019-07-30T10:41:37.418Z</updated>
+    <updated>2020-02-17T14:55:26.182Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Hello-world！&quot;&gt;&lt;a href=&quot;#Hello-world！&quot; class=&quot;headerlink&quot; title=&quot;Hello world！&quot;&gt;&lt;/a&gt;Hello world！&lt;/h3&gt;
+      &lt;h3 id=&quot;Hello-world！&quot;&gt;&lt;a href=&quot;#Hello-world！&quot; class=&quot;headerlink&quot; title=&quot;Hello world！&quot;&gt;&lt;/a&gt;Hello world！&lt;/h3&gt;&lt;p&gt;第一篇博客佛系的向世界问好&lt;/p&gt;
     
     </summary>
     

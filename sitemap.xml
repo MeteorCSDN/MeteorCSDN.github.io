@@ -2,44 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/</loc>
+    
+    <lastmod>2020-02-17T15:09:29.773Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/26/xu-ni-ji-shi-yong-vmware-tools-yu-zhu-ji-gong-xiang-wen-jian/</loc>
     
-    <lastmod>2020-01-14T13:03:42.245Z</lastmod>
+    <lastmod>2020-02-17T15:08:12.576Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/</loc>
+    <loc>http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/</loc>
     
-    <lastmod>2020-01-14T13:02:40.310Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/</loc>
-    
-    <lastmod>2020-01-14T13:02:23.927Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/</loc>
-    
-    <lastmod>2020-01-14T13:02:11.695Z</lastmod>
+    <lastmod>2020-02-17T14:56:48.086Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/08/16/vmware-zai-nat-mo-shi-xia-pei-zhi-jing-tai-ip/</loc>
     
-    <lastmod>2020-01-14T13:01:38.334Z</lastmod>
+    <lastmod>2020-02-17T14:56:15.130Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/27/nginx-ying-yong-jian-kong/</loc>
+    <loc>http://yoursite.com/2019/05/03/test/</loc>
     
-    <lastmod>2020-01-14T13:01:28.373Z</lastmod>
+    <lastmod>2020-02-17T14:55:26.182Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/</loc>
+    
+    <lastmod>2020-02-17T14:55:03.789Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</loc>
+    
+    <lastmod>2020-02-17T14:54:38.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/</loc>
+    
+    <lastmod>2020-02-17T14:54:23.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/11/zi-dong-hua-yun-wei/</loc>
+    
+    <lastmod>2020-02-17T14:54:07.124Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</loc>
+    
+    <lastmod>2020-02-17T14:53:36.613Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/10/ji-suan-ji-san-ji-qian-ru-shi-xue-xi-bi-ji/</loc>
+    
+    <lastmod>2020-02-17T14:53:05.847Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/10/shu-ma-yu/</loc>
+    
+    <lastmod>2020-02-17T14:51:43.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/22/duo-wei-jian-kong-ti-xi/</loc>
+    
+    <lastmod>2020-02-17T14:50:14.389Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index-1.html</loc>
+    
+    <lastmod>2020-02-17T14:39:44.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2020-02-17T14:35:46.437Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index-1.html</loc>
+    
+    <lastmod>2020-02-17T14:30:29.229Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index-1.html</loc>
+    
+    <lastmod>2020-02-17T14:28:57.823Z</lastmod>
     
   </url>
   
@@ -51,65 +128,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/</loc>
-    
-    <lastmod>2020-01-14T13:01:09.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</loc>
-    
-    <lastmod>2020-01-14T12:56:18.035Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/</loc>
-    
-    <lastmod>2020-01-14T12:56:07.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/10/shu-ma-yu/</loc>
-    
-    <lastmod>2019-08-04T15:53:16.396Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</loc>
-    
-    <lastmod>2019-07-30T10:54:17.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/05/03/test/</loc>
-    
-    <lastmod>2019-07-30T10:41:37.418Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/</loc>
-    
-    <lastmod>2019-07-30T08:47:56.149Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/friends/index.html</loc>
     
     <lastmod>2019-07-30T07:04:28.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2019-07-30T07:03:33.708Z</lastmod>
     
   </url>
   
