@@ -259,26 +259,6 @@
   </entry>
   
   <entry>
-    <title>CAN基础知识介绍</title>
-    <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
-    <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2020-01-14T13:01:19.934Z</updated>
-    
-    <summary type="html">
-    
-      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
-    
-    </summary>
-    
-      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>C语言的生命周期和作用域</title>
     <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
     <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
@@ -293,6 +273,26 @@
     </summary>
     
       <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CAN基础知识介绍</title>
+    <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
+    <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2020-01-14T13:01:19.934Z</updated>
+    
+    <summary type="html">
+    
+      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
+    
+    </summary>
+    
+      <category term="32单片机" scheme="http://yoursite.com/categories/32%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
