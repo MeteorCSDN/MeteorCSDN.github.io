@@ -40,7 +40,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
@@ -180,9 +180,32 @@
     <a href="/movies" rel="section"><i class="fa fa-fw fa-sitemap"></i>电影</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -251,6 +274,27 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/22/duo-wei-jian-kong-ti-xi/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/22/duo-wei-jian-kong-ti-xi/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -292,7 +336,7 @@ rocommunity zzulyt（名称，自己起的团体名） 172.16.137.128（指要�
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
 udp        0      0 0.0.0.0:69              0.0.0.0:*                           917/xinetd          
-udp        0      0 0.0.0.0:161             0.0.0.0:*                           2711/snmpd       
+udp        0      0 0.0.0.0:161             0.0.0.0:*                           2711/snmpd
 </code></pre><h4 id="三、SNMP系统的管理信息库（MIB）与OID"><a href="#三、SNMP系统的管理信息库（MIB）与OID" class="headerlink" title="三、SNMP系统的管理信息库（MIB）与OID"></a>三、SNMP系统的管理信息库（MIB）与OID</h4><p> 1.任何一个被管理的资源都表示成一个对象，称为被管理的对象。MIB是被管理对象的集合。它定义了被管理对象的一系列属性：对象的名称、对象的访问权限和对象的数据类型等。每个SNMP设备（Agent）都有自己的MIB。MIB也可以看作是NMS（网管系统）和Agent之间的沟通桥梁。它们之间的关系如图所示：</p>
 <p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片一.png" alt></p>
 <p> 2.MIB文件中的变量使用的名字取自ISO和ITU管理的对象标识符（object identifier）名字空间。它是一种分级树的结构。</p>
@@ -328,8 +372,8 @@ KiB Swap:  2097148 total,  2095184 free,     1964 used.   659484 avail Mem
      7 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0                                
      8 root      20   0       0      0      0 S  0.0  0.0   0:00.00 rcu_bh                                     
      9 root      20   0       0      0      0 S  0.0  0.0   0:04.28 rcu_sched                                  
-    10 root      rt   0       0      0      0 S  0.0  0.0   0:00.82 watchdog/0      
-</code></pre><p>top命令中       P–&gt;按CPU使用率排序<br>                         M–&gt;按内存使用率排序</p>
+    10 root      rt   0       0      0      0 S  0.0  0.0   0:00.82 watchdog/0
+</code></pre><p>top命令中       P—&gt;按CPU使用率排序<br>                         M—&gt;按内存使用率排序</p>
 <p>（2）安装sysstat，使用vmstat或mpstat工具</p>
 <pre><code>[root@localhost ~]# yum install -y sysstat
 #每一秒显示一次监控信息，显示10次
@@ -383,7 +427,7 @@ Actual DISK READ:    0.00 B/s | Actual DISK WRITE:       0.00 B/s
 <pre><code>[root@localhost 虚拟机共享]# ./nmon16e_x86_rhel71 -c 10 -s 10 -f
 #检查发现多了一个nmon文件，190826表示年月日，1542表示时分
 [root@localhost 虚拟机共享]# ls
-localhost_190826_1542.nmon  nmon16e_x86_rhel71  
+localhost_190826_1542.nmon  nmon16e_x86_rhel71
 </code></pre><p>在主机打开nomn_analyzer文件夹中的nmon analyser v61文件，点击Analyze nmon data</p>
 <p><img src="/2019/08/22/duo-wei-jian-kong-ti-xi/图片八.png" alt></p>
 <p>选择共享文件夹中的nmon文件，即可生成图表</p>
@@ -427,6 +471,7 @@ localhost_190826_1542.nmon  nmon16e_x86_rhel71
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -558,6 +603,26 @@ localhost_190826_1542.nmon  nmon16e_x86_rhel71
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -585,6 +650,7 @@ localhost_190826_1542.nmon  nmon16e_x86_rhel71
 
 
 
+  <script src="/js/local-search.js"></script>
 
 
 
@@ -593,12 +659,76 @@ localhost_190826_1542.nmon  nmon16e_x86_rhel71
 
 
 
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
 
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
 
   
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: '3oAoPTPAyl556QHqkR7rbHPr-gzGzoHsz',
+      appKey: '7hOJIg9fiBiCCKQQjfUzgWgB',
+      placeholder: "说点什么吧(づ｡◕ᴗᴗ◕｡)づ",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>

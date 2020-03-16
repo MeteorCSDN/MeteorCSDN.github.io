@@ -40,24 +40,24 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
-  <meta name="description" content="一、常规位式控制算法st=&amp;gt;start: 用户设置Sv e=&amp;gt;end: End:&amp;gt;http://www.google.com op1=&amp;gt;operation: 位式控制算法输出out op2=&amp;gt;operation: 执行部件|current op3=&amp;gt;operation: 控制对象（具有一定惯性） op4=&amp;gt;operation: 传感器输出当前值Pv  st">
+  <meta name="description" content="一、常规位式控制算法 特点：1.输出信号单一，一般只有两种状态：高电平和低电平； 2.常规位式算法输出信号OUT的依据：Pv &amp;lt; Sv ——&amp;gt; High、Pv &amp;gt;= Sv ——&amp;gt; Low； 3.只考虑控制对象当前的状态值。">
 <meta name="keywords" content="算法学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PID算法学习">
 <meta property="og:url" content="http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/index.html">
 <meta property="og:site_name" content="Y*Y">
-<meta property="og:description" content="一、常规位式控制算法st=&amp;gt;start: 用户设置Sv e=&amp;gt;end: End:&amp;gt;http://www.google.com op1=&amp;gt;operation: 位式控制算法输出out op2=&amp;gt;operation: 执行部件|current op3=&amp;gt;operation: 控制对象（具有一定惯性） op4=&amp;gt;operation: 传感器输出当前值Pv  st">
+<meta property="og:description" content="一、常规位式控制算法 特点：1.输出信号单一，一般只有两种状态：高电平和低电平； 2.常规位式算法输出信号OUT的依据：Pv &amp;lt; Sv ——&amp;gt; High、Pv &amp;gt;= Sv ——&amp;gt; Low； 3.只考虑控制对象当前的状态值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T10:06:24.302Z">
+<meta property="og:updated_time" content="2020-03-16T10:21:41.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PID算法学习">
-<meta name="twitter:description" content="一、常规位式控制算法st=&amp;gt;start: 用户设置Sv e=&amp;gt;end: End:&amp;gt;http://www.google.com op1=&amp;gt;operation: 位式控制算法输出out op2=&amp;gt;operation: 执行部件|current op3=&amp;gt;operation: 控制对象（具有一定惯性） op4=&amp;gt;operation: 传感器输出当前值Pv  st">
+<meta name="twitter:description" content="一、常规位式控制算法 特点：1.输出信号单一，一般只有两种状态：高电平和低电平； 2.常规位式算法输出信号OUT的依据：Pv &amp;lt; Sv ——&amp;gt; High、Pv &amp;gt;= Sv ——&amp;gt; Low； 3.只考虑控制对象当前的状态值。">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/">
 
@@ -170,9 +170,32 @@
     <a href="/movies" rel="section"><i class="fa fa-fw fa-sitemap"></i>电影</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -226,7 +249,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-16 18:06:24" itemprop="dateModified" datetime="2020-03-16T18:06:24+08:00">2020-03-16</time>
+                <time title="修改时间：2020-03-16 18:21:41" itemprop="dateModified" datetime="2020-03-16T18:21:41+08:00">2020-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,6 +264,27 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/05/pid-suan-fa-xue-xi/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/05/pid-suan-fa-xue-xi/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -251,21 +295,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一、常规位式控制算法"><a href="#一、常规位式控制算法" class="headerlink" title="一、常规位式控制算法"></a>一、常规位式控制算法</h4><pre class=" language-flow"><code class="language-flow">st=>start: 用户设置Sv
-e=>end: End:>http://www.google.com
-op1=>operation: 位式控制算法输出out
-op2=>operation: 执行部件|current
-op3=>operation: 控制对象（具有一定惯性）
-op4=>operation: 传感器输出当前值Pv
-
-st->op1(right)->op2(right)->op3->op4(right)->op1
-
-</code></pre>
+        <h4 id="一、常规位式控制算法"><a href="#一、常规位式控制算法" class="headerlink" title="一、常规位式控制算法"></a>一、常规位式控制算法</h4><p><div id="flowchart-0" class="flow-chart"></div></p>
 <h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>1.输出信号单一，一般只有两种状态：高电平和低电平；</p>
 <p>2.常规位式算法输出信号OUT的依据：Pv &lt; Sv ——&gt; High、Pv &gt;= Sv ——&gt; Low；</p>
 <p>3.只考虑控制对象当前的状态值。</p>
 <a id="more"></a>
-<h4 id="二、PID控制算法"><a href="#二、PID控制算法" class="headerlink" title="二、PID控制算法"></a>二、PID控制算法</h4><pre class=" language-mermaid"><code class="language-mermaid">graph LR;
+<h4 id="二、PID控制算法"><a href="#二、PID控制算法" class="headerlink" title="二、PID控制算法"></a>二、PID控制算法</h4><pre class="mermaid">graph LR;
 　　用户设定-->|Sv|偏差E=Sv-Pv;
 　　偏差E=Sv-Pv-->历史偏差;
 　　偏差E=Sv-Pv-->当前偏差;
@@ -278,39 +313,61 @@ st->op1(right)->op2(right)->op3->op4(right)->op1
 　　可控硅-->负载;
 　　220V-->负载;
 　　负载-->传感器;
-　　传感器-->|Pv当前值|偏差E=Sv-Pv;
-　　
-</code></pre>
-<p>从开机以来，传感器的所有采样点的数据序列<br>$$<br>x_1,x_2,x_3······x_{k-2},x_{k-1},x_k<br>$$<br>历史偏差序列<br>$$<br>E_1,E_2,E_3……E_{k-2},E_{k-1},E_k<br>$$</p>
-<p>$$<br>E_k = S_v-x_k\left{<br>\begin{array}{rcl}</p>
-<blockquote>
-<p>0       &amp;      &amp; {当前未达标}\<br>=0    &amp;      &amp; {正好达标}\</p>
-</blockquote>
-<p>&lt;0    &amp;      &amp; {当前已超标}<br>\end{array} \right.<br>$$</p>
-<h5 id="一-PID比例控制"><a href="#一-PID比例控制" class="headerlink" title="(一)PID比例控制"></a>(一)PID比例控制</h5><p>$$<br>OUT=K_p*E_k<br>$$</p>
-<p>通过调整输出PWM的脉宽侧面调整负载的功率，根据当前偏差大小输出比例信号。</p>
-<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><p>一旦传感器回来的信号与设定值相等，输出信号就等于零，负载处于失控状态，也就是说整个系统工作时总是存在误差。<br>$$<br>P_{OUT}=K_p*E_k+OUT_0<br>$$</p>
-<h5 id="二-PID积分控制"><a href="#二-PID积分控制" class="headerlink" title="(二)PID积分控制"></a>(二)PID积分控制</h5><p>$$<br>S_k=E_1+E_2+E_3……E_{k-2}+E_{k-1}+E_k\left{<br>\begin{array}{rcl}</p>
-<blockquote>
-<p>0       &amp;      &amp; {过去的大多数时间未达标}\<br>=0    &amp;      &amp; {}\</p>
-</blockquote>
-<p>&lt;0    &amp;      &amp; {过去的大多数时间已超标}<br>\end{array} \right.<br>$$</p>
-<p>$$<br>I_{OUT}=K_p*S_k+OUT_0<br>$$</p>
-<h5 id="三-PID微分控制"><a href="#三-PID微分控制" class="headerlink" title="(三)PID微分控制"></a>(三)PID微分控制</h5><p>将最近两次的偏差相减：<br>$$<br>D_k=E_k-E_{k-1}\left{<br>\begin{array}{rcl}</p>
-<blockquote>
-<p>0       &amp;      &amp; {偏差有增大的趋势}\<br>=0    &amp;      &amp; {偏差不变}\</p>
-</blockquote>
-<p>&lt;0    &amp;      &amp; {偏差有减小的趋势}<br>\end{array} \right.<br>$$</p>
-<p>$$<br>D_{OUT}=k_p*D_k+OUT_0<br>$$</p>
-<h4 id="三、PID算法的数学模型"><a href="#三、PID算法的数学模型" class="headerlink" title="三、PID算法的数学模型"></a>三、PID算法的数学模型</h4><p>$$<br>\begin{align}<br>PID_{OUT}&amp;=P_{OUT}+I_{OUT}+D_{OUT} \<br>&amp;=(K_p<em>E_k+OUT_0)+(K_p</em>S_k+OUT_0)+(K_p<em>D_k+OUT_0) \<br>&amp;=K_p</em>(E_k+S_k+D_k)<br>\end{align}<br>$$</p>
-<h4 id="四、基于单片机的PID算法"><a href="#四、基于单片机的PID算法" class="headerlink" title="四、基于单片机的PID算法"></a>四、基于单片机的PID算法</h4><h5 id="1-Sk的处理"><a href="#1-Sk的处理" class="headerlink" title="1.Sk的处理"></a>1.S<sub>k</sub>的处理</h5><p>$$<br>S_k=\frac{1}{T_i}\sum^{n}_{k=0}E_k*T<br>$$</p>
-<p>T：采样周期（计算周期）</p>
+　　传感器-->|Pv当前值|偏差E=Sv-Pv;</pre>
+
+<p>从开机以来，传感器的所有采样点的数据序列</p>
+<script type="math/tex; mode=display">
+x_1,x_2,x_3······x_{k-2},x_{k-1},x_k</script><p>历史偏差序列</p>
+<script type="math/tex; mode=display">
+E_1,E_2,E_3......E_{k-2},E_{k-1},E_k</script><script type="math/tex; mode=display">
+E_k = S_v-x_k\left\{
+\begin{array}{rcl}
+>0       &      & {当前未达标}\\
+=0    &      & {正好达标}\\
+<0    &      & {当前已超标}
+\end{array} \right.</script><h5 id="一-PID比例控制"><a href="#一-PID比例控制" class="headerlink" title="(一)PID比例控制"></a>(一)PID比例控制</h5><script type="math/tex; mode=display">
+OUT=K_p*E_k</script><p>通过调整输出PWM的脉宽侧面调整负载的功率，根据当前偏差大小输出比例信号。</p>
+<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><p>一旦传感器回来的信号与设定值相等，输出信号就等于零，负载处于失控状态，也就是说整个系统工作时总是存在误差。</p>
+<script type="math/tex; mode=display">
+P_{OUT}=K_p*E_k+OUT_0</script><h5 id="二-PID积分控制"><a href="#二-PID积分控制" class="headerlink" title="(二)PID积分控制"></a>(二)PID积分控制</h5><script type="math/tex; mode=display">
+S_k=E_1+E_2+E_3......E_{k-2}+E_{k-1}+E_k\left\{
+\begin{array}{rcl}
+>0       &      & {过去的大多数时间未达标}\\
+=0    &      & {}\\
+<0    &      & {过去的大多数时间已超标}
+\end{array} \right.</script><script type="math/tex; mode=display">
+I_{OUT}=K_p*S_k+OUT_0</script><h5 id="三-PID微分控制"><a href="#三-PID微分控制" class="headerlink" title="(三)PID微分控制"></a>(三)PID微分控制</h5><p>将最近两次的偏差相减：</p>
+<script type="math/tex; mode=display">
+D_k=E_k-E_{k-1}\left\{
+\begin{array}{rcl}
+>0       &      & {偏差有增大的趋势}\\
+=0    &      & {偏差不变}\\
+<0    &      & {偏差有减小的趋势}
+\end{array} \right.</script><script type="math/tex; mode=display">
+D_{OUT}=k_p*D_k+OUT_0</script><h4 id="三、PID算法的数学模型"><a href="#三、PID算法的数学模型" class="headerlink" title="三、PID算法的数学模型"></a>三、PID算法的数学模型</h4><script type="math/tex; mode=display">
+\begin{align}
+PID_{OUT}&=P_{OUT}+I_{OUT}+D_{OUT} \\
+&=(K_p*E_k+OUT_0)+(K_p*S_k+OUT_0)+(K_p*D_k+OUT_0) \\
+&=K_p*(E_k+S_k+D_k)
+\end{align}</script><h4 id="四、基于单片机的PID算法"><a href="#四、基于单片机的PID算法" class="headerlink" title="四、基于单片机的PID算法"></a>四、基于单片机的PID算法</h4><h5 id="1-Sk的处理"><a href="#1-Sk的处理" class="headerlink" title="1.Sk的处理"></a>1.S<sub>k</sub>的处理</h5><script type="math/tex; mode=display">
+S_k=\frac{1}{T_i}\sum^{n}_{k=0}E_k*T</script><p>T：采样周期（计算周期）</p>
 <p>T<sub>i</sub> ：积分常数（积分时间：I<sub>OUT</sub>和P<sub>OUT</sub>共同作用的时间）</p>
 <p>由于积分项的存在，在输出值第一次达到设定值前偏差均为正数，累积后作用很大，会出现过冲现象。</p>
-<h5 id="2-Dk的处理"><a href="#2-Dk的处理" class="headerlink" title="2.Dk的处理"></a>2.D<sub>k</sub>的处理</h5><p>$$<br>D_k=T_d(\frac{E_k-E_{k-1}}{T})<br>$$</p>
-<p>T<sub>d</sub>：微分常数（P<sub>OUT</sub>和D<sub>OUT</sub>共同作用的时间）</p>
-<h6 id="单片机中的PID算法表达式——位置式PID"><a href="#单片机中的PID算法表达式——位置式PID" class="headerlink" title="单片机中的PID算法表达式——位置式PID"></a>单片机中的PID算法表达式——位置式PID</h6><p>$$<br>OUT=K_p<em>E_k+[K_p</em>(\frac{T}{T_i})<em>\sum^{n}_{k=0}E_k]+[K_p</em>(\frac{T_d}{T})*(E_k-E_{k-1})]+OUT_0<br>$$</p>
-<h6 id="增量式PID：计算出的是控制量的增加值"><a href="#增量式PID：计算出的是控制量的增加值" class="headerlink" title="增量式PID：计算出的是控制量的增加值"></a>增量式PID：计算出的是控制量的增加值</h6><p>$$<br>\begin{align}<br>\Delta OUT&amp;=OUT_k-OUT_{k-1}\<br>&amp;=K_p<em>(E_k-E_{k-1})+K_p</em>\frac{T}{T_i}<em>E_k+K_p</em>\frac{T_d}{T}*(E_k-2E_{k-1}+E_{k-2})<br>\end{align}<br>$$</p>
+<h5 id="2-Dk的处理"><a href="#2-Dk的处理" class="headerlink" title="2.Dk的处理"></a>2.D<sub>k</sub>的处理</h5><script type="math/tex; mode=display">
+D_k=T_d(\frac{E_k-E_{k-1}}{T})</script><p>T<sub>d</sub>：微分常数（P<sub>OUT</sub>和D<sub>OUT</sub>共同作用的时间）</p>
+<h6 id="单片机中的PID算法表达式——位置式PID"><a href="#单片机中的PID算法表达式——位置式PID" class="headerlink" title="单片机中的PID算法表达式——位置式PID"></a>单片机中的PID算法表达式——位置式PID</h6><script type="math/tex; mode=display">
+OUT=K_p*E_k+[K_p*(\frac{T}{T_i})*\sum^{n}_{k=0}E_k]+[K_p*(\frac{T_d}{T})*(E_k-E_{k-1})]+OUT_0</script><h6 id="增量式PID：计算出的是控制量的增加值"><a href="#增量式PID：计算出的是控制量的增加值" class="headerlink" title="增量式PID：计算出的是控制量的增加值"></a>增量式PID：计算出的是控制量的增加值</h6><script type="math/tex; mode=display">
+\begin{align}
+\Delta OUT&=OUT_k-OUT_{k-1}\\
+&=K_p*(E_k-E_{k-1})+K_p*\frac{T}{T_i}*E_k+K_p*\frac{T_d}{T}*(E_k-2E_{k-1}+E_{k-2})
+\end{align}</script><p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 用户设置Sv
+e=>end: End:>http://www.google.com
+op1=>operation: 位式控制算法输出out
+op2=>operation: 执行部件|current
+op3=>operation: 控制对象（具有一定惯性）
+op4=>operation: 传感器输出当前值Pv
+
+st->op1(right)->op2(right)->op3->op4(right)->op1</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
 
     </div>
 
@@ -349,6 +406,7 @@ st->op1(right)->op2(right)->op3->op4(right)->op1
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -480,6 +538,26 @@ st->op1(right)->op2(right)->op3->op4(right)->op1
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -507,6 +585,7 @@ st->op1(right)->op2(right)->op3->op4(right)->op1
 
 
 
+  <script src="/js/local-search.js"></script>
 
 
 
@@ -515,12 +594,126 @@ st->op1(right)->op2(right)->op3->op4(right)->op1
 
 
 
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
 
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
 
   
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: '3oAoPTPAyl556QHqkR7rbHPr-gzGzoHsz',
+      appKey: '7hOJIg9fiBiCCKQQjfUzgWgB',
+      placeholder: "说点什么吧(づ｡◕ᴗᴗ◕｡)づ",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>

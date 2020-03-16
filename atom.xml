@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-16T10:06:04.735Z</updated>
+  <updated>2020-03-16T10:27:32.070Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/"/>
     <id>http://yoursite.com/2020/03/15/shu-ju-mo-xing/</id>
     <published>2020-03-15T10:29:29.000Z</published>
-    <updated>2020-03-16T10:06:04.735Z</updated>
+    <updated>2020-03-16T10:27:32.070Z</updated>
     
     <summary type="html">
     
@@ -41,7 +41,7 @@
     <link href="http://yoursite.com/2020/03/08/linux-ji-chu/"/>
     <id>http://yoursite.com/2020/03/08/linux-ji-chu/</id>
     <published>2020-03-08T06:44:36.000Z</published>
-    <updated>2020-03-16T10:05:53.484Z</updated>
+    <updated>2020-03-16T10:21:52.884Z</updated>
     
     <summary type="html">
     
@@ -61,20 +61,11 @@
     <link href="http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/"/>
     <id>http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/</id>
     <published>2020-03-05T02:19:52.000Z</published>
-    <updated>2020-03-16T10:06:24.302Z</updated>
+    <updated>2020-03-16T10:21:41.257Z</updated>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;一、常规位式控制算法&quot;&gt;&lt;a href=&quot;#一、常规位式控制算法&quot; class=&quot;headerlink&quot; title=&quot;一、常规位式控制算法&quot;&gt;&lt;/a&gt;一、常规位式控制算法&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;flow&quot;&gt;st=&amp;gt;start: 用户设置Sv
-e=&amp;gt;end: End:&amp;gt;http://www.google.com
-op1=&amp;gt;operation: 位式控制算法输出out
-op2=&amp;gt;operation: 执行部件|current
-op3=&amp;gt;operation: 控制对象（具有一定惯性）
-op4=&amp;gt;operation: 传感器输出当前值Pv
-
-st-&amp;gt;op1(right)-&amp;gt;op2(right)-&amp;gt;op3-&amp;gt;op4(right)-&amp;gt;op1
-
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h4 id=&quot;一、常规位式控制算法&quot;&gt;&lt;a href=&quot;#一、常规位式控制算法&quot; class=&quot;headerlink&quot; title=&quot;一、常规位式控制算法&quot;&gt;&lt;/a&gt;一、常规位式控制算法&lt;/h4&gt;&lt;p&gt;&lt;div id=&quot;flowchart-0&quot; class=&quot;flow-chart&quot;&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h5 id=&quot;特点：&quot;&gt;&lt;a href=&quot;#特点：&quot; class=&quot;headerlink&quot; title=&quot;特点：&quot;&gt;&lt;/a&gt;特点：&lt;/h5&gt;&lt;p&gt;1.输出信号单一，一般只有两种状态：高电平和低电平；&lt;/p&gt;
 &lt;p&gt;2.常规位式算法输出信号OUT的依据：Pv &amp;lt; Sv ——&amp;gt; High、Pv &amp;gt;= Sv ——&amp;gt; Low；&lt;/p&gt;
 &lt;p&gt;3.只考虑控制对象当前的状态值。&lt;/p&gt;
@@ -197,7 +188,7 @@ st-&amp;gt;op1(right)-&amp;gt;op2(right)-&amp;gt;op3-&amp;gt;op4(right)-&amp;gt;
     
     <summary type="html">
     
-      &lt;h4 id=&quot;一、安装部署&quot;&gt;&lt;a href=&quot;#一、安装部署&quot; class=&quot;headerlink&quot; title=&quot;一、安装部署&quot;&gt;&lt;/a&gt;一、安装部署&lt;/h4&gt;&lt;p&gt;1.可以去阿里巴巴开源镜像站寻找所需镜像源（epel–&amp;gt;epel-release-latest-7.noarch.rpm），复制其链接&lt;/p&gt;
+      &lt;h4 id=&quot;一、安装部署&quot;&gt;&lt;a href=&quot;#一、安装部署&quot; class=&quot;headerlink&quot; title=&quot;一、安装部署&quot;&gt;&lt;/a&gt;一、安装部署&lt;/h4&gt;&lt;p&gt;1.可以去阿里巴巴开源镜像站寻找所需镜像源（epel—&amp;gt;epel-release-latest-7.noarch.rpm），复制其链接&lt;/p&gt;
     
     </summary>
     
