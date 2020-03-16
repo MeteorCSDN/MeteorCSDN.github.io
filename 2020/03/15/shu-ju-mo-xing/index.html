@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如： graph TB; 　　院系--&amp;gt;班级; 　　院系--&amp;gt;教研组; 　　班级--&amp;gt;学生1; 　　班级--&amp;gt;学生n; 　　教研组--&amp;gt;老师1; 　　教研组--&amp;gt;老师n;  （二）虚记录为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。 例：stude">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据模型">
+<meta property="og:url" content="http://yoursite.com/2020/03/15/shu-ju-mo-xing/index.html">
+<meta property="og:site_name" content="Y*Y">
+<meta property="og:description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如： graph TB; 　　院系--&amp;gt;班级; 　　院系--&amp;gt;教研组; 　　班级--&amp;gt;学生1; 　　班级--&amp;gt;学生n; 　　教研组--&amp;gt;老师1; 　　教研组--&amp;gt;老师n;  （二）虚记录为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。 例：stude">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-16T08:55:51.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据模型">
+<meta name="twitter:description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如： graph TB; 　　院系--&amp;gt;班级; 　　院系--&amp;gt;教研组; 　　班级--&amp;gt;学生1; 　　班级--&amp;gt;学生n; 　　教研组--&amp;gt;老师1; 　　教研组--&amp;gt;老师n;  （二）虚记录为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。 例：stude">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>数据模型 | Y*Y</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Y*Y</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Y*Y BLOG</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies" rel="section"><i class="fa fa-fw fa-sitemap"></i>电影</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Y*Y">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Y*Y">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据模型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-15 18:29:29" itemprop="dateCreated datePublished" datetime="2020-03-15T18:29:29+08:00">2020-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-16 16:55:51" itemprop="dateModified" datetime="2020-03-16T16:55:51+08:00">2020-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、层次模型"><a href="#一、层次模型" class="headerlink" title="一、层次模型"></a>一、层次模型</h4><h5 id="（一）PCR关系（Parent-Child-relationship）："><a href="#（一）PCR关系（Parent-Child-relationship）：" class="headerlink" title="（一）PCR关系（Parent-Child relationship）："></a>（一）PCR关系（Parent-Child relationship）：</h5><p>现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TB;
+　　院系-->班级;
+　　院系-->教研组;
+　　班级-->学生1;
+　　班级-->学生n;
+　　教研组-->老师1;
+　　教研组-->老师n;
+</code></pre>
+<h5 id="（二）虚记录"><a href="#（二）虚记录" class="headerlink" title="（二）虚记录"></a>（二）虚记录</h5><p>为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。</p>
+<p>例：student-v通过指针指向真正的student：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph LR   
+    course-v-.->course
+    student-v-.->student
+    subgraph 
+    course-->student-v
+    end
+    subgraph 
+    student-->course-v
+    end
+</code></pre>
+<h4 id="二、网状数据模型"><a href="#二、网状数据模型" class="headerlink" title="二、网状数据模型"></a>二、网状数据模型</h4><h5 id="（一）基本结构："><a href="#（一）基本结构：" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>系（set）表示现实世界中一对多的关系。</p>
+<p>主记录（1）——&gt; 属记录（n）</p>
+<p>每个系可以是多个系的主记录，也可以是多个系的属记录，交织成复杂的网状结构。</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TB
+    subgraph 
+    Parts-1-->|m|LINK-M
+    Supplier-1-->|n|LINK-M
+    Project-1-->|p|LINK-M
+    end
+    subgraph 
+    S-1-->|SL|LINK-N
+    C-1-->|CL|LINK-N
+    end  
+</code></pre>
+<p>（查询时遍历链表）</p>
+<h4 id="三、关系模型"><a href="#三、关系模型" class="headerlink" title="三、关系模型"></a>三、关系模型</h4><h5 id="（一）基本结构：-1"><a href="#（一）基本结构：-1" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>表（table），将现实世界实体中的所有关系由表来表示：</p>
+<p>（1）基于数学集合论，具有更高层次；</p>
+<p>（2）底层实现及编程细节都被屏蔽掉，概念简单清除，容易理解；</p>
+<p>（3）建立新的代数体系——关系代数；</p>
+<p>（4）可以定义<strong>非过程化</strong>的查询语言——SQL；</p>
+<p>（5）软连接</p>
+<h5 id="（二）属性和域"><a href="#（二）属性和域" class="headerlink" title="（二）属性和域"></a>（二）属性和域</h5><p>1.表的为一个属性都为原子不能再分的，每一个属性的合法取值范围成为域；</p>
+<p>2.表中允许NULL（表示未知）；</p>
+<h5 id="（三）关系和元组"><a href="#（三）关系和元组" class="headerlink" title="（三）关系和元组"></a>（三）关系和元组</h5><p>1.假设有关系R，属性为A<sub>1</sub>,A<sub>2</sub>,…A<sub>n</sub>，其对应的值域为D<sub>1</sub>,D<sub>2</sub>,…D<sub>n</sub>，n称为目，那么关系R可以表示为<br>$$<br>R=（A_1/D_1,A_2/D_2,…A_n/D_n）或者R=(A_1,A_2,…A_n)<br>$$<br>r 称为关系 R 的实例，r 由 m 个元组（tuple）组成。</p>
+<p>2.表里的每一行称为记录，即元组t<br>$$<br>t \in D_1\times D_2\times ,…,\times D_n, 1\leq i\leq n<br>$$</p>
+<p>$$<br>r \subseteq D_1\times D_2\times ,…,\times D_n, 1\leq i\leq n<br>$$</p>
+<h5 id="（四）组键"><a href="#（四）组键" class="headerlink" title="（四）组键"></a>（四）组键</h5><table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:left">概念</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>候选键</td>
+<td style="text-align:left">总有某一个或者某一组属性的值可以唯一的决定这条元组的其他属性的值，且这组属性的子集没有此特性，把这样的属性或属性组称为候选键</td>
+</tr>
+<tr>
+<td>超键</td>
+<td style="text-align:left">在关系中能唯一标识元组的属性或属性集称为关键模式为超键，与候选键相比可能有多余属性</td>
+</tr>
+<tr>
+<td>主键</td>
+<td style="text-align:left">用户选作元组标识的候选键称为主键。一般不加说明，键就是指主键（主键不能为空）</td>
+</tr>
+<tr>
+<td>全键</td>
+<td style="text-align:left">关系模型的所有属性组是这个关系模式的候选键</td>
+</tr>
+<tr>
+<td>外键</td>
+<td style="text-align:left">关系模式R1中的某属性集不是自己的主键，而是关系模式R2的主键，则该属性集称为是关系模式R1的外键</td>
+</tr>
+</tbody>
+</table>
+<h5 id="（五）关系代数"><a href="#（五）关系代数" class="headerlink" title="（五）关系代数"></a>（五）关系代数</h5><p>五种基本的关系代数运算</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>符号</th>
+<th>作用</th>
+<th>运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并</td>
+<td>∪</td>
+<td>关系 R 与 S 具有相同的关系模式，即 R 与 S 的元数相同（结构相同），R 与 S 的并是属于 R 或者属于 S 的元组构成的集合，记作 R ∪ S</td>
+<td>R∪S = {t\</td>
+<td>t∈R∨t∈S}</td>
+</tr>
+<tr>
+<td>差</td>
+<td>−</td>
+<td>关系 R 与 S 具有相同的关系模式，关系 R 与 S 的差是属于 R 但不属于 S 的元组构成的集合，记作 R − S</td>
+<td>R−S = {t\</td>
+<td>t∈R∨t∉S}</td>
+</tr>
+<tr>
+<td>广义笛卡尔积</td>
+<td>×</td>
+<td>两个无数分别为 n 目和 m 目的关系 R 和 S 的 笛卡尔积是一个 (n+m) 列的元组的集合。组的前 n 列是关系 R 的一个元组，后 m 列是关系 S 的一个元组，记作 R × S</td>
+<td>R×S = {t\</td>
+<td>t =&lt; (t<sup>n</sup>,t<sup>m</sup>)∧t<sup>n</sup>∈R∧t<sup>m</sup>∈S}</td>
+</tr>
+<tr>
+<td>投影</td>
+<td>π</td>
+<td>投影运算是从关系的垂直方向进行运算，在关系 R 中选出若干属性列 A 组成新的关系，记作π<sub>A</sub>(R)</td>
+<td>π<sub>A</sub>(R) = {t[A]\</td>
+<td>t∈R}</td>
+</tr>
+<tr>
+<td>选择</td>
+<td>σ</td>
+<td>选择运算是从关系的水平方向进行运算，是从关系 R 中选择满足给定条件的元组，记作 σ<sub>F</sub>(R)</td>
+<td>σ<sub>F</sub>(R) = {t\</td>
+<td>t∈R∧F(t)=True}</td>
+</tr>
+</tbody>
+</table>
+<h5 id="（六）关系连接"><a href="#（六）关系连接" class="headerlink" title="（六）关系连接"></a>（六）关系连接</h5><h6 id="1-内连接"><a href="#1-内连接" class="headerlink" title="1.内连接"></a>1.内连接</h6><p>也称为等值连接，是最早的一种连接。还可以被称为普通连接或者<a href="http://baike.baidu.com/item/自然连接" target="_blank" rel="noopener">自然连接</a>，内连接是从结果表中删除与其他被<a href="http://baike.baidu.com/item/连接表" target="_blank" rel="noopener">连接表</a>中没有匹配行的所有行，所以内连接可能会丢失信息。WHERE子句中设置的消除笛卡尔积的条件就是使用了等值判断的方式进行的。</p>
+<h6 id="2-外连接"><a href="#2-外连接" class="headerlink" title="2.外连接"></a>2.外连接</h6><p>内连接中只能够显示等值满足条件的，如果不满住条件的无法显示，如果希望可以显示特定表的全部数据，就用外链接：外连接分为三种：左外连接，右外连接，全外连接。</p>
+<p>（1）左外链接：左关系属性=右关系属性（+），放在等号的右边表示左连接；意思就是显示左边表中没有显示的信息；</p>
+<p>（2）右外链接：左关系属性（+）= 右关系属性，放在等号的左边表示右连接；意思就是显示右边表中没有显示的信息。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/08/linux-ji-chu/" rel="prev" title="Linux基础(一)">
+      <i class="fa fa-chevron-left"></i> Linux基础(一)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、层次模型"><span class="nav-number">1.</span> <span class="nav-text">一、层次模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）PCR关系（Parent-Child-relationship）："><span class="nav-number">1.1.</span> <span class="nav-text">（一）PCR关系（Parent-Child relationship）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）虚记录"><span class="nav-number">1.2.</span> <span class="nav-text">（二）虚记录</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、网状数据模型"><span class="nav-number">2.</span> <span class="nav-text">二、网状数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）基本结构："><span class="nav-number">2.1.</span> <span class="nav-text">（一）基本结构：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、关系模型"><span class="nav-number">3.</span> <span class="nav-text">三、关系模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）基本结构：-1"><span class="nav-number">3.1.</span> <span class="nav-text">（一）基本结构：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）属性和域"><span class="nav-number">3.2.</span> <span class="nav-text">（二）属性和域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）关系和元组"><span class="nav-number">3.3.</span> <span class="nav-text">（三）关系和元组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）组键"><span class="nav-number">3.4.</span> <span class="nav-text">（四）组键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）关系代数"><span class="nav-number">3.5.</span> <span class="nav-text">（五）关系代数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（六）关系连接"><span class="nav-number">3.6.</span> <span class="nav-text">（六）关系连接</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-内连接"><span class="nav-number">3.6.1.</span> <span class="nav-text">1.内连接</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-外连接"><span class="nav-number">3.6.2.</span> <span class="nav-text">2.外连接</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Y*Y</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://expoli.tech/" title="https://expoli.tech/" rel="noopener" target="_blank">糖醋鱼</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://me.zhengqiao.wang/" title="http://me.zhengqiao.wang/" rel="noopener" target="_blank">王政乔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.leeyiding.com/" title="https://www.leeyiding.com/" rel="noopener" target="_blank">LeeYD</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://shuangzu.top" title="https://shuangzu.top" rel="noopener" target="_blank">郑州大学双足实验室</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Y*Y</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

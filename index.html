@@ -195,6 +195,536 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Y*Y">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Y*Y">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/15/shu-ju-mo-xing/" class="post-title-link" itemprop="url">数据模型</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-15 18:29:29" itemprop="dateCreated datePublished" datetime="2020-03-15T18:29:29+08:00">2020-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-16 16:55:51" itemprop="dateModified" datetime="2020-03-16T16:55:51+08:00">2020-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一、层次模型"><a href="#一、层次模型" class="headerlink" title="一、层次模型"></a>一、层次模型</h4><h5 id="（一）PCR关系（Parent-Child-relationship）："><a href="#（一）PCR关系（Parent-Child-relationship）：" class="headerlink" title="（一）PCR关系（Parent-Child relationship）："></a>（一）PCR关系（Parent-Child relationship）：</h5><p>现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TB;
+　　院系-->班级;
+　　院系-->教研组;
+　　班级-->学生1;
+　　班级-->学生n;
+　　教研组-->老师1;
+　　教研组-->老师n;
+</code></pre>
+<h5 id="（二）虚记录"><a href="#（二）虚记录" class="headerlink" title="（二）虚记录"></a>（二）虚记录</h5><p>为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。</p>
+<p>例：student-v通过指针指向真正的student：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph LR   
+    course-v-.->course
+    student-v-.->student
+    subgraph 
+    course-->student-v
+    end
+    subgraph 
+    student-->course-v
+    end
+</code></pre>
+<h4 id="二、网状数据模型"><a href="#二、网状数据模型" class="headerlink" title="二、网状数据模型"></a>二、网状数据模型</h4><h5 id="（一）基本结构："><a href="#（一）基本结构：" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>系（set）表示现实世界中一对多的关系。</p>
+<p>主记录（1）——&gt; 属记录（n）</p>
+<p>每个系可以是多个系的主记录，也可以是多个系的属记录，交织成复杂的网状结构。</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TB
+    subgraph 
+    Parts-1-->|m|LINK-M
+    Supplier-1-->|n|LINK-M
+    Project-1-->|p|LINK-M
+    end
+    subgraph 
+    S-1-->|SL|LINK-N
+    C-1-->|CL|LINK-N
+    end  
+</code></pre>
+<p>（查询时遍历链表）</p>
+<h4 id="三、关系模型"><a href="#三、关系模型" class="headerlink" title="三、关系模型"></a>三、关系模型</h4><h5 id="（一）基本结构：-1"><a href="#（一）基本结构：-1" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>表（table），将现实世界实体中的所有关系由表来表示：</p>
+<p>（1）基于数学集合论，具有更高层次；</p>
+<p>（2）底层实现及编程细节都被屏蔽掉，概念简单清除，容易理解；</p>
+<p>（3）建立新的代数体系——关系代数；</p>
+<p>（4）可以定义<strong>非过程化</strong>的查询语言——SQL；</p>
+<p>（5）软连接</p>
+<h5 id="（二）属性和域"><a href="#（二）属性和域" class="headerlink" title="（二）属性和域"></a>（二）属性和域</h5><p>1.表的为一个属性都为原子不能再分的，每一个属性的合法取值范围成为域；</p>
+<p>2.表中允许NULL（表示未知）；</p>
+<h5 id="（三）关系和元组"><a href="#（三）关系和元组" class="headerlink" title="（三）关系和元组"></a>（三）关系和元组</h5><p>1.假设有关系R，属性为A<sub>1</sub>,A<sub>2</sub>,…A<sub>n</sub>，其对应的值域为D<sub>1</sub>,D<sub>2</sub>,…D<sub>n</sub>，n称为目，那么关系R可以表示为<br>$$<br>R=（A_1/D_1,A_2/D_2,…A_n/D_n）或者R=(A_1,A_2,…A_n)<br>$$<br>r 称为关系 R 的实例，r 由 m 个元组（tuple）组成。</p>
+<p>2.表里的每一行称为记录，即元组t<br>$$<br>t \in D_1\times D_2\times ,…,\times D_n, 1\leq i\leq n<br>$$</p>
+<p>$$<br>r \subseteq D_1\times D_2\times ,…,\times D_n, 1\leq i\leq n<br>$$</p>
+<h5 id="（四）组键"><a href="#（四）组键" class="headerlink" title="（四）组键"></a>（四）组键</h5><table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:left">概念</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>候选键</td>
+<td style="text-align:left">总有某一个或者某一组属性的值可以唯一的决定这条元组的其他属性的值，且这组属性的子集没有此特性，把这样的属性或属性组称为候选键</td>
+</tr>
+<tr>
+<td>超键</td>
+<td style="text-align:left">在关系中能唯一标识元组的属性或属性集称为关键模式为超键，与候选键相比可能有多余属性</td>
+</tr>
+<tr>
+<td>主键</td>
+<td style="text-align:left">用户选作元组标识的候选键称为主键。一般不加说明，键就是指主键（主键不能为空）</td>
+</tr>
+<tr>
+<td>全键</td>
+<td style="text-align:left">关系模型的所有属性组是这个关系模式的候选键</td>
+</tr>
+<tr>
+<td>外键</td>
+<td style="text-align:left">关系模式R1中的某属性集不是自己的主键，而是关系模式R2的主键，则该属性集称为是关系模式R1的外键</td>
+</tr>
+</tbody>
+</table>
+<h5 id="（五）关系代数"><a href="#（五）关系代数" class="headerlink" title="（五）关系代数"></a>（五）关系代数</h5><p>五种基本的关系代数运算</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>符号</th>
+<th>作用</th>
+<th>运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并</td>
+<td>∪</td>
+<td>关系 R 与 S 具有相同的关系模式，即 R 与 S 的元数相同（结构相同），R 与 S 的并是属于 R 或者属于 S 的元组构成的集合，记作 R ∪ S</td>
+<td>R∪S = {t\</td>
+<td>t∈R∨t∈S}</td>
+</tr>
+<tr>
+<td>差</td>
+<td>−</td>
+<td>关系 R 与 S 具有相同的关系模式，关系 R 与 S 的差是属于 R 但不属于 S 的元组构成的集合，记作 R − S</td>
+<td>R−S = {t\</td>
+<td>t∈R∨t∉S}</td>
+</tr>
+<tr>
+<td>广义笛卡尔积</td>
+<td>×</td>
+<td>两个无数分别为 n 目和 m 目的关系 R 和 S 的 笛卡尔积是一个 (n+m) 列的元组的集合。组的前 n 列是关系 R 的一个元组，后 m 列是关系 S 的一个元组，记作 R × S</td>
+<td>R×S = {t\</td>
+<td>t =&lt; (t<sup>n</sup>,t<sup>m</sup>)∧t<sup>n</sup>∈R∧t<sup>m</sup>∈S}</td>
+</tr>
+<tr>
+<td>投影</td>
+<td>π</td>
+<td>投影运算是从关系的垂直方向进行运算，在关系 R 中选出若干属性列 A 组成新的关系，记作π<sub>A</sub>(R)</td>
+<td>π<sub>A</sub>(R) = {t[A]\</td>
+<td>t∈R}</td>
+</tr>
+<tr>
+<td>选择</td>
+<td>σ</td>
+<td>选择运算是从关系的水平方向进行运算，是从关系 R 中选择满足给定条件的元组，记作 σ<sub>F</sub>(R)</td>
+<td>σ<sub>F</sub>(R) = {t\</td>
+<td>t∈R∧F(t)=True}</td>
+</tr>
+</tbody>
+</table>
+<h5 id="（六）关系连接"><a href="#（六）关系连接" class="headerlink" title="（六）关系连接"></a>（六）关系连接</h5><h6 id="1-内连接"><a href="#1-内连接" class="headerlink" title="1.内连接"></a>1.内连接</h6><p>也称为等值连接，是最早的一种连接。还可以被称为普通连接或者<a href="http://baike.baidu.com/item/自然连接" target="_blank" rel="noopener">自然连接</a>，内连接是从结果表中删除与其他被<a href="http://baike.baidu.com/item/连接表" target="_blank" rel="noopener">连接表</a>中没有匹配行的所有行，所以内连接可能会丢失信息。WHERE子句中设置的消除笛卡尔积的条件就是使用了等值判断的方式进行的。</p>
+<h6 id="2-外连接"><a href="#2-外连接" class="headerlink" title="2.外连接"></a>2.外连接</h6><p>内连接中只能够显示等值满足条件的，如果不满住条件的无法显示，如果希望可以显示特定表的全部数据，就用外链接：外连接分为三种：左外连接，右外连接，全外连接。</p>
+<p>（1）左外链接：左关系属性=右关系属性（+），放在等号的右边表示左连接；意思就是显示左边表中没有显示的信息；</p>
+<p>（2）右外链接：左关系属性（+）= 右关系属性，放在等号的左边表示右连接；意思就是显示右边表中没有显示的信息。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/linux-ji-chu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Y*Y">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Y*Y">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/08/linux-ji-chu/" class="post-title-link" itemprop="url">Linux基础(一)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-08 14:44:36" itemprop="dateCreated datePublished" datetime="2020-03-08T14:44:36+08:00">2020-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-15 13:00:15" itemprop="dateModified" datetime="2020-03-15T13:00:15+08:00">2020-03-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一、操作系统"><a href="#一、操作系统" class="headerlink" title="一、操作系统"></a>一、操作系统</h4><h5 id="（一）OS：Operating-System，通用目的的软件程序"><a href="#（一）OS：Operating-System，通用目的的软件程序" class="headerlink" title="（一）OS：Operating System，通用目的的软件程序"></a>（一）OS：Operating System，通用目的的软件程序</h5><p>硬件驱动；进程管理；内存管理；网络管理；安全管理；文件管理。</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TB;
+　　用户-->应用软件;
+　　应用软件-->用户;
+　　应用软件-->操作系统;
+　　操作系统-->应用软件;
+　　硬件-->操作系统;
+　　操作系统-->硬件;
+</code></pre>
+<h5 id="（二）OS分类："><a href="#（二）OS分类：" class="headerlink" title="（二）OS分类："></a>（二）OS分类：</h5><p>服务器OS：RHEL，CentOS，Windows Server，AIX；</p>
+<p>桌面OS：Windows 10，Windows 7，Mac OS，Fedora；</p>
+<p>移动设备OS：Andriod,IOS,YunOS</p>
+<h4 id="二、开发接口标准"><a href="#二、开发接口标准" class="headerlink" title="二、开发接口标准"></a>二、开发接口标准</h4><h5 id="（一）ABI："><a href="#（一）ABI：" class="headerlink" title="（一）ABI："></a>（一）ABI：</h5><p>ABI描述了应用程序与OS之间的底层接口，允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行；</p>
+<h5 id="（二）API："><a href="#（二）API：" class="headerlink" title="（二）API："></a>（二）API：</h5><p>API定义了源码和库之间的接口，因此同样的源代码可以在支持这个API的任何系统中编译；</p>
+<h5 id="（三）POSIX："><a href="#（三）POSIX：" class="headerlink" title="（三）POSIX："></a>（三）POSIX：</h5><p>IEEE在操作系统上定义的一系列API标准；</p>
+<p>POSIX兼容的程序可以在其他POSIX操作系统编译执行；</p>
+<h5 id="（四）运行程序格式："><a href="#（四）运行程序格式：" class="headerlink" title="（四）运行程序格式："></a>（四）运行程序格式：</h5><p>Windows：EXE，.dll(dynamic link library)，.lib</p>
+<p>Linux：ELF，.so(shared object)，.a</p>
+<h4 id="三、用户和内核空间"><a href="#三、用户和内核空间" class="headerlink" title="三、用户和内核空间"></a>三、用户和内核空间</h4><h5 id="（一）用户空间：User-space"><a href="#（一）用户空间：User-space" class="headerlink" title="（一）用户空间：User space"></a>（一）用户空间：User space</h5><p>用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响；只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（system call），才能向内核发出指令。</p>
+<h5 id="（二）内核空间：Kernel-space"><a href="#（二）内核空间：Kernel-space" class="headerlink" title="（二）内核空间：Kernel space"></a>（二）内核空间：Kernel space</h5><p>是Linux内核的运行空间；可以执行任意命令，调用系统的一切资源。</p>
+<h4 id="四、Linux哲学思想"><a href="#四、Linux哲学思想" class="headerlink" title="四、Linux哲学思想"></a>四、Linux哲学思想</h4><p>1.一切都是一个文件（包括硬件）；</p>
+<p>2.小型，单一用途的程序；</p>
+<p>3.链接程序。共同完成复杂的任务；</p>
+<p>4.避免令人困惑的用户界面；</p>
+<p>5.配置数据存储在文本中。</p>
+<h4 id="五、Linux文件与磁盘"><a href="#五、Linux文件与磁盘" class="headerlink" title="五、Linux文件与磁盘"></a>五、Linux文件与磁盘</h4><pre class=" language-mermaid"><code class="language-mermaid">graph TD
+    B["/(根目录)"]
+    B-->C(tmp);
+    B-->D(usr);
+    B-->E(etc-存放相关配置文件);
+    B-->F(boot-启动文件);
+    B-->G(bin-二进制程序);
+    B-->H(...);
+</code></pre>
+<h5 id="（一）挂载概念："><a href="#（一）挂载概念：" class="headerlink" title="（一）挂载概念："></a>（一）挂载概念：</h5><p>根文件系统之外的其他文件要想能够被访问，都必须通过“关联”至根文件系统上的某个目录来实现，此关联操作即为“挂载”（即通过访问目录名到其关联的分区），此目录即为“挂载点”,解除此关联关系的过程称之为“卸载”。</p>
+<h6 id="1-挂载"><a href="#1-挂载" class="headerlink" title="1.挂载"></a>1.挂载</h6><p>根文件系统外通过关联至根文件系统上的某个目录来实现访问；</p>
+<h6 id="2-挂载点"><a href="#2-挂载点" class="headerlink" title="2.挂载点"></a>2.挂载点</h6><p>mount_point，用于作为另一个文件系统的访问入口：</p>
+<ul>
+<li>事先存在；</li>
+<li>应该使用未被或不会被其它进程使用到的目录；</li>
+<li>挂载点下原有的文件将会被隐藏； </li>
+</ul>
+<h4 id="六、什么是shell"><a href="#六、什么是shell" class="headerlink" title="六、什么是shell"></a>六、什么是shell</h4><ul>
+<li>Shell是Linux系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行；</li>
+<li>Shell也被称为Linux的命令解释器；</li>
+<li>Shell是一种高级程序设计语言。</li>
+</ul>
+<h4 id="七、执行命令"><a href="#七、执行命令" class="headerlink" title="七、执行命令"></a>七、执行命令</h4><h5 id="（一）内部命令"><a href="#（一）内部命令" class="headerlink" title="（一）内部命令"></a>（一）内部命令</h5><p>由shell自带的，而且通过某命令形式提供</p>
+<ul>
+<li>help 内部命令列表；</li>
+<li>enable cmd  启用内部命令；</li>
+<li>enable -n cmd 禁用内部命令；</li>
+<li>enable -n 查看所有禁用的内部命令；</li>
+</ul>
+<h5 id="（二）外部命令"><a href="#（二）外部命令" class="headerlink" title="（二）外部命令"></a>（二）外部命令</h5><p>在文件系统路径下有对应的可执行程序文件</p>
+<ul>
+<li>查看路径：which -a |–skip-alias；whereis；</li>
+</ul>
+<h5 id="（三）命令别名"><a href="#（三）命令别名" class="headerlink" title="（三）命令别名"></a>（三）命令别名</h5><p>显示当前shell进程所有可用的命令别名：alias</p>
+<p>例如：将 “cd /etc/sysconfig/network-scripts/“ 用  “cdnet” 命令替代 </p>
+<pre><code>#永久添加命令别名需更改相关配置文件,在文件中添加alias cdnet=&quot;cd /etc/sysconfig/network-scripts/&quot;
+#仅对当前用户有效：~/.bashrc
+#对所有用户有效：/etc/bashrc
+[root@localhost ~]# nano .bashrc
+ .bashrc
+
+# User specific aliases and functions
+
+alias rm=&#39;rm -i&#39;
+alias cp=&#39;cp -i&#39;
+alias mv=&#39;mv -i&#39;
+alias cdnet=&quot;cd /etc/sysconfig/network-scripts/&quot;
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+</code></pre><ul>
+<li>编辑配置给出的新配置不会立即生效</li>
+<li>bash进程重新读取配置文件   .  /path/to/config_file</li>
+<li>撤销别名：unalias</li>
+<li>如果别名同原名令同名，执行原名令可使用 \ALIASNAME</li>
+</ul>
+<h4 id="八、文件系统"><a href="#八、文件系统" class="headerlink" title="八、文件系统"></a>八、文件系统</h4><p>1.文件和目录被组织成一个单根倒置树结构</p>
+<p>2.文件系统从根目录下开始，用“/”表示</p>
+<p>3.根文件系统（rootfs）：root filesystem</p>
+<p>4.文件名称区分大小写</p>
+<h4 id="九、把输出和错误重定向到文件"><a href="#九、把输出和错误重定向到文件" class="headerlink" title="九、把输出和错误重定向到文件"></a>九、把输出和错误重定向到文件</h4><p>1.STDOUT和STDERR可以被重定向到文件</p>
+<p>命令  操作符号  文件名</p>
+<p>支持的操作符号包括：&gt;  把STDOUT重定向到文件</p>
+<p>​                                      2&gt;  把STDERR重定向到文件</p>
+<p>​                                      &amp;&gt;  把STDOUT和STDERR一起重定向到文件</p>
+<p>2.&gt; 文件内容会被覆盖</p>
+<p>set -C  禁止将内容覆盖已有文件，但可追加</p>
+<p>\&lt;| file  强制覆盖</p>
+<p>set +C  允许覆盖</p>
+<p>3.&lt;&lt; 原有内容基础上，追加内容 </p>
+<h4 id="十、从文件中导入STDIN"><a href="#十、从文件中导入STDIN" class="headerlink" title="十、从文件中导入STDIN"></a>十、从文件中导入STDIN</h4><p>1.使用 &lt; 来重定向标准输入</p>
+<p>2.某些命令能够接受从文件中导入的STDIN</p>
+<pre><code>tr &#39;a-z&#39; &#39;A-Z&#39;&lt; /etc/issue
+</code></pre><p>该命令会把/etc/issue中的小写字符都转换成大写字符</p>
+<p>3.</p>
+<pre><code>tr -d abc &lt; /etc/fstab
+</code></pre><p>删除fstab文件中的所有abc中任意字符</p>
+<p>4.</p>
+<pre><code>cat &gt; file
+mage
+abc
+</code></pre><p>按Ctrl+d离开，可以使用文件来代替键盘的输入</p>
+<h4 id="十一、管道"><a href="#十一、管道" class="headerlink" title="十一、管道"></a>十一、管道</h4><p>管道（使用符号“|”表示）用来连接命令：命令1|命令2|命令3|…</p>
+<ul>
+<li>将命令1的STDOUT发送给命令2的STDIN，命令2的STDOUT发送到命令3的TSDIN</li>
+<li>STDERR默认不能通过管道转发，可利用2&gt;&amp;1或|&amp;实现</li>
+<li>最后一个命令会在当前shell进程的子shell进程中执行</li>
+<li>组合多种工具的功能</li>
+</ul>
+<pre><code>ls |tr &#39;a-z&#39; &#39;A-Z&#39;
+</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Y*Y">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Y*Y">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/pid-suan-fa-xue-xi/" class="post-title-link" itemprop="url">PID算法学习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 10:19:52" itemprop="dateCreated datePublished" datetime="2020-03-05T10:19:52+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-06 11:15:09" itemprop="dateModified" datetime="2020-03-06T11:15:09+08:00">2020-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一、常规位式控制算法"><a href="#一、常规位式控制算法" class="headerlink" title="一、常规位式控制算法"></a>一、常规位式控制算法</h4><pre class=" language-flow"><code class="language-flow">st=>start: 用户设置Sv
+e=>end: End:>http://www.google.com
+op1=>operation: 位式控制算法输出out
+op2=>operation: 执行部件|current
+op3=>operation: 控制对象（具有一定惯性）
+op4=>operation: 传感器输出当前值Pv
+
+st->op1(right)->op2(right)->op3->op4(right)->op1
+
+</code></pre>
+<h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>1.输出信号单一，一般只有两种状态：高电平和低电平；</p>
+<p>2.常规位式算法输出信号OUT的依据：Pv &lt; Sv ——&gt; High、Pv &gt;= Sv ——&gt; Low；</p>
+<p>3.只考虑控制对象当前的状态值。</p>
+<h4 id="二、PID控制算法"><a href="#二、PID控制算法" class="headerlink" title="二、PID控制算法"></a>二、PID控制算法</h4><pre class=" language-mermaid"><code class="language-mermaid">graph LR;
+　　用户设定-->|Sv|偏差E=Sv-Pv;
+　　偏差E=Sv-Pv-->历史偏差;
+　　偏差E=Sv-Pv-->当前偏差;
+　　偏差E=Sv-Pv-->最近偏差;
+　　历史偏差-->+;
+　　当前偏差-->+;
+　　最近偏差-->+;
+　　+-->|OUT|可控硅;
+　　220V-->可控硅;
+　　可控硅-->负载;
+　　220V-->负载;
+　　负载-->传感器;
+　　传感器-->|Pv当前值|偏差E=Sv-Pv;
+　　
+</code></pre>
+<p>从开机以来，传感器的所有采样点的数据序列<br>$$<br>x_1,x_2,x_3······x_{k-2},x_{k-1},x_k<br>$$<br>历史偏差序列<br>$$<br>E_1,E_2,E_3……E_{k-2},E_{k-1},E_k<br>$$</p>
+<p>$$<br>E_k = S_v-x_k\left{<br>\begin{array}{rcl}</p>
+<blockquote>
+<p>0       &amp;      &amp; {当前未达标}\<br>=0    &amp;      &amp; {正好达标}\</p>
+</blockquote>
+<p>&lt;0    &amp;      &amp; {当前已超标}<br>\end{array} \right.<br>$$</p>
+<h5 id="一-PID比例控制"><a href="#一-PID比例控制" class="headerlink" title="(一)PID比例控制"></a>(一)PID比例控制</h5><p>$$<br>OUT=K_p*E_k<br>$$</p>
+<p>通过调整输出PWM的脉宽侧面调整负载的功率，根据当前偏差大小输出比例信号。</p>
+<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><p>一旦传感器回来的信号与设定值相等，输出信号就等于零，负载处于失控状态，也就是说整个系统工作时总是存在误差。<br>$$<br>P_{OUT}=K_p*E_k+OUT_0<br>$$</p>
+<h5 id="二-PID积分控制"><a href="#二-PID积分控制" class="headerlink" title="(二)PID积分控制"></a>(二)PID积分控制</h5><p>$$<br>S_k=E_1+E_2+E_3……E_{k-2}+E_{k-1}+E_k\left{<br>\begin{array}{rcl}</p>
+<blockquote>
+<p>0       &amp;      &amp; {过去的大多数时间未达标}\<br>=0    &amp;      &amp; {}\</p>
+</blockquote>
+<p>&lt;0    &amp;      &amp; {过去的大多数时间已超标}<br>\end{array} \right.<br>$$</p>
+<p>$$<br>I_{OUT}=K_p*S_k+OUT_0<br>$$</p>
+<h5 id="三-PID微分控制"><a href="#三-PID微分控制" class="headerlink" title="(三)PID微分控制"></a>(三)PID微分控制</h5><p>将最近两次的偏差相减：<br>$$<br>D_k=E_k-E_{k-1}\left{<br>\begin{array}{rcl}</p>
+<blockquote>
+<p>0       &amp;      &amp; {偏差有增大的趋势}\<br>=0    &amp;      &amp; {偏差不变}\</p>
+</blockquote>
+<p>&lt;0    &amp;      &amp; {偏差有减小的趋势}<br>\end{array} \right.<br>$$</p>
+<p>$$<br>D_{OUT}=k_p*D_k+OUT_0<br>$$</p>
+<h4 id="三、PID算法的数学模型"><a href="#三、PID算法的数学模型" class="headerlink" title="三、PID算法的数学模型"></a>三、PID算法的数学模型</h4><p>$$<br>\begin{align}<br>PID_{OUT}&amp;=P_{OUT}+I_{OUT}+D_{OUT} \<br>&amp;=(K_p<em>E_k+OUT_0)+(K_p</em>S_k+OUT_0)+(K_p<em>D_k+OUT_0) \<br>&amp;=K_p</em>(E_k+S_k+D_k)<br>\end{align}<br>$$</p>
+<h4 id="四、基于单片机的PID算法"><a href="#四、基于单片机的PID算法" class="headerlink" title="四、基于单片机的PID算法"></a>四、基于单片机的PID算法</h4><h5 id="1-Sk的处理"><a href="#1-Sk的处理" class="headerlink" title="1.Sk的处理"></a>1.S<sub>k</sub>的处理</h5><p>$$<br>S_k=\frac{1}{T_i}\sum^{n}_{k=0}E_k*T<br>$$</p>
+<p>T：采样周期（计算周期）</p>
+<p>T<sub>i</sub> ：积分常数（积分时间：I<sub>OUT</sub>和P<sub>OUT</sub>共同作用的时间）</p>
+<p>由于积分项的存在，在输出值第一次达到设定值前偏差均为正数，累积后作用很大，会出现过冲现象。</p>
+<h5 id="2-Dk的处理"><a href="#2-Dk的处理" class="headerlink" title="2.Dk的处理"></a>2.D<sub>k</sub>的处理</h5><p>$$<br>D_k=T_d(\frac{E_k-E_{k-1}}{T})<br>$$</p>
+<p>T<sub>d</sub>：微分常数（P<sub>OUT</sub>和D<sub>OUT</sub>共同作用的时间）</p>
+<h6 id="单片机中的PID算法表达式——位置式PID"><a href="#单片机中的PID算法表达式——位置式PID" class="headerlink" title="单片机中的PID算法表达式——位置式PID"></a>单片机中的PID算法表达式——位置式PID</h6><p>$$<br>OUT=K_p<em>E_k+[K_p</em>(\frac{T}{T_i})<em>\sum^{n}_{k=0}E_k]+[K_p</em>(\frac{T_d}{T})*(E_k-E_{k-1})]+OUT_0<br>$$</p>
+<h6 id="增量式PID：计算出的是控制量的增加值"><a href="#增量式PID：计算出的是控制量的增加值" class="headerlink" title="增量式PID：计算出的是控制量的增加值"></a>增量式PID：计算出的是控制量的增加值</h6><p>$$<br>\begin{align}<br>\Delta OUT&amp;=OUT_k-OUT_{k-1}\<br>&amp;=K_p<em>(E_k-E_{k-1})+K_p</em>\frac{T}{T_i}<em>E_k+K_p</em>\frac{T_d}{T}*(E_k-2E_{k-1}+E_{k-2})<br>\end{align}<br>$$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/diy-ju-zhen-deng/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -309,7 +839,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 23:09:29" itemprop="dateModified" datetime="2020-02-17T23:09:29+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:57:47" itemprop="dateModified" datetime="2020-03-05T11:57:47+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -317,8 +847,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
-                    <span itemprop="name">高级架构学习</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
             </span>
@@ -392,7 +922,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 23:08:12" itemprop="dateModified" datetime="2020-02-17T23:08:12+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:55:56" itemprop="dateModified" datetime="2020-03-05T11:55:56+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -400,8 +930,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/虚拟机/" itemprop="url" rel="index">
-                    <span itemprop="name">虚拟机</span>
+                  <a href="/categories/问题解决/" itemprop="url" rel="index">
+                    <span itemprop="name">问题解决</span>
                   </a>
                 </span>
             </span>
@@ -475,7 +1005,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:50:14" itemprop="dateModified" datetime="2020-02-17T22:50:14+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:56:06" itemprop="dateModified" datetime="2020-03-05T11:56:06+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -483,8 +1013,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
-                    <span itemprop="name">高级架构学习</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
             </span>
@@ -558,7 +1088,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:56:15" itemprop="dateModified" datetime="2020-02-17T22:56:15+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:58:06" itemprop="dateModified" datetime="2020-03-05T11:58:06+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -566,8 +1096,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/虚拟机/" itemprop="url" rel="index">
-                    <span itemprop="name">虚拟机</span>
+                  <a href="/categories/教程/" itemprop="url" rel="index">
+                    <span itemprop="name">教程</span>
                   </a>
                 </span>
             </span>
@@ -641,7 +1171,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:55:03" itemprop="dateModified" datetime="2020-02-17T22:55:03+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:57:34" itemprop="dateModified" datetime="2020-03-05T11:57:34+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -649,8 +1179,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
-                    <span itemprop="name">高级架构学习</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
             </span>
@@ -724,7 +1254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:54:07" itemprop="dateModified" datetime="2020-02-17T22:54:07+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:56:31" itemprop="dateModified" datetime="2020-03-05T11:56:31+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -732,8 +1262,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高级架构学习/" itemprop="url" rel="index">
-                    <span itemprop="name">高级架构学习</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
             </span>
@@ -807,7 +1337,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:53:05" itemprop="dateModified" datetime="2020-02-17T22:53:05+08:00">2020-02-17</time>
+                <time title="修改时间：2020-03-05 11:55:29" itemprop="dateModified" datetime="2020-03-05T11:55:29+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -815,8 +1345,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式学习/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式学习</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
             </span>
@@ -938,257 +1468,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Y*Y">
-      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Y*Y">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/" class="post-title-link" itemprop="url">xshell在IP可查且可ping通外网的情况连接不上VirtualBox的解决方法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-14 20:46:53" itemprop="dateCreated datePublished" datetime="2019-07-14T20:46:53+08:00">2019-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:56:48" itemprop="dateModified" datetime="2020-02-17T22:56:48+08:00">2020-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/shu-ma-yu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Y*Y">
-      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Y*Y">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/10/shu-ma-yu/" class="post-title-link" itemprop="url">数码雨</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-10 10:40:03" itemprop="dateCreated datePublished" datetime="2019-07-10T10:40:03+08:00">2019-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:51:43" itemprop="dateModified" datetime="2020-02-17T22:51:43+08:00">2020-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"><a href="#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果" class="headerlink" title="有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果"></a>有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果</h3><p>闲言少叙，命令如下</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/07/10/shu-ma-yu/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/adc-shu-mo-zhuan-huan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Y*Y">
-      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Y*Y">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/09/adc-shu-mo-zhuan-huan/" class="post-title-link" itemprop="url">ADC数模转换的学习</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-09 14:33:37" itemprop="dateCreated datePublished" datetime="2019-07-09T14:33:37+08:00">2019-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-17 22:54:23" itemprop="dateModified" datetime="2020-02-17T22:54:23+08:00">2020-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/32单片机/" itemprop="url" rel="index">
-                    <span itemprop="name">32单片机</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、什么是ADC"><a href="#一、什么是ADC" class="headerlink" title="一、什么是ADC"></a>一、什么是ADC</h3><p>Analog-to-Digital Converter的缩写。</p>
-<p>指模/数转换器或者模拟/数字转换器。是指将连续变量的模拟信号转换为离散的数字信号的器件。</p>
-<p>典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/07/09/adc-shu-mo-zhuan-huan/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1259,20 +1538,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
