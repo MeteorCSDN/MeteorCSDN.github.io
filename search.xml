@@ -1,6 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据库系统的用户接口以及SQL语言</title>
+    <url>/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/</url>
+    <content><![CDATA[<h4 id="一、DBMS的用户数据接口"><a href="#一、DBMS的用户数据接口" class="headerlink" title="一、DBMS的用户数据接口"></a>一、DBMS的用户数据接口</h4><h5 id="（一）查询语言；"><a href="#（一）查询语言；" class="headerlink" title="（一）查询语言；"></a>（一）查询语言；</h5><p>​        形式化查询语言 Formal Query Language</p>
+<a id="more"></a>
+<p>​        表格式查询语言 Tabular Query Language</p>
+<p>​        图形化查询语言 Graphic Query Language</p>
+<p>​        受限的自然语言 Limited Natural Language Query Language</p>
+<h5 id="（二）图形化用户工具（GUI）"><a href="#（二）图形化用户工具（GUI）" class="headerlink" title="（二）图形化用户工具（GUI）"></a>（二）图形化用户工具（GUI）</h5><h5 id="（三）APIs：应用程序的访问接口"><a href="#（三）APIs：应用程序的访问接口" class="headerlink" title="（三）APIs：应用程序的访问接口"></a>（三）APIs：应用程序的访问接口</h5><h5 id="（四）Class-Library：类库"><a href="#（四）Class-Library：类库" class="headerlink" title="（四）Class Library：类库"></a>（四）Class Library：类库</h5><h4 id="二、SQL-Language"><a href="#二、SQL-Language" class="headerlink" title="二、SQL Language"></a>二、SQL Language</h4><h5 id="（一）数据操纵语言（DML）：主要用来处理数据库中的数据内容。允许用户对数据库中的数据进行查询-，插入，更新和删除等操作"><a href="#（一）数据操纵语言（DML）：主要用来处理数据库中的数据内容。允许用户对数据库中的数据进行查询-，插入，更新和删除等操作" class="headerlink" title="（一）数据操纵语言（DML）：主要用来处理数据库中的数据内容。允许用户对数据库中的数据进行查询 ，插入，更新和删除等操作"></a>（一）数据操纵语言（DML）：主要用来处理数据库中的数据内容。允许用户对数据库中的数据进行查询 ，插入，更新和删除等操作</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>DML语句</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT</td>
+<td>从表或视图中检索数据行</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>插入数据到表或视图</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>更新数据</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除数据</td>
+</tr>
+<tr>
+<td>CALL</td>
+<td>调用过程</td>
+</tr>
+<tr>
+<td>MERGE</td>
+<td>合并（插入或修改）</td>
+</tr>
+<tr>
+<td>COMMIT</td>
+<td>将当前事务所做的更改永久化（写入数据库）</td>
+</tr>
+<tr>
+<td>ROLLBACK</td>
+<td>取消上次提交以来的所有操作</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="（二）数据定义语言（DDL）-是一组SQL命令，用于创建和定义数据库对象，并且将对这些对象的定义保存到数据字典中。通过DDL语句可以创建数据库对象，修改数据库对象和删除数据库对象等。"><a href="#（二）数据定义语言（DDL）-是一组SQL命令，用于创建和定义数据库对象，并且将对这些对象的定义保存到数据字典中。通过DDL语句可以创建数据库对象，修改数据库对象和删除数据库对象等。" class="headerlink" title="（二）数据定义语言（DDL）:是一组SQL命令，用于创建和定义数据库对象，并且将对这些对象的定义保存到数据字典中。通过DDL语句可以创建数据库对象，修改数据库对象和删除数据库对象等。"></a>（二）数据定义语言（DDL）:是一组SQL命令，用于创建和定义数据库对象，并且将对这些对象的定义保存到数据字典中。通过DDL语句可以创建数据库对象，修改数据库对象和删除数据库对象等。</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>DDL语句</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATE</td>
+<td>创建数据库结构</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>修改数据库结构</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>删除数据库结构</td>
+</tr>
+<tr>
+<td>RENAME</td>
+<td>更改数据库对象的名称</td>
+</tr>
+<tr>
+<td>TRUNCATE</td>
+<td>删除表的全部内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="（三）数据控制语言（DCL）：数据控制语言用于修改数据库结构的操作权限。DCL语句主要有2种："><a href="#（三）数据控制语言（DCL）：数据控制语言用于修改数据库结构的操作权限。DCL语句主要有2种：" class="headerlink" title="（三）数据控制语言（DCL）：数据控制语言用于修改数据库结构的操作权限。DCL语句主要有2种："></a>（三）数据控制语言（DCL）：数据控制语言用于修改数据库结构的操作权限。DCL语句主要有2种：</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>DCL语句</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRANT</td>
+<td>授予其他用户对数据库结构的访问权限</td>
+</tr>
+<tr>
+<td>REVOKE</td>
+<td>收回用户访问数据库结构的权限</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="三、基本SQL查询"><a href="#三、基本SQL查询" class="headerlink" title="三、基本SQL查询"></a>三、基本SQL查询</h4><p>​    SELECT        [DISTINCT（用来消除重复元组）] target-list</p>
+<p>​    FROM          relation-list</p>
+<p>​    WHERE        qualification（结果应该满足的条件）</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">嵌套查询实例1：查询订了103号船的水手
+SELECT S.name
+FROM Sailors
+WHERE EXISTS（SELECT *
+                FROM Reserves R
+                WHERE R.bid=103 AND S.sid=R.sid）
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">嵌套查询实例2：查询比名字叫Horatio水手级别高的所有人
+SELECT *
+FROM Sailors S
+WHERE S.rating > ANY（SELECT S2.rating
+                        FROM Sailors S2
+                        WHERE S2.sname='Horatio'）
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux基础（二）</title>
+    <url>/2020/03/17/linux-ji-chu-er/</url>
+    <content><![CDATA[<h4 id="一、用户user"><a href="#一、用户user" class="headerlink" title="一、用户user"></a>一、用户user</h4><h5 id="（一）令牌-token-identity"><a href="#（一）令牌-token-identity" class="headerlink" title="（一）令牌 token , identity"></a>（一）令牌 token , identity</h5><h5 id="（二）Linux用户：Username-UID"><a href="#（二）Linux用户：Username-UID" class="headerlink" title="（二）Linux用户：Username/UID"></a>（二）Linux用户：Username/UID</h5><a id="more"></a>
+<p>​    管理员：root，0</p>
+<p>​    普通用户：1-65535</p>
+<p>​        系统用户：1-499（centos6）,1-999（centos7）——对守护进程获取资源进行权限分配</p>
+<p>​        登录用户：500+（centos6），1000+（centos7）——交互式登录</p>
+<h4 id="二、组group"><a href="#二、组group" class="headerlink" title="二、组group"></a>二、组group</h4><h5 id="（一）Linux组：Groupname-GID"><a href="#（一）Linux组：Groupname-GID" class="headerlink" title="（一）Linux组：Groupname/GID"></a>（一）Linux组：Groupname/GID</h5><p>​    1.管理员组：root，0</p>
+<p>​    2.普通组：</p>
+<p>​            系统组：1-499（centos6）,1-999（centos7）</p>
+<p>​            普通组：500+（centos6），1000+（centos7）</p>
+<h5 id="（二）Linux组的类别"><a href="#（二）Linux组的类别" class="headerlink" title="（二）Linux组的类别"></a>（二）Linux组的类别</h5><p>​    1.用户的主要组：用户必须属于一个且只有一个主组；</p>
+<p>​                               组名同用户名，且仅包含一个用户，私有组。</p>
+<p>​    2.用户的附加组：一个用户可以属于零个或多个辅助组。</p>
+<h5 id="（三）Linux用户和组的主要配置文件"><a href="#（三）Linux用户和组的主要配置文件" class="headerlink" title="（三）Linux用户和组的主要配置文件"></a>（三）Linux用户和组的主要配置文件</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>文件信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/passwd</td>
+<td>用户及其属性信息</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>组及其属性信息</td>
+</tr>
+<tr>
+<td>/etc/shadow</td>
+<td>用户密码及其相关属性</td>
+</tr>
+<tr>
+<td>/etc/gshadow</td>
+<td>组密码及其相关属性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="passwd文件格式："><a href="#passwd文件格式：" class="headerlink" title="passwd文件格式："></a>passwd文件格式：</h6><p>1.login name：登录用名；</p>
+<p>2.passwd：密码；</p>
+<p>3.UID：用户身份编号；</p>
+<p>4.GID：登录默认所在组编号；</p>
+<p>5.GECOS：用户全名或注释；</p>
+<p>6.home directory：用户主目录；</p>
+<p>7.shell：用户默认使用shell。</p>
+<h5 id="（四）group文件格式"><a href="#（四）group文件格式" class="headerlink" title="（四）group文件格式"></a>（四）group文件格式</h5><p>1.群组名称：就是群组名称；</p>
+<p>2.群组密码：通常不需要设定，密码是记录在/etc/shadow</p>
+<p>3.GID：就是群组的GID；</p>
+<p>4.以当前组为附加组的用户列表（分隔符为逗号）</p>
+<h4 id="三、用户和组管理命令"><a href="#三、用户和组管理命令" class="headerlink" title="三、用户和组管理命令"></a>三、用户和组管理命令</h4><p>1.用户管理命令：useradd（创建）；usermod（修改）；userdel（删除）</p>
+<p>2.组账号维护命令：groupadd；groupmod；groupdel</p>
+<p>3.切换身份：su username（不改变目录环境）</p>
+<p>​                      su - username</p>
+<p>​                      退回原来身份：exit</p>
+<p>4.修改用户密码：passwd [OPTIONS] username</p>
+<p>   修改组密码：gpasswd [OPTIONS] group</p>
+<h4 id="四、文件权限"><a href="#四、文件权限" class="headerlink" title="四、文件权限"></a>四、文件权限</h4><h5 id="（一）"><a href="#（一）" class="headerlink" title="（一）"></a>（一）</h5><p><img src="/2020/03/17/linux-ji-chu-er/图片一.png" alt></p>
+<p>​    r：读权限；w：写权限；x：执行权限</p>
+<h5 id="（二）文件属性操作"><a href="#（二）文件属性操作" class="headerlink" title="（二）文件属性操作"></a>（二）文件属性操作</h5><p>​    chown：设置文件的所有者；</p>
+<p>​    chgrp：设置文件的属组信息；</p>
+<p>​    chmod：修改文件权限</p>
+<h5 id="（三）默认权限"><a href="#（三）默认权限" class="headerlink" title="（三）默认权限"></a>（三）默认权限</h5><p>​    1.umask值：可以用来保留在创建文件权限；</p>
+<p>​    2.非特权用户umask是002；root的umask是022；</p>
+<p>​    3.全局设置：/etc/bashrc    用户设置：~/.bashrc。</p>
+<h5 id="（四）特殊权限"><a href="#（四）特殊权限" class="headerlink" title="（四）特殊权限"></a>（四）特殊权限</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUID</td>
+<td>当s这个标志出现在<strong>文件所有者的x权限上</strong>时，例如文件权限状态“-rwsr-xr-x”，此时就称为 Set UID，简称为SUID的特殊权限。</td>
+<td>（1）SUID权限仅对<strong>二进制程序</strong>有效；（2）执行者对于该程序需要<strong>具有x的可执行权限</strong>；（3）本权限仅在<strong>执行该程序的过程中</strong>有效；（4）执行者将具有该程序所有者的权限。</td>
+</tr>
+<tr>
+<td>SGID</td>
+<td>当s标志出现在文件所有者的x权限时称为SUID，那么s出现在用户组的x权限时称为SGID。</td>
+<td>（1）SGID对二进制程序有用；（2）程序执行者对该程序需具备x权限；（3）执行者在执行过程中会获得该程序用户组的支持；（4）一旦<strong>某目录</strong>被设定了SGID，则对此目录有写权限的用户在此目录中创建的文件所属的组为此目录的属组。</td>
+</tr>
+<tr>
+<td>SBIT</td>
+<td>SBIT目前只对目录有效。</td>
+<td>（1）当用户对此目录具有w和x权限时，即具有<strong>写入权限</strong>时；（2）当用户在该目录下创建新文件或目录时，<strong>仅有自己和root</strong>才有权力删除。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="（五）访问控制列表"><a href="#（五）访问控制列表" class="headerlink" title="（五）访问控制列表"></a>（五）访问控制列表</h5><p>​    1.ACL：Access Control List，实现灵活的权限管理；</p>
+<p>​    2.除了文件的所有者，所属组和其他人，可以对更多的用户设置权限；</p>
+<p>​    3.CentOS7默认创建的xfs和ext4文件系统具有ACL功能；</p>
+<p>​    4.ACL生效顺序：所有者，自定义用户，自定义组，其他人</p>
+<h4 id="五、文件查看"><a href="#五、文件查看" class="headerlink" title="五、文件查看"></a>五、文件查看</h4><h5 id="（一）文件查看命令"><a href="#（一）文件查看命令" class="headerlink" title="（一）文件查看命令"></a>（一）文件查看命令</h5><p>​        cat，tac，rev</p>
+<h5 id="（二）分页查看文件内容"><a href="#（二）分页查看文件内容" class="headerlink" title="（二）分页查看文件内容"></a>（二）分页查看文件内容</h5><p>​        more：分页查看文件；-d：显示翻页及退出提示；</p>
+<p>​        less：一页一页地查看文件或STDIN输出；</p>
+<h5 id="（三）显示文本前或后行内容"><a href="#（三）显示文本前或后行内容" class="headerlink" title="（三）显示文本前或后行内容"></a>（三）显示文本前或后行内容</h5><p>​        head：-c #:指定获取前#字节；-n #:指定获取前#行（默认前十行）；-#:指定行数</p>
+<p>​        tail：-f:跟踪显示文件fd新追加的内容，常用日志监控；</p>
+<p>​        tailf：类似tail -f，当文件不增长时并不访问文件。</p>
+<h5 id="（四）文本处理"><a href="#（四）文本处理" class="headerlink" title="（四）文本处理"></a>（四）文本处理</h5><p>​        grep：文本过滤（模式：pattern）工具</p>
+<p>​        sed：stream editor，文本编辑工具</p>
+<p>​        awk：Linux上的实现gawk，文本报告生成器。</p>
+<h4 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h4><h5 id="（一）REGEXP"><a href="#（一）REGEXP" class="headerlink" title="（一）REGEXP"></a>（一）REGEXP</h5><p>由一类特殊字符及文本字符所编写的模式，其中有些字符（元字符）不表示字符字面意义，而表示控制或通配的功能。</p>
+<h5 id="（二）程序支持"><a href="#（二）程序支持" class="headerlink" title="（二）程序支持"></a>（二）程序支持</h5><p>grep    sed    awk    vim    less    ngnix    varnish等。</p>
+<h5 id="（三）分类"><a href="#（三）分类" class="headerlink" title="（三）分类"></a>（三）分类</h5><p>基本正则表达式：BRE</p>
+<p>扩展正则表达式：ERE</p>
+<h5 id="（四）正则表达式引擎"><a href="#（四）正则表达式引擎" class="headerlink" title="（四）正则表达式引擎"></a>（四）正则表达式引擎</h5><p>采用不同算法，检查处理正则表达式的软件模式    PCRE（Perl Compatible Expressions）</p>
+<h5 id="（五）元字符分类"><a href="#（五）元字符分类" class="headerlink" title="（五）元字符分类"></a>（五）元字符分类</h5><h6 id="1-字符通配"><a href="#1-字符通配" class="headerlink" title="1.字符通配"></a>1.字符通配</h6><p>“ . “：匹配任意单个字符</p>
+<p>“ []”：匹配指定范围内的任意单个字符</p>
+<p>“ ^”：匹配指定范围外的任意单个字符</p>
+<p>[:digit:]：数字</p>
+<p>[:alpha:]：字母</p>
+<p>[:alnum:]：数字和字母</p>
+<p>[[:digit:]]：匹配任意数字，</p>
+<p>[[:lower:]]：匹配小写字母，</p>
+<p>[[:upper:]]：匹配大写字母</p>
+<h6 id="2-匹配次数"><a href="#2-匹配次数" class="headerlink" title="2.匹配次数"></a>2.匹配次数</h6><p><em>（星）：匹配 </em> 前面字符任意次数</p>
+<p>.*:匹配任意长度的任意字符</p>
+<p>\？：匹配前面的字符0次或1次</p>
+<p>\ *：匹配一次或者多次</p>
+<p>\ {m,n\ }：匹配 其前面的字符至少 m 次，至多 n 次</p>
+<p>\ {0,n\ }：匹配至多n次</p>
+<p>\ {m,\ }：至少m次</p>
+<h6 id="3-位置锚定"><a href="#3-位置锚定" class="headerlink" title="3.位置锚定"></a>3.位置锚定</h6><p>^：行首锚定，用于模式的最左侧</p>
+<p>$：行尾锚定，用于模式的最右侧</p>
+<p>^$：空行</p>
+<p>^ [[:space:]]*$：空行或包括空白字符的行</p>
+<p>词首锚定：\ &lt; 或 \b，用于单词模式的左侧</p>
+<p>词尾锚定：\ &gt; 或 \b，用于单词模式的右侧</p>
+<p>匹配完整单词：\ &lt;索要匹配的单词\ &gt;</p>
+<h6 id="4-分组"><a href="#4-分组" class="headerlink" title="4.分组"></a>4.分组</h6><p> \ (\ )：将一个或者多个字符捆绑在一起，当做一个整体进行处理</p>
+<p> \（xy\）\ (zd\ )ab\1：把xy当做第一组，把zd当做第二组，取第一组</p>
+<p> \1：引用第一个分组</p>
+<pre><code>#查看分区利用率
+[root@localhost ~]# df -h |grep &quot;^/dev/sd&quot; |grep -o &#39;[[:digit:]]\+%&#39; |grep -o &#39;[[:digit:]]\+&#39;
+</code></pre><h5 id="（六）egrep及扩展的正则表达式（基本不用加-）"><a href="#（六）egrep及扩展的正则表达式（基本不用加-）" class="headerlink" title="（六）egrep及扩展的正则表达式（基本不用加 \）"></a>（六）egrep及扩展的正则表达式（基本不用加 \）</h5><p>egrep = grep = -E</p>
+<p>egrep [OPTIONS] PATTERN [FILE]</p>
+<p>字符匹配：    . 任意单个字符</p>
+<p>​                        [] 指定范围的字符</p>
+<p>​                        <sup><a href="#fn_" id="reffn_"></a></sup> 不在指定范围的字符</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据模型</title>
     <url>/2020/03/15/shu-ju-mo-xing/</url>
     <content><![CDATA[<h4 id="一、层次模型"><a href="#一、层次模型" class="headerlink" title="一、层次模型"></a>一、层次模型</h4><h5 id="（一）PCR关系（Parent-Child-relationship）："><a href="#（一）PCR关系（Parent-Child-relationship）：" class="headerlink" title="（一）PCR关系（Parent-Child relationship）："></a>（一）PCR关系（Parent-Child relationship）：</h5><p>现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：</p>
@@ -132,7 +417,13 @@ r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="�
 <h6 id="2-外连接"><a href="#2-外连接" class="headerlink" title="2.外连接"></a>2.外连接</h6><p>内连接中只能够显示等值满足条件的，如果不满住条件的无法显示，如果希望可以显示特定表的全部数据，就用外链接：外连接分为三种：左外连接，右外连接，全外连接。</p>
 <p>（1）左外链接：左关系属性=右关系属性（+），放在等号的右边表示左连接；意思就是显示左边表中没有显示的信息；</p>
 <p>（2）右外链接：左关系属性（+）= 右关系属性，放在等号的左边表示右连接；意思就是显示右边表中没有显示的信息。</p>
-]]></content>
+<h4 id="四、ER图"><a href="#四、ER图" class="headerlink" title="四、ER图"></a>四、ER图</h4><h5 id="（一）ER图的实体：数据模型中的数据对象"><a href="#（一）ER图的实体：数据模型中的数据对象" class="headerlink" title="（一）ER图的实体：数据模型中的数据对象"></a>（一）ER图的实体：数据模型中的数据对象</h5><h6 id="1-弱实体："><a href="#1-弱实体：" class="headerlink" title="1.弱实体："></a>1.弱实体：</h6><p>一个实体必须依赖于另一个实体存在，那么前者是弱实体，后者是强实体，弱实体必须依赖强实体存在，例如上图的学生实体和成绩单实体，成绩单依赖于学生实体而存在，因此学生是强实体，而成绩单是弱实体。</p>
+<h6 id="2-复合实体："><a href="#2-复合实体：" class="headerlink" title="2.复合实体："></a>2.复合实体：</h6><p>复合实体也称联合实体或桥接实体，常常用于实现两个或多个实体间的M：N联系，它由每个关联实体的主玛组成，用长方体内加一个菱形来表示。</p>
+<h5 id="（二）ER图的属性：数据对象所具有的属性"><a href="#（二）ER图的属性：数据对象所具有的属性" class="headerlink" title="（二）ER图的属性：数据对象所具有的属性"></a>（二）ER图的属性：数据对象所具有的属性</h5><p>例如学生具有姓名、学号、年级等属性，用椭圆形表示，属性分为唯一属性（ unique attribute）和非唯一属性，唯一属性指的是唯一可用来标识该实体实例或者成员的属性，用下划线表示，一般来讲实体都至少有一个唯一属性。</p>
+<h5 id="（三）ER图的关系：数据对象与数据对象之间的联系"><a href="#（三）ER图的关系：数据对象与数据对象之间的联系" class="headerlink" title="（三）ER图的关系：数据对象与数据对象之间的联系"></a>（三）ER图的关系：数据对象与数据对象之间的联系</h5><p>1对1（1:1） ：1对1关系是指对于实体集A与实体集B，A中的每一个实体至多与B中一个实体有关系；反之，在实体集B中的每个实体至多与实体集A中一个实体有关系。</p>
+<p>1对多（1:N） ：1对多关系是指实体集A与实体集B中至少有N(N&gt;0)个实体有关系；并且实体集B中每一个实体至多与实体集A中一个实体有关系。</p>
+<p>多对多（M:N） ：多对多关系是指实体集A中的每一个实体与实体集B中至少有M(M&gt;0)个实体有关系，并且实体集B中的每一个实体与实体集A中的至少N（N&gt;0）个实体有关系。</p>
+<h5 id="（四）工具：Processon"><a href="#（四）工具：Processon" class="headerlink" title="（四）工具：Processon"></a>（四）工具：<a href="https://www.processon.com/login" target="_blank" rel="noopener">Processon</a></h5>]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
@@ -248,7 +539,7 @@ fi
 <p>3.</p>
 <pre><code>tr -d abc &lt; /etc/fstab
 </code></pre><p>删除fstab文件中的所有abc中任意字符</p>
-<p>4.</p>
+<p>4.使用 &gt; 来重定向标准输出</p>
 <pre><code>cat &gt; file
 mage
 abc
@@ -260,13 +551,20 @@ abc
 <li>最后一个命令会在当前shell进程的子shell进程中执行</li>
 <li>组合多种工具的功能</li>
 </ul>
-<pre><code>ls |tr &#39;a-z&#39; &#39;A-Z&#39;
+<pre><code>例：ls |tr &#39;a-z&#39; &#39;A-Z&#39;
+</code></pre><pre><code>#将who指令的标准输出显示到屏幕的同时重定向追加到who.out文件
+[root@localhost ~]# who | tee -a who.out
+root     tty1         2020-03-09 17:51
+root     pts/0        2020-03-11 00:37 (10.0.2.2)
+[root@localhost ~]# cat who.out
+root     tty1         2020-03-09 17:51
+root     pts/0        2020-03-11 00:37 (10.0.2.2)
 </code></pre>]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Linux学习</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1261,7 +1559,7 @@ max-load-15=12
 </code></pre><p><img src="/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/图片六.png" alt></p>
 ]]></content>
       <categories>
-        <category>树莓派</category>
+        <category>教程</category>
       </categories>
       <tags>
         <tag>树莓派</tag>
@@ -1373,6 +1671,49 @@ max-load-15=12
       </tags>
   </entry>
   <entry>
+    <title>CAN基础知识介绍</title>
+    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
+    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
+<a id="more"></a>
+<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
+<p>2.系统柔软性</p>
+<p>3.速度快，距离远</p>
+<p>4.具有错误检测，错误通知和错误恢复功能</p>
+<p>5.故障封闭功能</p>
+<p>6.连接节点多</p>
+<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
+<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
+<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
+<p>1.帧起始：表示数据帧开始的段</p>
+<p>2.仲裁段：表示该帧优先级的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
+<p>3.控制段：表示数据的字节数及保留位的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
+<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
+<p>5.CRC段：检查帧的传输错误的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
+<p>6.ACK段：表示确认正常接收的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
+<p>7.帧结束：表示数据帧结束的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
+<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
+<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
+<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
+<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言的生命周期和作用域</title>
     <url>/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</url>
     <content><![CDATA[<p>生命周期：是一个变量存在的周期。</p>
@@ -1423,49 +1764,6 @@ int main(int argc, char const *argv[])
       </categories>
       <tags>
         <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CAN基础知识介绍</title>
-    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
-    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<a id="more"></a>
-<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>通信</tag>
       </tags>
   </entry>
   <entry>

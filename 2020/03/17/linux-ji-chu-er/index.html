@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一、用户user（一）令牌 token , identity（二）Linux用户：Username/UID">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础（二）">
+<meta property="og:url" content="http://yoursite.com/2020/03/17/linux-ji-chu-er/index.html">
+<meta property="og:site_name" content="Y*Y">
+<meta property="og:description" content="一、用户user（一）令牌 token , identity（二）Linux用户：Username/UID">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/17/linux-ji-chu-er/图片一.png">
+<meta property="og:updated_time" content="2020-03-22T13:14:39.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux基础（二）">
+<meta name="twitter:description" content="一、用户user（一）令牌 token , identity（二）Linux用户：Username/UID">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/17/linux-ji-chu-er/图片一.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/17/linux-ji-chu-er/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Linux基础（二） | Y*Y</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Y*Y</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Y*Y BLOG</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies" rel="section"><i class="fa fa-fw fa-sitemap"></i>电影</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/linux-ji-chu-er/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Y*Y">
+      <meta itemprop="description" content="佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Y*Y">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux基础（二）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-17 21:40:23" itemprop="dateCreated datePublished" datetime="2020-03-17T21:40:23+08:00">2020-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-22 21:14:39" itemprop="dateModified" datetime="2020-03-22T21:14:39+08:00">2020-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/17/linux-ji-chu-er/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/17/linux-ji-chu-er/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、用户user"><a href="#一、用户user" class="headerlink" title="一、用户user"></a>一、用户user</h4><h5 id="（一）令牌-token-identity"><a href="#（一）令牌-token-identity" class="headerlink" title="（一）令牌 token , identity"></a>（一）令牌 token , identity</h5><h5 id="（二）Linux用户：Username-UID"><a href="#（二）Linux用户：Username-UID" class="headerlink" title="（二）Linux用户：Username/UID"></a>（二）Linux用户：Username/UID</h5><a id="more"></a>
+<p>​    管理员：root，0</p>
+<p>​    普通用户：1-65535</p>
+<p>​        系统用户：1-499（centos6）,1-999（centos7）——对守护进程获取资源进行权限分配</p>
+<p>​        登录用户：500+（centos6），1000+（centos7）——交互式登录</p>
+<h4 id="二、组group"><a href="#二、组group" class="headerlink" title="二、组group"></a>二、组group</h4><h5 id="（一）Linux组：Groupname-GID"><a href="#（一）Linux组：Groupname-GID" class="headerlink" title="（一）Linux组：Groupname/GID"></a>（一）Linux组：Groupname/GID</h5><p>​    1.管理员组：root，0</p>
+<p>​    2.普通组：</p>
+<p>​            系统组：1-499（centos6）,1-999（centos7）</p>
+<p>​            普通组：500+（centos6），1000+（centos7）</p>
+<h5 id="（二）Linux组的类别"><a href="#（二）Linux组的类别" class="headerlink" title="（二）Linux组的类别"></a>（二）Linux组的类别</h5><p>​    1.用户的主要组：用户必须属于一个且只有一个主组；</p>
+<p>​                               组名同用户名，且仅包含一个用户，私有组。</p>
+<p>​    2.用户的附加组：一个用户可以属于零个或多个辅助组。</p>
+<h5 id="（三）Linux用户和组的主要配置文件"><a href="#（三）Linux用户和组的主要配置文件" class="headerlink" title="（三）Linux用户和组的主要配置文件"></a>（三）Linux用户和组的主要配置文件</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>文件信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/passwd</td>
+<td>用户及其属性信息</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>组及其属性信息</td>
+</tr>
+<tr>
+<td>/etc/shadow</td>
+<td>用户密码及其相关属性</td>
+</tr>
+<tr>
+<td>/etc/gshadow</td>
+<td>组密码及其相关属性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="passwd文件格式："><a href="#passwd文件格式：" class="headerlink" title="passwd文件格式："></a>passwd文件格式：</h6><p>1.login name：登录用名；</p>
+<p>2.passwd：密码；</p>
+<p>3.UID：用户身份编号；</p>
+<p>4.GID：登录默认所在组编号；</p>
+<p>5.GECOS：用户全名或注释；</p>
+<p>6.home directory：用户主目录；</p>
+<p>7.shell：用户默认使用shell。</p>
+<h5 id="（四）group文件格式"><a href="#（四）group文件格式" class="headerlink" title="（四）group文件格式"></a>（四）group文件格式</h5><p>1.群组名称：就是群组名称；</p>
+<p>2.群组密码：通常不需要设定，密码是记录在/etc/shadow</p>
+<p>3.GID：就是群组的GID；</p>
+<p>4.以当前组为附加组的用户列表（分隔符为逗号）</p>
+<h4 id="三、用户和组管理命令"><a href="#三、用户和组管理命令" class="headerlink" title="三、用户和组管理命令"></a>三、用户和组管理命令</h4><p>1.用户管理命令：useradd（创建）；usermod（修改）；userdel（删除）</p>
+<p>2.组账号维护命令：groupadd；groupmod；groupdel</p>
+<p>3.切换身份：su username（不改变目录环境）</p>
+<p>​                      su - username</p>
+<p>​                      退回原来身份：exit</p>
+<p>4.修改用户密码：passwd [OPTIONS] username</p>
+<p>   修改组密码：gpasswd [OPTIONS] group</p>
+<h4 id="四、文件权限"><a href="#四、文件权限" class="headerlink" title="四、文件权限"></a>四、文件权限</h4><h5 id="（一）"><a href="#（一）" class="headerlink" title="（一）"></a>（一）</h5><p><img src="/2020/03/17/linux-ji-chu-er/图片一.png" alt></p>
+<p>​    r：读权限；w：写权限；x：执行权限</p>
+<h5 id="（二）文件属性操作"><a href="#（二）文件属性操作" class="headerlink" title="（二）文件属性操作"></a>（二）文件属性操作</h5><p>​    chown：设置文件的所有者；</p>
+<p>​    chgrp：设置文件的属组信息；</p>
+<p>​    chmod：修改文件权限</p>
+<h5 id="（三）默认权限"><a href="#（三）默认权限" class="headerlink" title="（三）默认权限"></a>（三）默认权限</h5><p>​    1.umask值：可以用来保留在创建文件权限；</p>
+<p>​    2.非特权用户umask是002；root的umask是022；</p>
+<p>​    3.全局设置：/etc/bashrc    用户设置：~/.bashrc。</p>
+<h5 id="（四）特殊权限"><a href="#（四）特殊权限" class="headerlink" title="（四）特殊权限"></a>（四）特殊权限</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUID</td>
+<td>当s这个标志出现在<strong>文件所有者的x权限上</strong>时，例如文件权限状态“-rwsr-xr-x”，此时就称为 Set UID，简称为SUID的特殊权限。</td>
+<td>（1）SUID权限仅对<strong>二进制程序</strong>有效；（2）执行者对于该程序需要<strong>具有x的可执行权限</strong>；（3）本权限仅在<strong>执行该程序的过程中</strong>有效；（4）执行者将具有该程序所有者的权限。</td>
+</tr>
+<tr>
+<td>SGID</td>
+<td>当s标志出现在文件所有者的x权限时称为SUID，那么s出现在用户组的x权限时称为SGID。</td>
+<td>（1）SGID对二进制程序有用；（2）程序执行者对该程序需具备x权限；（3）执行者在执行过程中会获得该程序用户组的支持；（4）一旦<strong>某目录</strong>被设定了SGID，则对此目录有写权限的用户在此目录中创建的文件所属的组为此目录的属组。</td>
+</tr>
+<tr>
+<td>SBIT</td>
+<td>SBIT目前只对目录有效。</td>
+<td>（1）当用户对此目录具有w和x权限时，即具有<strong>写入权限</strong>时；（2）当用户在该目录下创建新文件或目录时，<strong>仅有自己和root</strong>才有权力删除。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="（五）访问控制列表"><a href="#（五）访问控制列表" class="headerlink" title="（五）访问控制列表"></a>（五）访问控制列表</h5><p>​    1.ACL：Access Control List，实现灵活的权限管理；</p>
+<p>​    2.除了文件的所有者，所属组和其他人，可以对更多的用户设置权限；</p>
+<p>​    3.CentOS7默认创建的xfs和ext4文件系统具有ACL功能；</p>
+<p>​    4.ACL生效顺序：所有者，自定义用户，自定义组，其他人</p>
+<h4 id="五、文件查看"><a href="#五、文件查看" class="headerlink" title="五、文件查看"></a>五、文件查看</h4><h5 id="（一）文件查看命令"><a href="#（一）文件查看命令" class="headerlink" title="（一）文件查看命令"></a>（一）文件查看命令</h5><p>​        cat，tac，rev</p>
+<h5 id="（二）分页查看文件内容"><a href="#（二）分页查看文件内容" class="headerlink" title="（二）分页查看文件内容"></a>（二）分页查看文件内容</h5><p>​        more：分页查看文件；-d：显示翻页及退出提示；</p>
+<p>​        less：一页一页地查看文件或STDIN输出；</p>
+<h5 id="（三）显示文本前或后行内容"><a href="#（三）显示文本前或后行内容" class="headerlink" title="（三）显示文本前或后行内容"></a>（三）显示文本前或后行内容</h5><p>​        head：-c #:指定获取前#字节；-n #:指定获取前#行（默认前十行）；-#:指定行数</p>
+<p>​        tail：-f:跟踪显示文件fd新追加的内容，常用日志监控；</p>
+<p>​        tailf：类似tail -f，当文件不增长时并不访问文件。</p>
+<h5 id="（四）文本处理"><a href="#（四）文本处理" class="headerlink" title="（四）文本处理"></a>（四）文本处理</h5><p>​        grep：文本过滤（模式：pattern）工具</p>
+<p>​        sed：stream editor，文本编辑工具</p>
+<p>​        awk：Linux上的实现gawk，文本报告生成器。</p>
+<h4 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h4><h5 id="（一）REGEXP"><a href="#（一）REGEXP" class="headerlink" title="（一）REGEXP"></a>（一）REGEXP</h5><p>由一类特殊字符及文本字符所编写的模式，其中有些字符（元字符）不表示字符字面意义，而表示控制或通配的功能。</p>
+<h5 id="（二）程序支持"><a href="#（二）程序支持" class="headerlink" title="（二）程序支持"></a>（二）程序支持</h5><p>grep    sed    awk    vim    less    ngnix    varnish等。</p>
+<h5 id="（三）分类"><a href="#（三）分类" class="headerlink" title="（三）分类"></a>（三）分类</h5><p>基本正则表达式：BRE</p>
+<p>扩展正则表达式：ERE</p>
+<h5 id="（四）正则表达式引擎"><a href="#（四）正则表达式引擎" class="headerlink" title="（四）正则表达式引擎"></a>（四）正则表达式引擎</h5><p>采用不同算法，检查处理正则表达式的软件模式    PCRE（Perl Compatible Expressions）</p>
+<h5 id="（五）元字符分类"><a href="#（五）元字符分类" class="headerlink" title="（五）元字符分类"></a>（五）元字符分类</h5><h6 id="1-字符通配"><a href="#1-字符通配" class="headerlink" title="1.字符通配"></a>1.字符通配</h6><p>“ . “：匹配任意单个字符</p>
+<p>“ []”：匹配指定范围内的任意单个字符</p>
+<p>“ ^”：匹配指定范围外的任意单个字符</p>
+<p>[:digit:]：数字</p>
+<p>[:alpha:]：字母</p>
+<p>[:alnum:]：数字和字母</p>
+<p>[[:digit:]]：匹配任意数字，</p>
+<p>[[:lower:]]：匹配小写字母，</p>
+<p>[[:upper:]]：匹配大写字母</p>
+<h6 id="2-匹配次数"><a href="#2-匹配次数" class="headerlink" title="2.匹配次数"></a>2.匹配次数</h6><p><em>（星）：匹配 </em> 前面字符任意次数</p>
+<p>.*:匹配任意长度的任意字符</p>
+<p>\？：匹配前面的字符0次或1次</p>
+<p>\ *：匹配一次或者多次</p>
+<p>\ {m,n\ }：匹配 其前面的字符至少 m 次，至多 n 次</p>
+<p>\ {0,n\ }：匹配至多n次</p>
+<p>\ {m,\ }：至少m次</p>
+<h6 id="3-位置锚定"><a href="#3-位置锚定" class="headerlink" title="3.位置锚定"></a>3.位置锚定</h6><p>^：行首锚定，用于模式的最左侧</p>
+<p>$：行尾锚定，用于模式的最右侧</p>
+<p>^$：空行</p>
+<p>^ [[:space:]]*$：空行或包括空白字符的行</p>
+<p>词首锚定：\ &lt; 或 \b，用于单词模式的左侧</p>
+<p>词尾锚定：\ &gt; 或 \b，用于单词模式的右侧</p>
+<p>匹配完整单词：\ &lt;索要匹配的单词\ &gt;</p>
+<h6 id="4-分组"><a href="#4-分组" class="headerlink" title="4.分组"></a>4.分组</h6><p> \ (\ )：将一个或者多个字符捆绑在一起，当做一个整体进行处理</p>
+<p> \（xy\）\ (zd\ )ab\1：把xy当做第一组，把zd当做第二组，取第一组</p>
+<p> \1：引用第一个分组</p>
+<pre><code>#查看分区利用率
+[root@localhost ~]# df -h |grep &quot;^/dev/sd&quot; |grep -o &#39;[[:digit:]]\+%&#39; |grep -o &#39;[[:digit:]]\+&#39;
+</code></pre><h5 id="（六）egrep及扩展的正则表达式（基本不用加-）"><a href="#（六）egrep及扩展的正则表达式（基本不用加-）" class="headerlink" title="（六）egrep及扩展的正则表达式（基本不用加 \）"></a>（六）egrep及扩展的正则表达式（基本不用加 \）</h5><p>egrep = grep = -E</p>
+<p>egrep [OPTIONS] PATTERN [FILE]</p>
+<p>字符匹配：    . 任意单个字符</p>
+<p>​                        [] 指定范围的字符</p>
+<p>​                        <sup><a href="#fn_" id="reffn_"></a></sup> 不在指定范围的字符</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/15/shu-ju-mo-xing/" rel="prev" title="数据模型">
+      <i class="fa fa-chevron-left"></i> 数据模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/" rel="next" title="数据库系统的用户接口以及SQL语言">
+      数据库系统的用户接口以及SQL语言 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、用户user"><span class="nav-number">1.</span> <span class="nav-text">一、用户user</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）令牌-token-identity"><span class="nav-number">1.1.</span> <span class="nav-text">（一）令牌 token , identity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）Linux用户：Username-UID"><span class="nav-number">1.2.</span> <span class="nav-text">（二）Linux用户：Username/UID</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、组group"><span class="nav-number">2.</span> <span class="nav-text">二、组group</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）Linux组：Groupname-GID"><span class="nav-number">2.1.</span> <span class="nav-text">（一）Linux组：Groupname/GID</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）Linux组的类别"><span class="nav-number">2.2.</span> <span class="nav-text">（二）Linux组的类别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）Linux用户和组的主要配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">（三）Linux用户和组的主要配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#passwd文件格式："><span class="nav-number">2.3.1.</span> <span class="nav-text">passwd文件格式：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）group文件格式"><span class="nav-number">2.4.</span> <span class="nav-text">（四）group文件格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、用户和组管理命令"><span class="nav-number">3.</span> <span class="nav-text">三、用户和组管理命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、文件权限"><span class="nav-number">4.</span> <span class="nav-text">四、文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）"><span class="nav-number">4.1.</span> <span class="nav-text">（一）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）文件属性操作"><span class="nav-number">4.2.</span> <span class="nav-text">（二）文件属性操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）默认权限"><span class="nav-number">4.3.</span> <span class="nav-text">（三）默认权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）特殊权限"><span class="nav-number">4.4.</span> <span class="nav-text">（四）特殊权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）访问控制列表"><span class="nav-number">4.5.</span> <span class="nav-text">（五）访问控制列表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、文件查看"><span class="nav-number">5.</span> <span class="nav-text">五、文件查看</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）文件查看命令"><span class="nav-number">5.1.</span> <span class="nav-text">（一）文件查看命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）分页查看文件内容"><span class="nav-number">5.2.</span> <span class="nav-text">（二）分页查看文件内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）显示文本前或后行内容"><span class="nav-number">5.3.</span> <span class="nav-text">（三）显示文本前或后行内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）文本处理"><span class="nav-number">5.4.</span> <span class="nav-text">（四）文本处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、正则表达式"><span class="nav-number">6.</span> <span class="nav-text">六、正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）REGEXP"><span class="nav-number">6.1.</span> <span class="nav-text">（一）REGEXP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）程序支持"><span class="nav-number">6.2.</span> <span class="nav-text">（二）程序支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）分类"><span class="nav-number">6.3.</span> <span class="nav-text">（三）分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）正则表达式引擎"><span class="nav-number">6.4.</span> <span class="nav-text">（四）正则表达式引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）元字符分类"><span class="nav-number">6.5.</span> <span class="nav-text">（五）元字符分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-字符通配"><span class="nav-number">6.5.1.</span> <span class="nav-text">1.字符通配</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-匹配次数"><span class="nav-number">6.5.2.</span> <span class="nav-text">2.匹配次数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-位置锚定"><span class="nav-number">6.5.3.</span> <span class="nav-text">3.位置锚定</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-分组"><span class="nav-number">6.5.4.</span> <span class="nav-text">4.分组</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（六）egrep及扩展的正则表达式（基本不用加-）"><span class="nav-number">6.6.</span> <span class="nav-text">（六）egrep及扩展的正则表达式（基本不用加 \）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Y*Y</p>
+  <div class="site-description" itemprop="description">佛系青年，与世无争，本本分分，唯独一个“帅”字贯穿全生！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://expoli.tech/" title="https://expoli.tech/" rel="noopener" target="_blank">糖醋鱼</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://me.zhengqiao.wang/" title="http://me.zhengqiao.wang/" rel="noopener" target="_blank">王政乔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.leeyiding.com/" title="https://www.leeyiding.com/" rel="noopener" target="_blank">LeeYD</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://shuangzu.top" title="https://shuangzu.top" rel="noopener" target="_blank">郑州大学双足实验室</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Y*Y</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: '3oAoPTPAyl556QHqkR7rbHPr-gzGzoHsz',
+      appKey: '7hOJIg9fiBiCCKQQjfUzgWgB',
+      placeholder: "说点什么吧(づ｡◕ᴗᴗ◕｡)づ",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

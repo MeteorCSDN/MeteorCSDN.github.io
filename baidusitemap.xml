@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/2020/03/15/shu-ju-mo-xing/</loc>
-    <lastmod>2020-03-16</lastmod>
+    <loc>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</loc>
+    <lastmod>2020-03-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/03/17/linux-ji-chu-er/</loc>
+    <lastmod>2020-03-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/</loc>
+    <lastmod>2020-03-22</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/03/08/linux-ji-chu/</loc>
+    <lastmod>2020-03-17</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/03/15/shu-ju-mo-xing/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/03/05/pid-suan-fa-xue-xi/</loc>
@@ -50,9 +59,6 @@
     <lastmod>2020-02-20</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/05/03/test/</loc>
-    <lastmod>2020-02-17</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</loc>
     <lastmod>2020-02-17</lastmod>
   </url>
 </urlset>

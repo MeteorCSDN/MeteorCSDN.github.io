@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-16T10:27:32.070Z</updated>
+  <updated>2020-03-22T13:14:24.580Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据库系统的用户接口以及SQL语言</title>
+    <link href="http://yoursite.com/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/"/>
+    <id>http://yoursite.com/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/</id>
+    <published>2020-03-18T08:17:17.000Z</published>
+    <updated>2020-03-22T13:14:24.580Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、DBMS的用户数据接口&quot;&gt;&lt;a href=&quot;#一、DBMS的用户数据接口&quot; class=&quot;headerlink&quot; title=&quot;一、DBMS的用户数据接口&quot;&gt;&lt;/a&gt;一、DBMS的用户数据接口&lt;/h4&gt;&lt;h5 id=&quot;（一）查询语言；&quot;&gt;&lt;a href=&quot;#（一）查询语言；&quot; class=&quot;headerlink&quot; title=&quot;（一）查询语言；&quot;&gt;&lt;/a&gt;（一）查询语言；&lt;/h5&gt;&lt;p&gt;​        形式化查询语言 Formal Query Language&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux基础（二）</title>
+    <link href="http://yoursite.com/2020/03/17/linux-ji-chu-er/"/>
+    <id>http://yoursite.com/2020/03/17/linux-ji-chu-er/</id>
+    <published>2020-03-17T13:40:23.000Z</published>
+    <updated>2020-03-22T13:14:39.817Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、用户user&quot;&gt;&lt;a href=&quot;#一、用户user&quot; class=&quot;headerlink&quot; title=&quot;一、用户user&quot;&gt;&lt;/a&gt;一、用户user&lt;/h4&gt;&lt;h5 id=&quot;（一）令牌-token-identity&quot;&gt;&lt;a href=&quot;#（一）令牌-token-identity&quot; class=&quot;headerlink&quot; title=&quot;（一）令牌 token , identity&quot;&gt;&lt;/a&gt;（一）令牌 token , identity&lt;/h5&gt;&lt;h5 id=&quot;（二）Linux用户：Username-UID&quot;&gt;&lt;a href=&quot;#（二）Linux用户：Username-UID&quot; class=&quot;headerlink&quot; title=&quot;（二）Linux用户：Username/UID&quot;&gt;&lt;/a&gt;（二）Linux用户：Username/UID&lt;/h5&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数据模型</title>
     <link href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/"/>
     <id>http://yoursite.com/2020/03/15/shu-ju-mo-xing/</id>
     <published>2020-03-15T10:29:29.000Z</published>
-    <updated>2020-03-16T10:27:32.070Z</updated>
+    <updated>2020-03-16T14:22:43.765Z</updated>
     
     <summary type="html">
     
@@ -41,7 +81,7 @@
     <link href="http://yoursite.com/2020/03/08/linux-ji-chu/"/>
     <id>http://yoursite.com/2020/03/08/linux-ji-chu/</id>
     <published>2020-03-08T06:44:36.000Z</published>
-    <updated>2020-03-16T10:21:52.884Z</updated>
+    <updated>2020-03-17T13:39:34.328Z</updated>
     
     <summary type="html">
     
@@ -52,7 +92,7 @@
       <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Linux学习" scheme="http://yoursite.com/tags/Linux%E5%AD%A6%E4%B9%A0/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   
@@ -244,7 +284,7 @@
     <link href="http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/"/>
     <id>http://yoursite.com/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</id>
     <published>2019-08-04T15:22:06.000Z</published>
-    <updated>2020-02-17T14:53:36.613Z</updated>
+    <updated>2020-03-22T13:15:45.254Z</updated>
     
     <summary type="html">
     
@@ -252,7 +292,7 @@
     
     </summary>
     
-      <category term="树莓派" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+      <category term="教程" scheme="http://yoursite.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
       <category term="树莓派" scheme="http://yoursite.com/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
@@ -322,6 +362,26 @@
   </entry>
   
   <entry>
+    <title>CAN基础知识介绍</title>
+    <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
+    <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
+    <published>2019-05-03T14:56:33.000Z</published>
+    <updated>2020-03-05T03:57:26.111Z</updated>
+    
+    <summary type="html">
+    
+      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="通信" scheme="http://yoursite.com/tags/%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>C语言的生命周期和作用域</title>
     <link href="http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/"/>
     <id>http://yoursite.com/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</id>
@@ -339,26 +399,6 @@
     
     
       <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CAN基础知识介绍</title>
-    <link href="http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/"/>
-    <id>http://yoursite.com/2019/05/03/can-xue-xi-bi-ji/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2020-03-05T03:57:26.111Z</updated>
-    
-    <summary type="html">
-    
-      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="通信" scheme="http://yoursite.com/tags/%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   

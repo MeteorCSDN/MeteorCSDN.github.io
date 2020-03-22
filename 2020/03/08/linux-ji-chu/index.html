@@ -47,14 +47,14 @@
 </script>
 
   <meta name="description" content="一、操作系统（一）OS：Operating System，通用目的的软件程序硬件驱动；进程管理；内存管理；网络管理；安全管理；文件管理。">
-<meta name="keywords" content="Linux学习">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基础(一)">
 <meta property="og:url" content="http://yoursite.com/2020/03/08/linux-ji-chu/index.html">
 <meta property="og:site_name" content="Y*Y">
 <meta property="og:description" content="一、操作系统（一）OS：Operating System，通用目的的软件程序硬件驱动；进程管理；内存管理；网络管理；安全管理；文件管理。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T10:21:52.884Z">
+<meta property="og:updated_time" content="2020-03-17T13:39:34.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础(一)">
 <meta name="twitter:description" content="一、操作系统（一）OS：Operating System，通用目的的软件程序硬件驱动；进程管理；内存管理；网络管理；安全管理；文件管理。">
@@ -249,7 +249,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-16 18:21:52" itemprop="dateModified" datetime="2020-03-16T18:21:52+08:00">2020-03-16</time>
+                <time title="修改时间：2020-03-17 21:39:34" itemprop="dateModified" datetime="2020-03-17T21:39:34+08:00">2020-03-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -400,7 +400,7 @@ fi
 <p>3.</p>
 <pre><code>tr -d abc &lt; /etc/fstab
 </code></pre><p>删除fstab文件中的所有abc中任意字符</p>
-<p>4.</p>
+<p>4.使用 &gt; 来重定向标准输出</p>
 <pre><code>cat &gt; file
 mage
 abc
@@ -412,7 +412,14 @@ abc
 <li>最后一个命令会在当前shell进程的子shell进程中执行</li>
 <li>组合多种工具的功能</li>
 </ul>
-<pre><code>ls |tr &#39;a-z&#39; &#39;A-Z&#39;
+<pre><code>例：ls |tr &#39;a-z&#39; &#39;A-Z&#39;
+</code></pre><pre><code>#将who指令的标准输出显示到屏幕的同时重定向追加到who.out文件
+[root@localhost ~]# who | tee -a who.out
+root     tty1         2020-03-09 17:51
+root     pts/0        2020-03-11 00:37 (10.0.2.2)
+[root@localhost ~]# cat who.out
+root     tty1         2020-03-09 17:51
+root     pts/0        2020-03-11 00:37 (10.0.2.2)
 </code></pre>
     </div>
 
@@ -422,7 +429,7 @@ abc
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux学习/" rel="tag"># Linux学习</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
           </div>
 
         
@@ -512,20 +519,20 @@ abc
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
