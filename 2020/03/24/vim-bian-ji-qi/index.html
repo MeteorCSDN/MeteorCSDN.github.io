@@ -46,20 +46,22 @@
   };
 </script>
 
-  <meta name="description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="七、Vim编辑器（一）打开文件# vim [OPTION]...FILE...">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据模型">
-<meta property="og:url" content="http://yoursite.com/2020/03/15/shu-ju-mo-xing/index.html">
+<meta property="og:title" content="vim编辑器">
+<meta property="og:url" content="http://yoursite.com/2020/03/24/vim-bian-ji-qi/index.html">
 <meta property="og:site_name" content="Y*Y">
-<meta property="og:description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：">
+<meta property="og:description" content="七、Vim编辑器（一）打开文件# vim [OPTION]...FILE...">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T14:22:43.765Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/24/vim-bian-ji-qi/图片二.png">
+<meta property="og:updated_time" content="2020-03-24T13:59:19.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据模型">
-<meta name="twitter:description" content="一、层次模型（一）PCR关系（Parent-Child relationship）：现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：">
+<meta name="twitter:title" content="vim编辑器">
+<meta name="twitter:description" content="七、Vim编辑器（一）打开文件# vim [OPTION]...FILE...">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/24/vim-bian-ji-qi/图片二.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/">
+<link rel="canonical" href="http://yoursite.com/2020/03/24/vim-bian-ji-qi/">
 
 
 <script id="page-configurations">
@@ -71,7 +73,7 @@
   };
 </script>
 
-  <title>数据模型 | Y*Y</title>
+  <title>vim编辑器 | Y*Y</title>
   
 
 
@@ -219,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/shu-ju-mo-xing/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/vim-bian-ji-qi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数据模型
+          vim编辑器
         </h1>
 
         <div class="post-meta">
@@ -241,16 +243,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-15 18:29:29" itemprop="dateCreated datePublished" datetime="2020-03-15T18:29:29+08:00">2020-03-15</time>
+              <time title="创建时间：2020-03-24 19:51:26 / 修改时间：21:59:19" itemprop="dateCreated datePublished" datetime="2020-03-24T19:51:26+08:00">2020-03-24</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-16 22:22:43" itemprop="dateModified" datetime="2020-03-16T22:22:43+08:00">2020-03-16</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -279,8 +275,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/03/15/shu-ju-mo-xing/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/15/shu-ju-mo-xing/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/03/24/vim-bian-ji-qi/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/24/vim-bian-ji-qi/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -295,142 +291,510 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一、层次模型"><a href="#一、层次模型" class="headerlink" title="一、层次模型"></a>一、层次模型</h4><h5 id="（一）PCR关系（Parent-Child-relationship）："><a href="#（一）PCR关系（Parent-Child-relationship）：" class="headerlink" title="（一）PCR关系（Parent-Child relationship）："></a>（一）PCR关系（Parent-Child relationship）：</h5><p>现实世界中的一对多的关系，是层次模型最基本的数据关系，例如：</p>
-<a id="more"></a>
-<pre class="mermaid">graph TB;
-　　院系-->班级;
-　　院系-->教研组;
-　　班级-->学生1;
-　　班级-->学生n;
-　　教研组-->老师1;
-　　教研组-->老师n;</pre>
-
-<h5 id="（二）虚记录"><a href="#（二）虚记录" class="headerlink" title="（二）虚记录"></a>（二）虚记录</h5><p>为了避免数据的冗余，又维持数据PCR结构，引入虚记录概念。</p>
-<p>例：student-v通过指针指向真正的student：</p>
-<pre class="mermaid">graph LR   
-    course-v-.->course
-    student-v-.->student
-    course-->student-v
-    student-->course-v</pre>
-
-<h4 id="二、网状数据模型"><a href="#二、网状数据模型" class="headerlink" title="二、网状数据模型"></a>二、网状数据模型</h4><h5 id="（一）基本结构："><a href="#（一）基本结构：" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>系（set）表示现实世界中一对多的关系。</p>
-<p>主记录（1）——&gt; 属记录（n）</p>
-<p>每个系可以是多个系的主记录，也可以是多个系的属记录，交织成复杂的网状结构。</p>
-<pre class="mermaid">graph TB   
-    Parts-1-->|m|LINK-M
-    Supplier-1-->|n|LINK-M
-    Project-1-->|p|LINK-M
-    S-1-->|SL|LINK-N
-    C-1-->|CL|LINK-N</pre>
-
-<p>（查询时遍历链表）</p>
-<h4 id="三、关系模型"><a href="#三、关系模型" class="headerlink" title="三、关系模型"></a>三、关系模型</h4><h5 id="（一）基本结构：-1"><a href="#（一）基本结构：-1" class="headerlink" title="（一）基本结构："></a>（一）基本结构：</h5><p>表（table），将现实世界实体中的所有关系由表来表示：</p>
-<p>（1）基于数学集合论，具有更高层次；</p>
-<p>（2）底层实现及编程细节都被屏蔽掉，概念简单清除，容易理解；</p>
-<p>（3）建立新的代数体系——关系代数；</p>
-<p>（4）可以定义<strong>非过程化</strong>的查询语言——SQL；</p>
-<p>（5）软连接</p>
-<h5 id="（二）属性和域"><a href="#（二）属性和域" class="headerlink" title="（二）属性和域"></a>（二）属性和域</h5><p>1.表的为一个属性都为原子不能再分的，每一个属性的合法取值范围成为域；</p>
-<p>2.表中允许NULL（表示未知）；</p>
-<h5 id="（三）关系和元组"><a href="#（三）关系和元组" class="headerlink" title="（三）关系和元组"></a>（三）关系和元组</h5><p>1.假设有关系R，属性为A<sub>1</sub>,A<sub>2</sub>,…A<sub>n</sub>，其对应的值域为D<sub>1</sub>,D<sub>2</sub>,…D<sub>n</sub>，n称为目，那么关系R可以表示为</p>
-<script type="math/tex; mode=display">
-R=（A_1/D_1,A_2/D_2,...A_n/D_n）或者R=(A_1,A_2,...A_n)</script><p>r 称为关系 R 的实例，r 由 m 个元组（tuple）组成。</p>
-<p>2.表里的每一行称为记录，即元组t</p>
-<script type="math/tex; mode=display">
-t \in D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><script type="math/tex; mode=display">
-r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="（四）组键"><a href="#（四）组键" class="headerlink" title="（四）组键"></a>（四）组键</h5><div class="table-container">
+        <h4 id="七、Vim编辑器"><a href="#七、Vim编辑器" class="headerlink" title="七、Vim编辑器"></a>七、Vim编辑器</h4><h5 id="（一）打开文件"><a href="#（一）打开文件" class="headerlink" title="（一）打开文件"></a>（一）打开文件</h5><pre><code># vim [OPTION]...FILE...
+</code></pre><a id="more"></a>
+<ol>
+<li><p>+#：打开文件后，让光标处于第#行的行首，+默认行尾；</p>
+</li>
+<li><p>+/PATTERN：打开文件后，直接让光标处于第一个被PATTERN匹配到的行首；</p>
+</li>
+<li>-b file：二进制方式打开文件；</li>
+<li>-d file1 file2…：比较多个文件；</li>
+<li>-m file：打开只读文件；</li>
+<li>ex file或vim -e 直接进入ex模式；</li>
+<li>如果改文件存在，文件被打开并显示内容；如果不存在，当编辑后第一次存盘时创建它。</li>
+</ol>
+<h5 id="（二）vim模式"><a href="#（二）vim模式" class="headerlink" title="（二）vim模式"></a>（二）vim模式</h5><p><img src="/2020/03/24/vim-bian-ji-qi/图片二.png" alt></p>
+<h5 id="（三）模式转换"><a href="#（三）模式转换" class="headerlink" title="（三）模式转换"></a>（三）模式转换</h5><ol>
+<li><p>命令模式 —&gt; 插入模式</p>
+<p>​    i：insert，当光标所在处输入；</p>
+<p>​    I：在当前光标所在行的行首输入；</p>
+<p>​    a：append，在光标所在处后面输入；</p>
+<p>​    A：在当前光标所在行的行尾输入；</p>
+<p>​    o：在当前光标所在行的下方打开一个新行；</p>
+<p>​    O：在当前光标所在行的上方打开一个新行。</p>
+</li>
+<li><p>插入模式 —&gt; 命令模式：ESC</p>
+</li>
+<li>命令模式 —&gt; 扩展命令模式：：</li>
+<li>扩展命令模式 —&gt; 命令模式：ESC，enter</li>
+</ol>
+<h5 id="（四）关闭文件"><a href="#（四）关闭文件" class="headerlink" title="（四）关闭文件"></a>（四）关闭文件</h5><h6 id="1-扩展模式："><a href="#1-扩展模式：" class="headerlink" title="1.扩展模式："></a>1.扩展模式：</h6><div class="table-container">
 <table>
 <thead>
 <tr>
-<th>名称</th>
-<th style="text-align:left">概念</th>
+<th>命令</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>候选键</td>
-<td style="text-align:left">总有某一个或者某一组属性的值可以唯一的决定这条元组的其他属性的值，且这组属性的子集没有此特性，把这样的属性或属性组称为候选键</td>
+<td>:q</td>
+<td>退出</td>
 </tr>
 <tr>
-<td>超键</td>
-<td style="text-align:left">在关系中能唯一标识元组的属性或属性集称为关键模式为超键，与候选键相比可能有多余属性</td>
+<td>:q!</td>
+<td>强制退出，丢弃你做出的修改</td>
 </tr>
 <tr>
-<td>主键</td>
-<td style="text-align:left">用户选作元组标识的候选键称为主键。一般不加说明，键就是指主键（主键不能为空）</td>
+<td>:wq</td>
+<td>保存退出</td>
 </tr>
 <tr>
-<td>全键</td>
-<td style="text-align:left">关系模型的所有属性组是这个关系模式的候选键</td>
+<td>:x</td>
+<td>保存退出</td>
 </tr>
 <tr>
-<td>外键</td>
-<td style="text-align:left">关系模式R1中的某属性集不是自己的主键，而是关系模式R2的主键，则该属性集称为是关系模式R1的外键</td>
+<td>:w</td>
+<td>写（存）磁盘文件</td>
+</tr>
+<tr>
+<td>:r filename</td>
+<td>读文件内容到当前文件中</td>
+</tr>
+<tr>
+<td>:w filename</td>
+<td>读当前文件内容写入另一个文件</td>
+</tr>
+<tr>
+<td>:r!command</td>
+<td>读入命令的输出</td>
+</tr>
+<tr>
+<td>:!command</td>
+<td>执行命令</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h5 id="（五）关系代数"><a href="#（五）关系代数" class="headerlink" title="（五）关系代数"></a>（五）关系代数</h5><p>五种基本的关系代数运算</p>
+<h6 id="2-命令模式："><a href="#2-命令模式：" class="headerlink" title="2.命令模式："></a>2.命令模式：</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZZ</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>ZQ</td>
+<td>不保存退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="3-命令模式光标跳转"><a href="#3-命令模式光标跳转" class="headerlink" title="3.命令模式光标跳转"></a>3.命令模式光标跳转</h6><p>（1）字符间跳转：</p>
+<p>​        h：左；    l：右；    j：下；    k：上；</p>
+<p>​        #COMMAND：跳转由#指定的个数的字符。</p>
+<p>（2）单词间跳转</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>名称</th>
-<th>符号</th>
+<th>命令</th>
 <th>作用</th>
-<th>运算</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>并</td>
-<td>∪</td>
-<td>关系 R 与 S 具有相同的关系模式，即 R 与 S 的元数相同（结构相同），R 与 S 的并是属于 R 或者属于 S 的元组构成的集合，记作 R ∪ S</td>
-<td>R∪S = {t\</td>
-<td>t∈R∨t∈S}</td>
+<td>w</td>
+<td>下一个单词的词首</td>
 </tr>
 <tr>
-<td>差</td>
-<td>−</td>
-<td>关系 R 与 S 具有相同的关系模式，关系 R 与 S 的差是属于 R 但不属于 S 的元组构成的集合，记作 R − S</td>
-<td>R−S = {t\</td>
-<td>t∈R∨t∉S}</td>
+<td>e</td>
+<td>当前或下一单词的词尾</td>
 </tr>
 <tr>
-<td>广义笛卡尔积</td>
-<td>×</td>
-<td>两个无数分别为 n 目和 m 目的关系 R 和 S 的 笛卡尔积是一个 (n+m) 列的元组的集合。组的前 n 列是关系 R 的一个元组，后 m 列是关系 S 的一个元组，记作 R × S</td>
-<td>R×S = {t\</td>
-<td>t =&lt; (t<sup>n</sup>,t<sup>m</sup>)∧t<sup>n</sup>∈R∧t<sup>m</sup>∈S}</td>
+<td>b</td>
+<td>当前或前一个单词的词首</td>
 </tr>
 <tr>
-<td>投影</td>
-<td>π</td>
-<td>投影运算是从关系的垂直方向进行运算，在关系 R 中选出若干属性列 A 组成新的关系，记作π<sub>A</sub>(R)</td>
-<td>π<sub>A</sub>(R) = {t[A]\</td>
-<td>t∈R}</td>
-</tr>
-<tr>
-<td>选择</td>
-<td>σ</td>
-<td>选择运算是从关系的水平方向进行运算，是从关系 R 中选择满足给定条件的元组，记作 σ<sub>F</sub>(R)</td>
-<td>σ<sub>F</sub>(R) = {t\</td>
-<td>t∈R∧F(t)=True}</td>
+<td>#COMMAND</td>
+<td>由#指定一次跳转的单词数</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h5 id="（六）关系连接"><a href="#（六）关系连接" class="headerlink" title="（六）关系连接"></a>（六）关系连接</h5><h6 id="1-内连接"><a href="#1-内连接" class="headerlink" title="1.内连接"></a>1.内连接</h6><p>也称为等值连接，是最早的一种连接。还可以被称为普通连接或者<a href="http://baike.baidu.com/item/自然连接" target="_blank" rel="noopener">自然连接</a>，内连接是从结果表中删除与其他被<a href="http://baike.baidu.com/item/连接表" target="_blank" rel="noopener">连接表</a>中没有匹配行的所有行，所以内连接可能会丢失信息。WHERE子句中设置的消除笛卡尔积的条件就是使用了等值判断的方式进行的。</p>
-<h6 id="2-外连接"><a href="#2-外连接" class="headerlink" title="2.外连接"></a>2.外连接</h6><p>内连接中只能够显示等值满足条件的，如果不满住条件的无法显示，如果希望可以显示特定表的全部数据，就用外链接：外连接分为三种：左外连接，右外连接，全外连接。</p>
-<p>（1）左外链接：左关系属性=右关系属性（+），放在等号的右边表示左连接；意思就是显示左边表中没有显示的信息；</p>
-<p>（2）右外链接：左关系属性（+）= 右关系属性，放在等号的左边表示右连接；意思就是显示右边表中没有显示的信息。</p>
-<h4 id="四、ER图"><a href="#四、ER图" class="headerlink" title="四、ER图"></a>四、ER图</h4><h5 id="（一）ER图的实体：数据模型中的数据对象"><a href="#（一）ER图的实体：数据模型中的数据对象" class="headerlink" title="（一）ER图的实体：数据模型中的数据对象"></a>（一）ER图的实体：数据模型中的数据对象</h5><h6 id="1-弱实体："><a href="#1-弱实体：" class="headerlink" title="1.弱实体："></a>1.弱实体：</h6><p>一个实体必须依赖于另一个实体存在，那么前者是弱实体，后者是强实体，弱实体必须依赖强实体存在，例如上图的学生实体和成绩单实体，成绩单依赖于学生实体而存在，因此学生是强实体，而成绩单是弱实体。</p>
-<h6 id="2-复合实体："><a href="#2-复合实体：" class="headerlink" title="2.复合实体："></a>2.复合实体：</h6><p>复合实体也称联合实体或桥接实体，常常用于实现两个或多个实体间的M：N联系，它由每个关联实体的主玛组成，用长方体内加一个菱形来表示。</p>
-<h5 id="（二）ER图的属性：数据对象所具有的属性"><a href="#（二）ER图的属性：数据对象所具有的属性" class="headerlink" title="（二）ER图的属性：数据对象所具有的属性"></a>（二）ER图的属性：数据对象所具有的属性</h5><p>例如学生具有姓名、学号、年级等属性，用椭圆形表示，属性分为唯一属性（ unique attribute）和非唯一属性，唯一属性指的是唯一可用来标识该实体实例或者成员的属性，用下划线表示，一般来讲实体都至少有一个唯一属性。</p>
-<h5 id="（三）ER图的关系：数据对象与数据对象之间的联系"><a href="#（三）ER图的关系：数据对象与数据对象之间的联系" class="headerlink" title="（三）ER图的关系：数据对象与数据对象之间的联系"></a>（三）ER图的关系：数据对象与数据对象之间的联系</h5><p>1对1（1:1） ：1对1关系是指对于实体集A与实体集B，A中的每一个实体至多与B中一个实体有关系；反之，在实体集B中的每个实体至多与实体集A中一个实体有关系。</p>
-<p>1对多（1:N） ：1对多关系是指实体集A与实体集B中至少有N(N&gt;0)个实体有关系；并且实体集B中每一个实体至多与实体集A中一个实体有关系。</p>
-<p>多对多（M:N） ：多对多关系是指实体集A中的每一个实体与实体集B中至少有M(M&gt;0)个实体有关系，并且实体集B中的每一个实体与实体集A中的至少N（N&gt;0）个实体有关系。</p>
-<h5 id="（四）工具：Processon"><a href="#（四）工具：Processon" class="headerlink" title="（四）工具：Processon"></a>（四）工具：<a href="https://www.processon.com/login" target="_blank" rel="noopener">Processon</a></h5>
+<p>（3）当前页跳转</p>
+<p>​        H：页首；    M：页中间行；    L：页底。</p>
+<p>（4）行首行尾跳转</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>跳转至行首的第一个非空白符</td>
+</tr>
+<tr>
+<td>0</td>
+<td>跳转至行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>跳转至行尾</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（5）行间移动</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>最后一行</td>
+</tr>
+<tr>
+<td>1G/gg</td>
+<td>第一行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（6）句间移动</p>
+<p>​        )：下一句；    （：上一句</p>
+<p>（7）段落间移动</p>
+<p>​        }：下一段；    {：上一段</p>
+<h6 id="4-字符编辑"><a href="#4-字符编辑" class="headerlink" title="4.字符编辑"></a>4.字符编辑</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>删除光标处的字符</td>
+</tr>
+<tr>
+<td>#x</td>
+<td>删除光标处起始的#个字符</td>
+</tr>
+<tr>
+<td>xp</td>
+<td>交换光标所在处的字符及其后面的字符的位置</td>
+</tr>
+<tr>
+<td>~</td>
+<td>转换大小写</td>
+</tr>
+<tr>
+<td>J</td>
+<td>删除当前行后的换行符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="5-替换命令"><a href="#5-替换命令" class="headerlink" title="5.替换命令"></a>5.替换命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>替换光标所在处的字符</td>
+</tr>
+<tr>
+<td>R</td>
+<td>切换成REPLACE模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="6-删除命令"><a href="#6-删除命令" class="headerlink" title="6.删除命令"></a>6.删除命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>删除命令，可结合光标跳转字符，实现范围删除</td>
+</tr>
+<tr>
+<td>d$</td>
+<td>删除到行尾</td>
+</tr>
+<tr>
+<td>d^</td>
+<td>删除到非空行首</td>
+</tr>
+<tr>
+<td>d0</td>
+<td>删除到行首</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在的行</td>
+</tr>
+<tr>
+<td>#dd</td>
+<td>多行删除</td>
+</tr>
+<tr>
+<td>D</td>
+<td>从当前光标位置一直删除到行尾，留空行，等同于d$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="7-复制命令"><a href="#7-复制命令" class="headerlink" title="7.复制命令"></a>7.复制命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>复制，行为相似于d命令</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制行</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>复制整行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="8-粘贴命令"><a href="#8-粘贴命令" class="headerlink" title="8.粘贴命令"></a>8.粘贴命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>缓冲区存的如果为整行，则粘贴当前光标所在行的下方；否则，粘贴至当前光标所在处的后面；</td>
+</tr>
+<tr>
+<td>P</td>
+<td>缓冲区存的如果为整行，则粘贴当前光标所在行的上方；否则，粘贴至当前光标所在处的前面；</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="9-改变命令"><a href="#9-改变命令" class="headerlink" title="9.改变命令"></a>9.改变命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>修改后切换成插入模式</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>删除当前行并输入新内容，相当于S</td>
+</tr>
+<tr>
+<td>C</td>
+<td>删除当前光标到行尾，并切换成插入模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="10-地址定界"><a href="#10-地址定界" class="headerlink" title="10.地址定界"></a>10.地址定界</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>具体第#行，例如2表示第2行</td>
+</tr>
+<tr>
+<td>#，#</td>
+<td>从左侧#表示起始行，到右侧#表示结尾行</td>
+</tr>
+<tr>
+<td>#，+#</td>
+<td>从左侧#表示的起始行，加上右侧#表示的行数：2，+3   表示2到5行</td>
+</tr>
+<tr>
+<td>.</td>
+<td>当前行</td>
+</tr>
+<tr>
+<td>$</td>
+<td>最后一行</td>
+</tr>
+<tr>
+<td>%</td>
+<td>全文，相当于1，$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="11-查找"><a href="#11-查找" class="headerlink" title="11.查找"></a>11.查找</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/PATTERN</td>
+<td>从当前光标所在处向文件尾部查找</td>
+</tr>
+<tr>
+<td>?PATTERN</td>
+<td>从当前光标所在处向文件首部查找</td>
+</tr>
+<tr>
+<td>n</td>
+<td>与命令同方向</td>
+</tr>
+<tr>
+<td>N</td>
+<td>与命令反方向</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="12-查找并替换"><a href="#12-查找并替换" class="headerlink" title="12.查找并替换"></a>12.查找并替换</h6><p>​        s：在扩展模式下完成查找替换操作</p>
+<p>​                格式：s/要查找的内容/替换为的内容/修饰符</p>
+<p>​                可以使用”&amp;“引用前面查找是查找到的整个内容</p>
+<h6 id="13-撤销更改"><a href="#13-撤销更改" class="headerlink" title="13.撤销更改"></a>13.撤销更改</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>撤销最近的更改</td>
+</tr>
+<tr>
+<td>#u</td>
+<td>撤销之前的多次更改</td>
+</tr>
+<tr>
+<td>U</td>
+<td>撤销光标落在这行后所有此行的更改</td>
+</tr>
+<tr>
+<td>Ctrl -r</td>
+<td>重做最后的“撤销”更改</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复前一个操作</td>
+</tr>
+<tr>
+<td>n.</td>
+<td>重复前一个操作n次</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="14-可视化模式"><a href="#14-可视化模式" class="headerlink" title="14.可视化模式"></a>14.可视化模式</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v</td>
+<td>面向字符</td>
+</tr>
+<tr>
+<td>V</td>
+<td>面向行</td>
+</tr>
+<tr>
+<td>ctrl -v</td>
+<td>面向块</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="15-多窗口"><a href="#15-多窗口" class="headerlink" title="15.多窗口"></a>15.多窗口</h6><p>​    （1）多文件分割</p>
+<p>​                vim -o|-O FILE1 FILE2…</p>
+<p>​                -o：水平分割；    -O：垂直分割。</p>
+<p>​    （2）单文件窗口分割</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+w,s</td>
+<td>水平分割</td>
+</tr>
+<tr>
+<td>Ctrl+w,v</td>
+<td>垂直分割</td>
+</tr>
+<tr>
+<td>Ctrl+w,q</td>
+<td>取消相邻窗口</td>
+</tr>
+<tr>
+<td>Ctrl+w,o</td>
+<td>取消全部窗口</td>
+</tr>
+<tr>
+<td>:wqall</td>
+<td>退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+
     </div>
 
     
@@ -439,7 +803,7 @@ r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="�
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/数据库/" rel="tag"># 数据库</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
           </div>
 
         
@@ -448,13 +812,10 @@ r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="�
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/08/linux-ji-chu/" rel="prev" title="Linux基础(一)">
-      <i class="fa fa-chevron-left"></i> Linux基础(一)
+    <a href="/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/" rel="prev" title="数据库系统的用户接口以及SQL语言">
+      <i class="fa fa-chevron-left"></i> 数据库系统的用户接口以及SQL语言
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/17/linux-ji-chu-er/" rel="next" title="Linux基础（二）">
-      Linux基础（二） <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -515,7 +876,7 @@ r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、层次模型"><span class="nav-number">1.</span> <span class="nav-text">一、层次模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）PCR关系（Parent-Child-relationship）："><span class="nav-number">1.1.</span> <span class="nav-text">（一）PCR关系（Parent-Child relationship）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）虚记录"><span class="nav-number">1.2.</span> <span class="nav-text">（二）虚记录</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、网状数据模型"><span class="nav-number">2.</span> <span class="nav-text">二、网状数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）基本结构："><span class="nav-number">2.1.</span> <span class="nav-text">（一）基本结构：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、关系模型"><span class="nav-number">3.</span> <span class="nav-text">三、关系模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）基本结构：-1"><span class="nav-number">3.1.</span> <span class="nav-text">（一）基本结构：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）属性和域"><span class="nav-number">3.2.</span> <span class="nav-text">（二）属性和域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）关系和元组"><span class="nav-number">3.3.</span> <span class="nav-text">（三）关系和元组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）组键"><span class="nav-number">3.4.</span> <span class="nav-text">（四）组键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）关系代数"><span class="nav-number">3.5.</span> <span class="nav-text">（五）关系代数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（六）关系连接"><span class="nav-number">3.6.</span> <span class="nav-text">（六）关系连接</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-内连接"><span class="nav-number">3.6.1.</span> <span class="nav-text">1.内连接</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-外连接"><span class="nav-number">3.6.2.</span> <span class="nav-text">2.外连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、ER图"><span class="nav-number">4.</span> <span class="nav-text">四、ER图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）ER图的实体：数据模型中的数据对象"><span class="nav-number">4.1.</span> <span class="nav-text">（一）ER图的实体：数据模型中的数据对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-弱实体："><span class="nav-number">4.1.1.</span> <span class="nav-text">1.弱实体：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-复合实体："><span class="nav-number">4.1.2.</span> <span class="nav-text">2.复合实体：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）ER图的属性：数据对象所具有的属性"><span class="nav-number">4.2.</span> <span class="nav-text">（二）ER图的属性：数据对象所具有的属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）ER图的关系：数据对象与数据对象之间的联系"><span class="nav-number">4.3.</span> <span class="nav-text">（三）ER图的关系：数据对象与数据对象之间的联系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）工具：Processon"><span class="nav-number">4.4.</span> <span class="nav-text">（四）工具：Processon</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#七、Vim编辑器"><span class="nav-number">1.</span> <span class="nav-text">七、Vim编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）打开文件"><span class="nav-number">1.1.</span> <span class="nav-text">（一）打开文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）vim模式"><span class="nav-number">1.2.</span> <span class="nav-text">（二）vim模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）模式转换"><span class="nav-number">1.3.</span> <span class="nav-text">（三）模式转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）关闭文件"><span class="nav-number">1.4.</span> <span class="nav-text">（四）关闭文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-扩展模式："><span class="nav-number">1.4.1.</span> <span class="nav-text">1.扩展模式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-命令模式："><span class="nav-number">1.4.2.</span> <span class="nav-text">2.命令模式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-命令模式光标跳转"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.命令模式光标跳转</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-字符编辑"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.字符编辑</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-替换命令"><span class="nav-number">1.4.5.</span> <span class="nav-text">5.替换命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-删除命令"><span class="nav-number">1.4.6.</span> <span class="nav-text">6.删除命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-复制命令"><span class="nav-number">1.4.7.</span> <span class="nav-text">7.复制命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#8-粘贴命令"><span class="nav-number">1.4.8.</span> <span class="nav-text">8.粘贴命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#9-改变命令"><span class="nav-number">1.4.9.</span> <span class="nav-text">9.改变命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#10-地址定界"><span class="nav-number">1.4.10.</span> <span class="nav-text">10.地址定界</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#11-查找"><span class="nav-number">1.4.11.</span> <span class="nav-text">11.查找</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-查找并替换"><span class="nav-number">1.4.12.</span> <span class="nav-text">12.查找并替换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#13-撤销更改"><span class="nav-number">1.4.13.</span> <span class="nav-text">13.撤销更改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#14-可视化模式"><span class="nav-number">1.4.14.</span> <span class="nav-text">14.可视化模式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-多窗口"><span class="nav-number">1.4.15.</span> <span class="nav-text">15.多窗口</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

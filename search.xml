@@ -1,6 +1,520 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vim编辑器</title>
+    <url>/2020/03/24/vim-bian-ji-qi/</url>
+    <content><![CDATA[<h4 id="七、Vim编辑器"><a href="#七、Vim编辑器" class="headerlink" title="七、Vim编辑器"></a>七、Vim编辑器</h4><h5 id="（一）打开文件"><a href="#（一）打开文件" class="headerlink" title="（一）打开文件"></a>（一）打开文件</h5><pre><code># vim [OPTION]...FILE...
+</code></pre><a id="more"></a>
+<ol>
+<li><p>+#：打开文件后，让光标处于第#行的行首，+默认行尾；</p>
+</li>
+<li><p>+/PATTERN：打开文件后，直接让光标处于第一个被PATTERN匹配到的行首；</p>
+</li>
+<li>-b file：二进制方式打开文件；</li>
+<li>-d file1 file2…：比较多个文件；</li>
+<li>-m file：打开只读文件；</li>
+<li>ex file或vim -e 直接进入ex模式；</li>
+<li>如果改文件存在，文件被打开并显示内容；如果不存在，当编辑后第一次存盘时创建它。</li>
+</ol>
+<h5 id="（二）vim模式"><a href="#（二）vim模式" class="headerlink" title="（二）vim模式"></a>（二）vim模式</h5><p><img src="/2020/03/24/vim-bian-ji-qi/图片二.png" alt></p>
+<h5 id="（三）模式转换"><a href="#（三）模式转换" class="headerlink" title="（三）模式转换"></a>（三）模式转换</h5><ol>
+<li><p>命令模式 —&gt; 插入模式</p>
+<p>​    i：insert，当光标所在处输入；</p>
+<p>​    I：在当前光标所在行的行首输入；</p>
+<p>​    a：append，在光标所在处后面输入；</p>
+<p>​    A：在当前光标所在行的行尾输入；</p>
+<p>​    o：在当前光标所在行的下方打开一个新行；</p>
+<p>​    O：在当前光标所在行的上方打开一个新行。</p>
+</li>
+<li><p>插入模式 —&gt; 命令模式：ESC</p>
+</li>
+<li>命令模式 —&gt; 扩展命令模式：：</li>
+<li>扩展命令模式 —&gt; 命令模式：ESC，enter</li>
+</ol>
+<h5 id="（四）关闭文件"><a href="#（四）关闭文件" class="headerlink" title="（四）关闭文件"></a>（四）关闭文件</h5><h6 id="1-扩展模式："><a href="#1-扩展模式：" class="headerlink" title="1.扩展模式："></a>1.扩展模式：</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强制退出，丢弃你做出的修改</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>写（存）磁盘文件</td>
+</tr>
+<tr>
+<td>:r filename</td>
+<td>读文件内容到当前文件中</td>
+</tr>
+<tr>
+<td>:w filename</td>
+<td>读当前文件内容写入另一个文件</td>
+</tr>
+<tr>
+<td>:r!command</td>
+<td>读入命令的输出</td>
+</tr>
+<tr>
+<td>:!command</td>
+<td>执行命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="2-命令模式："><a href="#2-命令模式：" class="headerlink" title="2.命令模式："></a>2.命令模式：</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZZ</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>ZQ</td>
+<td>不保存退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="3-命令模式光标跳转"><a href="#3-命令模式光标跳转" class="headerlink" title="3.命令模式光标跳转"></a>3.命令模式光标跳转</h6><p>（1）字符间跳转：</p>
+<p>​        h：左；    l：右；    j：下；    k：上；</p>
+<p>​        #COMMAND：跳转由#指定的个数的字符。</p>
+<p>（2）单词间跳转</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w</td>
+<td>下一个单词的词首</td>
+</tr>
+<tr>
+<td>e</td>
+<td>当前或下一单词的词尾</td>
+</tr>
+<tr>
+<td>b</td>
+<td>当前或前一个单词的词首</td>
+</tr>
+<tr>
+<td>#COMMAND</td>
+<td>由#指定一次跳转的单词数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（3）当前页跳转</p>
+<p>​        H：页首；    M：页中间行；    L：页底。</p>
+<p>（4）行首行尾跳转</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>跳转至行首的第一个非空白符</td>
+</tr>
+<tr>
+<td>0</td>
+<td>跳转至行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>跳转至行尾</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（5）行间移动</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>最后一行</td>
+</tr>
+<tr>
+<td>1G/gg</td>
+<td>第一行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（6）句间移动</p>
+<p>​        )：下一句；    （：上一句</p>
+<p>（7）段落间移动</p>
+<p>​        }：下一段；    {：上一段</p>
+<h6 id="4-字符编辑"><a href="#4-字符编辑" class="headerlink" title="4.字符编辑"></a>4.字符编辑</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>删除光标处的字符</td>
+</tr>
+<tr>
+<td>#x</td>
+<td>删除光标处起始的#个字符</td>
+</tr>
+<tr>
+<td>xp</td>
+<td>交换光标所在处的字符及其后面的字符的位置</td>
+</tr>
+<tr>
+<td>~</td>
+<td>转换大小写</td>
+</tr>
+<tr>
+<td>J</td>
+<td>删除当前行后的换行符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="5-替换命令"><a href="#5-替换命令" class="headerlink" title="5.替换命令"></a>5.替换命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>替换光标所在处的字符</td>
+</tr>
+<tr>
+<td>R</td>
+<td>切换成REPLACE模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="6-删除命令"><a href="#6-删除命令" class="headerlink" title="6.删除命令"></a>6.删除命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>删除命令，可结合光标跳转字符，实现范围删除</td>
+</tr>
+<tr>
+<td>d$</td>
+<td>删除到行尾</td>
+</tr>
+<tr>
+<td>d^</td>
+<td>删除到非空行首</td>
+</tr>
+<tr>
+<td>d0</td>
+<td>删除到行首</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在的行</td>
+</tr>
+<tr>
+<td>#dd</td>
+<td>多行删除</td>
+</tr>
+<tr>
+<td>D</td>
+<td>从当前光标位置一直删除到行尾，留空行，等同于d$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="7-复制命令"><a href="#7-复制命令" class="headerlink" title="7.复制命令"></a>7.复制命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>复制，行为相似于d命令</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制行</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>复制整行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="8-粘贴命令"><a href="#8-粘贴命令" class="headerlink" title="8.粘贴命令"></a>8.粘贴命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>缓冲区存的如果为整行，则粘贴当前光标所在行的下方；否则，粘贴至当前光标所在处的后面；</td>
+</tr>
+<tr>
+<td>P</td>
+<td>缓冲区存的如果为整行，则粘贴当前光标所在行的上方；否则，粘贴至当前光标所在处的前面；</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="9-改变命令"><a href="#9-改变命令" class="headerlink" title="9.改变命令"></a>9.改变命令</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>修改后切换成插入模式</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>删除当前行并输入新内容，相当于S</td>
+</tr>
+<tr>
+<td>C</td>
+<td>删除当前光标到行尾，并切换成插入模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="10-地址定界"><a href="#10-地址定界" class="headerlink" title="10.地址定界"></a>10.地址定界</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>具体第#行，例如2表示第2行</td>
+</tr>
+<tr>
+<td>#，#</td>
+<td>从左侧#表示起始行，到右侧#表示结尾行</td>
+</tr>
+<tr>
+<td>#，+#</td>
+<td>从左侧#表示的起始行，加上右侧#表示的行数：2，+3   表示2到5行</td>
+</tr>
+<tr>
+<td>.</td>
+<td>当前行</td>
+</tr>
+<tr>
+<td>$</td>
+<td>最后一行</td>
+</tr>
+<tr>
+<td>%</td>
+<td>全文，相当于1，$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="11-查找"><a href="#11-查找" class="headerlink" title="11.查找"></a>11.查找</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/PATTERN</td>
+<td>从当前光标所在处向文件尾部查找</td>
+</tr>
+<tr>
+<td>?PATTERN</td>
+<td>从当前光标所在处向文件首部查找</td>
+</tr>
+<tr>
+<td>n</td>
+<td>与命令同方向</td>
+</tr>
+<tr>
+<td>N</td>
+<td>与命令反方向</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="12-查找并替换"><a href="#12-查找并替换" class="headerlink" title="12.查找并替换"></a>12.查找并替换</h6><p>​        s：在扩展模式下完成查找替换操作</p>
+<p>​                格式：s/要查找的内容/替换为的内容/修饰符</p>
+<p>​                可以使用”&amp;“引用前面查找是查找到的整个内容</p>
+<h6 id="13-撤销更改"><a href="#13-撤销更改" class="headerlink" title="13.撤销更改"></a>13.撤销更改</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>撤销最近的更改</td>
+</tr>
+<tr>
+<td>#u</td>
+<td>撤销之前的多次更改</td>
+</tr>
+<tr>
+<td>U</td>
+<td>撤销光标落在这行后所有此行的更改</td>
+</tr>
+<tr>
+<td>Ctrl -r</td>
+<td>重做最后的“撤销”更改</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复前一个操作</td>
+</tr>
+<tr>
+<td>n.</td>
+<td>重复前一个操作n次</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="14-可视化模式"><a href="#14-可视化模式" class="headerlink" title="14.可视化模式"></a>14.可视化模式</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v</td>
+<td>面向字符</td>
+</tr>
+<tr>
+<td>V</td>
+<td>面向行</td>
+</tr>
+<tr>
+<td>ctrl -v</td>
+<td>面向块</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="15-多窗口"><a href="#15-多窗口" class="headerlink" title="15.多窗口"></a>15.多窗口</h6><p>​    （1）多文件分割</p>
+<p>​                vim -o|-O FILE1 FILE2…</p>
+<p>​                -o：水平分割；    -O：垂直分割。</p>
+<p>​    （2）单文件窗口分割</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+w,s</td>
+<td>水平分割</td>
+</tr>
+<tr>
+<td>Ctrl+w,v</td>
+<td>垂直分割</td>
+</tr>
+<tr>
+<td>Ctrl+w,q</td>
+<td>取消相邻窗口</td>
+</tr>
+<tr>
+<td>Ctrl+w,o</td>
+<td>取消全部窗口</td>
+</tr>
+<tr>
+<td>:wqall</td>
+<td>退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库系统的用户接口以及SQL语言</title>
     <url>/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/</url>
     <content><![CDATA[<h4 id="一、DBMS的用户数据接口"><a href="#一、DBMS的用户数据接口" class="headerlink" title="一、DBMS的用户数据接口"></a>一、DBMS的用户数据接口</h4><h5 id="（一）查询语言；"><a href="#（一）查询语言；" class="headerlink" title="（一）查询语言；"></a>（一）查询语言；</h5><p>​        形式化查询语言 Formal Query Language</p>
