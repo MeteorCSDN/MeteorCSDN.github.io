@@ -1,6 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>sed工具</title>
+    <url>/2020/03/25/sed-gong-ju/</url>
+    <content><![CDATA[<h4 id="一、sed介绍"><a href="#一、sed介绍" class="headerlink" title="一、sed介绍"></a>一、sed介绍</h4><p>Stream EDitor，行编辑器</p>
+<p>sed是一种流编辑器，它一次处理一行的内容。处时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出。</p>
+<a id="more"></a>
+<p>功能：主要用来自动编辑一个或多个文件，简化对文件的反复操作，编写转换程序等。</p>
+<h4 id="二、sed工具"><a href="#二、sed工具" class="headerlink" title="二、sed工具"></a>二、sed工具</h4><h5 id="（一）用法"><a href="#（一）用法" class="headerlink" title="（一）用法"></a>（一）用法</h5><pre><code>sed [option]...&#39;script&#39; inputfile
+#script：&#39;地址命令&#39;
+</code></pre><h5 id="（二）常用选项"><a href="#（二）常用选项" class="headerlink" title="（二）常用选项"></a>（二）常用选项</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>不输出模式空间内容到屏幕，即不自动打印</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>多点编辑</td>
+</tr>
+<tr>
+<td>-f:/PATH/SCRIPT_FILE</td>
+<td>从指定文件中读取编辑脚本</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>支持使用扩展正则表达式</td>
+</tr>
+<tr>
+<td>-i.bak</td>
+<td>备份文件并原处编辑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="（三）地址定界"><a href="#（三）地址定界" class="headerlink" title="（三）地址定界"></a>（三）地址定界</h5><h6 id="1-不给地址"><a href="#1-不给地址" class="headerlink" title="1.不给地址"></a>1.不给地址</h6><p>​    对全文进行处理；</p>
+<h6 id="2-单地址"><a href="#2-单地址" class="headerlink" title="2.单地址"></a>2.单地址</h6><ol>
+<li><p>#：指定的行，$：最后一行；</p>
+</li>
+<li><p>/pattern/：被此处模式所能够匹配到的每一行。</p>
+</li>
+</ol>
+<h6 id="3-地址范围"><a href="#3-地址范围" class="headerlink" title="3.地址范围"></a>3.地址范围</h6><p>​    #,#        #,+#        /pat1/,/pat2/        #,/pat1/</p>
+<h6 id="4-：步进"><a href="#4-：步进" class="headerlink" title="4.~：步进"></a>4.~：步进</h6><p>​    1~2：奇数行；    2~2：偶数行。</p>
+<h5 id="（四）编辑命令"><a href="#（四）编辑命令" class="headerlink" title="（四）编辑命令"></a>（四）编辑命令</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>删除模式空间匹配的行，并立即启用下一轮循环</td>
+</tr>
+<tr>
+<td>p</td>
+<td>打印当前模式空间内容，追加到默认输出之后</td>
+</tr>
+<tr>
+<td>a [\]text</td>
+<td>在指定行后面追加文本（支持使用\n实现多行追加）</td>
+</tr>
+<tr>
+<td>i [\]text</td>
+<td>在行前面插入文本</td>
+</tr>
+<tr>
+<td>c [\]text</td>
+<td>替换行为单行或多行文本</td>
+</tr>
+<tr>
+<td>w /path/somefile</td>
+<td>保存模式匹配的行至指定文件</td>
+</tr>
+<tr>
+<td>r /path/somefile</td>
+<td>读取指定文件的文本至模式空间中（匹配到的行后）</td>
+</tr>
+<tr>
+<td>=</td>
+<td>为模式空间中的行打印行号</td>
+</tr>
+<tr>
+<td>!</td>
+<td>模式空间中匹配行取反处理</td>
+</tr>
+<tr>
+<td>s///</td>
+<td>查找替换，支持使用其他分隔符，s@@@,s###</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>#例：利用查询并仅显示enp0s3的IP
+[root@localhost ~]# ifconfig enp0s3
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::1e79:d487:1182:62be  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 08:00:27:a5:2e:c5  txqueuelen 1000  (Ethernet)
+        RX packets 56725  bytes 50370820 (48.0 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 34698  bytes 2855108 (2.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+[root@localhost ~]# ifconfig |sed -n &#39;2p&#39; |sed -e &#39;s/^.*net //&#39; -e &#39;s/ netmask.*//&#39; 
+10.0.2.15
+</code></pre>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vim编辑器</title>
     <url>/2020/03/24/vim-bian-ji-qi/</url>
     <content><![CDATA[<h4 id="七、Vim编辑器"><a href="#七、Vim编辑器" class="headerlink" title="七、Vim编辑器"></a>七、Vim编辑器</h4><h5 id="（一）打开文件"><a href="#（一）打开文件" class="headerlink" title="（一）打开文件"></a>（一）打开文件</h5><pre><code># vim [OPTION]...FILE...
@@ -621,6 +743,93 @@
 <h4 id="三、基本SQL查询"><a href="#三、基本SQL查询" class="headerlink" title="三、基本SQL查询"></a>三、基本SQL查询</h4><p>​    SELECT        [DISTINCT（用来消除重复元组）] target-list</p>
 <p>​    FROM          relation-list</p>
 <p>​    WHERE        qualification（结果应该满足的条件）</p>
+<p>例表：</p>
+<p>R：水手预定船的信息表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>sid（水手编号）</th>
+<th>bid（船编号）</th>
+<th>day（预定船日期）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>101</td>
+<td>10/10/96</td>
+</tr>
+<tr>
+<td>58</td>
+<td>103</td>
+<td>11/12/96</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>B：船的信息表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>bid</th>
+<th>bname</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>tiger</td>
+<td>red</td>
+</tr>
+<tr>
+<td>103</td>
+<td>lion</td>
+<td>green</td>
+</tr>
+<tr>
+<td>105</td>
+<td>hero</td>
+<td>blue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>S：水手基本信息表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>sid</th>
+<th>sname</th>
+<th>rating</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>Dustin</td>
+<td>7</td>
+<td>45.0</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Ludder</td>
+<td>8</td>
+<td>55.5</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Rusty</td>
+<td>10</td>
+<td>35.0</td>
+</tr>
+</tbody>
+</table>
+</div>
 <pre class=" language-lang-mysql"><code class="language-lang-mysql">嵌套查询实例1：查询订了103号船的水手
 SELECT S.name
 FROM Sailors
@@ -634,6 +843,96 @@ FROM Sailors S
 WHERE S.rating > ANY（SELECT S2.rating
                         FROM Sailors S2
                         WHERE S2.sname='Horatio'）
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">嵌套查询实例3：查询订了所有船的水手(利用否定之否定，即没有一条船没有订过的水手)
+SELECT S.name
+FROM Sailors S
+WHERE NOT EXISTS（SELECT B.bid
+                 FROM Boats B
+                 WHERE NOT EXISTS(SELECT R.bid
+                                 FROM Reserves R
+                                 WHERE R.bid=B.bid
+                                 AND R.sid=S.sid))
+</code></pre>
+<h4 id="四、聚集函数运算"><a href="#四、聚集函数运算" class="headerlink" title="四、聚集函数运算"></a>四、聚集函数运算</h4><h5 id="（一）函数说明"><a href="#（一）函数说明" class="headerlink" title="（一）函数说明"></a>（一）函数说明</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT(*)</td>
+<td>统计关系内有多少元组</td>
+</tr>
+<tr>
+<td>COUNT([DISTINCT] A)</td>
+<td>计算关系中属性A有多少个不同的值</td>
+</tr>
+<tr>
+<td>SUM([DISTINCT] A)</td>
+<td>在A属性上的不同的值做求和</td>
+</tr>
+<tr>
+<td>AVG([DISTINCT] A)</td>
+<td>在A的属性上的不同的值做平均值</td>
+</tr>
+<tr>
+<td>MAX(A)</td>
+<td>求A的属性上的所有值中的最大值</td>
+</tr>
+<tr>
+<td>MIN(A)</td>
+<td>求A的属性上的所有值中的最小值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例1：查询所有叫Bob的水手有多少个不同的级别
+SELECT COUNT(DISTINCT S.rating)
+FROM Sailors S
+WHERE S.sname='Bob'
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例2：查询所有级别为10的水手的不同年龄的平均值（不是所有水手的年龄平均值）
+SELECT AVG(DISTINCT S.age)
+FROM Sailors S
+WHERE S.rating=10
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例3：查询最大级别水手的名单
+SELECT S.sname
+FROM Sailors S
+WHERE S.rating=(SELECT MAX(S2.rating)
+               FROM Sailors S2)
+</code></pre>
+<h5 id="（二）关键字"><a href="#（二）关键字" class="headerlink" title="（二）关键字"></a>（二）关键字</h5><h6 id="1-GROUP-BY"><a href="#1-GROUP-BY" class="headerlink" title="1.GROUP BY"></a>1.GROUP BY</h6><p>​        对select查询出来的结果集按照某个字段或者表达式进行分组，获得一组组的集合，然后从每组中取出一个指定字段或者表达式的值。</p>
+<p>​        在使用group by的SQL语句中，select中返回的字段，必须包含在group by语句的后面，作为分组的依据；且这些字段须包含在聚合函数中。</p>
+<h6 id="2-HAVING"><a href="#2-HAVING" class="headerlink" title="2.HAVING"></a>2.HAVING</h6><p>​        用于对where和group by查询出来的分组经行过滤，查出满足条件的分组结果。它是一个过滤声明，是在查询返回结果集以后对查询结果进行的过滤操作。</p>
+<p>（1）having只能用于group by（分组统计语句中）；<br>（2）where 是用于在初始表中筛选查询，having用于在where和group by 结果分组中查询；<br>（3）having 子句中的每一个元素也必须出现在select列表中；<br>（4）having语句可以使用聚合函数，而where不使用。</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例1：每个年龄18岁以上的级别中最年轻的水手的年龄及其级别，且每个级别的大于18岁的水手有两名以上
+SELECT S.rating,MIN(S.age) As minage
+FROM Sailors S
+WHERE S.age >= 18
+GROUP BY S.rating
+HAVING COUNT(*) > 1
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例2：每个年龄18岁以上的级别中最年轻的水手的年龄及其级别，且每个级别的水手有两名以上（嵌套）
+SELECT S.rating,MIN(S.age)
+FROM Sailors S
+WHERE S.age >= 18
+GROUP BY S.rating
+HAVING 1 < (SELECT COUNT(*)
+           FROM Sailors S2
+           WHERE S2.rating = S.rating)
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例3：查询水手年龄平均值最低的级别（利用Temp）
+SELECT Temp.rating
+FROM (SELECT S.rating,AVG(S.age) As avgage
+     FROM Sailors S
+     GROUP BY S.rating) As Temp
+WHERE Temp.avgage = (SELECT MIN(Temp.abgage)
+                    FROM Temp)
 </code></pre>
 ]]></content>
       <categories>
@@ -2185,49 +2484,6 @@ max-load-15=12
       </tags>
   </entry>
   <entry>
-    <title>CAN基础知识介绍</title>
-    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
-    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<a id="more"></a>
-<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言的生命周期和作用域</title>
     <url>/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</url>
     <content><![CDATA[<p>生命周期：是一个变量存在的周期。</p>
@@ -2278,6 +2534,49 @@ int main(int argc, char const *argv[])
       </categories>
       <tags>
         <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CAN基础知识介绍</title>
+    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
+    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
+<a id="more"></a>
+<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
+<p>2.系统柔软性</p>
+<p>3.速度快，距离远</p>
+<p>4.具有错误检测，错误通知和错误恢复功能</p>
+<p>5.故障封闭功能</p>
+<p>6.连接节点多</p>
+<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
+<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
+<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
+<p>1.帧起始：表示数据帧开始的段</p>
+<p>2.仲裁段：表示该帧优先级的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
+<p>3.控制段：表示数据的字节数及保留位的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
+<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
+<p>5.CRC段：检查帧的传输错误的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
+<p>6.ACK段：表示确认正常接收的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
+<p>7.帧结束：表示数据帧结束的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
+<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
+<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
+<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
+<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>通信</tag>
       </tags>
   </entry>
   <entry>
