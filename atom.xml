@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zzuyy519blog.top/"/>
-  <updated>2020-03-26T06:13:57.075Z</updated>
+  <updated>2020-03-26T12:18:14.549Z</updated>
   <id>https://zzuyy519blog.top/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>awk报告生成器</title>
+    <link href="https://zzuyy519blog.top/2020/03/26/awk-bao-gao-sheng-cheng-qi/"/>
+    <id>https://zzuyy519blog.top/2020/03/26/awk-bao-gao-sheng-cheng-qi/</id>
+    <published>2020-03-26T11:13:11.000Z</published>
+    <updated>2020-03-26T12:18:14.549Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、awk介绍&quot;&gt;&lt;a href=&quot;#一、awk介绍&quot; class=&quot;headerlink&quot; title=&quot;一、awk介绍&quot;&gt;&lt;/a&gt;一、awk介绍&lt;/h4&gt;&lt;h5 id=&quot;（一）gawk&quot;&gt;&lt;a href=&quot;#（一）gawk&quot; class=&quot;headerlink&quot; title=&quot;（一）gawk&quot;&gt;&lt;/a&gt;（一）gawk&lt;/h5&gt;&lt;p&gt;模式扫描和处理语言&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>sed工具</title>
     <link href="https://zzuyy519blog.top/2020/03/25/sed-gong-ju/"/>
     <id>https://zzuyy519blog.top/2020/03/25/sed-gong-ju/</id>
     <published>2020-03-25T13:40:13.000Z</published>
-    <updated>2020-03-26T06:13:57.075Z</updated>
+    <updated>2020-03-26T11:12:18.809Z</updated>
     
     <summary type="html">
     
@@ -400,26 +420,6 @@
     
     
       <category term="单片机" scheme="https://zzuyy519blog.top/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CAN基础知识介绍</title>
-    <link href="https://zzuyy519blog.top/2019/05/03/can-xue-xi-bi-ji/"/>
-    <id>https://zzuyy519blog.top/2019/05/03/can-xue-xi-bi-ji/</id>
-    <published>2019-05-03T14:56:33.000Z</published>
-    <updated>2020-03-05T03:57:26.111Z</updated>
-    
-    <summary type="html">
-    
-      CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="通信" scheme="https://zzuyy519blog.top/tags/%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   

@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>awk报告生成器</title>
+    <url>/2020/03/26/awk-bao-gao-sheng-cheng-qi/</url>
+    <content><![CDATA[<h4 id="一、awk介绍"><a href="#一、awk介绍" class="headerlink" title="一、awk介绍"></a>一、awk介绍</h4><h5 id="（一）gawk"><a href="#（一）gawk" class="headerlink" title="（一）gawk"></a>（一）gawk</h5><p>模式扫描和处理语言</p>
+<a id="more"></a>
+<h5 id="（二）基本用法"><a href="#（二）基本用法" class="headerlink" title="（二）基本用法"></a>（二）基本用法</h5><p>awk [options] ‘program’  var=value file…</p>
+<p>awk [options] -f programfile  var=value file…</p>
+<p>awk [options] ‘BEGIN{action;…} pattern{action;…} END{action;…}’ file…</p>
+<p>awk程序通常由：BEGIN语句块、能够使用模式匹配的通用语句块、END语句块，共三部分组成</p>
+<p>program通常是在单引号或双引号中</p>
+<h5 id="（三）选项"><a href="#（三）选项" class="headerlink" title="（三）选项"></a>（三）选项</h5><p>-F ：指明输入时用到的字段分隔符；</p>
+<p>-v var=value：自定义变量。</p>
+<h5 id="（四）分割符、域和记录"><a href="#（四）分割符、域和记录" class="headerlink" title="（四）分割符、域和记录"></a>（四）分割符、域和记录</h5><ol>
+<li>awk执行时，由分隔符分割的字段（域）标记$1,$2…$n称为域标识。$0为所有域，注意：和shell中变量$符含义不同；</li>
+<li>文件的每一行称为记录；</li>
+<li>省略action，则默认执行print $0的操作。</li>
+</ol>
+<h5 id="（五）print格式"><a href="#（五）print格式" class="headerlink" title="（五）print格式"></a>（五）print格式</h5><p>print item1,item2,…</p>
+<ol>
+<li>逗号分隔符；</li>
+<li>输出的各item可以是字符串，也可以是数值；当前记录的字段、变量或awk的表达式；</li>
+<li>如省略item，相当于print $0。</li>
+</ol>
+<pre><code>例：查看分区利用率
+[root@localhost ~]# df |awk &#39;{print $5}&#39;
+已用%
+18%
+0%
+0%
+2%
+0%
+13%
+0%
+</code></pre><h4 id="二、awk变量"><a href="#二、awk变量" class="headerlink" title="二、awk变量"></a>二、awk变量</h4><p>变量：内置和自定义变量</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FS</td>
+<td>输入字段分隔符，默认为空白字符</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段分隔符，默认为空白字符</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>输入记录分隔符，指定输入时的换行符</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出记录分隔符，输出时用指定符号代替换行符</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>字段数量</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>记录号</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>sed工具</title>
     <url>/2020/03/25/sed-gong-ju/</url>
     <content><![CDATA[<h4 id="一、sed介绍"><a href="#一、sed介绍" class="headerlink" title="一、sed介绍"></a>一、sed介绍</h4><p>Stream EDitor，行编辑器</p>
@@ -114,6 +192,81 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 [root@localhost ~]# ifconfig |sed -n &#39;2p&#39; |sed -e &#39;s/^.*net //&#39; -e &#39;s/ netmask.*//&#39; 
 10.0.2.15
+</code></pre><h5 id="（五）高级编辑命令"><a href="#（五）高级编辑命令" class="headerlink" title="（五）高级编辑命令"></a>（五）高级编辑命令</h5><ol>
+<li>模式空间：可以想成工程里面的流水线，数据之间在它上面进行处理。</li>
+<li>保持空间：可以想象成仓库，我们在进行数据处理的时候，作为数据的暂存区域。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>打印模式空间开端至\n内容，并追加到默认输出之前</td>
+</tr>
+<tr>
+<td>h</td>
+<td>把模式空间中的内容覆盖至保持空间中</td>
+</tr>
+<tr>
+<td>H</td>
+<td>把模式空间中的内容追加至保持空间中</td>
+</tr>
+<tr>
+<td>g</td>
+<td>从保持空间取出数据覆盖至模式空间</td>
+</tr>
+<tr>
+<td>G</td>
+<td>从保持空间取出内容追加至模式空间</td>
+</tr>
+<tr>
+<td>x</td>
+<td>把模式空间中的内容与保持空间中的内容进行互换</td>
+</tr>
+<tr>
+<td>n</td>
+<td>读取匹配到的行的下一行覆盖至模式空间</td>
+</tr>
+<tr>
+<td>N</td>
+<td>读取匹配到的行的下一行追加至模式空间</td>
+</tr>
+<tr>
+<td>D</td>
+<td>如果模式空间包含换行符，则删除直到第一个换行符的模式空间中的文本，并不会读取新的输入行，而使用合成的模式空间重新启动循环。如果模式空间不包含换行符，则会像发出d命令那样启动正常的新循环。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    例：</p>
+<pre><code>#只打印偶数行
+[root@localhost ~]# seq 10 |sed -n &#39;n;p&#39;
+2
+4
+6
+8
+10
+#倒序打印
+[root@localhost ~]# seq 10 |sed &#39;1!G;h;$!d&#39;
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+只打印最后一行
+[root@localhost ~]# seq 10 |sed &#39;N;D&#39;
+10
 </code></pre>]]></content>
       <categories>
         <category>学习笔记</category>

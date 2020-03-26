@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Y*Y">
 <meta property="og:description" content="一、sed介绍Stream EDitor，行编辑器 sed是一种流编辑器，它一次处理一行的内容。处时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-26T06:13:57.075Z">
+<meta property="og:updated_time" content="2020-03-26T11:12:18.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed工具">
 <meta name="twitter:description" content="一、sed介绍Stream EDitor，行编辑器 sed是一种流编辑器，它一次处理一行的内容。处时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文">
@@ -162,12 +162,12 @@
   </li>
         <li class="menu-item menu-item-books">
 
-    <a href="/books/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>读书</a>
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>读书</a>
 
   </li>
         <li class="menu-item menu-item-movies">
 
-    <a href="/movies" rel="section"><i class="fa fa-fw fa-sitemap"></i>电影</a>
+    <a href="/movies" rel="section"><i class="fa fa-fw fa-heartbeat"></i>电影</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -249,7 +249,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-26 14:13:57" itemprop="dateModified" datetime="2020-03-26T14:13:57+08:00">2020-03-26</time>
+                <time title="修改时间：2020-03-26 19:12:18" itemprop="dateModified" datetime="2020-03-26T19:12:18+08:00">2020-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -406,6 +406,81 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 [root@localhost ~]# ifconfig |sed -n &#39;2p&#39; |sed -e &#39;s/^.*net //&#39; -e &#39;s/ netmask.*//&#39; 
 10.0.2.15
+</code></pre><h5 id="（五）高级编辑命令"><a href="#（五）高级编辑命令" class="headerlink" title="（五）高级编辑命令"></a>（五）高级编辑命令</h5><ol>
+<li>模式空间：可以想成工程里面的流水线，数据之间在它上面进行处理。</li>
+<li>保持空间：可以想象成仓库，我们在进行数据处理的时候，作为数据的暂存区域。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>打印模式空间开端至\n内容，并追加到默认输出之前</td>
+</tr>
+<tr>
+<td>h</td>
+<td>把模式空间中的内容覆盖至保持空间中</td>
+</tr>
+<tr>
+<td>H</td>
+<td>把模式空间中的内容追加至保持空间中</td>
+</tr>
+<tr>
+<td>g</td>
+<td>从保持空间取出数据覆盖至模式空间</td>
+</tr>
+<tr>
+<td>G</td>
+<td>从保持空间取出内容追加至模式空间</td>
+</tr>
+<tr>
+<td>x</td>
+<td>把模式空间中的内容与保持空间中的内容进行互换</td>
+</tr>
+<tr>
+<td>n</td>
+<td>读取匹配到的行的下一行覆盖至模式空间</td>
+</tr>
+<tr>
+<td>N</td>
+<td>读取匹配到的行的下一行追加至模式空间</td>
+</tr>
+<tr>
+<td>D</td>
+<td>如果模式空间包含换行符，则删除直到第一个换行符的模式空间中的文本，并不会读取新的输入行，而使用合成的模式空间重新启动循环。如果模式空间不包含换行符，则会像发出d命令那样启动正常的新循环。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    例：</p>
+<pre><code>#只打印偶数行
+[root@localhost ~]# seq 10 |sed -n &#39;n;p&#39;
+2
+4
+6
+8
+10
+#倒序打印
+[root@localhost ~]# seq 10 |sed &#39;1!G;h;$!d&#39;
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+只打印最后一行
+[root@localhost ~]# seq 10 |sed &#39;N;D&#39;
+10
 </code></pre>
     </div>
 
@@ -427,7 +502,10 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
     <a href="/2020/03/24/vim-bian-ji-qi/" rel="prev" title="vim编辑器">
       <i class="fa fa-chevron-left"></i> vim编辑器
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/26/awk-bao-gao-sheng-cheng-qi/" rel="next" title="awk报告生成器">
+      awk报告生成器 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -488,7 +566,7 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、sed介绍"><span class="nav-number">1.</span> <span class="nav-text">一、sed介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、sed工具"><span class="nav-number">2.</span> <span class="nav-text">二、sed工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）用法"><span class="nav-number">2.1.</span> <span class="nav-text">（一）用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）常用选项"><span class="nav-number">2.2.</span> <span class="nav-text">（二）常用选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）地址定界"><span class="nav-number">2.3.</span> <span class="nav-text">（三）地址定界</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-不给地址"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.不给地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-单地址"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.单地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-地址范围"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.地址范围</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-：步进"><span class="nav-number">2.3.4.</span> <span class="nav-text">4.~：步进</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）编辑命令"><span class="nav-number">2.4.</span> <span class="nav-text">（四）编辑命令</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、sed介绍"><span class="nav-number">1.</span> <span class="nav-text">一、sed介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、sed工具"><span class="nav-number">2.</span> <span class="nav-text">二、sed工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）用法"><span class="nav-number">2.1.</span> <span class="nav-text">（一）用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）常用选项"><span class="nav-number">2.2.</span> <span class="nav-text">（二）常用选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）地址定界"><span class="nav-number">2.3.</span> <span class="nav-text">（三）地址定界</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-不给地址"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.不给地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-单地址"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.单地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-地址范围"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.地址范围</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-：步进"><span class="nav-number">2.3.4.</span> <span class="nav-text">4.~：步进</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）编辑命令"><span class="nav-number">2.4.</span> <span class="nav-text">（四）编辑命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）高级编辑命令"><span class="nav-number">2.5.</span> <span class="nav-text">（五）高级编辑命令</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -502,7 +580,7 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
