@@ -33,7 +33,7 @@
 0%
 13%
 0%
-</code></pre><h4 id="二、awk变量"><a href="#二、awk变量" class="headerlink" title="二、awk变量"></a>二、awk变量</h4><p>变量：内置和自定义变量</p>
+</code></pre><h4 id="二、awk变量"><a href="#二、awk变量" class="headerlink" title="二、awk变量"></a>二、awk变量</h4><h5 id="（一）变量"><a href="#（一）变量" class="headerlink" title="（一）变量"></a>（一）变量</h5><p>内置和自定义变量</p>
 <div class="table-container">
 <table>
 <thead>
@@ -67,10 +67,181 @@
 <td>NR</td>
 <td>记录号</td>
 </tr>
+<tr>
+<td>FNR</td>
+<td>各文件分别计数，记录号</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前文件名</td>
+</tr>
+<tr>
+<td>ARGC</td>
+<td>命令行参数的个数</td>
+</tr>
+<tr>
+<td></td>
+<td>数组，保存的是命令行所给定的各参数</td>
+</tr>
 </tbody>
 </table>
 </div>
-]]></content>
+<pre><code>例：查询文件最后一个字段并标注记录号
+[root@localhost etc]# awk -F: &#39;{print NR,$NF}&#39; /etc/passwd
+1 /bin/bash
+2 /sbin/nologin
+3 /sbin/nologin
+4 /sbin/nologin
+......
+</code></pre><h5 id="（二）自定义变量"><a href="#（二）自定义变量" class="headerlink" title="（二）自定义变量"></a>（二）自定义变量</h5><p>​    （1）-v var=value；</p>
+<p>​    （2）在program中直接定义。</p>
+<pre><code>例：打印自定义变量
+[root@localhost ~]# awk -v test=&quot;hello awk&quot; &#39;{print test}&#39; /etc/fstab
+hello awk
+hello awk
+......
+[root@localhost ~]# awk &#39;{test=&quot;test awk&quot;;print test}&#39; /etc/fstab
+test awk
+test awk
+......
+</code></pre><pre><code>例：打印
+[root@localhost ~]# awk -F: &#39;BEGIN{printf &quot;username          userid\n---------------------------\n&quot;}{printf &quot;%-20s |%-10d\n&quot;,$1,$3}&#39; /etc/passwd
+username          userid
+---------------------------
+root                 |0         
+bin                  |1         
+daemon               |2         
+adm                  |3     
+......
+</code></pre><h4 id="三、操作符"><a href="#三、操作符" class="headerlink" title="三、操作符"></a>三、操作符</h4><h5 id="（一）算术操作符"><a href="#（一）算术操作符" class="headerlink" title="（一）算术操作符"></a>（一）算术操作符</h5><p>​        x+y,x-y,x*y……</p>
+<p>​        -x：转换为负数；</p>
+<p>​        +x：转换为负数。</p>
+<h5 id="（二）字符串操作符"><a href="#（二）字符串操作符" class="headerlink" title="（二）字符串操作符"></a>（二）字符串操作符</h5><p>​        没有符号的操作符，字符串连接。</p>
+<h5 id="（三）赋值操作符"><a href="#（三）赋值操作符" class="headerlink" title="（三）赋值操作符"></a>（三）赋值操作符</h5><p>​        =，+=，-=，++，—……</p>
+<h5 id="（四）比较操作符"><a href="#（四）比较操作符" class="headerlink" title="（四）比较操作符"></a>（四）比较操作符</h5><p>​        ==,!=,&gt;,&gt;=,&lt;,&lt;=…..</p>
+<h5 id="（五）模式匹配符"><a href="#（五）模式匹配符" class="headerlink" title="（五）模式匹配符"></a>（五）模式匹配符</h5><p>​        ~：左边是否和右边匹配包含；</p>
+<p>​        !~：是否不匹配。</p>
+<h5 id="（六）逻辑运算符"><a href="#（六）逻辑运算符" class="headerlink" title="（六）逻辑运算符"></a>（六）逻辑运算符</h5><p>​        与&amp;&amp;，或||，非！</p>
+<h5 id="（七）函数调用"><a href="#（七）函数调用" class="headerlink" title="（七）函数调用"></a>（七）函数调用</h5><p>​        function_name(argu1,argu2,…)</p>
+<h5 id="（八）条件表达式（三目表达式）"><a href="#（八）条件表达式（三目表达式）" class="headerlink" title="（八）条件表达式（三目表达式）"></a>（八）条件表达式（三目表达式）</h5><p>​        selector?if-true-expression:if-false-expression</p>
+<pre><code>#示例：
+[root@localhost ~]# awk -F: &#39;$3 &lt;= 1000 &amp;&amp; $3 &gt;=100 {print $0}&#39; /etc/passwd
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+polkitd:x:999:997:User for polkitd:/:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+......
+</code></pre><pre><code>#三目表达式
+[root@localhost ~]# awk -F: &#39;{$3&gt;=1000?usertype=&quot;common user&quot;:usertype=&quot;system user&quot;;printf &quot;%-12s:%-20s:%-6d\n&quot;,usertype,$1,$3&#39;} /etc/passwd
+system user :root                :0     
+system user :bin                 :1     
+system user :daemon              :2     
+......
+common user :git                 :1235  
+......
+</code></pre><h4 id="四、控制语句"><a href="#四、控制语句" class="headerlink" title="四、控制语句"></a>四、控制语句</h4><h5 id="（一）if-else"><a href="#（一）if-else" class="headerlink" title="（一）if-else"></a>（一）if-else</h5><h6 id="1-语法"><a href="#1-语法" class="headerlink" title="1.语法"></a>1.语法</h6><p>if(condition){statement;…}[else statement]</p>
+<p>if(condiftion 1){statement1} else if(condition2){statement2}</p>
+<p>​            else{statement3}</p>
+<h6 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2.使用场景"></a>2.使用场景</h6><p>对awk取得的整行或某个字段做条件判断</p>
+<pre><code>#例：
+[root@localhost ~]# awk &#39;BEGIN{test=100;if(test&gt;90){print &quot;very good&quot;} else if(test&gt;60){print &quot;good&quot;} else{print &quot;no pass&quot;}}&#39;
+very good
+</code></pre><h5 id="（二）while循环"><a href="#（二）while循环" class="headerlink" title="（二）while循环"></a>（二）while循环</h5><h6 id="1-语法-1"><a href="#1-语法-1" class="headerlink" title="1.语法"></a>1.语法</h6><p>while(condition){statement;…}</p>
+<p>条件“真”：进入循环；    条件“假”：退出循环</p>
+<h6 id="2-使用场景-1"><a href="#2-使用场景-1" class="headerlink" title="2.使用场景"></a>2.使用场景</h6><p>对一行内的多个字段逐一类似处理时使用</p>
+<p>对数组中的各元素逐一处理时使用</p>
+<pre><code>#例：打印文件每个字段的长度
+[root@localhost ~]# awk -F: &#39;{i=1;while(i&lt;=NF){print $i,length($i);i++}}&#39; /etc/passwd
+root 4
+x 1
+0 1
+0 1
+root 4
+/root 5
+/bin/bash 9
+......
+</code></pre><pre><code>#例：累加
+[root@localhost ~]# awk &#39;BEGIN{sum=0;i=1;while(i&lt;=100){sum+=i;i++};print &quot;sum=&quot;sum}&#39;
+sum=5050
+</code></pre><h5 id="（三）do-while循环"><a href="#（三）do-while循环" class="headerlink" title="（三）do-while循环"></a>（三）do-while循环</h5><h6 id="1-语法-2"><a href="#1-语法-2" class="headerlink" title="1.语法"></a>1.语法</h6><p>do {statement;…}while(condition)</p>
+<h6 id="2-意义"><a href="#2-意义" class="headerlink" title="2.意义"></a>2.意义</h6><p>无论真假，至少执行一次循环体</p>
+<pre><code>#例：累加
+[root@localhost ~]# awk &#39;BEGIN{local=0;i=0;do{total+=i;i++}while(i&lt;=100);print total}&#39;
+5050
+</code></pre><h5 id="（四）for循环"><a href="#（四）for循环" class="headerlink" title="（四）for循环"></a>（四）for循环</h5><h6 id="1-语法-3"><a href="#1-语法-3" class="headerlink" title="1.语法"></a>1.语法</h6><p>for(expr1;expr2;expr3){statement;….}</p>
+<h6 id="2-常见用法"><a href="#2-常见用法" class="headerlink" title="2.常见用法"></a>2.常见用法</h6><p>for(variable assignment;condiftion;iteration process)</p>
+<p>​            {for-body}</p>
+<h6 id="3-特殊用法"><a href="#3-特殊用法" class="headerlink" title="3.特殊用法"></a>3.特殊用法</h6><p>能够遍历数组中的元素： for(var in array){for-body}</p>
+<pre><code>例：累加
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){sum+=i}print sum}&#39;
+5050
+</code></pre><pre><code>#continue中断
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){if(i==50)continue;sum+=i}print sum}&#39;
+5000
+#break退出
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){if(i==50)break;sum+=i}print sum}&#39;
+1225
+</code></pre><h6 id="4-next"><a href="#4-next" class="headerlink" title="4.next"></a>4.next</h6><p>提前结束对本行处理而直接进入下一行处理（awk自身循环）</p>
+<h4 id="五、数组"><a href="#五、数组" class="headerlink" title="五、数组"></a>五、数组</h4><p>若要遍历数组中的每个元素，要是用for循环：for(var in array){for-body}</p>
+<p>注：var会遍历array的每个索引</p>
+<pre><code>#例：
+[root@localhost ~]# awk &#39;BEGIN{weekdays[&quot;mon&quot;]=&quot;Monday&quot;;weekdays[&quot;yue&quot;]=&quot;Tuesday&quot;;for(i in weekdays){print weekdays[i]}}&#39;
+Tuesday
+Monday
+</code></pre><pre><code>#例：查看监听状况数量
+[root@localhost ~]# netstat -tan |awk &#39;/^tcp/{state[$NF]++}END{for(i in state){print i,state[i]}}&#39;
+LISTEN 4
+ESTABLISHED 1
+</code></pre><p>六、awk函数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数形式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rand()</td>
+<td>返回0和1之间一个随机数</td>
+</tr>
+<tr>
+<td>length([s])</td>
+<td>返回指定字符串的长度</td>
+</tr>
+<tr>
+<td>sub(r,s,[t])</td>
+<td>对t字符串进行搜索r表示的模式匹配的内容，并将第一个匹配的内容替换为s</td>
+</tr>
+<tr>
+<td>gsub(r,s,[t])</td>
+<td>对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容</td>
+</tr>
+<tr>
+<td>split(s,array,[r])</td>
+<td>以r为分隔符，切割字符串s，并将切割后的结果保存至array所表示的数组中，第一个索引值为1，第二个索引值为2，…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>#例：
+[root@localhost log]# echo &quot;2008:08:08 08:08:08&quot; |awk &#39;gsub(/:/,&quot;-&quot;,$0)&#39;
+2008-08-08 08-08-08
+[root@localhost log]# echo &quot;2008:08:08 08:08:08&quot; |awk &#39;gsub(/:/,&quot;-&quot;,$1)&#39;
+2008-08-08 08:08:08
+</code></pre><pre><code>#统计连接主机IP的连接次数
+[root@localhost ~]# netstat -tan
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN     
+tcp        0      0 10.0.2.15:22            10.0.2.2:3194           ESTABLISHED
+tcp6       0      0 :::22                   :::*                    LISTEN     
+tcp6       0      0 ::1:25                  :::*                    LISTEN     
+[root@localhost ~]# netstat -tan |awk &#39;/^tcp\&gt;/{split($5,ip,&quot;:&quot;);count[ip[1]]++}END{for(i in count){print i,count[i]}}&#39;
+0.0.0.0 2     #0.0.0.0 IP连接两次
+10.0.2.2 1    #10.0.2.2 IP连接一次
+</code></pre>]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
@@ -790,7 +961,7 @@ enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
       </tags>
   </entry>
   <entry>
-    <title>数据库系统的用户接口以及SQL语言</title>
+    <title>数据库系统的用户接口以及SQL语言（一）</title>
     <url>/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/</url>
     <content><![CDATA[<h4 id="一、DBMS的用户数据接口"><a href="#一、DBMS的用户数据接口" class="headerlink" title="一、DBMS的用户数据接口"></a>一、DBMS的用户数据接口</h4><h5 id="（一）查询语言；"><a href="#（一）查询语言；" class="headerlink" title="（一）查询语言；"></a>（一）查询语言；</h5><p>​        形式化查询语言 Formal Query Language</p>
 <a id="more"></a>
@@ -1087,6 +1258,40 @@ FROM (SELECT S.rating,AVG(S.age) As avgage
 WHERE Temp.avgage = (SELECT MIN(Temp.abgage)
                     FROM Temp)
 </code></pre>
+<h4 id="五、空值"><a href="#五、空值" class="headerlink" title="五、空值"></a>五、空值</h4><p>当值不可用或者缺值时，引用空值（表示不知道，并非为0）</p>
+<p>布尔条件：真，假，空</p>
+<h5 id="（一）CAST表达式"><a href="#（一）CAST表达式" class="headerlink" title="（一）CAST表达式"></a>（一）CAST表达式</h5><h6 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用"></a>1.作用</h6><p>​        函数调用时实现实参与形参的匹配；</p>
+<p>​        改变计算的精度；</p>
+<p>​        给空值赋予一个数据类型。</p>
+<h6 id="2-参数"><a href="#2-参数" class="headerlink" title="2.参数"></a>2.参数</h6><p>​        expression：任何有效的SQServer表达式。</p>
+<p>​        AS：用于分隔两个参数，在AS之前的是要处理的数据，在AS之后是要转换的数据类型。</p>
+<p>​        data_type：目标系统所提供的数据类型，包括bigint和sql_variant，不能使用用户定义的数据类型。</p>
+<p><img src="/2020/03/18/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan/D:/blog\Hexo\source\_posts\数据库系统的用户接口以及SQL语言\图片一.png" alt></p>
+<h5 id="（二）CASE表达式"><a href="#（二）CASE表达式" class="headerlink" title="（二）CASE表达式"></a>（二）CASE表达式</h5><p>用于区分情况，在有条件分歧的时候使用它。</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 简单 CASE表达式
+CASE 列(或表达式)
+     WHEN <匹配值1> THEN <表达式>
+     WHEN <匹配值2> THEN <表达式>
+     ......
+     ELSE <表达式>
+END
+
+-- 搜索 CASE表达式
+CASE WHEN <判断表达式> THEN <表达式>
+     WHEN <判断表达式> THEN <表达式>
+     WHEN <判断表达式> THEN <表达式>
+     ......
+     ELSE <表达式>
+END
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：新建表Machines(serialno,type,year,hours_used,accidents)
+-- 查找链锯设备的故障时间在总故障时间里占得比率
+SELECT sum(CASE
+                  WHEN type='chain saw' THEN accidents
+                  ELSE 0e0
+          END)/sum(accidents)
+FROM Machines;
+</code></pre>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -1096,7 +1301,7 @@ WHERE Temp.avgage = (SELECT MIN(Temp.abgage)
       </tags>
   </entry>
   <entry>
-    <title>Linux基础（二）</title>
+    <title>Linux权限与正则表达式</title>
     <url>/2020/03/17/linux-ji-chu-er/</url>
     <content><![CDATA[<h4 id="一、用户user"><a href="#一、用户user" class="headerlink" title="一、用户user"></a>一、用户user</h4><h5 id="（一）令牌-token-identity"><a href="#（一）令牌-token-identity" class="headerlink" title="（一）令牌 token , identity"></a>（一）令牌 token , identity</h5><h5 id="（二）Linux用户：Username-UID"><a href="#（二）Linux用户：Username-UID" class="headerlink" title="（二）Linux用户：Username/UID"></a>（二）Linux用户：Username/UID</h5><a id="more"></a>
 <p>​    管理员：root，0</p>
@@ -1398,7 +1603,7 @@ r \subseteq D_1\times D_2\times ,...,\times D_n, 1\leq i\leq n</script><h5 id="�
       </tags>
   </entry>
   <entry>
-    <title>Linux基础(一)</title>
+    <title>Linux磁盘与文件</title>
     <url>/2020/03/08/linux-ji-chu/</url>
     <content><![CDATA[<h4 id="一、操作系统"><a href="#一、操作系统" class="headerlink" title="一、操作系统"></a>一、操作系统</h4><h5 id="（一）OS：Operating-System，通用目的的软件程序"><a href="#（一）OS：Operating-System，通用目的的软件程序" class="headerlink" title="（一）OS：Operating System，通用目的的软件程序"></a>（一）OS：Operating System，通用目的的软件程序</h5><p>硬件驱动；进程管理；内存管理；网络管理；安全管理；文件管理。</p>
 <a id="more"></a>
@@ -2637,49 +2842,6 @@ max-load-15=12
       </tags>
   </entry>
   <entry>
-    <title>CAN基础知识介绍</title>
-    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
-    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<a id="more"></a>
-<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言的生命周期和作用域</title>
     <url>/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</url>
     <content><![CDATA[<p>生命周期：是一个变量存在的周期。</p>
@@ -2730,6 +2892,49 @@ int main(int argc, char const *argv[])
       </categories>
       <tags>
         <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CAN基础知识介绍</title>
+    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
+    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
+<a id="more"></a>
+<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
+<p>2.系统柔软性</p>
+<p>3.速度快，距离远</p>
+<p>4.具有错误检测，错误通知和错误恢复功能</p>
+<p>5.故障封闭功能</p>
+<p>6.连接节点多</p>
+<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
+<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
+<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
+<p>1.帧起始：表示数据帧开始的段</p>
+<p>2.仲裁段：表示该帧优先级的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
+<p>3.控制段：表示数据的字节数及保留位的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
+<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
+<p>5.CRC段：检查帧的传输错误的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
+<p>6.ACK段：表示确认正常接收的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
+<p>7.帧结束：表示数据帧结束的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
+<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
+<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
+<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
+<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>通信</tag>
       </tags>
   </entry>
   <entry>

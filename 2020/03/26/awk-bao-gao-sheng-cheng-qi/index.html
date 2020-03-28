@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Y*Y">
 <meta property="og:description" content="一、awk介绍（一）gawk模式扫描和处理语言">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-26T12:18:14.549Z">
+<meta property="og:updated_time" content="2020-03-28T07:28:50.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="awk报告生成器">
 <meta name="twitter:description" content="一、awk介绍（一）gawk模式扫描和处理语言">
@@ -241,10 +241,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-26 19:13:11 / 修改时间：20:18:14" itemprop="dateCreated datePublished" datetime="2020-03-26T19:13:11+08:00">2020-03-26</time>
+              <time title="创建时间：2020-03-26 19:13:11" itemprop="dateCreated datePublished" datetime="2020-03-26T19:13:11+08:00">2020-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 15:28:50" itemprop="dateModified" datetime="2020-03-28T15:28:50+08:00">2020-03-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -319,7 +325,7 @@
 0%
 13%
 0%
-</code></pre><h4 id="二、awk变量"><a href="#二、awk变量" class="headerlink" title="二、awk变量"></a>二、awk变量</h4><p>变量：内置和自定义变量</p>
+</code></pre><h4 id="二、awk变量"><a href="#二、awk变量" class="headerlink" title="二、awk变量"></a>二、awk变量</h4><h5 id="（一）变量"><a href="#（一）变量" class="headerlink" title="（一）变量"></a>（一）变量</h5><p>内置和自定义变量</p>
 <div class="table-container">
 <table>
 <thead>
@@ -353,15 +359,206 @@
 <td>NR</td>
 <td>记录号</td>
 </tr>
+<tr>
+<td>FNR</td>
+<td>各文件分别计数，记录号</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前文件名</td>
+</tr>
+<tr>
+<td>ARGC</td>
+<td>命令行参数的个数</td>
+</tr>
+<tr>
+<td></td>
+<td>数组，保存的是命令行所给定的各参数</td>
+</tr>
 </tbody>
 </table>
 </div>
-
+<pre><code>例：查询文件最后一个字段并标注记录号
+[root@localhost etc]# awk -F: &#39;{print NR,$NF}&#39; /etc/passwd
+1 /bin/bash
+2 /sbin/nologin
+3 /sbin/nologin
+4 /sbin/nologin
+......
+</code></pre><h5 id="（二）自定义变量"><a href="#（二）自定义变量" class="headerlink" title="（二）自定义变量"></a>（二）自定义变量</h5><p>​    （1）-v var=value；</p>
+<p>​    （2）在program中直接定义。</p>
+<pre><code>例：打印自定义变量
+[root@localhost ~]# awk -v test=&quot;hello awk&quot; &#39;{print test}&#39; /etc/fstab
+hello awk
+hello awk
+......
+[root@localhost ~]# awk &#39;{test=&quot;test awk&quot;;print test}&#39; /etc/fstab
+test awk
+test awk
+......
+</code></pre><pre><code>例：打印
+[root@localhost ~]# awk -F: &#39;BEGIN{printf &quot;username          userid\n---------------------------\n&quot;}{printf &quot;%-20s |%-10d\n&quot;,$1,$3}&#39; /etc/passwd
+username          userid
+---------------------------
+root                 |0         
+bin                  |1         
+daemon               |2         
+adm                  |3     
+......
+</code></pre><h4 id="三、操作符"><a href="#三、操作符" class="headerlink" title="三、操作符"></a>三、操作符</h4><h5 id="（一）算术操作符"><a href="#（一）算术操作符" class="headerlink" title="（一）算术操作符"></a>（一）算术操作符</h5><p>​        x+y,x-y,x*y……</p>
+<p>​        -x：转换为负数；</p>
+<p>​        +x：转换为负数。</p>
+<h5 id="（二）字符串操作符"><a href="#（二）字符串操作符" class="headerlink" title="（二）字符串操作符"></a>（二）字符串操作符</h5><p>​        没有符号的操作符，字符串连接。</p>
+<h5 id="（三）赋值操作符"><a href="#（三）赋值操作符" class="headerlink" title="（三）赋值操作符"></a>（三）赋值操作符</h5><p>​        =，+=，-=，++，—……</p>
+<h5 id="（四）比较操作符"><a href="#（四）比较操作符" class="headerlink" title="（四）比较操作符"></a>（四）比较操作符</h5><p>​        ==,!=,&gt;,&gt;=,&lt;,&lt;=…..</p>
+<h5 id="（五）模式匹配符"><a href="#（五）模式匹配符" class="headerlink" title="（五）模式匹配符"></a>（五）模式匹配符</h5><p>​        ~：左边是否和右边匹配包含；</p>
+<p>​        !~：是否不匹配。</p>
+<h5 id="（六）逻辑运算符"><a href="#（六）逻辑运算符" class="headerlink" title="（六）逻辑运算符"></a>（六）逻辑运算符</h5><p>​        与&amp;&amp;，或||，非！</p>
+<h5 id="（七）函数调用"><a href="#（七）函数调用" class="headerlink" title="（七）函数调用"></a>（七）函数调用</h5><p>​        function_name(argu1,argu2,…)</p>
+<h5 id="（八）条件表达式（三目表达式）"><a href="#（八）条件表达式（三目表达式）" class="headerlink" title="（八）条件表达式（三目表达式）"></a>（八）条件表达式（三目表达式）</h5><p>​        selector?if-true-expression:if-false-expression</p>
+<pre><code>#示例：
+[root@localhost ~]# awk -F: &#39;$3 &lt;= 1000 &amp;&amp; $3 &gt;=100 {print $0}&#39; /etc/passwd
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+polkitd:x:999:997:User for polkitd:/:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+......
+</code></pre><pre><code>#三目表达式
+[root@localhost ~]# awk -F: &#39;{$3&gt;=1000?usertype=&quot;common user&quot;:usertype=&quot;system user&quot;;printf &quot;%-12s:%-20s:%-6d\n&quot;,usertype,$1,$3&#39;} /etc/passwd
+system user :root                :0     
+system user :bin                 :1     
+system user :daemon              :2     
+......
+common user :git                 :1235  
+......
+</code></pre><h4 id="四、控制语句"><a href="#四、控制语句" class="headerlink" title="四、控制语句"></a>四、控制语句</h4><h5 id="（一）if-else"><a href="#（一）if-else" class="headerlink" title="（一）if-else"></a>（一）if-else</h5><h6 id="1-语法"><a href="#1-语法" class="headerlink" title="1.语法"></a>1.语法</h6><p>if(condition){statement;…}[else statement]</p>
+<p>if(condiftion 1){statement1} else if(condition2){statement2}</p>
+<p>​            else{statement3}</p>
+<h6 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2.使用场景"></a>2.使用场景</h6><p>对awk取得的整行或某个字段做条件判断</p>
+<pre><code>#例：
+[root@localhost ~]# awk &#39;BEGIN{test=100;if(test&gt;90){print &quot;very good&quot;} else if(test&gt;60){print &quot;good&quot;} else{print &quot;no pass&quot;}}&#39;
+very good
+</code></pre><h5 id="（二）while循环"><a href="#（二）while循环" class="headerlink" title="（二）while循环"></a>（二）while循环</h5><h6 id="1-语法-1"><a href="#1-语法-1" class="headerlink" title="1.语法"></a>1.语法</h6><p>while(condition){statement;…}</p>
+<p>条件“真”：进入循环；    条件“假”：退出循环</p>
+<h6 id="2-使用场景-1"><a href="#2-使用场景-1" class="headerlink" title="2.使用场景"></a>2.使用场景</h6><p>对一行内的多个字段逐一类似处理时使用</p>
+<p>对数组中的各元素逐一处理时使用</p>
+<pre><code>#例：打印文件每个字段的长度
+[root@localhost ~]# awk -F: &#39;{i=1;while(i&lt;=NF){print $i,length($i);i++}}&#39; /etc/passwd
+root 4
+x 1
+0 1
+0 1
+root 4
+/root 5
+/bin/bash 9
+......
+</code></pre><pre><code>#例：累加
+[root@localhost ~]# awk &#39;BEGIN{sum=0;i=1;while(i&lt;=100){sum+=i;i++};print &quot;sum=&quot;sum}&#39;
+sum=5050
+</code></pre><h5 id="（三）do-while循环"><a href="#（三）do-while循环" class="headerlink" title="（三）do-while循环"></a>（三）do-while循环</h5><h6 id="1-语法-2"><a href="#1-语法-2" class="headerlink" title="1.语法"></a>1.语法</h6><p>do {statement;…}while(condition)</p>
+<h6 id="2-意义"><a href="#2-意义" class="headerlink" title="2.意义"></a>2.意义</h6><p>无论真假，至少执行一次循环体</p>
+<pre><code>#例：累加
+[root@localhost ~]# awk &#39;BEGIN{local=0;i=0;do{total+=i;i++}while(i&lt;=100);print total}&#39;
+5050
+</code></pre><h5 id="（四）for循环"><a href="#（四）for循环" class="headerlink" title="（四）for循环"></a>（四）for循环</h5><h6 id="1-语法-3"><a href="#1-语法-3" class="headerlink" title="1.语法"></a>1.语法</h6><p>for(expr1;expr2;expr3){statement;….}</p>
+<h6 id="2-常见用法"><a href="#2-常见用法" class="headerlink" title="2.常见用法"></a>2.常见用法</h6><p>for(variable assignment;condiftion;iteration process)</p>
+<p>​            {for-body}</p>
+<h6 id="3-特殊用法"><a href="#3-特殊用法" class="headerlink" title="3.特殊用法"></a>3.特殊用法</h6><p>能够遍历数组中的元素： for(var in array){for-body}</p>
+<pre><code>例：累加
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){sum+=i}print sum}&#39;
+5050
+</code></pre><pre><code>#continue中断
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){if(i==50)continue;sum+=i}print sum}&#39;
+5000
+#break退出
+[root@localhost ~]# awk &#39;BEGIN{for(sum=0;i&lt;=100;i++){if(i==50)break;sum+=i}print sum}&#39;
+1225
+</code></pre><h6 id="4-next"><a href="#4-next" class="headerlink" title="4.next"></a>4.next</h6><p>提前结束对本行处理而直接进入下一行处理（awk自身循环）</p>
+<h4 id="五、数组"><a href="#五、数组" class="headerlink" title="五、数组"></a>五、数组</h4><p>若要遍历数组中的每个元素，要是用for循环：for(var in array){for-body}</p>
+<p>注：var会遍历array的每个索引</p>
+<pre><code>#例：
+[root@localhost ~]# awk &#39;BEGIN{weekdays[&quot;mon&quot;]=&quot;Monday&quot;;weekdays[&quot;yue&quot;]=&quot;Tuesday&quot;;for(i in weekdays){print weekdays[i]}}&#39;
+Tuesday
+Monday
+</code></pre><pre><code>#例：查看监听状况数量
+[root@localhost ~]# netstat -tan |awk &#39;/^tcp/{state[$NF]++}END{for(i in state){print i,state[i]}}&#39;
+LISTEN 4
+ESTABLISHED 1
+</code></pre><p>六、awk函数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数形式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rand()</td>
+<td>返回0和1之间一个随机数</td>
+</tr>
+<tr>
+<td>length([s])</td>
+<td>返回指定字符串的长度</td>
+</tr>
+<tr>
+<td>sub(r,s,[t])</td>
+<td>对t字符串进行搜索r表示的模式匹配的内容，并将第一个匹配的内容替换为s</td>
+</tr>
+<tr>
+<td>gsub(r,s,[t])</td>
+<td>对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容</td>
+</tr>
+<tr>
+<td>split(s,array,[r])</td>
+<td>以r为分隔符，切割字符串s，并将切割后的结果保存至array所表示的数组中，第一个索引值为1，第二个索引值为2，…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>#例：
+[root@localhost log]# echo &quot;2008:08:08 08:08:08&quot; |awk &#39;gsub(/:/,&quot;-&quot;,$0)&#39;
+2008-08-08 08-08-08
+[root@localhost log]# echo &quot;2008:08:08 08:08:08&quot; |awk &#39;gsub(/:/,&quot;-&quot;,$1)&#39;
+2008-08-08 08:08:08
+</code></pre><pre><code>#统计连接主机IP的连接次数
+[root@localhost ~]# netstat -tan
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN     
+tcp        0      0 10.0.2.15:22            10.0.2.2:3194           ESTABLISHED
+tcp6       0      0 :::22                   :::*                    LISTEN     
+tcp6       0      0 ::1:25                  :::*                    LISTEN     
+[root@localhost ~]# netstat -tan |awk &#39;/^tcp\&gt;/{split($5,ip,&quot;:&quot;);count[ip[1]]++}END{for(i in count){print i,count[i]}}&#39;
+0.0.0.0 2     #0.0.0.0 IP连接两次
+10.0.2.2 1    #10.0.2.2 IP连接一次
+</code></pre>
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Y*Y 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Y*Y 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -438,7 +635,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、awk介绍"><span class="nav-number">1.</span> <span class="nav-text">一、awk介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）gawk"><span class="nav-number">1.1.</span> <span class="nav-text">（一）gawk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）基本用法"><span class="nav-number">1.2.</span> <span class="nav-text">（二）基本用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）选项"><span class="nav-number">1.3.</span> <span class="nav-text">（三）选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）分割符、域和记录"><span class="nav-number">1.4.</span> <span class="nav-text">（四）分割符、域和记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）print格式"><span class="nav-number">1.5.</span> <span class="nav-text">（五）print格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、awk变量"><span class="nav-number">2.</span> <span class="nav-text">二、awk变量</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、awk介绍"><span class="nav-number">1.</span> <span class="nav-text">一、awk介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）gawk"><span class="nav-number">1.1.</span> <span class="nav-text">（一）gawk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）基本用法"><span class="nav-number">1.2.</span> <span class="nav-text">（二）基本用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）选项"><span class="nav-number">1.3.</span> <span class="nav-text">（三）选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）分割符、域和记录"><span class="nav-number">1.4.</span> <span class="nav-text">（四）分割符、域和记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）print格式"><span class="nav-number">1.5.</span> <span class="nav-text">（五）print格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、awk变量"><span class="nav-number">2.</span> <span class="nav-text">二、awk变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）变量"><span class="nav-number">2.1.</span> <span class="nav-text">（一）变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）自定义变量"><span class="nav-number">2.2.</span> <span class="nav-text">（二）自定义变量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、操作符"><span class="nav-number">3.</span> <span class="nav-text">三、操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）算术操作符"><span class="nav-number">3.1.</span> <span class="nav-text">（一）算术操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）字符串操作符"><span class="nav-number">3.2.</span> <span class="nav-text">（二）字符串操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）赋值操作符"><span class="nav-number">3.3.</span> <span class="nav-text">（三）赋值操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）比较操作符"><span class="nav-number">3.4.</span> <span class="nav-text">（四）比较操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（五）模式匹配符"><span class="nav-number">3.5.</span> <span class="nav-text">（五）模式匹配符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（六）逻辑运算符"><span class="nav-number">3.6.</span> <span class="nav-text">（六）逻辑运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（七）函数调用"><span class="nav-number">3.7.</span> <span class="nav-text">（七）函数调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（八）条件表达式（三目表达式）"><span class="nav-number">3.8.</span> <span class="nav-text">（八）条件表达式（三目表达式）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、控制语句"><span class="nav-number">4.</span> <span class="nav-text">四、控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）if-else"><span class="nav-number">4.1.</span> <span class="nav-text">（一）if-else</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-语法"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-使用场景"><span class="nav-number">4.1.2.</span> <span class="nav-text">2.使用场景</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）while循环"><span class="nav-number">4.2.</span> <span class="nav-text">（二）while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-语法-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-使用场景-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.使用场景</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（三）do-while循环"><span class="nav-number">4.3.</span> <span class="nav-text">（三）do-while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-语法-2"><span class="nav-number">4.3.1.</span> <span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-意义"><span class="nav-number">4.3.2.</span> <span class="nav-text">2.意义</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（四）for循环"><span class="nav-number">4.4.</span> <span class="nav-text">（四）for循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-语法-3"><span class="nav-number">4.4.1.</span> <span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-常见用法"><span class="nav-number">4.4.2.</span> <span class="nav-text">2.常见用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-特殊用法"><span class="nav-number">4.4.3.</span> <span class="nav-text">3.特殊用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-next"><span class="nav-number">4.4.4.</span> <span class="nav-text">4.next</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、数组"><span class="nav-number">5.</span> <span class="nav-text">五、数组</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
