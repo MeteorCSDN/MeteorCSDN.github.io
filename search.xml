@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据库系统的用户接口以及SQL语言（二）</title>
+    <url>/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>awk报告生成器</title>
     <url>/2020/03/26/awk-bao-gao-sheng-cheng-qi/</url>
     <content><![CDATA[<h4 id="一、awk介绍"><a href="#一、awk介绍" class="headerlink" title="一、awk介绍"></a>一、awk介绍</h4><h5 id="（一）gawk"><a href="#（一）gawk" class="headerlink" title="（一）gawk"></a>（一）gawk</h5><p>模式扫描和处理语言</p>
@@ -191,8 +202,7 @@ Monday
 [root@localhost ~]# netstat -tan |awk &#39;/^tcp/{state[$NF]++}END{for(i in state){print i,state[i]}}&#39;
 LISTEN 4
 ESTABLISHED 1
-</code></pre><p>六、awk函数</p>
-<div class="table-container">
+</code></pre><h4 id="六、awk函数"><a href="#六、awk函数" class="headerlink" title="六、awk函数"></a>六、awk函数</h4><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1291,6 +1301,15 @@ SELECT sum(CASE
                   ELSE 0e0
           END)/sum(accidents)
 FROM Machines;
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：求每种类型的设备出故障的比率
+SELECT type,CASE
+                WHEN sum(hours_used)>0 THEN
+                     sum(accidents)/sum(hours_used)
+                ELSE NULL
+            END AS accident_rate
+FROM Machines
+GROUP BY type;
 </code></pre>
 ]]></content>
       <categories>
