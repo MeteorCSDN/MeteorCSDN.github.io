@@ -1,9 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>数据库系统的用户接口以及SQL语言（二）</title>
+    <title></title>
     <url>/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h4 id="一、嵌套子查询"><a href="#一、嵌套子查询" class="headerlink" title="一、嵌套子查询"></a>一、嵌套子查询</h4><h5 id="（一）标量子查询"><a href="#（一）标量子查询" class="headerlink" title="（一）标量子查询"></a>（一）标量子查询</h5><p>查询结果为单个值（凡是可以出现值的地方，都可以出现标量子查询）</p>
+<a id="more"></a>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：查找所有纽约的部门编号，部门名称和此部门中雇员的最高工资
+SELECT d.deptno,d.deptname,(SELECT MAX(SALARY)
+        FROM emp
+        WHERE deptno=d.deptno) AS maxpay
+FROM dept AS d
+WHERE d.location='New York'
+</code></pre>
+<h5 id="（二）表表达式"><a href="#（二）表表达式" class="headerlink" title="（二）表表达式"></a>（二）表表达式</h5><p>子查询的结果本身就是一个表</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：求每一年入职员工的平均收入
+SELECT startyear,aug(pay)
+FROM (SELECT name,salay+bonus AS pay,
+      year(startdate) AS startyear
+     FROM emp)AS emp2
+GROUP BY startyear;
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：查询雇员总收入大于200000的部门
+SELECT deptno,totalpay
+FROM (SELECT deptno,sum(salay)+sum(bonus) AS totalpay
+     FROM emp
+     GROUP BY deptno) AS payroll
+WHERE totalpay>200000;
+</code></pre>
+<h5 id="（三）公共表表达式"><a href="#（三）公共表表达式" class="headerlink" title="（三）公共表表达式"></a>（三）公共表表达式</h5><p>一个公共表表达式可以当成一个临时视图，是一个在查询中定义的临时命名结果集将在from子句中使用它。它仅被定义一次(但在其作用域内可以被引用任意次)，并且在该查询生存期间将一直生存。可以用来执行递归操作。</p>
+<p>WITH可以定义一个公共表表达式</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：利用WITH定义一个包含部门编号deptno和雇员总收入totalpay的临时表payroll，查询收入雇员收入最高的部门
+WITH payroll (deptno,totalpay) AS
+    (SELECT deptno,sum(salary)+sum(bonus)
+    FROM emp
+    GROUP BY deptno)
+SELECT deptno
+FROM payroll
+WHERE totalpay=(SELECT max(totalpay)
+               FROM payroll);
+</code></pre>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：找出前一个部门的平均收入大于后一个部门平均收入二倍的部门对,将临时表自连接
+WITH deptavg (deptno,avgsal) AS
+    (SELECT deptno,avg(salary)
+    FROM emp
+    GROUP BY deptno)
+SELECT d1.deptno,d1.avgsal,d2.deptno,d2.avgsal
+FROM deptavg AS d1,deptavg AS d2
+WHERE d1.avgsal>2*d2.avgsal;
+</code></pre>
+<h4 id="二、外连接"><a href="#二、外连接" class="headerlink" title="二、外连接"></a>二、外连接</h4><p>连接结果不仅包含符合连接条件的行同时也包含自身不符合条件的行。</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：查询所有老师（包括有课讲和没课讲）和所有课程（包括有人选和没人选）
+WITH 
+    innerjoin(name,rank,subject,enrollment) AS
+        (SELECT t.name,t.rank,c.subject,c.enrollment
+        FROM teachers As t,courses AS c
+        WHERE t.name=c.teacher AND c.quarter='Fall 96'),
+    teacher-only(name,rank) AS
+        (SELECt name,rank
+        FROM teachers
+        EXCEPT ALL
+        SELECT name,rank
+        FROM innerjoin),
+    course-only(subject,enrollment) AS
+        (SELECT subject,enrollment
+        FROM courses
+        EXCEPT ALL
+        SELECT subject,enrollment
+        FROM innerjoin)
+SELECT name,rank,subject,enrollment
+FROM innerjoin
+UNION ALL
+SELECT name,rank
+    CAST(NULL AS Varchar(20)) AS subject,
+    CAST(NULL AS Integer) AS enrollment
+FROM teacher-only
+UNION ALL
+SELECT CAST(NULL AS Varchar(20)) AS name,
+       CAST(NULL AS Varchar(20)) AS rank,
+       subject,enrollment
+FROM course-only;
+</code></pre>
+<h4 id="三、递归查询"><a href="#三、递归查询" class="headerlink" title="三、递归查询"></a>三、递归查询</h4><h6 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h6><p>公用表表达式 (CTE) 可以认为是在单个 SELECT、INSERT、UPDATE、DELETE 或 CREATE VIEW 语句的执行范围内定义的临时结果集。公用表表达式可以包括对自身的引用，这种表达式称为递归公用表表达式。</p>
+<p>例：航线查询：从 SFO —&gt; JFK 最便宜的航班：</p>
+<p><img src="/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/D:/blog\Hexo\source\_posts\数据库系统的用户接口以及SQL语言（二）\图片一.png" alt></p>
+<p><img src="/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/D:/blog\Hexo\source\_posts\数据库系统的用户接口以及SQL语言（二）\图片二.png" alt></p>
+<p>设法建立临时表trips：第一项destination：从SFO出发可能到达的所有目的地；</p>
+<p>​                                       第二项route：从SFO达到同一行的前一个目的地需要的路径；</p>
+<p>​                                       第三项nsegs：为了达到目的地进行中转的次数；</p>
+<p>​                                       第四项totalcost：按照路径route到达目的地所支付的钱。</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">WITH trips(destination,route,nsegs,totalcost)
+    ((SELECT destination,CAST(destination AS varchar(20)),1,cost
+     FROM flights                             -- initial query
+     WHERE origin='SFO')
+    UNION ALL
+    (SELECT f.destination,
+            CAST(t.route||','||f.destination AS varchar(20)),
+            t.nsegs+1,t.totalcost+f.cost      -- ||:字符串拼接作用
+    FROM trips t,flights f
+    -- 因为是有向环，所以需要结束条件避免无限循环
+    WHERE t.destination=f.origin
+          AND f.destination<>'SFO'            -- stopping rule1
+          AND f.origin<>'JFK'                 -- stopping rule2
+          AND t.nsegs<=3))                    -- stopping rule3
+SELECT route,totalcost
+FROM trips
+WHERE destination='JFK' AND totalcost=
+                            (SELECT min(totalcost)
+                            FROM trips
+                            WHERE destination='JFK');
+</code></pre>
+<h4 id="四、数据操作语言"><a href="#四、数据操作语言" class="headerlink" title="四、数据操作语言"></a>四、数据操作语言</h4><h5 id="（一）Insert"><a href="#（一）Insert" class="headerlink" title="（一）Insert"></a>（一）Insert</h5><p>将元组插入到表中</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例：
+INSERT INTO EMPLOYEES VALUES('Smith','John','1980-06-10');
+</code></pre>
+<h5 id="（二）Delete"><a href="#（二）Delete" class="headerlink" title="（二）Delete"></a>（二）Delete</h5><p>把满足一定条件的元组删除掉</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例：
+DELETE FROM Person WHERE LastName='Rasmussen';
+</code></pre>
+<h5 id="（三）Update"><a href="#（三）Update" class="headerlink" title="（三）Update"></a>（三）Update</h5><p>把满足条件的元组按set子句的要求做更新</p>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">例：
+UPDATE Person SET Address='Zhongshan 23'
+WHERE LastName='Wilson';
+</code></pre>
+<h4 id="五、嵌入式SQL（in-C为例）"><a href="#五、嵌入式SQL（in-C为例）" class="headerlink" title="五、嵌入式SQL（in C为例）"></a>五、嵌入式SQL（in C为例）</h4><p>​        嵌入式SQL(英文: Embedded SQL)是一种将SQL语句直接写入C语言，COBOL，FORTRAN, Ada等编程语言的源代码中的方法。借此方法，可使得应用程序拥有了访问数据以及处理数据的能力。</p>
+<h5 id="（一）概述："><a href="#（一）概述：" class="headerlink" title="（一）概述："></a>（一）概述：</h5><ol>
+<li>以 <strong>EXEC SQL</strong> 开头，以 “ <strong>; </strong> ”  结尾</li>
+<li>利用宿主变量在C与SQL间传递信息，且数组需要被<strong>EXEC SQL</strong>进行定义</li>
+<li>宿主变量不能是数组或结构</li>
+<li>一个特殊的宿主变量：SQLCA</li>
+<li>用SQLCA.SQLCODE可以返回查询状态</li>
+</ol>
+<h5 id="（二）定义宿主变量"><a href="#（二）定义宿主变量" class="headerlink" title="（二）定义宿主变量"></a>（二）定义宿主变量</h5><pre class=" language-lang-c"><code class="language-lang-c">EXEC SQL BEGIN DECLARE SECTION;
+    char SNO[7];
+    char GIVENSNO[7];
+    char CNO[6];
+    char GOVENCNO[6];
+    float GRADE;
+    short GRADEI;
+EXEC SQL END DECLARE SECTION;
+</code></pre>
+<h5 id="（三）可执行语句"><a href="#（三）可执行语句" class="headerlink" title="（三）可执行语句"></a>（三）可执行语句</h5><pre class=" language-lang-c"><code class="language-lang-c">//连接
+EXEC SQL CONNECT:uid IDENTIFIED BY:pwd;
+//执行DDL或DML语句，在SC表中插入元组
+EXEC SQL INSERT INTO SC(SNO,CNO,GRADE)
+         VALUES(:SNO,:CNO,:GRADE);  //插入的新元组的值
+//查询某个学生某门课的成绩
+EXEC SQL SELECT GRADE
+         INTO :GRADE,:GRADEI
+         FROM SC
+         WHERE SNO=:GIVENSNO AND
+               CNO=:GIVENCNO
+</code></pre>
+<h5 id="（四）游标Cursor"><a href="#（四）游标Cursor" class="headerlink" title="（四）游标Cursor"></a>（四）游标Cursor</h5><p>游标是处理数据的一种方法，为了查看或者处理结果集中的数据，游标提供了在结果集中一次一行或者多行前进或向后浏览数据的能力。可以把游标当做一个指针，它可以指定结果中的任何位置，然后允许用户对指定位置的数据进行处理。</p>
+<pre class=" language-lang-c"><code class="language-lang-c">//查询某一门所有选修该课学生的学号以及考试成绩
+EXEC SQL DECLARE C1 CURSOR FOR
+        SELECT SNO,GRADE
+        FROM SC
+        WHERE CNO=:GIVENCNO;
+EXEC SQL OPEN C1;
+if(SQLCA.SQLCODE<0) exit(1);  //这里是查询警告
+while(1){
+    EXEC SQL FETCH C1 INTO :SNO,:GRADE,:GRADEI
+    if(SQLCA.SQLCODE==100) break;
+    ...//省略拿到返回值后的处理
+}
+EXEC SQL CLOSE C1;
+...
+</code></pre>
+<pre class="mermaid">graph TD
+    B[start]
+    B--使用嵌入式SQL语句的宿主语言源代码-->C(预编译处理器);
+    C--使用SQL库函数调用的宿主语言源代码-->D(编译程序);
+    D(编译程序)--机器语言-->E(链接程序);
+    F(SQL库函数)-->E(链接程序);
+    E(链接程序)-->F(可执行语句);</pre>
+
+<h5 id="（五）动态SQL"><a href="#（五）动态SQL" class="headerlink" title="（五）动态SQL"></a>（五）动态SQL</h5><h6 id="1-可直接执行的动态SQL"><a href="#1-可直接执行的动态SQL" class="headerlink" title="1.可直接执行的动态SQL"></a>1.可直接执行的动态SQL</h6><pre class=" language-lang-c"><code class="language-lang-c">//例：删除符合动态输入条件的学生
+EXEC SQL BEGIN DECLARE SECTION;
+char sqlstring[200];  //该数组用来输入执行的SQL语句
+EXEC SQL END DECLARE SECTION;
+char cond[150];  //该数组用来输入用户需要删除学生的满足条件
+strcpy(sqlstring,"DELETE FROM STUDENT WHERE");
+printf("Enter search condition:");
+scanf("%s",cond);
+strcat(sqlstring,cond);  //拼接语句
+EXEC SQL EXECUTE IMMENDIATE :sqlstring;
+</code></pre>
+<h6 id="2-带动态参数的动态SQL"><a href="#2-带动态参数的动态SQL" class="headerlink" title="2.带动态参数的动态SQL"></a>2.带动态参数的动态SQL</h6><pre class=" language-lang-c"><code class="language-lang-c">//例：删除某一年之前出生的学生
+EXEC SQL BEGIN DECLARE SECTION;
+char sqlstring[200];  //该数组用来输入执行的SQL语句
+int birth_year;  //定义出生年份的变量
+EXEC SQL END DECLARE SECTION; 
+strcpy(sqlstring,"DELETE FROM STUDENT WHERE YEAR(BDATE) <= :y;");  //y不是定义的变量，此处为占位符
+printf("Enter birth year for delete :");
+scanf("%d",&birth_year);
+EXEC SQL PREPARE PURGE FROM:sqlstring;
+EXEC SQL EXECUTE PURGE USING:birth_year;
+</code></pre>
+<h6 id="3-针对查询的动态SQL"><a href="#3-针对查询的动态SQL" class="headerlink" title="3.针对查询的动态SQL"></a>3.针对查询的动态SQL</h6><pre class=" language-lang-c"><code class="language-lang-c">EXEC SQL BEGIN DECLARE SECTION;
+    char sqlstring[200];
+    char SNO[7];
+    float GRADE;
+    short GRADEI;
+    char GOVENCNO[6];
+EXEC SQL END DECLARE SECTION;
+char orderby[150];
+strcpy(sqlstring,"SELECT SNO,GRADE FROM SC WHERE CNO=:c");
+printf("Enter the ORDER BY clause:");
+scanf("%s",orderby);
+stract(sqlstring,orderby);
+printf("Enter the course number:");
+scanf("%s",GIVENCNO);
+EXEC SQL PREPARE query FROM:sqlstring;
+EXEC SQL DECLARE grade_cursor CURSOR FOR query;
+EXEC sQL OPEN grade_cursor USING :GIVENCNO;
+if(SQLCA.SQLCODE<0) exit(1);  //这里是查询警告
+while(1){
+    EXEC SQL FETCH grade_cursor INTO :SNO,:GRADE,:GRADEI
+    if(SQLCA.SQLCODE==100) break;
+    ...//省略拿到返回值后的处理
+}
+EXEC SQL CLOSE grade_cursor,
+...
+</code></pre>
+<h4 id="六、存储过程"><a href="#六、存储过程" class="headerlink" title="六、存储过程"></a>六、存储过程</h4><h5 id="（一）概述"><a href="#（一）概述" class="headerlink" title="（一）概述"></a>（一）概述</h5><p>存储过程（Stored Procedure）是一组为了完成特定功能的SQL语句集。经编译后存储在数据库中。</p>
+<p>存储过程是数据库中的一个重要对象，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。</p>
+<p>存储过程是由 流控制 和 SQL语句书写的过程，这个过程经编译和优化后存储在数据库服务器中。</p>
+<p>存储过程 可由应用程序通过一个调用来执行，而且允许用户声明变量。</p>
+<p>同时，存储过程可以接收和输出参数、返回执行存储过程的状态值，也可以嵌套调用。</p>
+<h5 id="（二）优点"><a href="#（二）优点" class="headerlink" title="（二）优点"></a>（二）优点</h5><ol>
+<li><p>存储过程只在创造时进行编译，以后每次执行存储过程都不需再重新编译，而一般SQL语句每执行一次就编译一次,所以使用存储过程可提高数据库执行速度。</p>
+</li>
+<li><p>当对数据库进行复杂操作时(如对多个表进行Update,Insert,Query,Delete时)，可将此复杂操作用存储过程封装起来与数据库提供的事务处理结合一起使用。</p>
+</li>
+<li>存储过程可以重复使用,可减少数据库开发人员的工作量。</li>
+<li>安全性高,可设定只有某些用户才具有对指定存储过程的使用权。</li>
+</ol>
+<pre class=" language-lang-mysql"><code class="language-lang-mysql">-- 例：创建一个存储过程
+create procedure porcedureName () 
+begin 
+    select name from user; 
+end;  
+
+-- 调用过程
+call porcedureName ();
+
+-- 删除存储过程
+DROP PROCEDURE IF EXISTS porcedureName; -- 没有括号()
+</code></pre>
+]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
