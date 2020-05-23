@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zzuyy519blog.top/"/>
-  <updated>2020-04-08T12:09:38.419Z</updated>
+  <updated>2020-05-23T10:41:23.602Z</updated>
   <id>https://zzuyy519blog.top/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>解决CentOS执行yum操作报错Could not retrieve mirrorlist</title>
+    <link href="https://zzuyy519blog.top/2020/05/22/jie-jue-centos-zhi-xing-yum-cao-zuo-bao-cuo-could-not-retrieve-mirrorlist/"/>
+    <id>https://zzuyy519blog.top/2020/05/22/jie-jue-centos-zhi-xing-yum-cao-zuo-bao-cuo-could-not-retrieve-mirrorlist/</id>
+    <published>2020-05-22T13:16:32.000Z</published>
+    <updated>2020-05-23T10:41:23.602Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;一、问题说明：&quot;&gt;&lt;a href=&quot;#一、问题说明：&quot; class=&quot;headerlink&quot; title=&quot;一、问题说明：&quot;&gt;&lt;/a&gt;一、问题说明：&lt;/h5&gt;&lt;p&gt;在CentOS7环境下执行yum操作安装软件包时出现如下报错：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="问题解决" scheme="https://zzuyy519blog.top/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    
+      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux编译安装源码包</title>
+    <link href="https://zzuyy519blog.top/2020/05/22/linux-bian-yi-an-zhuang-yuan-ma-bao/"/>
+    <id>https://zzuyy519blog.top/2020/05/22/linux-bian-yi-an-zhuang-yuan-ma-bao/</id>
+    <published>2020-05-22T12:42:54.000Z</published>
+    <updated>2020-05-23T10:40:51.451Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;源码包就是源代码的可见的软件包，基于Linux和BSD系统的软件最常见；源代码安装具有自定义软件功能，优化编译参数、提高性能以及解决不必要的空间依赖等好处。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库管理系统</title>
+    <link href="https://zzuyy519blog.top/2020/04/15/shu-ju-ku-guan-li-xi-tong/"/>
+    <id>https://zzuyy519blog.top/2020/04/15/shu-ju-ku-guan-li-xi-tong/</id>
+    <published>2020-04-15T08:13:57.000Z</published>
+    <updated>2020-05-23T10:54:32.276Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、DBMS体系结构&quot;&gt;&lt;a href=&quot;#一、DBMS体系结构&quot; class=&quot;headerlink&quot; title=&quot;一、DBMS体系结构&quot;&gt;&lt;/a&gt;一、DBMS体系结构&lt;/h4&gt;&lt;h5 id=&quot;（一）DBMS核心的构成&quot;&gt;&lt;a href=&quot;#（一）DBMS核心的构成&quot; class=&quot;headerlink&quot; title=&quot;（一）DBMS核心的构成&quot;&gt;&lt;/a&gt;（一）DBMS核心的构成&lt;/h5&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数据库" scheme="https://zzuyy519blog.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库系统的用户接口以及SQL语言（二）</title>
     <link href="https://zzuyy519blog.top/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/"/>
     <id>https://zzuyy519blog.top/2020/03/28/shu-ju-ku-xi-tong-de-yong-hu-jie-kou-yi-ji-sql-yu-yan-er/</id>
     <published>2020-03-28T10:45:32.000Z</published>
-    <updated>2020-04-08T12:09:38.419Z</updated>
+    <updated>2020-04-15T08:18:13.345Z</updated>
     
     <summary type="html">
     
@@ -358,66 +418,6 @@
     
     
       <category term="嵌入式" scheme="https://zzuyy519blog.top/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派安装配置看门狗</title>
-    <link href="https://zzuyy519blog.top/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/"/>
-    <id>https://zzuyy519blog.top/2019/08/04/shu-mei-pai-an-zhuang-pei-zhi-kan-men-gou/</id>
-    <published>2019-08-04T15:22:06.000Z</published>
-    <updated>2020-03-22T13:15:45.254Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;a href=&quot;#看门狗——让树莓派永不死机&quot; class=&quot;headerlink&quot; title=&quot;看门狗——让树莓派永不死机&quot;&gt;&lt;/a&gt;看门狗——让树莓派永不死机&lt;/h3&gt;&lt;p&gt;当利用树莓派做一些需要长期待机的应用时，会遇到的一个问题就是树莓派会因为过热而死机，需要重启树莓派，然后再次开启树莓派上的应用，watchdog（看门狗）这款软件可以帮我们解决这样的麻烦，来实现树莓派永不死机的功能。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="教程" scheme="https://zzuyy519blog.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="树莓派" scheme="https://zzuyy519blog.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xshell在IP可查且可ping通外网的情况连接不上VirtualBox的解决方法</title>
-    <link href="https://zzuyy519blog.top/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/"/>
-    <id>https://zzuyy519blog.top/2019/07/14/xshell-lian-jie-bu-shang-virtualbox-de-jie-jue-fang-fa/</id>
-    <published>2019-07-14T12:46:53.000Z</published>
-    <updated>2020-03-05T03:58:24.065Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;​    笔者在学习Linux的过程中，经常会遇到xshell连接不上虚拟机的情况，而在使用VirtualBox的时候遇到过一次，IP地址可查，在虚拟机中ping外网也能ping通，但xshell却连接不上的情况。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="教程" scheme="https://zzuyy519blog.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="虚拟机" scheme="https://zzuyy519blog.top/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数码雨</title>
-    <link href="https://zzuyy519blog.top/2019/07/10/shu-ma-yu/"/>
-    <id>https://zzuyy519blog.top/2019/07/10/shu-ma-yu/</id>
-    <published>2019-07-10T02:40:03.000Z</published>
-    <updated>2020-03-05T03:58:34.598Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;a href=&quot;#有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot; class=&quot;headerlink&quot; title=&quot;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&quot;&gt;&lt;/a&gt;有意思的Linux命令：cmatrix在CentOS终端实现数码雨效果&lt;/h3&gt;&lt;p&gt;闲言少叙，命令如下&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="教程" scheme="https://zzuyy519blog.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
     
   </entry>
   
