@@ -1,6 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Shell脚本</title>
+    <url>/2020/06/12/shell-jiao-ben/</url>
+    <content><![CDATA[<h4 id="一、shell脚本基础"><a href="#一、shell脚本基础" class="headerlink" title="一、shell脚本基础"></a>一、shell脚本基础</h4><h5 id="（一）shell脚本"><a href="#（一）shell脚本" class="headerlink" title="（一）shell脚本"></a>（一）shell脚本</h5><p>包含一些命令或声明，并符合一定格式的文本文件</p>
+<a id="more"></a>
+<h5 id="（二）格式要求：首行shebang机制"><a href="#（二）格式要求：首行shebang机制" class="headerlink" title="（二）格式要求：首行shebang机制"></a>（二）格式要求：首行shebang机制</h5><p>​                                #!/bin/bash</p>
+<p>​                                #!/usr/bin/python</p>
+<h5 id="（三）用途"><a href="#（三）用途" class="headerlink" title="（三）用途"></a>（三）用途</h5><ul>
+<li>自动化常用命令</li>
+<li>执行系统管理和故障排除</li>
+<li>创建简单的应用程序</li>
+<li>处理文本或文件</li>
+</ul>
+<h5 id="（四）脚本的基本结构"><a href="#（四）脚本的基本结构" class="headerlink" title="（四）脚本的基本结构"></a>（四）脚本的基本结构</h5><pre class=" language-lang-shell"><code class="language-lang-shell">#!SHEBANG
+CONFIGURATION_VARIABLES
+FUNCTION_DEFINITIONS
+MAIN_CODE
+</code></pre>
+<h5 id="（五）脚本调试"><a href="#（五）脚本调试" class="headerlink" title="（五）脚本调试"></a>（五）脚本调试</h5><p>检测脚本中的语法错误：</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">bash -n /path/to/some_script
+</code></pre>
+<p>调试执行：</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">bash -n /path/to/some_script
+</code></pre>
+<h5 id="（六）变量"><a href="#（六）变量" class="headerlink" title="（六）变量"></a>（六）变量</h5><h6 id="1-强类型"><a href="#1-强类型" class="headerlink" title="1.强类型"></a>1.强类型</h6><p>变量不经过强制转换，它永远是这个数据类型，不允许隐式的类型转换。一般定义变量时必须指定类型、参与运算必须符合类型要求；调用未声明变量会产生错误。如：Java，C#</p>
+<h6 id="2-弱类型"><a href="#2-弱类型" class="headerlink" title="2.弱类型"></a>2.弱类型</h6><p>语言的运行时会隐式做数据类型转换。无需指定类型，默认均为字符型；参与运算会自动进行隐式类型转换；变量无需事先定义可直接调用。如：bash不支持浮点数，PHP</p>
+<h5 id="（七）bash中变量的种类"><a href="#（七）bash中变量的种类" class="headerlink" title="（七）bash中变量的种类"></a>（七）bash中变量的种类</h5><h6 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1.局部变量"></a>1.局部变量</h6><p>生效范围为当前shell进程；对当前shell之外的其他shell进程，包括当前shell的子shell进程均无效</p>
+<ul>
+<li>变量赋值：name=’value’</li>
+<li>可以使用引用value:<br>(1)可以直接字串：name=”root”<br>(2)变量引用：name=”$USER”<br>(3)命令引用：name=`COMMAND`     name=$(COMMAND)</li>
+<li>变量引用：${name}    $name</li>
+<li>显示已定义的所有变量：set</li>
+<li>删除变量：unset name</li>
+</ul>
+<h6 id="2-环境（全局）变量"><a href="#2-环境（全局）变量" class="headerlink" title="2.环境（全局）变量"></a>2.环境（全局）变量</h6><p>生效范围为当前shell进程及其子进程</p>
+<ul>
+<li>变量声明、赋值：<br>export name=VALUE<br>declare -x name=VALUE</li>
+<li>变量引用：$name,${name}</li>
+<li>显示所有环境变量：env；printenv；export；declare -x</li>
+<li>删除变量：unset name</li>
+</ul>
+<h6 id="3-本地变量"><a href="#3-本地变量" class="headerlink" title="3.本地变量"></a>3.本地变量</h6><p>生效范围为当前shell进程中某代码片段，通常指函数</p>
+<h6 id="4-位置变量"><a href="#4-位置变量" class="headerlink" title="4.位置变量"></a>4.位置变量</h6><p>$1,$2……来表示，用于让脚本在脚本代码中调用命令行传递给它的参数</p>
+<h6 id="5-特殊变量"><a href="#5-特殊变量" class="headerlink" title="5.特殊变量"></a>5.特殊变量</h6><p>$?    $0    $*    $@    $#    $$</p>
+<h5 id="（八）退出状态"><a href="#（八）退出状态" class="headerlink" title="（八）退出状态"></a>（八）退出状态</h5><p>进程使用退出状态来报告成功或失败</p>
+<ul>
+<li>0代表成功，1-255代表失败</li>
+<li>$? 变量保存最近的命令退出状态</li>
+</ul>
+<pre class=" language-lang-shell"><code class="language-lang-shell">例如：
+ping -c1 -W1 hostdown &> /dev/null
+echo $?
+</code></pre>
+<h5 id="（九）条件测试"><a href="#（九）条件测试" class="headerlink" title="（九）条件测试"></a>（九）条件测试</h5><ul>
+<li>判断某需求是否满足，需要由测试机制来实现</li>
+<li>评估布尔声明，以便用在条件性执行中<ul>
+<li>若真，则返回0</li>
+<li>若假，则返回1</li>
+</ul>
+</li>
+<li>测试命令<ul>
+<li>test EXPRESSION</li>
+<li>[ EXPRESSION ]</li>
+<li>[[ EXPRESSION ]]<ul>
+<li>注意：EXPRESSION前后必须有空白字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-lang-shell"><code class="language-lang-shell">例如：
+[root@localhost ~]# m=10
+[root@localhost ~]# n=20
+[root@localhost ~]# test $m -eq $n
+[root@localhost ~]# echo $?
+1
+</code></pre>
+<h5 id="（十）使用read命令来接收输入"><a href="#（十）使用read命令来接收输入" class="headerlink" title="（十）使用read命令来接收输入"></a>（十）使用read命令来接收输入</h5><p>使用read来把输入值分配给一个或多个shell变量</p>
+<ul>
+<li>-p 指定要显示的提示</li>
+<li>-s 静默输入，一般用于密码</li>
+<li>-n N指定输入的字符长度N</li>
+<li>-d ‘字符’输入结束符</li>
+<li>-t N TIMEOUT为N秒</li>
+</ul>
+<h5 id="（十一）条件选择if语句"><a href="#（十一）条件选择if语句" class="headerlink" title="（十一）条件选择if语句"></a>（十一）条件选择if语句</h5><ul>
+<li><p>单分支</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">if  判断条件;then 
+            条件为真的分支代码
+fi
+</code></pre>
+</li>
+<li><p>双分支</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">if  判断条件;then 
+            条件为真的分支代码
+else
+            条件为假的分支代码
+fi
+</code></pre>
+</li>
+</ul>
+<h5 id="（十二）条件判断：case语句"><a href="#（十二）条件判断：case语句" class="headerlink" title="（十二）条件判断：case语句"></a>（十二）条件判断：case语句</h5><pre class=" language-lang-shell"><code class="language-lang-shell">case变量引用in
+        PAT1)
+                    分支1
+                    ;;
+        *)
+                    默认分支
+                    ;;
+        esac
+</code></pre>
+<h5 id="（十三）循环"><a href="#（十三）循环" class="headerlink" title="（十三）循环"></a>（十三）循环</h5><h6 id="1-for循环"><a href="#1-for循环" class="headerlink" title="1.for循环"></a>1.for循环</h6><pre class=" language-lang-shell"><code class="language-lang-shell">for 变量名 in 列表; do
+    循环体
+done
+</code></pre>
+<pre class=" language-lang-shell"><code class="language-lang-shell">#例如：求100以为奇数之和
+sum=0;for number in `seq 1 2 100`;do let sum+=number;done;echo "sum is $sum"
+sum is 2500
+#或者
+for((sum=0,i=1;i<=100;i+=2));do let sum+=i;done;echo "sum is $sum"
+sum is 2500
+</code></pre>
+<h6 id="2-while循环"><a href="#2-while循环" class="headerlink" title="2.while循环"></a>2.while循环</h6><pre class=" language-lang-shell"><code class="language-lang-shell">while CONDITION;do
+        循环体
+done
+</code></pre>
+<pre class=" language-lang-shell"><code class="language-lang-shell">#例：
+sum=0;i=1;while [ "$i" -le 100 ];do let sum+=i;let i+=2;done;echo "sum is $sum"
+sum is 2500
+</code></pre>
+<h6 id="3-until循环"><a href="#3-until循环" class="headerlink" title="3.until循环"></a>3.until循环</h6><pre class=" language-lang-shell"><code class="language-lang-shell">until CONDITION;do
+        循环体
+done
+</code></pre>
+<h5 id="（十四）数组"><a href="#（十四）数组" class="headerlink" title="（十四）数组"></a>（十四）数组</h5><ol>
+<li>声明数组：declare -a ARRAY_NAME<pre><code>                declare -A ARRAY_NAME：关联数组
+</code></pre>注意：两者不可相互转换</li>
+<li>引用数组元素：${ARRAY_NAME[INDEX]}<br>注意：省略[INDEX]表示引用下标为0的元素</li>
+<li>引用数组所有元素：${ARRAY_NAME[*]}<pre><code>                               ${ARRAY_NAME[@]}
+</code></pre></li>
+<li>删除数组中的某元素：导致稀疏格式<br>unset ARRAY[INDEX]</li>
+<li>删除整个数组：unset ARRAY</li>
+</ol>
+<h4 id="二、自动生成脚本开头注释"><a href="#二、自动生成脚本开头注释" class="headerlink" title="二、自动生成脚本开头注释"></a>二、自动生成脚本开头注释</h4><p>在/root/目录下新建文件并命名成 “ <strong>.vimrc</strong> ” 名称，并添加以下模板代码</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim .vimrc
+set ignorecase
+set cursorline
+set autoindent
+autocmd BufNewFile *.sh exec ":call SetTitle()"
+func SetTitle()
+        if expand("%:e") == 'sh'
+                call setline(1,"#!/bin/bash")
+                call setline(2,"#*************************************************************")
+                call setline(3,"#Author: Y*Y")                    
+                call setline(4,"#Date:  ".strftime("%Y-%m-%d"))
+                call setline(5,"#FileName:      ".expand("%"))
+                call setline(6,"#*************************************************************")
+                call setline(7,"")
+        endif
+endfunc                                                            
+ autocmd BufNewFile * normal G
+</code></pre>
+<p>再建立shell脚本时则会自动添加开头注释为</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim choose.sh
+#!/bin/bash
+#*************************************************************
+#Author: Y*Y
+#Date:  2020-03-12
+#FileName:      choose.sh
+#*************************************************************
+</code></pre>
+<h4 id="三、脚本示例"><a href="#三、脚本示例" class="headerlink" title="三、脚本示例"></a>三、脚本示例</h4><h5 id="（一）脚本要求：当磁盘占用率达到80-以上时报警"><a href="#（一）脚本要求：当磁盘占用率达到80-以上时报警" class="headerlink" title="（一）脚本要求：当磁盘占用率达到80%以上时报警"></a>（一）脚本要求：当磁盘占用率达到80%以上时报警</h5><pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim checkspace.sh 
+#!/bin/bash
+#author:yy
+#function:chechspace
+value=df -h | awk '/^\/dev\/sda/{print $5}' | awk -F '%' '{print $1}' | sort -nr |head -1
+[ $value -gt 80 ] && wall "disk will be full" || wall "disk is normal"
+</code></pre>
+<p>运行脚本</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# chmod +x *
+[root@localhost ~]# ./checkspace.sh
+Broadcast message from root@localhost.localdomain (pts/0) (Thu Mar 12 13:13:32 2020):
+
+disk is normal
+</code></pre>
+<h5 id="（二）交互示例：选择是或否"><a href="#（二）交互示例：选择是或否" class="headerlink" title="（二）交互示例：选择是或否"></a>（二）交互示例：选择是或否</h5><pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim choose.sh
+#!/bin/bash
+#*************************************************************
+#Author: Y*Y
+#Date:  2020-03-12
+#FileName:      choose.sh
+#*************************************************************
+read -p "Do you agree? yes or no:" answer
+[[ $answer =~ ^([yY][Ee][sS])|[Yy]$ ]] && echo "GO!" || echo "NO"
+</code></pre>
+<p>运行脚本</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# chmod +x choose.sh
+[root@localhost ~]# ./choose.sh
+Do you agree? yes or no:yes
+GO!
+</code></pre>
+<h5 id="（三）调用函数实现IP地址是否合法"><a href="#（三）调用函数实现IP地址是否合法" class="headerlink" title="（三）调用函数实现IP地址是否合法"></a>（三）调用函数实现IP地址是否合法</h5><ol>
+<li>建立一个专门存放函数的文件</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim functions
+checkip() {
+    [[ "$1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]] && echo "This is a IP" || echo "This is not IP"
+}
+</code></pre>
+<ol>
+<li>新建shell脚本，调用函数</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# vim iptest.sh
+#!/bin/bash
+#*************************************************************
+#Author: Y*Y
+#Date:  2020-03-12
+#FileName:      iptest.sh
+#*************************************************************
+. functions
+read -p "Please input a ip addr: " ipaddr
+checkip $ipaddr
+</code></pre>
+<ol>
+<li>运行脚本测试</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# chmod +x iptest.sh
+[root@localhost ~]# ./iptest.sh 
+Please input a ip addr: 1.1.1.1
+This is a IP
+</code></pre>
+<h5 id="（四）定义数组，数组中元素是-var-log目录下所有以-log结尾的文件，统计出其下标为计数的文件中的行数之和"><a href="#（四）定义数组，数组中元素是-var-log目录下所有以-log结尾的文件，统计出其下标为计数的文件中的行数之和" class="headerlink" title="（四）定义数组，数组中元素是/var/log目录下所有以.log结尾的文件，统计出其下标为计数的文件中的行数之和"></a>（四）定义数组，数组中元素是/var/log目录下所有以.log结尾的文件，统计出其下标为计数的文件中的行数之和</h5><pre class=" language-lang-shell"><code class="language-lang-shell">declare -a files
+files=(/var/log/*.log)
+declare -i lines=0
+for i in $(seq 0 $[${#files[*]}-1]); do
+        if [ $[$i%2] -ne 0 ]; then                                
+                let lines+=$(wc -l ${files[$i]} | cut -d' ' -f1)
+        fi
+done
+echo "Lines: $lines."
+</code></pre>
+<p>运行结果</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# ./array.sh 
+Lines: 70.
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决CentOS执行yum操作报错Could not retrieve mirrorlist</title>
     <url>/2020/05/22/jie-jue-centos-zhi-xing-yum-cao-zuo-bao-cuo-could-not-retrieve-mirrorlist/</url>
     <content><![CDATA[<h5 id="一、问题说明："><a href="#一、问题说明：" class="headerlink" title="一、问题说明："></a>一、问题说明：</h5><p>在CentOS7环境下执行yum操作安装软件包时出现如下报错：</p>
@@ -3254,6 +3506,49 @@ max-load-15=12
       </tags>
   </entry>
   <entry>
+    <title>CAN基础知识介绍</title>
+    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
+    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
+<a id="more"></a>
+<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
+<p>2.系统柔软性</p>
+<p>3.速度快，距离远</p>
+<p>4.具有错误检测，错误通知和错误恢复功能</p>
+<p>5.故障封闭功能</p>
+<p>6.连接节点多</p>
+<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
+<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
+<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
+<p>1.帧起始：表示数据帧开始的段</p>
+<p>2.仲裁段：表示该帧优先级的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
+<p>3.控制段：表示数据的字节数及保留位的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
+<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
+<p>5.CRC段：检查帧的传输错误的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
+<p>6.ACK段：表示确认正常接收的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
+<p>7.帧结束：表示数据帧结束的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
+<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
+<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
+<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
+<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言的生命周期和作用域</title>
     <url>/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</url>
     <content><![CDATA[<p>生命周期：是一个变量存在的周期。</p>
@@ -3304,49 +3599,6 @@ int main(int argc, char const *argv[])
       </categories>
       <tags>
         <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CAN基础知识介绍</title>
-    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
-    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<a id="more"></a>
-<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>通信</tag>
       </tags>
   </entry>
   <entry>
