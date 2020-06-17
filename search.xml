@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux下安装pyenv</title>
+    <url>/2020/06/16/linux-xia-an-zhuang-pyenv/</url>
+    <content><![CDATA[<h4 id="一、Pyenv"><a href="#一、Pyenv" class="headerlink" title="一、Pyenv"></a>一、Pyenv</h4><p>在开发Python程序的时候，有时候可能需要在不同版本的Python上进行测试。pyenv就是这么一个管理多版本Python的工具。</p>
+<a id="more"></a>
+<p>常见操作是：</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[python@localhost ~]$ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+</code></pre>
+<p>但在由于网络环境原因，很可能导致连接失败，出现如下报错等等：</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused
+</code></pre>
+<p>所以我们需要采取其他安装方法，如 git clone 所需的脚本</p>
+<h4 id="二、安装方法"><a href="#二、安装方法" class="headerlink" title="二、安装方法"></a>二、安装方法</h4><p>最好使用新创建的非root用户安装</p>
+<ol>
+<li>clone 下最新版本的pyenv，安装到 $HOME/.pyenv 文件夹</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+</code></pre>
+<ol>
+<li>定义环境变量<strong>PYENV_ROOT</strong>以指向克隆<strong>pyenv repo</strong>的路径<br><strong>$PATH</strong>用以访问<strong>pyenv</strong>命令行实用程序</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+</code></pre>
+<ol>
+<li>添加 <strong>pyenv init</strong> 到 <strong>shell</strong> 以启用填充和自动补全功能。</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+</code></pre>
+<ol>
+<li>重启shell</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">exec "$SHELL"
+</code></pre>
+<ol>
+<li>安装低版本python测试</li>
+</ol>
+<pre class=" language-lang-shell"><code class="language-lang-shell">pyenv install 2.7.8
+</code></pre>
+<h6 id="详细信息参考GitHub的官方文档"><a href="#详细信息参考GitHub的官方文档" class="headerlink" title="详细信息参考GitHub的官方文档"></a>详细信息参考<a href="https://github.com/pyenv/pyenv#installation" target="_blank" rel="noopener">GitHub的官方文档</a></h6>]]></content>
+      <categories>
+        <category>问题解决</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7下git clone报错Peer&#39;s Certificate has expired</title>
+    <url>/2020/06/16/centos7-xia-git-clone-bao-cuo-peer-s-certificate-has-expired/</url>
+    <content><![CDATA[<h4 id="一、报错情况"><a href="#一、报错情况" class="headerlink" title="一、报错情况"></a>一、报错情况</h4><p>操作系统环境：Centos7</p>
+<p>报错提示：证书过期</p>
+<a id="more"></a>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# git clone https://gitlab.com/XXX
+Cloning into 'gitlab'...
+fatal: unable to access 'https://gitlab.com/XXX/': Peer's Certificate has expired.
+</code></pre>
+<p>查看当前系统时间：发现系统时间与当前时间不对应</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# date
+</code></pre>
+<h4 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h4><p>安装ntpdate，使系统时间同步</p>
+<pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# yum -y install ntpdate
+......
+[root@localhost ~]# ntpdate -u 210.72.145.44 #网络时间同步命令
+[root@localhost ~]# date #查看系统时间正常
+</code></pre>
+<p>（210.72.145.44：中国国家授时中心的官方服务器）</p>
+<p>再次git clone，正常</p>
+<h4 id="三、将时间同步服务加到开机启动"><a href="#三、将时间同步服务加到开机启动" class="headerlink" title="三、将时间同步服务加到开机启动"></a>三、将时间同步服务加到开机启动</h4><pre class=" language-lang-shell"><code class="language-lang-shell">[root@localhost ~]# systemctl enable ntpdate.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/ntpdate.service to /usr/lib/systemd/system/ntpdate.service.
+[root@localhost ~]# systemctl start ntpdate.service
+</code></pre>
+]]></content>
+      <categories>
+        <category>问题解决</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell脚本</title>
     <url>/2020/06/12/shell-jiao-ben/</url>
     <content><![CDATA[<h4 id="一、shell脚本基础"><a href="#一、shell脚本基础" class="headerlink" title="一、shell脚本基础"></a>一、shell脚本基础</h4><h5 id="（一）shell脚本"><a href="#（一）shell脚本" class="headerlink" title="（一）shell脚本"></a>（一）shell脚本</h5><p>包含一些命令或声明，并符合一定格式的文本文件</p>
@@ -3506,49 +3586,6 @@ max-load-15=12
       </tags>
   </entry>
   <entry>
-    <title>CAN基础知识介绍</title>
-    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
-    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
-<a id="more"></a>
-<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
-<p>2.系统柔软性</p>
-<p>3.速度快，距离远</p>
-<p>4.具有错误检测，错误通知和错误恢复功能</p>
-<p>5.故障封闭功能</p>
-<p>6.连接节点多</p>
-<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
-<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
-<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
-<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
-<p>1.帧起始：表示数据帧开始的段</p>
-<p>2.仲裁段：表示该帧优先级的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
-<p>3.控制段：表示数据的字节数及保留位的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
-<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
-<p>5.CRC段：检查帧的传输错误的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
-<p>6.ACK段：表示确认正常接收的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
-<p>7.帧结束：表示数据帧结束的段</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
-<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
-<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
-<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
-<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
-<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言的生命周期和作用域</title>
     <url>/2019/05/03/c-yu-yan-de-sheng-ming-zhou-qi-he-zuo-yong-yu/</url>
     <content><![CDATA[<p>生命周期：是一个变量存在的周期。</p>
@@ -3599,6 +3636,49 @@ int main(int argc, char const *argv[])
       </categories>
       <tags>
         <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CAN基础知识介绍</title>
+    <url>/2019/05/03/can-xue-xi-bi-ji/</url>
+    <content><![CDATA[<h3 id="CAN通信"><a href="#CAN通信" class="headerlink" title="CAN通信"></a>CAN通信</h3><p>CAN是控制器局域网络(Controller Area Network, CAN)的简称，已成为汽车计算机控制系统和嵌入式工业控制局域网的标准总线。</p>
+<a id="more"></a>
+<h4 id="一、CAN协议的特点"><a href="#一、CAN协议的特点" class="headerlink" title="一、CAN协议的特点"></a>一、CAN协议的特点</h4><p>1.多主控制</p>
+<p>2.系统柔软性</p>
+<p>3.速度快，距离远</p>
+<p>4.具有错误检测，错误通知和错误恢复功能</p>
+<p>5.故障封闭功能</p>
+<p>6.连接节点多</p>
+<h4 id="二、物理层特征"><a href="#二、物理层特征" class="headerlink" title="二、物理层特征"></a>二、物理层特征</h4><p>显性电平对应逻辑：0（CAN_H和CAN_L之差为2V左右）</p>
+<p>隐性电平对应逻辑：1（CAN_H和CAN_L之差为0V）</p>
+<p>【在CAN总线的起止端都有一个120欧姆的中断电阻，来做阻抗匹配，以减少回波辐射】</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片1.png" alt="逻辑电平"></p>
+<h4 id="三、数据帧（7个段）"><a href="#三、数据帧（7个段）" class="headerlink" title="三、数据帧（7个段）"></a>三、数据帧（7个段）</h4><p><img src="/2019/05/03/can-xue-xi-bi-ji/图片2.png" alt="数据帧"></p>
+<p>1.帧起始：表示数据帧开始的段</p>
+<p>2.仲裁段：表示该帧优先级的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片3.png" alt="仲裁段"></p>
+<p>3.控制段：表示数据的字节数及保留位的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片4.png" alt="控制段"></p>
+<p>4.数据段：数据的内容，一帧可发送0~8个字节的数据</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片5.png" alt="数据段"></p>
+<p>5.CRC段：检查帧的传输错误的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片6.png" alt="CRC段"></p>
+<p>6.ACK段：表示确认正常接收的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片7.png" alt="ACK段"></p>
+<p>7.帧结束：表示数据帧结束的段</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片8.png" alt="帧结束"></p>
+<p>（ ID：11位，高位在前，低位在后，基本ID禁止高7位都为隐性，即不能：ID=1111111xxxx ）</p>
+<h4 id="四、总线仲裁"><a href="#四、总线仲裁" class="headerlink" title="四、总线仲裁"></a>四、总线仲裁</h4><p>1.总线空闲时，最先发送的单元获得发送优先权，一旦发送，其他单元无法抢占</p>
+<p>2.如果有多个单元同时发送，则连续输出显性电平多的单元，具有较高优先级</p>
+<h4 id="五、位时序"><a href="#五、位时序" class="headerlink" title="五、位时序"></a>五、位时序</h4><p>可根据位时序设置波特率</p>
+<p><img src="/2019/05/03/can-xue-xi-bi-ji/图片9.png" alt="位时序"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>一直觉得通信啥的很玄学，其实还是没能熟练掌握最基本的规则。说玄也玄，但万物有因，了解好通信的基础知识，以后出现问题，才好追根溯源，然后好好解决。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>通信</tag>
       </tags>
   </entry>
   <entry>

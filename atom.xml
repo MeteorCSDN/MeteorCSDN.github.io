@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zzuyy519blog.top/"/>
-  <updated>2020-06-15T12:50:16.485Z</updated>
+  <updated>2020-06-17T02:34:36.284Z</updated>
   <id>https://zzuyy519blog.top/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux下安装pyenv</title>
+    <link href="https://zzuyy519blog.top/2020/06/16/linux-xia-an-zhuang-pyenv/"/>
+    <id>https://zzuyy519blog.top/2020/06/16/linux-xia-an-zhuang-pyenv/</id>
+    <published>2020-06-16T08:37:48.000Z</published>
+    <updated>2020-06-17T02:34:36.284Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、Pyenv&quot;&gt;&lt;a href=&quot;#一、Pyenv&quot; class=&quot;headerlink&quot; title=&quot;一、Pyenv&quot;&gt;&lt;/a&gt;一、Pyenv&lt;/h4&gt;&lt;p&gt;在开发Python程序的时候，有时候可能需要在不同版本的Python上进行测试。pyenv就是这么一个管理多版本Python的工具。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="问题解决" scheme="https://zzuyy519blog.top/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    
+      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Centos7下git clone报错Peer&#39;s Certificate has expired</title>
+    <link href="https://zzuyy519blog.top/2020/06/16/centos7-xia-git-clone-bao-cuo-peer-s-certificate-has-expired/"/>
+    <id>https://zzuyy519blog.top/2020/06/16/centos7-xia-git-clone-bao-cuo-peer-s-certificate-has-expired/</id>
+    <published>2020-06-16T08:05:37.000Z</published>
+    <updated>2020-06-17T02:47:50.561Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、报错情况&quot;&gt;&lt;a href=&quot;#一、报错情况&quot; class=&quot;headerlink&quot; title=&quot;一、报错情况&quot;&gt;&lt;/a&gt;一、报错情况&lt;/h4&gt;&lt;p&gt;操作系统环境：Centos7&lt;/p&gt;
+&lt;p&gt;报错提示：证书过期&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="问题解决" scheme="https://zzuyy519blog.top/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    
+      <category term="Linux" scheme="https://zzuyy519blog.top/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Shell脚本</title>
@@ -378,46 +419,6 @@
     
     
       <category term="虚拟机" scheme="https://zzuyy519blog.top/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cobbler部署并自动化安装系统</title>
-    <link href="https://zzuyy519blog.top/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/"/>
-    <id>https://zzuyy519blog.top/2019/08/12/cobbler-bu-shu-bing-zi-dong-hua-an-zhuang-xi-tong/</id>
-    <published>2019-08-12T15:03:17.000Z</published>
-    <updated>2020-03-05T03:57:34.902Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;一、安装部署&quot;&gt;&lt;a href=&quot;#一、安装部署&quot; class=&quot;headerlink&quot; title=&quot;一、安装部署&quot;&gt;&lt;/a&gt;一、安装部署&lt;/h4&gt;&lt;p&gt;1.可以去阿里巴巴开源镜像站寻找所需镜像源（epel—&amp;gt;epel-release-latest-7.noarch.rpm），复制其链接&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="网络运维" scheme="https://zzuyy519blog.top/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS7下PXE+Kickstart+DHCP+TFTP+HTTP无人值守安装系统</title>
-    <link href="https://zzuyy519blog.top/2019/08/11/zi-dong-hua-yun-wei/"/>
-    <id>https://zzuyy519blog.top/2019/08/11/zi-dong-hua-yun-wei/</id>
-    <published>2019-08-11T10:05:28.000Z</published>
-    <updated>2020-03-05T03:56:31.819Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h4&gt;&lt;h5 id=&quot;（一）什么是PXE&quot;&gt;&lt;a href=&quot;#（一）什么是PXE&quot; class=&quot;headerlink&quot; title=&quot;（一）什么是PXE&quot;&gt;&lt;/a&gt;（一）什么是PXE&lt;/h5&gt;&lt;p&gt;​        PXE(Pre boot Execution Environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络启动操作系统，在启动过程中，终端要求服务器分配IP地址，再用TFTP ( trivial file transfer protocol )或MTFTP(multicast trivial file transfer protocol)协议下载一个启动软件包到本机，内存中执行，由这个启动软件包完成终端基本软件设置，从而引导预先安装在服务器中的终端操作系统。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://zzuyy519blog.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="网络运维" scheme="https://zzuyy519blog.top/tags/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
